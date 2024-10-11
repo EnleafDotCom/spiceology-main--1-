@@ -1,0 +1,68 @@
+{% assign first_tab_menu = section.settings.first_dropdown_tab_menu %}
+{% assign second_tab_menu = section.settings.second_dropdown_tab_menu %}
+
+<div
+  class="hidden xl:block"
+  x-data="{
+    hovered: false,
+    updateButtonWidths() {
+      if (window.innerWidth < 768) return;
+      const buttons = this.$el.querySelectorAll('.resize-button')
+      buttons.forEach(button => {
+        button.style.width = 'auto'
+        button.style.width = button.getBoundingClientRect().width + 'px'
+      })
+    },
+    init() {
+      $nextTick(() => {
+        this.updateButtonWidths()
+      })
+      window.addEventListener('resize', () => {
+        this.updateButtonWidths()
+      })
+    }
+  }"
+>
+  <nav
+    :class="{ 
+      {% if section.settings.header_style == 'transparent' %}
+      'bg-white': $store.main.isScrolled || (hovered && query === '' && !search_focused), 
+      {% endif %}
+      'bg-grey-light': query !== '' || search_focused,
+      'bg-transparent': (!$store.main.homepage && !$store.main.isScrolled && !$store.main.isNavOpen)
+    }"
+    :data-query="query === null ? 'null' : 'not-null'"
+    :data-hovered="hovered ? 'hovered' : 'not-hovered'"
+    @mouseenter="hovered = true"
+    @mouseleave="hovered = false"
+    class="header-desktop-main flex justify-between items-center w-full px-container transition-colors duration-[200ms] ease-in-out {% unless section.settings.header_style == 'transparent' %}bg-white{% endunless %}">
+    {% render 'header__left-tabs' %}
+    <div class="h-full w-1/5 flex justify-center items-center">
+      <a href="/" aria-label="home" class="text-[var(--header-text-color)]">
+        {% render 'svg__main-logo' %}
+      </a>
+    </div>
+    {% render 'header__right-tabs' %}
+  </nav>
+  <hr 
+    :class="$store.main.isNavOpen ? 'text-steel' : (hovered || $store.main.isScrolled) ? 'opacity-0' : 'text-steel-dark {% if section.settings.header_style == 'opaque' %}opacity-0{% endif %}'" 
+    
+    class="absolute top-[calc(var(--nav-height)-1px)] left-[20px] w-[calc(100%-40px)] h-[1px] z-[2000]"/>
+  <div
+    class="dropdown-panel-wrapper flex"
+    x-show="$store.main.isNavOpen"
+    x-cloak
+    x-collapse
+    x-trap="$store.main.isNavOpen"
+    @keydown.escape="$store.main.closeMenus()"
+  >
+    <div class="w-full">
+       <!-- First Tab Dropdown Menu -->
+      {% render 'header__first-tab-dropdown', first_tab_menu: first_tab_menu %}
+      <!-- Second Tab Dropdown Menu -->
+      {% render 'header__second-tab-dropdown', second_tab_menu: second_tab_menu %}
+    </div>
+  </div>
+</div>
+{% render 'header__search-bar' %}
+{% render 'header__search-recommendations' %}

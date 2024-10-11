@@ -1,0 +1,80 @@
+<div class="w-full lg:w-max">
+    <div class="relative w-full lg:w-max">
+      <div class="flex w-full lg:w-max">
+        <button
+          id="menu-button"
+          type="button"
+          aria-haspopup="true"
+          :aria-expanded="sortOpen"
+          x-ref="sortButton"
+          @click="toggleSortMenu"
+          class="button__secondary flex items-center px-4 w-full lg:w-max"
+          :class="{'bg-grey text-black lg:bg-white lg:text-black': sortOpen }"
+        >
+          <span class="flex w-max">Sort:</span>
+          <span class="ml-1 flex capitalize w-max" x-text="sortByLabel ? sortByLabel : 'Featured'"></span>
+        </button>
+      </div>
+      <div
+        class="absolute right-0 z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-[calc(100vw-20px)] lg:w-[calc(100vw-40px)] gap-5 focus:outline-none pt-[1px] md:pt-[30px]"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        :tabindex="sortOpen ? '0': '-1'"
+        @keydown.escape.prevent.stop="toggleSortMenu"
+        x-show="sortOpen"
+        x-trap="sortOpen"
+        x-ref="sortMenu"
+        x-transition:enter="transition-opacity ease-out duration-100"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition-opacity ease-in duration-75"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        @click.away="sortOpen = false"
+        x-intersect:leave="sortOpen = false"
+        @keydown.escape.prevent.stop="sortOpen = false"
+      >
+        <ul
+          class="md:col-start-2 lg:col-start-3 xl:col-start-4 col-span-1 xl:col-span-1 block"
+          role="none"
+        >
+        <div class="flex flex-col w-full md:w-[calc(100%+40px)] bg-grey p-5 md:rounded-tl-4 md:rounded-bl-4">
+          {% for option in collection.sort_options %}
+            {% if option.name == 'Best selling' or option.name == 'Alphabetically, A-Z' %}
+              <label
+                class="heading-sm normal-case flex items-center gap-3 px-3 py-2 transition-all duration-150 cursor-pointer"
+                :class="sortBy === '{{ option.value }}' ? '' : ''"
+                for="{{ option.value }}"
+                tabindex="0"
+                @keydown.enter.prevent.stop="handleEnter"
+                @keydown.space.prevent.stop="handleEnter"
+                x-data="{
+                  handleEnter() {
+                    this.$refs.filter.click()
+                  }
+                }"
+              >
+                <input
+                  x-ref="filter"
+                  class="form-checkbox radio appearance-none"
+                  :checked="sortBy === '{{ option.value }}'"
+                  @click="sortCollection('{{ option.value }}', '{{ option.name }}')"
+                  @change="$dispatch('filter-updated')"
+                  type="radio"
+                  id="{{ option.value }}"
+                  tabindex="-1"
+                  value="{{ option.value }}"
+                  name="sort_by"
+                  x-init="setSortByLabel('{{ option.value }}', '{{ option.name }}')"
+                  {% if option.value == sort_by %}selected="selected"{% endif %}
+                >
+                {{ option.name }}
+              </label>
+            {% endif %}
+          {%- endfor -%}
+          </div>
+        </ul>
+      </div>
+    </div>
+</div>

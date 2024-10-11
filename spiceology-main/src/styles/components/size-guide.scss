@@ -1,0 +1,23 @@
+.keen-slider__slide.ingredient {
+  mix-blend-mode: darken;
+  opacity: 0.33;
+  transition: opacity 200ms ease-in-out, mix-blend-mode 200ms ease-in-out;
+
+  img {
+    mix-blend-mode: darken;
+  }
+
+  @screen lg {
+    mix-blend-mode: darken;
+    opacity: 1;
+  }
+
+  &.active {
+    // mix-blend-mode: normal;
+    opacity: 1;
+
+    @screen lg {
+      mix-blend-mode: darken;
+    }
+  }
+}

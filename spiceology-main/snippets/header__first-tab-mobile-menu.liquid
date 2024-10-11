@@ -1,0 +1,87 @@
+<div class="">
+  <div 
+    x-show="openedMobileMenu == '{{ section.settings.first_dropdown_tab_label }}'"
+    x-ref="'child-mobile-menu-' + {{ section.settings.first_dropdown_tab_label }}"
+    x-trap="openedMobileMenu == '{{ section.settings.first_dropdown_tab_label }}'"
+    @keydown.escape.prevent.stop="openedMobileMenu = null" 
+  >
+    <div class="flex justify-center items-center flex-1 border-b relative py-4">
+      <button
+        class="absolute left-0 top-1/2 transform -translate-y-1/2 flex gap-2.5 items-center h-full"
+        type="button"
+        @click="openedMobileMenu = null"
+      >
+        {% render 'svg__arrow-back' %}
+      </button>
+      <h6 class="heading-lg">{{ section.settings.first_dropdown_tab_label }}</h6>
+    </div>
+
+    {% for link in first_tab_menu.links %}
+      {% assign index = forloop.index %}
+      {% unless index == 4 %}
+        <button
+          class="{% if forloop.first %}pt-8{% else %}pt-5{% endif %} px-2.5 pb-[5px] text-left flex justify-between items-center w-full"
+          @click="openedMobileMenu = '{{ link.handle }}'"
+          :aria-expanded="openedMobileMenu == '{{ link.handle }}'"
+          :aria-controls="'child-mobile-menu-' + '{{ link.handle }}'"
+        >
+          <span class="utility-lg uppercase text-black/50 w-full">
+            {{ link.title }}
+          </span>
+        </button>
+        {% assign contains_unnested_link = false %}
+        {% for sub_link in link.links %}
+          {% if sub_link.links == blank %}
+            {% assign contains_unnested_link = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if contains_unnested_link %}
+          <ul class="px-2.5 pb-6 border-b border-black">
+            {% for sub_link in link.links %}
+              {% if sub_link.links == blank %}
+                <li class="heading-md leading-150">
+                  <a href="{{ sub_link.url }}">
+                    {% if index == 3 %}
+                      <h6 style="background-color: {{ sub_link.object.metafields.custom.color }}; {% if sub_link.title == "Blends" %}color: #FFF;{% endif %}" class="utility-sm text-[11px] uppercase flex justify-center items-center px-2.5 rounded-2 w-fit h-[25px] mb-2.5">{{ sub_link.title }}</h6>
+                    {% else %}
+                    {{ sub_link.title }}
+                    {% endif %}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% for sub_link in link.links %}
+          {% if sub_link.links != blank %}
+            <div x-data="{ expand: false }" class="border-b border-steel py-4">
+              <div @click="expand = !expand" class="flex justify-between items-center w-full px-2.5">
+                <span class="heading-md">{{ sub_link.title }}</span>
+                <span :class="expand && 'transform -scale-y-100'">
+                  {% render 'svg__chevron-side' %}
+                </span>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endunless %}
+    {% endfor %}
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col items-center w-full">
+        <div class="flex flex-col items-start gap-4 w-full border-b border-black pt-5 pb-7 px-2.5">
+          <h4 class="heading-md">{{ section.settings.first_dropdown_tab_cta_1_heading }}</h4>
+          <a href="{{ section.settings.first_dropdown_tab_cta_1_link }}" class="link-underlined w-max">
+            {{ section.settings.first_dropdown_tab_cta_1_text }}
+          </a>
+        </div>
+        <div class="flex flex-col items-start gap-4 w-full pt-5 pb-7 px-2.5 mb-5">
+          <h4 class="heading-md">{{ section.settings.first_dropdown_tab_cta_2_heading }}</h4>
+          <a href="{{ section.settings.first_dropdown_tab_cta_2_link }}" class="link-underlined w-max">
+            {{ section.settings.first_dropdown_tab_cta_2_text }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

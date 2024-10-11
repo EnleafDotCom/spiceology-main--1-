@@ -1,0 +1,42 @@
+{% assign sections = shop.metafields.acf_settings.article_layouts | where: "id", article.id | first | map: "sections" | where: "visible" %}
+
+{% for section in sections %}
+  {% case section.name %}
+    {% when "article_author" %}
+      {% render "article__header", article: article, blog: blog %}
+    {% when "recipe_hero" %}
+      {% render "article__recipe-detail", article: article %}
+    {% when "rich_text" %}
+      {% render "article__rich-text", text: article.metafields.accentuate.description %}
+    {% when "video" %}
+      {% render "article__video", article: article %}
+    {% when "rich_text2" %}
+      {% render "article__rich-text", text: article.metafields.accentuate.description2 %}
+    {% when 'article_guide' %}
+      {% render "article__guide", article: article %}
+    {% when 'image_columns' %}
+      {% render "article__image-columns", article: article %}
+    {% when 'rich_text3' %}
+      {% render "article__rich-text", text: article.metafields.accentuate.description3 %}
+    {% when 'related_spices' %}
+      {% render "article__related-spices", article: article %}
+    {% when 'shared_photos' %}
+      {% render "article__shared-photos", article: article %}
+    {% when 'related_articles' %}
+      {% render "article__related-articles", article: article %}
+  {% endcase %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "[Article] Accentuate",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "[Article] Accentuate"
+    }
+  ]
+}
+{% endschema %}

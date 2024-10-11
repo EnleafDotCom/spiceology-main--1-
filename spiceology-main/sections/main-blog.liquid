@@ -1,0 +1,186 @@
+<script>
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("blogFilterAndSort", () => ({
+            filtersOpen: false,
+            filterCount: 0,
+            activeFilters: {},
+            toggleFilterPanel() {
+              this.filtersOpen = !this.filtersOpen;
+              this.filtersOpen
+                ? this.$nextTick(() => this.$refs.filtersPanel.focus())
+                : this.$nextTick(() => this.$refs.filtersButton.focus());
+            },
+            updateFilterCount() {
+              const url = window.location.href;
+              const tags = url.match(/\/tagged\/([^\/]+)/);
+              if (tags && tags[1]) {
+                this.filterCount = tags[1].split('+').length;
+              } else {
+                this.filterCount = 0;
+              }
+            },
+            tag_categories: [
+              {
+                name: 'Blends Used',
+                prefix: 'blends_',
+                tags: []
+              },
+              { 
+                name: 'Meal Type',
+                prefix: 'meal_',
+                tags: []
+              },
+              {
+                name: 'Dietary Preference',
+                prefix: 'dp_',
+                tags: []
+              },
+              {
+                name: 'Ingredients',
+                prefix: 'mi_',
+                tags: []
+              },
+              {
+                name: 'Cooking Method',
+                prefix: 'method_',
+                tags: []
+              },
+              {
+                name: 'Cuisine',
+                prefix: 'cuisine_',
+                tags: []
+              },
+              {
+                name: 'Skill Level',
+                prefix: 'skill_',
+                tags: []
+              },
+              {
+                name: 'Occasion',
+                prefix: 'oc_',
+                tags: []
+              }
+            ],
+            init(){
+              {% for tag in blog.all_tags %}
+                {% if tag contains 'meal_' %}
+                  this.tag_categories[1].tags.push({
+                      label: `{{ tag | remove: 'meal_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first  }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag | split: 'href="' | last | split: '"' | first  }}`
+                  })
+                {% elsif tag contains 'dp_' %}
+                  this.tag_categories[2].tags.push({
+                      label: `{{ tag | remove: 'dp_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag }}`
+                  })
+                {% elsif tag contains 'mi_' %}
+                  this.tag_categories[3].tags.push({
+                      label: `{{ tag | remove: 'mi_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag }}`
+                  })
+                {% elsif tag contains 'method_' %}
+                  this.tag_categories[4].tags.push({
+                      label: `{{ tag | remove: 'method_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag | split: 'href="' | last | split: '"' | first  }}`
+                  })
+                {% elsif tag contains 'cuisine_' %}
+                  this.tag_categories[5].tags.push({
+                      label: `{{ tag | remove: 'cuisine_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag | split: 'href="' | last | split: '"' | first  }}`
+                  })
+                {% elsif tag contains 'skill_' %}
+                  this.tag_categories[6].tags.push({
+                      label: `{{ tag | remove: 'skill_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag | split: 'href="' | last | split: '"' | first  }}`
+                  })
+                {% elsif tag contains 'oc_' %}
+                  this.tag_categories[7].tags.push({
+                      label: `{{ tag | remove: 'oc_' }}`,
+                      link_to_add: `{{ tag | link_to_add_tag: tag | split: 'href="' | last | split: '"' | first }}`,
+                      link_to_remove: `{{ tag | link_to_remove_tag: tag | split: 'href="' | last | split: '"' | first  }}`
+                  })
+                {% endif %}
+              {% endfor %}
+              this.updateFilterCount()
+            }
+        }))
+    })
+</script>
+
+<section x-data="blogFilterAndSort()">
+  <div class="px-4 lg:px-5 ">
+    <h1 class="heading-xl pb-2.5 text-center py-[30px] lg:py-[50px]">{{ blog.title }}</h1>
+    <hr>
+  </div>
+  
+  <form class="" x-ref="filter_form">
+    <!-- set x-data for filterPanel -->
+    <div class="relative" style="animation: fadeIn 400ms ease-in-out">
+      <h2 id="filter-heading" class="sr-only">Filters</h2>
+      <div class="relative">
+        <div aria-labelledby="filter-heading" class="grid grid-cols-2 lg:flex lg:justify-between lg:items-center gap-[1px] px-2.5 lg:px-5 py-2.5 lg:py-[30px] relative">
+           {% render 'blog__filter-toggle' %}
+          {% comment %}{% render 'blog__sort' %} {% endcomment %}
+        </div>
+      </div>
+      <div class="absolute left-2.5 lg:left-5 w-full lg:w-[calc(100vw-40px)] z-10 transform -translate-y-[9px] md:transform-none md:translate-y-0 pointer-events-none">
+        <div class="flex w-full">
+          <div class="w-full xl:w-[calc(33%-20px)] pointer-events-auto">
+            {% render 'blog__filter-panel' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  {% comment %} <div class="lg:py-7.5">
+    <div class="flex justify-between">
+      <div>
+        <button class="button__primiary">Show Filters</button>
+      </div>
+      <div>
+        {% for blog_link in section.settings.blogs.links %}
+
+        {% endfor %}
+      </div>
+      <div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+  <div class="lg:px-5 px-2.5">
+
+    {% paginate blog.articles by 50 %}
+      <div :class="filtersOpen ? 'xl:grid-cols-2 xl:pl-[33%]' : 'xl:grid-cols-3'" class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5 lg:gap-y-12 gap-y-10 transition-all ease-in-out">
+        {% for article in blog.articles  %}
+          {% render 'article__card', article: article, class: "" %}
+        {% endfor %}
+      </div>
+  
+      {% render 'paginate', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.blog.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "blogs",
+      "label": "Blogs"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.blog.name"
+    }
+  ]
+}
+{% endschema %}

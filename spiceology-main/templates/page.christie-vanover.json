@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Christie Vanover x Spiceology",
+        "content": "Hi. I’m Christie Vanover ... competitive BBQer, certified barbecue judge, and did I mention I own more than 30 outdoor cookers? You can always find me hovering over a grill, smoker or campfire armed with my two favorite things: my tongs and a glass of wine.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/Christie-seasoning.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "christie-vanover",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Christie Vanover",
+        "text": "<p>Hi. I’m Christie Vanover ... competitive BBQer, certified barbecue judge, and did I mention I own more than 30 outdoor cookers? You can always find me hovering over a grill, smoker or campfire armed with my two favorite things: my tongs and a glass of wine.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

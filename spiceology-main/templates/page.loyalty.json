@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "rewards": {
+      "type": "rewards",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "rewards"
+  ]
+}

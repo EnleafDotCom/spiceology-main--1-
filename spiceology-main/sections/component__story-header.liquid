@@ -1,0 +1,98 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:px-5 px-2.5 opacity-0">
+  <div class="relative lg:block flex flex-col">
+    {% if section.settings.video != blank and section.settings.video_mobile != blank %}
+      {{ section.settings.video | video_tag: image_size: '100%', autoplay: true, loop: true, muted: true, width: "100%", class: "hidden lg:flex h-[645px] object-cover lg:aspect-auto aspect-4/3 rounded-6" }}
+      {{ section.settings.video_mobile | video_tag: image_size: '100%', autoplay: true, loop: true, muted: true, width: "100%", class: "lg:hidden object-cover lg:aspect-auto aspect-[9/16] rounded-6" }}
+    {% else %}
+      {% if section.settings.image != blank %}
+      {% render 'image', image_desktop: section.settings.image, width_desktop: '2000x', width_mobile: '1000x',  ratio_desktop: '654px', ratio_mobile: '75%', lazy: true, image_classes: 'rounded-6 lg:h-[654px] w-full' %}
+      {% endif %}
+    {% endif %}
+    <div class="md:absolute md:top-1/2 md:left-12 md:right-12 md:-translate-y-1/2 md:block py-7.5 {% if section.settings.text_align_mob == "left" %} md:pr-0 pr-12 {% else %} md:pr-0 md:pl-0 pr-12 pl-12 md:text-left text-center{% endif %}">
+      {% if section.settings.title != blank %}
+        <div class="heading-2xl capitalize md:text-white md:mb-5 mb-4">{{ section.settings.title | newline_to_br }}</div>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="body-lg md:mb-5 mb-7.5 md:text-white md:max-w-[510px] max-w-full">{{ section.settings.description }}</div>
+      {% endif %}
+      {% if section.settings.btn_text != blank %}
+        <a class="md:button__secondary button__primary md:w-fit w-full" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "[Story] Hero",
+    "class": "section-story-hero",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Aspect: 16x9, Min Width: 3000px, File Type: JPG/PNG/GIF"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video - Desktop",
+        "info": "Aspect: 16x9, Min Width: 3000px, File Type: MP4"
+      },
+      {
+        "type": "video",
+        "id": "video_mobile",
+        "label": "Video - Mobile",
+        "info": "Aspect: 9x16, Min Width: 800px, File Type: MP4"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "select",
+        "id": "text_align_mob",
+        "label": "Text Align(Mobile)",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          },
+          {
+            "value": "center",
+            "label": "center"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Hero",
+        "settings": {
+          "video": "shopify:\/\/files\/videos\/Derek Wolf Beer Can Launch Video (1) (1).mp4",
+          "title": "Test title",
+          "description": "description",
+          "btn_text": "",
+          "btn_url": "",
+          "text_align_mob": "left"
+        }
+      }
+    ]
+  }
+{% endschema %}

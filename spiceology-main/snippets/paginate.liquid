@@ -1,0 +1,45 @@
+<div class="flex justify-center items-center w-full h-12 mt-12 mb-28">
+        {%- if paginate.pages > 1 -%}
+          <nav role="navigation" class="w-full">
+            <ol class="pagination flex justify-center w-full items-center relative">
+              <li class="flex pr-12 absolute left-5">
+                  <a class="bf-btn carousel cursor-pointer {% unless paginate.previous %} opacity-50 pointer-events-none {% endunless %}" href="{{ paginate.previous.url }}">
+                    <span class="">
+                      <svg class="transform scale-x-[-1]" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="48" y="48" width="48" height="48" transform="rotate(-180 48 48)" fill="white"/>
+                        <path d="M29.0024 24.512L19.2344 29L19.2344 27.152L27.1984 23.544L19.2344 19.936L19.2344 18.088L29.0024 22.576L29.0024 24.512Z" fill="#181613"/>
+                      </svg>
+                    </span>
+                  </a>
+              </li>
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <li class="inline heading-sm text-black {% unless forloop.last == true %} pr-8 {% endunless %} opacity-50">
+                    <a href="{{ part.url }}">
+                      {{ part.title }}
+                    </a>
+                  </li>
+                {%- else -%}
+                  {%- if part.title == paginate.current_page -%}
+                    <li class="inline heading-sm text-black active {% unless forloop.last == true %} pr-8 {% endunless %}" aria-current="page">
+                      {{ part.title }}
+                    </li>
+                  {%- else -%}
+                    <li class="inline heading-sm text-black {% unless forloop.last == true %} pr-8 {% endunless %} opacity-50">
+                      {{ part.title }}
+                    </li>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <li class="inline pl-12 absolute right-5">
+                <a class="cursor-pointer bf-btn carousel {% unless paginate.next %} opacity-50 pointer-events-none {% endunless %}" href="{{ paginate.next.url }}">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="48" y="48" width="48" height="48" transform="rotate(-180 48 48)" fill="white"/>
+                    <path d="M29.0024 24.512L19.2344 29L19.2344 27.152L27.1984 23.544L19.2344 19.936L19.2344 18.088L29.0024 22.576L29.0024 24.512Z" fill="#181613"/>
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        {%- endif -%}
+      </div>

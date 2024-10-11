@@ -1,0 +1,73 @@
+{{ 'component-size-guide.css' |  asset_url |  stylesheet_tag }}
+{% assign length = product.variants | size %}
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="flex flex-col lg:px-container py-20 bg-gray-light opacity-0" x-cloak>
+    <div class="px-2.5 lg:px-0">
+        <hr class="mb-10">
+    </div>
+    <h3 class="heading-xl md:w-[400px] text-center lg:text-left px-8">{{ product.metafields.accentuate.size_guide_headline }}</h3>
+    <button-slider 
+        data-slider-options='
+            {
+              "breakpoints": {
+                "(max-width: 1024px)": {
+                  "mode": "snap",
+                  "rtl": false,
+                  "loop": true,
+                  {% unless length > 3 %}
+                  "disabled": true
+                  {% endunless %}
+                  "slides": { "perView": "2.5", "origin": "center", "spacing": 50 }
+                },
+                "(min-width: 1024px)": {
+                  "disabled": true
+                }
+              }
+            }
+        '
+        x-data="{
+            activeIndex: 1,
+            updateSlide(index) {
+                $el.slider.moveToIdx(index - 1)
+            },
+            init(){
+                this.activeIndex = window.innerWidth < 1024 ? 1 : 'null'
+            }
+        }"
+    >
+        <div class="flex lg:hidden justify-center gap-1.5 pt-8">
+            {% for variant in product.variants %}
+                <button @click="updateSlide({{ forloop.index }})" class="button__rounded" :class="activeIndex == {{ forloop.index }} && 'active'">{{ variant.title }}</button>
+            {% endfor %}
+        </div>
+        <div class="keen-slider flex overflow-x-hidden lg:grid lg:gap-5 pt-28 {% if length == 2 %} lg:grid-cols-2 {% elsif length == 3 %}lg:grid-cols-3{% elsif length == 4 %}lg:grid-cols-4{% endif %}">
+          {% for variant in product.variants %}
+            <div 
+                class="keen-slider__slide ingredient flex flex-col justify-end items-center bg-gray-light group {% if forloop.first %}active{% endif %}"
+                x-init="() => {
+                    new MutationObserver(() => {
+                      if ($el.classList.contains('active')) {
+                        activeIndex = {{ forloop.index }};
+                      }
+                    }).observe($el, { attributes: true });
+                }"
+            >
+                <div class="relative h-fit pb-6 lg:pb-0 bg-grey-light">
+                    <span
+                        :class="activeIndex == {{ forloop.index }} ? 'opacity-100' : 'opacity-0'"
+                        class="font-kremlin absolute top-0 -left-5 lg:-left-10 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 ease-in-out transform -translate-y-[100%] rotate-[-5deg] w-[165px] lg:w-[193px] text-center lg:text-left pb-5"
+                    >
+                        {{ variant.metafields.custom.usage }}</span>
+                    <img class="w-full lg:w-[200px] h-auto mix-blend-darken"
+                        src="{{ variant.metafields.custom.cutout_image | image_url: width: 1000 }}"
+                        alt="{{ variant.title }}">
+                </div>
+                <h6 class="body-md">{{ variant.title }}</h6>
+                <p class="utility-sm opacity-75 text-center">{{ variant.metafields.custom.cost_per_ounce }}</p>
+            </div> 
+          {% endfor %}
+        </div>
+    </button-slider>
+    <div class="px-2.5 lg:px-0">
+        <hr class="mt-10">
+    </div>
+</section>

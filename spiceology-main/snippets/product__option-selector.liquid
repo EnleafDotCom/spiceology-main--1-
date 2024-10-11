@@ -1,0 +1,32 @@
+{% for value in option.values %}
+	{% assign all_variants_in_option = product.variants | where: optionIndex, value %}
+	{% assign available_variants_in_option = all_variants_in_option | where: "available", true %}
+
+	{% if available_variants_in_option.size == 0 %}
+		{% assign isOptionAvailable = false %}
+	{% else %}
+		{% assign isOptionAvailable = true %}
+	{% endif %}
+  {% unless hideUnavailable and isOptionAvailable == false %}
+  <div>
+    <button
+      type="button"
+      :class="{
+        'bg-black text-white border-black': isOptionValueSelected('{{ optionIndex }}', '{{ value }}'),
+        'bg-white text-black border-black/20': !isOptionValueSelected('{{ optionIndex }}', '{{ value }}')
+        {% if optionIndex != "option1" %}
+          'line-through': !isOptionAvailable('{{ optionIndex }}', '{{ value }}')
+        {% endif %}
+      }"
+      class="border hover:border-black {% unless isOptionAvailable %} line-through pointer-events-none {% endunless %} flex items-center {% if style == 'large' %} h-[33px] px-5 {% else %} utility-sm text-[12px] lg:text-[11px] h-[18px] px-2 {% endif %}"
+      title="{{ value }}"
+      @click="onOptionChanged('{{ optionIndex }}', '{{ value }}')"
+      {% unless isOptionAvailable %}
+        disabled
+      {% endunless %}
+    >
+      {{ value }}
+    </button>
+  </div>
+  {% endunless %}
+{% endfor %}

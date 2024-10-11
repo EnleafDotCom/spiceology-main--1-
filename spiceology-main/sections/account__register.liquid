@@ -1,0 +1,99 @@
+<div class="container">
+  <div class="mx-auto max-w-2xl md:pt-14 md:pb-28 pt-9 pb-20">
+    <h1 class="text-3xl md:text-4xl mb-5 text-center">
+      Sign Up
+    </h1>
+    <p class="text-center mb-7">
+      {{ section.settings.copy }}
+    </p>
+
+    {% form 'create_customer' %}
+      <input
+        placeholder="First name"
+        type="text"
+        {% if form.first_name %}
+          value="{{ form.first_name }}"
+        {% endif %}
+        name="customer[first_name]"
+        id="CustomerEmail"
+        class="{% if form.errors contains 'first_name' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="given-name"
+        autofocus
+      >
+
+      <input
+        placeholder="Last name"
+        type="text"
+        {% if form.last_name %}
+          value="{{ form.last_name }}"
+        {% endif %}
+        name="customer[last_name]"
+        class="{% if form.errors contains 'last_name' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="family-name"
+      >
+
+      <input
+        placeholder="Email"
+        type="email"
+        {% if form.email %}
+          value="{{ form.email }}"
+        {% endif %}
+        name="customer[email]"
+        class="{% if form.errors contains 'email' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="email"
+        required
+      >
+
+      <input
+        placeholder="Password"
+        type="password"
+        name="customer[password]"
+        class="{% if form.errors contains 'password' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="new-password"
+        required
+      >
+
+      <div class="text-pink">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="mt-10 text-center">
+        <button
+          class="button-lg"
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </div>
+
+      <p class="mt-10 text-sm text-center">
+        Already have an account?
+        <a
+          href="/account/login"
+          class="underline text-sm"
+        >
+          Log in
+        </a>
+      </p>
+    {% endform %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.register.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy"
+    }
+  ]
+}
+{% endschema %}

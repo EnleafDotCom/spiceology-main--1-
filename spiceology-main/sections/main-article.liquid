@@ -1,0 +1,51 @@
+{{ 'section-main-article.css' | asset_url | stylesheet_tag }}
+
+<div>
+  {% comment %} {{ article.content }} {% endcomment %}
+  {% render 'recipekit' %}
+  {% comment %} <section class="lg:px-5 px-2.5">
+    <div class="flex flex-col-reverse lg:flex-row lg:pt-7.5 lg:pb-7.5 pt-2.5 pb-5 border-b border-black lg:px-2.5 gap-2.5">
+      <div class="flex flex-col justify-between lg:w-1/2 w-full">
+        <div class="flex flex-col">
+          <div class="font-mono text-13 tracking-2 leading-140 uppercase opacity-75 lg:mb-2.5 mb-1">{{ blog.title }}</div>
+          <div class="lg:text-48 text-28 leading-100 capitalize">{{ article.title }}</div>
+        </div>
+        <div class="text-14 leading-120 tracking-2 font-mono pt-10">By {{ article.author }}</div>
+      </div>
+      <div class="flex justify-end gap-4 items-end w-full">
+        <div class="block w-full lg:w-fit">
+          <div class="w-full lg:w-[600px] mx-auto">
+            {% render 'image', 
+                image_desktop: article.image,  
+                width_desktop: '1000x', 
+                width_mobile: '1000x', 
+                ratio_desktop: '66%',
+                ratio_mobile: '66%',
+                lazy: true,
+                image_classes: 'rounded-1/2' 
+              %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="rte article w-full md:w-[688px] mx-auto px-5 md:px-0 py-5">
+      {{ article.content }}
+    </div>
+  </section> {% endcomment %}
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.article.name",
+  "tag": "article",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

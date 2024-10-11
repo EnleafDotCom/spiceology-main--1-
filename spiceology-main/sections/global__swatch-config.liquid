@@ -1,0 +1,40 @@
+{% schema %}
+{
+	"name": "Product Color Swatches",
+	"settings": [
+	],
+	"blocks": [
+		{
+			"type": "swatch",
+			"name": "Color Swatch",
+			"settings": [
+				{
+					"id": "title",
+					"type": "text",
+					"label": "Title",
+					"info": "Must match Variant Color exactly"
+				},
+				{
+					"id": "hex",
+					"type": "color",
+					"label": "Hex Code"
+				}
+			]
+		}
+	]
+}
+{% endschema %}
+
+<!-- SWATCH CONFIG HERE -->
+
+<style>
+	{% for block in section.blocks %}
+		.color-swatch--{{ block.settings.title | handleize }} {
+			background-color: {{ block.settings.hex }};
+		}
+
+		.color-swatch--{{ block.settings.title | handleize }}.active:before {
+			border-color: black;
+		}
+	{% endfor %}
+</style>

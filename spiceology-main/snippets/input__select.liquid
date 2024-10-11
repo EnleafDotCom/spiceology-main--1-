@@ -1,0 +1,103 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('customSelect', () => ({
+      open: false,
+      selectedIndex: 0,
+      options: null,
+      handler: null,
+      selectOption(index) {
+        if (this.handler) {
+          this.handler(this.options[index], index);
+        }
+        this.selectedIndex = index;
+        this.$refs.selectedItem.focus();
+      },
+      toggleDropdown() {
+        if (this.open) {
+          this.closeDropdown();
+        } else {
+          this.openDropdown();
+        }
+      },
+      openDropdown() {
+        this.open = true;
+        this.$refs.select.setAttribute('aria-expanded', 'true');
+      },
+      closeDropdown() {
+        this.open = false;
+        this.$refs.select.setAttribute('aria-expanded', 'false');
+      },
+      navigateOptions(direction) {
+        if (direction === 'up' && this.selectedIndex > 0) {
+          this.selectedIndex -= 1;
+        } else if (direction === 'down' && this.selectedIndex < this.options.length - 1) {
+          this.selectedIndex += 1;
+        }
+        this.$nextTick(() => {
+          this.$refs.dropdown.children[this.selectedIndex].focus();
+        });
+      },
+      setOptions(options) {
+        this.options = options;
+      },
+      }))
+    });
+</script>
+
+<div
+  id="{{ label | handleize }}-select"
+  role="combobox" 
+  aria-expanded="false" 
+  aria-haspopup="listbox" 
+  tabindex="0" 
+  class="{{ classes }}" 
+  x-init='!options ? options = {{ options | json }} : null'
+  x-ref="select"
+  x-model="options[selectedIndex]"  
+  @click="toggleDropdown"
+  @keyup.enter="toggleDropdown"
+>
+  <label 
+    for="{{ label | handleize }}-select"
+    class="label" 
+  >
+      {{ label }}
+  </label>
+  <input 
+    type="hidden" 
+    name="{{ label | handleize }}-select"
+    x-model="options[selectedIndex]"    
+  >
+  <div 
+    role="option" 
+    aria-selected="true" 
+    class="selected-item"
+    :class="{'open': open }"      
+    x-ref="selectedItem">
+      <span x-text="options && options[selectedIndex] || ''"></span>
+      <span>{% render "svg__chevron-down" %}</span>
+  </div>
+  <div 
+    role="listbox" 
+    class="dropdown" 
+    x-show="open" 
+    x-trap="open"
+    x-ref="dropdown" 
+    x-collapse
+  >
+    <div class="pt-8">
+      <template x-for="(option, index) in options" :key="index">
+        <div 
+          role="option" 
+          :tabindex="0"   
+          class="option"
+          :class="{'selected': selectedIndex === index }"
+          x-text="option" 
+          @click="selectOption(index)" 
+          @keyup.enter="selectOption(index)"
+        >
+        </div>
+      </template>
+    </div>
+  </div>
+</div>

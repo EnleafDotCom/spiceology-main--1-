@@ -1,0 +1,36 @@
+<div class="cta-card desktop {{ desktop_classes }}" style="background-color: {{ background_color_desktop }}">
+  <div class="relative flex flex-col flex-1">
+    {% if eyebrow %}
+      <h3 class="{{ eyebrow_classes }}" style="color: {{ text_color_desktop }}">{{ eyebrow }}</h3>
+    {% endif %}
+    {% if heading %}
+      <h4 class="{{ heading_classes }}" style="color: {{ text_color_desktop }}">{{ heading }}</h4>
+    {% endif %}
+    {% if copy %}
+      <div class="{{ copy_classes }}" style="color: {{ text_color_desktop }}">{{ copy }}</div>            
+    {% endif %}
+  </div>
+  <div class="flex gap-2 flex-wrap">
+    {% for button in buttons %}
+      <a href="{{ button.settings.link }}" style="background-color: {{ button.settings.button_color }}; color: {{ button.settings.text_color }}">{{ button.settings.text }}</a>
+    {% endfor %}
+  </div>
+</div>    
+<div class="cta-card mobile {{ mobile_classes }}" style="background-color: {{ background_color_mobile }}">
+  <div class="relative flex flex-col flex-1">
+    {% if eyebrow %}
+      <h3 class="{{ eyebrow_classes }}" style="color: {{ text_color_mobile }}">{{ eyebrow }}</h3>
+    {% endif %}
+    {% if heading %}
+      <h4 class="{{ heading_classes }}" style="color: {{ text_color_mobile }}">{{ heading }}</h4>
+    {% endif %}
+    {% if copy %}
+      <div class="{{ copy_classes }} rtc" style="color: {{ text_color_mobile }}">{{ copy | newline_to_br }}</div>            
+    {% endif %}
+  </div>
+  <div class="flex gap-2 flex-wrap">
+    {% for button in buttons %}
+      <a href="{{ button.settings.link }}" style="background-color: {{ button.settings.button_color }}; color: {{ button.settings.text_color }}">{{ button.settings.text }}</a>
+    {% endfor %}
+  </div>
+</div>    

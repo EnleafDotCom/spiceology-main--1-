@@ -1,0 +1,111 @@
+<!doctype html>
+  <html class="no-js" lang="{{- request.locale.iso_code -}}" dir="ltr">
+    <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+      <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+      <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{ 'base.js' | asset_url }}" as="script">
+
+      {%- liquid
+        render 'head__seo'
+        render 'head__metas'
+        render 'head__integration-scripts'
+        render 'head__fonts'
+      -%}
+
+      {{ 'base.css' | asset_url | stylesheet_tag }}
+      {{ 'base-2xs.css' | asset_url | stylesheet_tag: media: '(min-width: 320px)' }}
+      {{ 'base-xs.css' | asset_url | stylesheet_tag: media: '(min-width: 440px)' }}
+      {{ 'base-sm.css' | asset_url | stylesheet_tag: media: '(min-width: 640px)' }}
+      {{ 'base-md.css' | asset_url | stylesheet_tag: media: '(min-width: 768px)' }}
+      {{ 'base-lg.css' | asset_url | stylesheet_tag: media: '(min-width: 1024px)' }}
+      {{ 'base-xl.css' | asset_url | stylesheet_tag: media: '(min-width: 1280px)' }}
+      {{ 'base-2xl.css' | asset_url | stylesheet_tag: media: '(min-width: 1440px)' }}
+      {{ 'base-3xl.css' | asset_url | stylesheet_tag: media: '(min-width: 1920px)' }}
+      {{ 'base-4xl.css' | asset_url | stylesheet_tag: media: '(min-width: 2560px)' }}
+      <script src="{{- 'base.js' | asset_url -}}" defer></script>
+      <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/9wA7yRuKAIuGwTCTtAicoJlUR94WEZjR4hs9b0RM" async></script>
+      <script>
+        document.documentElement.classList.remove('no-js')
+        document.documentElement.classList.add('js')
+      </script>
+
+      <!-- Kremlin font -->
+      <link rel="stylesheet" href="https://use.typekit.net/gdu7ouj.css">
+
+      <!-- Start Tailwind UI Library Font -->
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+        <!-- Sliders -->
+      <script src="{{ 'component-button-slider.js' | asset_url }}" defer></script>
+
+      <!-- Header hook for plugins -->
+      {{ content_for_header }}
+      
+      <!-- Swiper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+      <!-- Link Swiper's CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    </head>
+    <body
+      x-data
+      :class="{
+        'overflow-hidden': $store.main.isNavOpen || ($store.main.isMiniCartOpen && !$store.main.isRebuyEnabled()) || $store.main.isPlpFilterOpen,
+        'scrolled': $store.main.isScrolled
+      }"
+      class="layout-theme template-{{- template.name -}}{%- if template.suffix -%}-{{- template.suffix -}}{%- endif -%}"
+    >
+      {% section 'header' %}
+
+      <main id="main-content" role="main" class="u-focus-none" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% render 'hydrate' %}
+      {% section 'footer' %}
+      {% section 'cart-menu' %}
+      <script>
+          (function(){
+              var s    = document.createElement('script');
+              var h    = document.querySelector('head') || document.body;
+              s.src    = 'https://acsbapp.com/apps/app/dist/js/app.js';
+              s.async  = true;
+              s.onload = function(){
+                  acsbJS.init({
+                      statementLink    : '',
+                      footerHtml       : '',
+                      hideMobile       : false,
+                      hideTrigger      : false,
+                      disableBgProcess : false,
+                      language         : 'en',
+                      position         : 'right',
+                      leadColor        : '#181613',
+                      triggerColor     : '#181613',
+                      triggerRadius    : '50%',
+                      triggerPositionX : 'right',
+                      triggerPositionY : 'bottom',
+                      triggerIcon      : 'people',
+                      triggerSize      : 'bottom',
+                      triggerOffsetX   : 20,
+                      triggerOffsetY   : 20,
+                      mobile           : {
+                          triggerSize      : 'small',
+                          triggerPositionX : 'right',
+                          triggerPositionY : 'bottom',
+                          triggerOffsetX   : 10,
+                          triggerOffsetY   : 10,
+                          triggerRadius    : '20'
+                      }
+                  });
+              };
+              h.appendChild(s);
+          })();
+      </script>
+    </body>
+  </html>

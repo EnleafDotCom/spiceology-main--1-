@@ -1,0 +1,27 @@
+{{ 'component-store-locator.css' |  asset_url |  stylesheet_tag }}
+
+<section class="lg:px-5 px-2.5">
+  {{ section.settings.html }}
+</section>
+
+{% schema %}
+  {
+    "name": "Store Locator",
+    "class": "component__store-locator",
+    "settings": [
+      {
+        "type": "html",
+        "id": "html",
+        "label": "HTML"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Store Locator",
+        "settings": {
+          "html": "<div data-map-id=\"161b3966a778a4\" id=\"storepoint-container\"><\/div>\n<script>(function(){var a=document.createElement(\"script\");a.type=\"text\/javascript\";a.async=!0;a.src=\"https:\/\/cdn.storepoint.co\/api\/v1\/js\/161b3966a778a4.js\";var b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(a,b);}());<\/script>"
+        }
+      }
+    ],
+  }
+{% endschema %}

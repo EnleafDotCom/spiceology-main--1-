@@ -1,0 +1,779 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_rich_image_PVjx6b": {
+      "type": "component__rich-image",
+      "settings": {
+        "title": "1A: Hero Image",
+        "hero_image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "white",
+        "button_text": "",
+        "button_type": "button__primary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "inside",
+        "content_alignment_desk": "center",
+        "content_alignment_mob": "center"
+      }
+    },
+    "component_rich_image_c3kPUz": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_aTACmW": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        },
+        "image_dUrxbi": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        },
+        "image_Bh6y7T": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/de5aef9b1632b752c1b796c3b22315e7.png",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_aTACmW",
+        "image_dUrxbi",
+        "image_Bh6y7T"
+      ],
+      "settings": {
+        "title": "4A: 3-up Square Image",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "white",
+        "button_text": "",
+        "button_type": "button__primary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "inside",
+        "content_alignment_desk": "center",
+        "content_alignment_mob": "center"
+      }
+    },
+    "component_rich_image_zQY9gC": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_edzMYB": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_drMFQp": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_NeCthx": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/de5aef9b1632b752c1b796c3b22315e7.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_edzMYB",
+        "image_drMFQp",
+        "image_NeCthx"
+      ],
+      "settings": {
+        "title": "4B: 3-up Square Image  w\/ Content",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "white",
+        "button_text": "",
+        "button_type": "button__primary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_image_HJcKgt": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_cw3wdn": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        },
+        "image_XApepc": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        },
+        "image_hPGQFr": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/de5aef9b1632b752c1b796c3b22315e7.png",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        },
+        "image_qXCP7k": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2aa732a3bdf8a4aa632787091891e8c9.png",
+            "heading": "",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_cw3wdn",
+        "image_XApepc",
+        "image_hPGQFr",
+        "image_qXCP7k"
+      ],
+      "settings": {
+        "title": "5A: 4-up Square Image",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "white",
+        "button_text": "",
+        "button_type": "button__primary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "inside",
+        "content_alignment_desk": "center",
+        "content_alignment_mob": "center"
+      }
+    },
+    "component_rich_image_GBNtgU": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_ak6NKz": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_yG639p": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_MfBWVi": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/de5aef9b1632b752c1b796c3b22315e7.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_hmakNp": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2aa732a3bdf8a4aa632787091891e8c9.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_ak6NKz",
+        "image_yG639p",
+        "image_MfBWVi",
+        "image_hmakNp"
+      ],
+      "settings": {
+        "title": "5B: 4-up Square Image w\/ Content",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "white",
+        "button_text": "",
+        "button_type": "button__primary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "2",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_text_akdkDa": {
+      "type": "component__rich-text",
+      "blocks": {
+        "richtext_aCNGR7": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+          }
+        },
+        "html_gzwX47": {
+          "type": "html",
+          "settings": {
+            "text": "<div style=\"text-align: center;\"><img style=\"float: none;\" alt=\"\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/1055\/0892\/files\/team-web_1024x1024.png?v=1563483332\"><\/div>\n<br>\n<div style=\"text-align: left;\"><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?<\/span><\/div>\n<div data-id=\"NTI2OTQ=\" class=\"globo-formbuilder\"><\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_aCNGR7",
+        "html_gzwX47"
+      ],
+      "settings": {
+      }
+    },
+    "component_story_header_T8bB9K": {
+      "type": "component__story-header",
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/-feef-4d46-b1f1-ad8e63fe230b.mov",
+        "title": "",
+        "description": "",
+        "btn_text": "",
+        "btn_url": "",
+        "text_align_mob": "left"
+      }
+    },
+    "component_cta_button_nEJGWp": {
+      "type": "component__cta-button",
+      "settings": {
+        "btn_text": "Button",
+        "btn_url": "#"
+      }
+    },
+    "image_with_text_QJVxCA": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "test",
+        "content": "test",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/LOW_RES-SMOKY_HONEY_HABANERO-9G-SIDE-10029.jpg",
+        "image_position": "right",
+        "padding_top_desk": 60,
+        "padding_top_mob": 60,
+        "padding_bottom_desk": 180,
+        "padding_bottom_mob": 140
+      }
+    },
+    "component_accordion_split_WVUxAc": {
+      "type": "component__accordion-split",
+      "blocks": {
+        "faq_4zMY8A": {
+          "type": "faq",
+          "settings": {
+            "question": "Lorem ipsum dolor sit, consec eli?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.<\/p>"
+          }
+        },
+        "faq_XHVUj9": {
+          "type": "faq",
+          "settings": {
+            "question": "Lorem ipsum dolor sit, consec eli?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.<\/p>"
+          }
+        },
+        "faq_P3FcTr": {
+          "type": "faq",
+          "settings": {
+            "question": "Lorem ipsum dolor sit, consec eli?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.<\/p>"
+          }
+        },
+        "faq_rMqfwb": {
+          "type": "faq",
+          "settings": {
+            "question": "Lorem ipsum dolor sit, consec eli?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_4zMY8A",
+        "faq_XHVUj9",
+        "faq_P3FcTr",
+        "faq_rMqfwb"
+      ],
+      "settings": {
+        "heading": "Foodservice FAQ",
+        "image": "shopify:\/\/shop_images\/Rectangle_1671.png?v=1724687581",
+        "padding_bottom": "medium"
+      }
+    },
+    "main_blog_dibYN7": {
+      "type": "main-blog",
+      "settings": {
+        "blogs": ""
+      }
+    },
+    "component_customer_spotlight_pydkQ4": {
+      "type": "component__customer-spotlight",
+      "settings": {
+        "eyebrow": "Customer Spotlight",
+        "customer_name": "Customer Name",
+        "seen_on": "Seen on",
+        "restaurants": "Restaurants",
+        "accolades": "Accolades",
+        "link": "",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_heading_icons_Kyaacc": {
+      "type": "component__heading-icons",
+      "blocks": {
+        "image_TkPpL6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_3_4d87018a-e3ca-434a-807d-6124589d6181.png?v=1724511216",
+            "title": "Quick Order Tools",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        },
+        "image_k7DMXA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_d38748b3-b87a-4974-bdad-9f4f846dacf2.png?v=1724511216",
+            "title": "Free Shipping",
+            "content": "On Orders $99. Lorem Ipdum dolor siet amet."
+          }
+        },
+        "image_GLaTcn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_1.png?v=1724511216",
+            "title": "Payment Terms",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at nunc nec purus."
+          }
+        },
+        "image_DP8LK7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_4.png?v=1724511216",
+            "title": "1-Click Reordering",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        }
+      },
+      "block_order": [
+        "image_TkPpL6",
+        "image_k7DMXA",
+        "image_GLaTcn",
+        "image_DP8LK7"
+      ],
+      "settings": {
+        "heading": "the Benefits for Pro Chefs",
+        "padding_bottom": "medium"
+      }
+    },
+    "recipe_product_carousel_4DeHxw": {
+      "type": "recipe__product-carousel",
+      "settings": {
+        "heading": "Recipe Products"
+      }
+    },
+    "component_rich_image_QTpQAx": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_FpU46a": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/f92bb9b29ddd12ecec938c8c04ade9f1.jpg",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_YdUCLB": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "This is a headline",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_FpU46a",
+        "image_YdUCLB"
+      ],
+      "settings": {
+        "title": "3B: 2-up Square Image  w\/ content",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "2",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_home_collection_list_gNLRQA": {
+      "type": "component__home-collection-list",
+      "blocks": {
+        "collection_aVRJD6": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbs"
+          }
+        },
+        "collection_wfpBCX": {
+          "type": "collection",
+          "settings": {
+            "collection": "modernist"
+          }
+        },
+        "collection_ytCK3R": {
+          "type": "collection",
+          "settings": {
+            "collection": "blends"
+          }
+        },
+        "collection_KcmpKz": {
+          "type": "collection",
+          "settings": {
+            "collection": "spices"
+          }
+        },
+        "collection_eB7nwA": {
+          "type": "collection",
+          "settings": {
+            "collection": "salts"
+          }
+        },
+        "collection_nm9dPV": {
+          "type": "collection",
+          "settings": {
+            "collection": "chiles"
+          }
+        }
+      },
+      "block_order": [
+        "collection_aVRJD6",
+        "collection_wfpBCX",
+        "collection_ytCK3R",
+        "collection_KcmpKz",
+        "collection_eB7nwA",
+        "collection_nm9dPV"
+      ],
+      "settings": {
+        "heading": "Shop By Cuisine"
+      }
+    },
+    "component_home_double_image_text_8Rf9E3": {
+      "type": "component__home-double-image-text",
+      "settings": {
+        "subheading": "FOODSERVICE",
+        "heading": "Chefs are in our DNA",
+        "description": "As a chef-founded company, we know that great flavor comes from passionate culinary artists, not food scientists. So we’ve worked hard to build a business that serves the chef community, with the hard-to-find ingredients you seek, the labor-saving solutions you need, and the easy availability that keeps your kitchen running.",
+        "btn_text": "About Foodservice",
+        "btn_url": "",
+        "main_image": "shopify:\/\/shop_images\/23f18a6933e61164db915e7cfba52f4d.png",
+        "second_image": "shopify:\/\/shop_images\/04e49463c972f8fba34b7185c4e63b3e.png",
+        "team_photo": "shopify:\/\/shop_images\/Mask_group_3.png",
+        "team_name": "Christie Vanover\nChef\/Owner @ Resy"
+      }
+    },
+    "component_home_image_text_tqCD6g": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_drRB6r": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_drRB6r"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/b35d4eef4a2fc37996de6ea3cf884783.png",
+        "image_ratio_desk": "auto",
+        "image_ratio": "auto",
+        "image_size": "small",
+        "image_position": "left",
+        "subheading": "NEED HEADLINE",
+        "heading": "Reimagining what’s possible in a spoonful of spices",
+        "description": "Our innovative seasoning blends and hard-to-find ingredients inspire pro chefs and home cooks alike to Experiment with Flavor.",
+        "btn_text": "Learn More",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_home_product_info_EeT74n": {
+      "type": "component__home-product-info",
+      "settings": {
+        "heading": "Featured Flavor",
+        "image": "shopify:\/\/shop_images\/Group_4216.png",
+        "product": "tomatador-mediterranean-seasoning",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      }
+    },
+    "component_home_recipe_slider_Gx6t6c": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_FzLpfa": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/black-magic-spatchcock-chicken"
+          }
+        },
+        "article_8qc4Mi": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-deviled-eggs"
+          }
+        },
+        "article_Pfa9ER": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/slow-cooker-butter-chicken"
+          }
+        },
+        "article_AdnfPt": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/honey-mustard-ipa-wings"
+          }
+        }
+      },
+      "block_order": [
+        "article_FzLpfa",
+        "article_8qc4Mi",
+        "article_Pfa9ER",
+        "article_AdnfPt"
+      ],
+      "settings": {
+        "title": "Recipe Inspiration",
+        "product": "smoky-honey-habanero-seasoning",
+        "eyebrow": "PRO TIP",
+        "description": "We get it, I mean who doesn’t love cocktail wieners. WE love cocktail wieners."
+      }
+    },
+    "component_home_video_text_QkYcnd": {
+      "type": "component__home-video-text",
+      "settings": {
+        "heading": "We believe that spices are the heart of the kitchen",
+        "description": "Our 300+ seasoning blends and ingredients are changing the way people cook and eat, making unique flavor combinations the centerpiece of every dish.",
+        "btn_text": "About Us",
+        "btn_url": "",
+        "video": "shopify:\/\/files\/videos\/-feef-4d46-b1f1-ad8e63fe230b.mov"
+      }
+    },
+    "component_story_image_slider_irn8zW": {
+      "type": "component__story-image-slider",
+      "blocks": {
+        "slide_cHfcMD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_YDq6wy": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        },
+        "slide_6pRVG9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_PGTyDT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        },
+        "slide_tQrt8w": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_D7Y3Rp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        }
+      },
+      "block_order": [
+        "slide_cHfcMD",
+        "slide_YDq6wy",
+        "slide_6pRVG9",
+        "slide_PGTyDT",
+        "slide_tQrt8w",
+        "slide_D7Y3Rp"
+      ],
+      "settings": {
+      }
+    },
+    "component_story_text_NQGEeQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "What We Believe",
+        "text": "<p><strong>We believe in flavor, not flavoring. <\/strong>We source only premium, natural ingredients, with no fillers or funky stuff.<\/p><p><strong>We believe that fresh matters. <\/strong>Our spices are ground fresh in small batches and shipped fresh from our Spokane, WA facility<\/p><p><strong>We believe in experimenting with flavor. <\/strong>Our never-before-tasted flavors are the foundation of endless creativity for chefs and home cooks alike<\/p><p><strong>We believe great food is better when it’s shared.<\/strong> We are part of a flavor community, sharing recipes and ideas with hundreds of thousands of chefs and home cooks each day. <\/p><p><strong>We believe in catering to the give-a-shit crowd. <\/strong>We’re not for those who just want a fast meal. We’re for those who want every meal, fast or slow, to be exceptional every time.<\/p><p><strong>We believe that spice is the variety of life. <\/strong>Does the world really need us to make 300+ spices and blends? Maybe not, but the world would sure be blander without them.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "main",
+    "component_rich_image_PVjx6b",
+    "component_rich_image_c3kPUz",
+    "component_rich_image_zQY9gC",
+    "component_rich_image_HJcKgt",
+    "component_rich_image_GBNtgU",
+    "component_rich_text_akdkDa",
+    "component_story_header_T8bB9K",
+    "component_cta_button_nEJGWp",
+    "image_with_text_QJVxCA",
+    "component_accordion_split_WVUxAc",
+    "main_blog_dibYN7",
+    "component_customer_spotlight_pydkQ4",
+    "component_heading_icons_Kyaacc",
+    "recipe_product_carousel_4DeHxw",
+    "component_rich_image_QTpQAx",
+    "component_home_collection_list_gNLRQA",
+    "component_home_double_image_text_8Rf9E3",
+    "component_home_image_text_tqCD6g",
+    "component_home_product_info_EeT74n",
+    "component_home_recipe_slider_Gx6t6c",
+    "component_home_video_text_QkYcnd",
+    "component_story_image_slider_irn8zW",
+    "component_story_text_NQGEeQ"
+  ]
+}

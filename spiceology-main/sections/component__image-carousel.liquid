@@ -1,0 +1,161 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-18 py-12 opacity-0">
+  <button-slider
+    class="flex flex-col h-full justify-between"
+    data-slider-options='{
+      "breakpoints": {
+        "(max-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "1.2", "spacing": 40 }
+        },
+        "(min-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "auto", "spacing": 0, "origin": "center" }
+        }
+      }
+    }'
+  >
+   
+    <div
+      role="tabpanels"
+      class="keen-slider"
+    >
+      <div class="flex overflow-hidden lg:px-0 px-2.5">
+        {% for block in section.blocks %}
+          <div class="keen-slider__slide flex items-center">
+              <div class="lg:pl-[7vw] {% if block.settings.size == 'small' %} lg:min-w-[31.5vw] {% endif %}
+                {% if block.settings.size == 'medium' %}  lg:min-w-[38.5vw] {% endif %}
+                {% if block.settings.size == 'large' %} lg:min-w-[45vw] {% endif %} w-full">
+                <a href="{{ block.settings.url }}" class="relative">
+                  {% render 'image', 
+                    image_desktop: block.settings.image,  
+                    image_mobile: block.settings.image, 
+                    width_desktop: '1500x', 
+                    width_mobile: '700x',
+                    lazy: true,
+                    image_classes: 'rounded-6 w-full' 
+                  %}
+                  {% if block.settings.description != blank %}
+                    <div class="absolute lg:top-5 lg:-left-10 lg:w-[15.2vw] p-4 lg:bottom-auto lg:right-auto bottom-4 left-4 right-4 bg-white ">
+                      <div class="utility-lg lg:mb-3 mb-1 opacity-50">{{ block.settings.subheading }}</div>
+                      <div class="font-kremlin lg:text-16 text-14 leading-110 -rotate-2">{{ block.settings.description }}</div>
+                    </div>
+                  {% endif %}
+                </a>
+              </div>
+            
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </button-slider>
+</section>
+
+{% schema %}
+  {
+    "name": "Image Carousel",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "Item",
+        "type": "item",
+        "settings": [
+          {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Aspect: Various, Min Width: 1500px, File Type: JPG/PNG/GIF/MP4"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "info": "Max Characters: 200"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          },
+          {
+            "type": "select",
+            "id": "size",
+            "label": "Size",
+            "options": [
+              {
+                "value": "small",
+                "label": "Small"
+              },
+              {
+                "value": "medium",
+                "label": "Medium"
+              },
+              {
+                "value": "large",
+                "label": "Large"
+              }
+              
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Carousel",
+        "blocks": [
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ab0a1dc5f8301147a1ff36d2760824a6.png",
+              "subheading": "",
+              "description": "",
+              "url": "",
+              "size": "small"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/0c396ac5b11875dffcbdfea8e681bdb0.png",
+              "subheading": "For Dad",
+              "description": "This brand new 4-pack takes you on a regional road trip around the States to celebrate some of Derek’s personal favorite styles of BBQ.",
+              "url": "",
+              "size": "large"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/92b4ae7ca8b7240249793983d35ba43b.png",
+              "subheading": "FOR DAD",
+              "description": "This brand new 4-pack takes you on a regional road trip around the States to celebrate some of Derek’s personal favorite styles of BBQ.",
+              "url": "",
+              "size": "medium"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/2820c5a82faafa2ae1907fcf26f0bca0.jpg",
+              "subheading": "Test",
+              "description": "Lorem ipsum lorem ipsum lorem",
+              "url": "",
+              "size": "small"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

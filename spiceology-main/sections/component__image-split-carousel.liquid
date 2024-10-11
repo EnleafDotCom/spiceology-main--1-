@@ -1,0 +1,105 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-18 py-12 opacity-0">
+  <h2 class="lg:heading-2xl heading-xl lg:mb-7.5 mb-5 text-center">{{ section.settings.title }}</h2>
+  <div class="grid grid-cols-12 lg:gap-5 gap-2.5">
+    <div class="lg:col-span-8 col-span-full lg:pl-5 lg:pr-0 pl-2.5 pr-2.5">
+      {% render 'image', 
+        image_desktop: section.settings.image,  
+        image_mobile: section.settings.image, 
+        width_desktop: '1500x', 
+        width_mobile: '700x', 
+        ratio_desktop: '75%',
+        ratio_mobile: '75%',
+        lazy: true,
+        image_classes: 'rounded-6' 
+      %}
+    </div>
+    <div class="lg:col-span-4 col-span-full">
+      <button-slider
+        class="flex flex-col h-full justify-between"
+        data-slider-options='{
+          "breakpoints": {
+            "(max-width: 1024px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "1.2", "spacing": 10 }
+            },
+            "(min-width: 1024px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "1.2", "spacing": 20 }
+            }
+          }
+        }'
+      >
+       
+        <div
+          role="tabpanels"
+          class="keen-slider"
+        >
+          <div class="flex overflow-hidden lg:px-0 px-2.5">
+            {% for product in section.settings.collection.products %}
+              <div class="keen-slider__slide">
+              {%- render 'product__card', product: product -%}
+              </div>
+            {% endfor %}
+            {% for block in section.blocks %}
+              <div class="keen-slider__slide">
+              {%- render 'product__card', product: block.settings.product -%}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="lg:flex hidden justify-between w-full">
+          {% render 'button__slider-prev' %}
+          {% render 'button__slider-next' %}
+        </div>
+      </button-slider>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Image Split Carousel",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Aspect: 3x2, Min Width: 2000px, File Type: JPG/PNG/GIF/MP4"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Split Carousel",
+        "settings": {
+          "title": "Gifts For Grillers",
+          "image": "shopify:\/\/shop_images\/2820c5a82faafa2ae1907fcf26f0bca0.jpg",
+          "collection": "blends"
+        }
+      }
+    ]
+  }
+{% endschema %}

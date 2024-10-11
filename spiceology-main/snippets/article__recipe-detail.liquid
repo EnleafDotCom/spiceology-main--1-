@@ -1,0 +1,71 @@
+{% assign image = article.metafields.accentuate.recipe_image | first %}
+<section class="lg:px-5 px-2.5">
+  <div class="lg:py-5 py-2.5 md:grid md:grid-cols-12 flex flex-col md:gap-5">
+    <div class="lg:col-span-8 md:col-span-6">
+      {% comment %} {% render 'image', 
+        image_desktop: article.metafields.accentuate.recipe_image,  
+        width_desktop: '2000x', 
+        width_mobile: '1000x', 
+        ratio_desktop: '100%',
+        ratio_mobile: '100%',
+        lazy: true,
+        image_classes: 'rounded-6' 
+      %} {% endcomment %}
+      <img class="w-full aspect-[1.5] rounded-6" src="{{ image.src | append: '&width=2000' }}" alt="{{ image.alt }}" loading="lazy">
+    </div>
+    <div class="lg:col-span-4 md:col-span-6 flex flex-col">
+      <div class="grid grid-cols-2 md:pt-2 pt-2.5 pb-1.5 body-md border-b">
+        <div class="col-span-1 flex flex-row gap-2.5">
+          <span>Difficulty:</span>
+          <span>{{ article.metafields.accentuate.recipe_difficulty }}</span>
+        </div>
+        <div class="col-span-1 flex flex-row gap-2.5">
+          <span>Yield:</span>
+          <span>{{ article.metafields.accentuate.recipe_yield }}</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 py-1.5 body-md border-b">
+        <div class="col-span-1 flex flex-row gap-2.5">
+          <span>Prep Time:</span>
+          <span>{{ article.metafields.accentuate.recipe_prep_time }}</span>
+        </div>
+        <div class="col-span-1 flex flex-row gap-2.5">
+          <span>Cook Time:</span>
+          <span>{{ article.metafields.accentuate.recipe_cook_time }}</span>
+        </div>
+      </div>
+      <div class="">
+        <div class="py-1.5">Spices Used:</div>
+        <div class="flex flex-col gap-2.5">
+          {% for product in article.metafields.accentuate.spices.value %}
+            <div class="lg:p-5 p-4 bg-white rounded-6 grid grid-cols-12 gap-5">
+              <div class="col-span-4">
+                {% render 'image', 
+                  image_desktop: product.featured_image,  
+                  width_desktop: '200x', 
+                  width_mobile: '200x', 
+                  ratio_desktop: '100%',
+                  ratio_mobile: '100%',
+                  lazy: true,
+                  image_classes: 'rounded-6' 
+                %}
+              </div>
+              <div class="col-span-8">
+                <div class="font-mono text-9 tracking-6 leading-100 uppercase mb-1 px-1.5 py-[3px] border rounded-[3px] inline-block">{{ product.type }}</div>
+                <div class="flex gap-5 justify-between md:mb-5 mb-4">
+                  <div class="text-18 leading-110 font-500">{{ product.title }}</div>
+                  <div class="lg:block hidden utility-lg text-[#1C1307]">{{ product.price | money }}</div>
+                </div>
+                <a class="button__secondary flex gap-2.5 bg-grey-light w-full px-0 lg:text-15 text-14" href="{{ product.url }}">
+                  <span class="lg:block hidden">Add to Cart</span>
+                  <span class="lg:hidden block">+ Add  •</span>
+                  <span class="lg:hidden block">{{ product.price | money }}</span>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

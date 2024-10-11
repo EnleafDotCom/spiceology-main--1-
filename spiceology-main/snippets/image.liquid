@@ -1,0 +1,69 @@
+{% assign image_alt_desktop = '' %}
+{% assign image_alt_mobile = '' %}
+{% assign image_mobile = image_mobile  %}
+{% assign lazy_loading = 'lazy' %}
+{% assign aspect_image = true %}
+
+{% unless image_mobile %}
+  {% assign image_mobile = image_desktop %}
+{% endunless %}
+
+{% if ratio_desktop == blank and ratio_mobile == blank %}
+  {% assign aspect_image = false %}
+{% endif %}
+
+{% if alt %}
+  {% assign image_alt_desktop = alt %}
+{% else %}
+  {% assign image_alt_desktop = image_desktop.alt %}
+{% endif %}
+
+{% if alt %}
+  image_alt_mobile = {{ alt }}
+{% else %}
+  {% if image_mobile %}
+    {% assign image_alt_mobile = image_mobile.alt %}
+  {% else %}
+    {% assign image_alt_mobile = image_desktop.alt %}
+  {% endif %}
+{% endif %}
+
+{% if lazy != true %}
+  {% assign lazy_loading = 'eager' %}
+{% endif %}
+
+{% if aspect_image %}
+  <div x-data class="hidden md:block relative w-full h-full " style="padding-top: {{ ratio_desktop }}" >
+    <img
+      class="absolute inset-0 w-full h-full object-cover {{ image_classes }}"
+      src="{{ image_desktop | img_url: width_desktop }}" 
+      alt="{{ image_alt_desktop }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+  </div>        
+  <div class="md:hidden relative w-full h-full {{ classes }}" style="padding-top: {{ ratio_mobile }}">
+    <img
+      class="absolute inset-0 w-full h-full object-cover {{ image_classes }}"
+      src="{{ image_mobile | img_url: width_mobile }}" 
+      alt="{{ image_alt_mobile }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+  </div>        
+{% else %}
+    <img
+      class="{{ image_classes }} hidden md:block"
+      src="{{ image_desktop | img_url: width_desktop }}" 
+      alt="{{ image_alt_desktop }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />  
+    <img
+      class="{{ image_classes }} md:hidden"
+      src="{{ image_mobile | img_url: width_mobile }}" 
+      alt="{{ image_alt_mobile }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />  
+{% endif %}

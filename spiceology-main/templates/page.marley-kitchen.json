@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Marley Kitchen x Spiceology",
+        "content": "Marley Kitchen and the Marley brand honors the timeless values of Bob Marley by uniting people around the world under the banner of One Love; they seek to share the soul and spirit of the Caribbean – a melting pot of cultures, ethnicities, and flavors.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/markey-kitchen-trio.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "marley-kitchen",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Marley Kitchen",
+        "text": "<p>Marley Kitchen and the Marley brand honors the timeless values of Bob Marley by uniting people around the world under the banner of One Love; they seek to share the soul and spirit of the Caribbean – a melting pot of cultures, ethnicities, and flavors.<\/p><p>Working with Cedella Marley and the Marley family, Spiceology has collaborated with Marley Kitchen to develop Caribbean-inspired blends: One Heart Jamaican Curry Blend, One Love Hemp Heart & Honey Ginger Butter Blend, and One World Cardamom & Coconut BBQ Blend.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

@@ -1,0 +1,26 @@
+<script src="{{ 'component-klaviyo-form.js' | asset_url }}" defer></script>
+
+<klaviyo-form>
+  <form class="max-w-md mx-auto">
+    <div class="input__primary w-full js-email-input-wrapper">
+      <input
+        required
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+      >
+      <button type="submit">
+        <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 10.2441L24.5 10.2441" stroke="#E22020" stroke-width="1.75" stroke-miterlimit="10"/>
+          <path d="M14.5 0C14.5 1.346 14.7717 2.6788 15.2995 3.92222C15.8272 5.16565 16.6008 6.29531 17.5759 7.24665C18.5511 8.19799 19.7087 8.95235 20.9825 9.46662C22.2564 9.98088 23.6216 10.245 25 10.2438" stroke="#E22020" stroke-width="1.75" stroke-miterlimit="10"/>
+          <path d="M14.5 20.0001C14.5 18.7182 14.7717 17.4489 15.2995 16.2647C15.8272 15.0805 16.6008 14.0046 17.5759 13.0985C18.5511 12.1925 19.7087 11.4741 20.9825 10.9843C22.2564 10.4945 23.6216 10.243 25 10.2441" stroke="#E22020" stroke-width="1.75" stroke-miterlimit="10"/>
+        </svg>
+      </button>
+
+      <div class="success hidden js-email-success">
+        Thanks! You're signed up.
+      </div>
+    </div>
+    <div class="text-2xs js-email-error hidden text-red mt-2.5 uppercase font-sans"></div>
+  </form>
+</klaviyo-form>

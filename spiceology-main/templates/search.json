@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "component_header_spacer_VniEhf": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-search",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_VniEhf",
+    "main"
+  ]
+}

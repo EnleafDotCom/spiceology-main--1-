@@ -1,0 +1,112 @@
+
+
+<div
+  class="bg-grey p-5 w-[calc(100%-20px)] md:w-[calc(100%+20px)] md:transform md:-translate-x-5 md:rounded-tr-4 md:rounded-br-4"
+  id="disclosure-1"
+  x-show="filtersOpen"
+  x-ref="filtersPanel"
+  x-trap="filtersOpen"
+  x-transition:enter="transition ease-out duration-100 transform"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-75 transform"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
+  @click.away="filtersOpen = false"
+  x-cloak
+  @keydown.escape.prevent.stop="filtersOpen = false"
+>
+  <div class="transition-all duration-700 heading-sm flex justify-between w-full">
+    <div>
+      <span>Filters</span>
+      <span x-text="'(' + filterCount + ')'" x-show="filterCount > 0"></span>
+    </div>
+    <button @click="handleClearFilters()" class="body-md underline">Clear All</button>
+  </div>
+  <div class="flex flex-col py-5">
+    <hr class="h-[2px]">
+    {% for filter in collection.filters %}
+      {%- case filter.type -%}
+        {%- when 'boolean' or 'list' -%}
+          <fieldset class="transition-all duration-700 filter-column" :class="filtersOpen ? 'opacity-100' : 'opacity-0'">
+            <div>
+            <legend class="pt-3 pb-3 block utility-sm text-[13px]">{{ filter.label }}</legend>
+              <div class="grid grid-cols-1 gap-4">
+                {%- for filter_value in filter.values -%}
+                  {% comment %} {% if filter_value.count >= 1 %} {% endcomment %}
+                    <div
+                      class="flex items-center text-base sm:text-sm"
+                      x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null"
+                    >
+                      <input
+                        id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        value="{{ filter_value.value }}"
+                        name="{{ filter_value.param_name }}"
+                        type="checkbox"
+                        x-ref="filter"
+                        @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}')"
+                        @change="$dispatch('filter-updated')"
+                        :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                        {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                        class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"
+                      >
+                      <label
+                        for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                        class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"
+                      >
+                        {{ filter_value.label }}
+                      </label>
+                    </div>
+                   
+                  {% comment %} {%- endif -%} {% endcomment %}
+                  {% if forloop.index == 10 %}
+                    {% break %}
+                  {% endif %}
+                {%- endfor -%}
+                {% assign count = filter.values.size | minus: 1 %}
+                {% if count > 10 %}
+                <div x-data="{ show_all: false }" class="flex flex-col">
+                  <div x-collapse x-show="show_all" class="grid grid-cols-1 gap-4">
+                    
+                    {%- for filter_value in filter.values -%}
+                      
+                      {% if forloop.index >= 11 %}
+                        {% comment %} {% if filter_value.count >= 1 %} {% endcomment %}
+                          <div
+                            class="flex items-center text-base sm:text-sm"
+                            x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null"
+                          >
+                            <input
+                              id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              value="{{ filter_value.value }}"
+                              name="{{ filter_value.param_name }}"
+                              type="checkbox"
+                              x-ref="filter"
+                              @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}')"
+                              @change="$dispatch('filter-updated')"
+                              :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                              {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                              class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"
+                            >
+                            <label
+                              for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"
+                            >
+                              {{ filter_value.label }}
+                            </label>
+                          </div>
+                        {% comment %} {%- endif -%} {% endcomment %}
+                      {% endif %}
+                    {%- endfor -%}
+                  </div>
+                   <button @click.prevent="show_all = true" x-show="!show_all" x-text="'View ' + '({{ count | minus: 1 }})' + ' More'" class="body-md underline text-left">View More</button>
+                </div>
+                  {% endif %}
+                 <hr class="mt-5">
+              </div>
+            </div>
+          </fieldset>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,91 @@
+{% assign aspect_video = true %}
+
+{% if ratio == blank %}
+  {% assign aspect_video = false %}
+{% endif %}
+
+{% assign video_url = '' %}
+
+{% comment %} {% for source in video.sources %}
+  {% if source.format == 'mp4' %}
+    {% assign video_url = source.url %}
+  {% endif %}
+{% endfor %} {% endcomment %}
+
+{% if aspect_video %}
+  <div
+    class="relative w-full h-full overflow-y-hidden"
+    style="padding-top: {{ ratio }}"
+    x-data="{
+      play: false,
+      togglePlay() {
+        this.play = !this.play
+        this.$refs.video[this.play ? 'play' : 'pause']()
+      }
+    }"
+  >
+    <video
+      x-ref="video"
+      {% if muted %}muted{% endif %}
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover {{ video_classes }}"
+      src="{{ video }}"
+      x-on:ended="play = false"
+      poster="{{ poster }}"
+    ></video>
+    <button
+      @click="togglePlay"
+      class="absolute flex justify-start items-end md:items-center md:justify-center px-3 lg:px-15 py-2 lg:py-20 text-white uppercase w-full lg:w-fit h-full lg:h-fit para-md"
+      x-show="!play"
+      x-transition
+    >
+      Play Video
+    </button>
+    <button
+      @click="togglePlay"
+      class="absolute px-3 lg:px-15 py-2 lg:py-20 flex justify-start items-end md:items-center md:justify-center w-full lg:w-fit h-full lg:h-fit text-white uppercase md:opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity para-md"
+      x-show="play"
+      x-transition
+    >
+      Pause Video
+    </button>
+  </div>
+{% else %}
+  <div
+    x-data="{
+      play: false,
+      togglePlay() {
+        this.play = !this.play
+        this.$refs.video[this.play ? 'play' : 'pause']()
+      }
+    }"
+    class="relative flex items-center justify-center"
+  >
+    <video
+      x-ref="video"
+       {% if muted %}muted{% endif %}
+      playsinline
+      class="{{ video_classes }}"
+      src="{{ video }}"
+      x-on:ended="play = false"
+       poster="{{ poster }}"
+    ></video>
+    <button
+      @click="togglePlay"
+      class="button__primary font-sans absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:top-auto lg:left-auto lg:bottom-5 lg:right-5 lg:transform-none flex gap-2 justify-center items-center px-5 h-10 bg-white text-black body-lg"
+      x-show="!play"
+      x-transition
+    >
+      <span>{% render 'svg__play' %}</span>
+      <span>Play</span>
+    </button>
+    <button
+      @click="togglePlay"
+      class="button__primary font-sans absolute bottom-5 right-5 flex gap-2 justify-center items-center px-5 h-10 bg-white text-black body-lg focus:opacity-100 transition-opacity para-md"
+      x-show="play"
+      x-transition
+    >
+      Pause
+    </button>
+  </div>
+{% endif %}

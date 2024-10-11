@@ -1,0 +1,13 @@
+<script>
+    {% if template.directory == 'customers' %}
+    window.theme = {
+        strings: {
+            addToCart: {{ 'products.product.add_to_cart' | t | json }},
+            soldOut: {{ 'products.product.sold_out' | t | json }},
+            unavailable: {{ 'products.product.unavailable' | t | json }}
+        },
+        moneyFormat: {{ shop.money_format | json }}
+    };
+    theme.allCountryOptionTags = {{ all_country_option_tags | json }};
+    {% endif %}
+</script>

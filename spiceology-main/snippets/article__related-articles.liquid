@@ -1,0 +1,11 @@
+<section class="lg:py-20 py-10 lg:px-5 px-2.5">
+  <div class="lg:text-40 text-32 lg:leading-100 leading-110 lg:mb-10 mb-7.5 capitalize lg:text-left text-center">{{ article.metafields.accentuate.related_articles_heading }}</div>
+  {% assign article_list = article.metafields.accentuate.related_article_list | split: "|" %}
+  <div class="lg:grid lg:grid-cols-3 flex flex-col gap-10">
+    {% for related_article in article_list %}
+      <div class="lg:col-span-1 lg:w-auto w-full">
+      {% render 'article__card', article: articles[related_article] %}
+      </div>
+    {% endfor %}
+  </div>
+</section>

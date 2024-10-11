@@ -1,0 +1,18 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="opacity-0">
+    <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-5 py-12 lg:pt-16 lg:pb-20 px-9 lg:px-0">
+        <div class="rte-simple lg:col-span-8 flex items-center heading-md sm:heading-lg md:heading-xl lg:heading-2xl lg:leading-[59px] lg:pl-16">{{ product.metafields.accentuate.headline.html }}</div>
+        <div class="lg:col-span-4 flex justify-center lg:justify-end items-start lg:pr-20 px-14 lg:px-0">
+            {% if product.metafields.accentuate.article %}
+                <a href="{{ articles[product.metafields.accentuate.article].url }}">
+                    <img src="{{ articles[product.metafields.accentuate.article].image | image_url: width: 500 }}" alt="{{ articles[product.metafields.accentuate.article].title }}" class="lg:w-[260px] h-auto rounded-4">
+                </a>
+            {% else %}
+                <div class="flex flex-col pt-3 px-2.5 pb-5 bg-white md:max-w-[400px] lg:w-[242px]">
+                    <h6 class="body-lg pl-2 pb-4 transform rotate-[-6deg] w-fit">{{ product.metafields.accentuate.card_eyebrow }}</h6>
+                    <hr class="dashed">
+                    <p class="utility-sm px-2.5 pt-5 pr-5">{{ product.metafields.accentuate.card_text }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+# Environment files #
+node_modules
+.config
+.vscode
+.docs
+.github
+assets
+
+# Add or remove as you want #
+templates
+config
+locales

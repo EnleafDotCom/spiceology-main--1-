@@ -1,0 +1,123 @@
+<section>
+  <div class="relative {% if section.settings.full_width != true %} lg:px-5 lg:pt-28 lg:pb-5 pt-20 pb-2.5 px-2.5 {% endif %} h-screen w-full">
+      {% if section.settings.full_width != true %}
+        {% render 'image', 
+          image_desktop: section.settings.image,  
+          image_mobile: section.settings.image_mob,  
+          width_desktop: '2000x', 
+          width_mobile: '1000x', 
+          lazy: true,
+          image_classes: 'lg:rounded-6 rounded-4 h-full w-full object-cover' 
+        %}
+      {% else %} 
+        {% render 'image', 
+          image_desktop: section.settings.image,  
+          image_mobile: section.settings.image_mob,  
+          width_desktop: '2000x', 
+          width_mobile: '1000x', 
+          lazy: true,
+          image_classes: 'h-full w-full object-cover' 
+        %}
+      {% endif %}
+      <div class="{% if section.settings.color == 'light' %}text-white{% else %}text-black{% endif %} absolute {% if section.settings.placement == 'top' %}md:top-35 xl:top-[200px]{% else %}md:top-1/2 md:transform md:-translate-y-1/2 {% endif %} md:w-auto px-5 md:px-12 2xl:px-16 md:bottom-auto bottom-5 md:left-auto md:right-auto left-0 right-0 md:text-left text-center">
+        <h3 class="heading-lg md:heading-xl lg:heading-2xl md:mb-5 mb-4">{{ section.settings.heading | newline_to_br }}</h3>
+        <div class="body-md md:body-lg md:mb-5 mb-3.5 lg:max-w-[500px]">{{ section.settings.description | newline_to_br  }}</div>
+        {% if section.settings.btn_url != blank and section.settings.btn_text != blank %}
+        <a class="{% if section.settings.color == 'light' %}button__secondary{% else %}button__primary{% endif %} md:w-auto px-0 w-full md:max-w-[230px] " href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "class": "section-home-hero",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full Width",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image (Desktop)",
+        "info": "Aspect: 16x9, Min Width: 3000px, File Type: JPG/PNG/GIF/MP4"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mob",
+        "label": "Image (Mobile)",
+        "info": "Aspect: 2x3, Min Width: 1500px, File Type: JPG/PNG/GIF/MP4"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "select",
+        "id": "placement",
+        "label": "Text Placement",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "top"
+      },
+      {
+        "type": "select",
+        "id": "color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero",
+        "settings": {
+          "full_width": true,
+          "image": "shopify:\/\/shop_images\/18ef29261503c02a5489b0acd71e8eb9_cb608253-84a8-475d-8062-a299fe97b38e.png?v=1724074089",
+          "heading": "Chef-created spice blends you’ll always  keep on the counter",
+          "description": "Great taste comes from chefs, not food scientists, which is why we hire the best of the foodservice ",
+          "btn_text": "Shop Now",
+          "btn_url": "/collections/all",
+          "color": "light"
+        }
+      }
+    ]
+  }
+{% endschema %}

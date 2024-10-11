@@ -1,0 +1,208 @@
+{{ 'section-cart-menu.css' | asset_url | stylesheet_tag }}
+
+<div
+  x-data
+  x-cloak
+  class="cart__underlay"
+  :class="{
+    active: ($store.main.isMiniCartOpen && !$store.main.isRebuyEnabled()),
+    scrolled: $store.main.isHeaderScrolled,
+  }"
+  @click="$store.main.setMiniCartOpen(false)"
+></div>
+
+<div
+  x-data
+  x-cloak
+  x-trap="($store.main.isMiniCartOpen && !$store.main.isRebuyEnabled())"
+  @keydown.escape="$store.main.setMiniCartOpen(false)"
+  class="cart__main"
+  :class="{
+    active: ($store.main.isMiniCartOpen && !$store.main.isRebuyEnabled()),
+    scrolled: $store.main.isHeaderScrolled,
+  }"
+>
+  <div class="cart__top-wrapper text-black bg-white">
+    <div class="w-full">
+      <div class="pb-5 px-4 md:px-6">
+        <div class="grid grid-cols-2">
+          <h2 class="heading-sm">Cart
+            (<span x-text="$store.main.cart.item_count"></span>)
+          </h2>
+          <div class="text-right">
+            <button
+              class=""
+              @click="$store.main.setMiniCartOpen(false)"
+              type="button"
+              name="close"
+            >{% render 'svg__x', classes: 'w-[26px]' %}</button>
+          </div>
+        </div>
+      </div>
+      <div class="cart__items-wrapper">
+        <div class="w-full">
+          <div
+            x-show="!$store.main.cart.item_count"
+            class="text-center pt-10"
+          >
+            <h3 class="heading-md">Cart Empty</h3>
+          </div>
+          <div x-show="$store.main.cart.item_count" class="pt-7 md:pt-14">
+            <template
+              x-for="item in $store.main.cart.items"
+              :key="item.key"
+            >
+              <div class="cart__item flex flex-row mb-6 pb-3.5">
+                <div>
+                  <a
+                    :href="item.url"
+                    :title="item.product_title"
+                    class="block cart__item__image"
+                  >
+                    <div x-data class="relative w-full h-full pt-[66%]">
+                      <img
+                        class="absolute inset-0 w-full h-full object-cover"
+                        :alt="item.product_title"
+                        :src="item.image"
+                        loading="lazy"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div class="flex-1 flex flex-col pl-3">
+                  <div class="flex flex-row pb-3">
+                    <a class="flex-1" :href="item.url">
+                      <p x-text="item.product_title"></p>
+                      <p x-text="item.variant_title"></p>
+                    </a>
+                    <button
+                      type="button"
+                      name="remove"
+                      :aria-label="`Remove ${item.product_title} from cart`"
+                      class=""
+                      :class="{ loading: $store.main.pendingUpdateVariantId == item.variant_id }"
+                      :disabled="$store.main.pendingUpdateVariantId == item.variant_id"
+                      @click="$store.main.updateVariantQuantity(item.variant_id, 0)"
+                    >
+                      {% render 'svg__x', classes: "w-[20px]" %}
+                    </button>
+                  </div>
+                  <div class="flex flex-1 flex-row items-end">
+                    <div class="flex-1 flex justify-between items-center">
+                      <div>
+                        <div class="flex flex-row rounded-md w-24 justify-around content-center items-center">
+                          <div>
+                          </div>
+                          <p class="px-3 flex">QTY: <span x-text="item.quantity"></span></p>
+                          <button
+                            type="button"
+                            name="subtract"
+                            class="qty-mod"
+                            :aria-label="`Remove 1 ${item.product_title} from cart`"
+                            :class="{ loading: $store.main.pendingUpdateVariantId == item.variant_id }"
+                            :disabled="$store.main.pendingUpdateVariantId == item.variant_id"
+                            @click="$store.main.updateVariantQuantity(item.variant_id, item.quantity - 1)"
+                            :disabled="$store.main.pendingUpdateVariantId == item.variant_id || item.quantity === 1"
+                          >
+                            {% render 'svg__chevron-down', classes: 'w-[12px]' %}
+                          </button>
+                          <button
+                            type="button"
+                            name="add"
+                            class="qty-mod ml-2"
+                            :aria-label="`Add 1 ${item.product_title} to cart`"
+                            :class="{ loading: $store.main.pendingUpdateVariantId == item.variant_id }"
+                            :disabled="$store.main.pendingUpdateVariantId == item.variant_id"
+                            @click="$store.main.updateVariantQuantity(item.variant_id, item.quantity + 1)"
+                            :disabled="$store.main.pendingUpdateVariantId == item.variant_id"
+                          >
+                            {% render 'svg__chevron-down', classes: 'w-[12px] transform rotate-180' %}
+                          </button>
+                        </div>
+                      </div>
+                      <p class="text-md" x-price="item.final_line_price"></p>
+                      <p x-show="item.final_line_price != item.original_line_price" class="text-md line-through" x-price="item.original_line_price"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% render 'cart__recommendations' %}
+  </div>
+  <div
+    class="cart__footer bg-white"
+
+  >
+    <div class="">
+      <div class="grid grid-cols-2 pb-6 gap-1">
+        <div>
+          <p>Shipping</p>
+        </div>
+        <div class="text-right">
+          <p>{{ section.settings.shipping }}</p>
+        </div>
+        <div>
+          <p>Subtotal</p>
+        </div>
+        <div class="text-right">
+          <p x-price="$store.main.cart.total_price"></p>
+        </div>
+      </div>
+
+      <div class="pb-6 md:pb-9">
+        <button
+          x-show="$store.main.cart.item_count"
+          :disabled="$store.main.isNavigatingToCheckout"
+          @click="$store.main.navigateToCheckout()"
+          name="checkout"
+          type="button"
+          class="bg-black text-white w-full py-4"
+          :class="{
+            loading: $store.main.isNavigatingToCheckout,
+          }"
+        ><span x-text="$store.main.isNavigatingToCheckout ? 'Checking out…' : 'Checkout'"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Menu",
+  "settings": [
+    {
+      "type": "text",
+      "id": "shipping",
+      "label": "Shipping Text",
+      "default": "Shipping calculated at checkout"
+    },
+    {
+      "type": "text",
+      "id": "upsellHeading",
+      "label": "Upsell Heading",
+      "default": "Have a spare ready!"
+    },
+    {
+      "type": "select",
+      "id": "recommendedType",
+      "label": "Product Recommendation Type",
+      "info": "This is the type of product that will be recommended to the customer",
+      "options": [
+        {
+          "value": "complementary",
+          "label": "Complementary"
+        },
+        {
+          "value": "related",
+          "label": "Related"
+        }
+      ],
+      "default": "related"
+    }
+  ]
+}
+{% endschema %}

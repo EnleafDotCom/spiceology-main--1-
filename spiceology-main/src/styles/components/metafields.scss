@@ -1,0 +1,32 @@
+.metafield-rich_text_field {
+  a {
+    text-decoration: underline;
+  }
+
+  strong,
+  b {
+    font-weight: bolder;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+}

@@ -1,0 +1,108 @@
+<div class="product-info-container w-full lg:w-[45%] px-2.5 lg:pr-[44px]">
+    <div>
+        <form 
+            class=""
+            id="product-form-{{ section.id }}"
+            method="post"
+            action="/cart/add"
+            accept-charset="UTF-8"
+            enctype="multipart/form-data" 
+            novalidate="novalidate" 
+            data-type="add-to-cart-form"
+        >
+            <input type="hidden" name="form_type" value="product">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="hidden" name="id" :value="$store.main.activeProductVariantId">
+
+            {% if product.metafields.custom.tag != blank %}
+                <div class="mb-2.5 hidden md:block">
+                    <div
+                        class=" text-opacity-75 bg-black bg-opacity-10  inline-block rounded-full pt-1 pb-1.5 px-4 capitalize">
+                        {{ product.metafields.custom.tag }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="flex flex-col gap-5 pb-6">
+                <div class="flex flex-col items-start">
+                    {% if product.type != blank %}
+                    <div 
+                        {% assign type = product.type |  handleize %}
+                        {% assign product_type = shop.metaobjects.product_type[type] %}
+                        style="background-color: {{ product_type.color }}; {% if product_type and product_type.color != '#FFFFFF' %}border-color: {{ product_type.color }};{% else %}border-color: '#181613';{% endif %}" 
+                        class="flex items-center px-1.5 md:px-2.5 w-max h-[18px] md:h-5 utility-lg uppercase border rounded-2 mb-[5px] {% if product.type == 'Blend' %}text-white{% else %}text-black{% endif %}"
+                    >{{ product.type }}</div>
+                    {% endif %}
+                    <h1 class="heading-lg lg:heading-2xl">{{ product.title }}</h1>
+                </div>
+                
+                <div class="utility-sm text-[16px] lg:text-[18px] flex justify-between w-full pt-3.5">
+                    <div class="flex gap-2">
+                        <div class="text-right whitespace-nowrap" x-price="reactiveData.activeVariant?.variantPrice"></div>
+                        <div 
+                            x-cloak 
+                            x-show="reactiveData.activeVariant?.variantCompareAtPrice * quantity"
+                            class="text-right whitespace-nowrap line-through"
+                            x-price="reactiveData.activeVariant?.variantCompareAtPrice * quantity"
+                        ></div>
+                    </div>
+                    <div class="yotpo-widget-instance" data-yotpo-instance-id="860939" data-yotpo-product-id="{{product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+                </div>
+            </div>
+           
+            {% render 'product__form-details' %}
+
+            {% comment %} <div class="mt-10 md:mt-8 addon-widget-target">
+                <div class="flex justify-center gap-12 md:gap-16 w-full">
+                    {% for icon in product.metafields.custom.hero_icons.value %}
+                    <div class="mt-6 text-center relative group cursor-pointer">
+                        {% assign src = icon.title | append: '.svg' %}
+                        <img class="h-8 mb-3 inline-block" src="{{ icon.icon | image_url }}"
+                            width="{{ icon.icon.width }}" height="{{ icon.icon.height }}" loading="lazy" alt="">
+                        <div class="   w-16">
+                            {{ icon.title }}
+                        </div>
+
+                        {% if icon.copy != blank %}
+                        <div
+                            class="translate -translate-x-7 absolute group-hover:opacity-100 opacity-0 transition-opacity pointer-events-none w-36 p-2.5 z-10">
+                            {{ icon.copy }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div> {% endcomment %}
+        </form>
+        <div class="hidden lg:flex justify-center xl:justify-between items-center md:gap-5 xl:gap-2.5 w-full h-[96px]">
+            {% for icon in product.metafields.custom.icons.value %}
+                {% if icon.image.width %}
+                    <div class="flex justify-center items-center gap-1.5">
+                        <img :style="`width:${ {{ icon.image.width }}}px; min-width:${ {{ icon.image.width }}}px; height:${ {{ icon.image.height }}}px; min-height:${ {{ icon.image.height }}}px;`"
+                            src="{{ icon.image | image_url: width: 100 }}" :width="{{ icon.image.width }}"
+                            :height="{{ icon.image.height }}" alt="{{ icon.text }}" class="">
+                        <span class="body-sm">{{ icon.text }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!--- Accordions --->
+        {% unless product.type == 'Variety Pack' %}
+            {% if product.metafields.custom.key_ingredients_detail.value %}
+                <hr>
+                {% render 'product__ingredients' %}
+            {% endif %}
+            {% unless product.type == 'Gift Pack' %}
+                {% if product.metafields.custom.allergens %}
+                    {% render 'product__allergens' %}
+                {% endif %}
+                {% unless product.metafields.custom.hide_nutrition_facts %}
+                    {% render 'product__nutrition-facts' %}
+                {% endunless %}
+                {% if product.metafields.custom.dietary_preferences %}
+                    {% render 'product__dietary-preferences' %}
+                {% endif %}
+            {% endunless %}
+        {% endunless %}
+    </div>
+</div>
+<div class="yotpo-widget-instance" data-yotpo-instance-id="809325" product-handle="{{product.handle}}" widget-type="SubscriptionsAddToCartWidget" full-format-product-price="{{ product.price | money }}" bundles-configuration="{{ product.metafields.bundles.configuration | escape }}"></div>

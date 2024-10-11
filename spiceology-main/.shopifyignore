@@ -1,0 +1,20 @@
+# OS generated files #
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Enviroment files #
+src
+node_modules
+.config
+.github
+.vscode
+.docs
+src/**/**/*.json
+package.json
+
+# Other files #
+/\.(txt|gif|md|lock)$/

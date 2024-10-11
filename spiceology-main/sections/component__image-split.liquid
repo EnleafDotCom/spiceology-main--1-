@@ -1,0 +1,97 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:px-16 px-2.5 lg:py-15 py-10 opacity-0">
+  <div class="grid grid-cols-2 lg:gap-5 gap-20">
+    {% for block in section.blocks %}
+      <div class="lg:col-span-1 col-span-full">
+        <div class="lg:mb-4 mb-5 lg:text-left text-center">
+          {% render 'image', 
+            image_desktop: block.settings.image,  
+            image_mobile: block.settings.image, 
+            width_desktop: '1000x', 
+            width_mobile: '500x', 
+            ratio_desktop: '75%',
+            ratio_mobile: '75%',
+            lazy: true,
+            image_classes: 'rounded-6' 
+          %}
+        </div>
+        <h3 class="heading-xl capitalize lg:mb-2.5 mb-3">{{ block.settings.title }}</h3>
+        <p class="body-lg lg:mb-7.5 mb-9">{{ block.settings.description }}</p>
+        {% if block.settings.btn_title != blank %}
+        <a class="button__primary lg:w-fit w-full lg:flex" href="{{ block.settings.btn_url }}">{{ block.settings.btn_title }}</a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Image Split",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "Item",
+        "type": "item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Aspect: 4x3, Min Width: 1500px, File Type: JPG/PNG/GIF"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "btn_title",
+            "label": "Button Title"
+          },
+          {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Split",
+        "blocks": [
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ab0a1dc5f8301147a1ff36d2760824a6.png",
+              "title": "Heading",
+              "description": "Subheading",
+              "btn_title": "Call to Action",
+              "btn_url": ""
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image_216_2.png",
+              "title": "Heading",
+              "description": "Subheading",
+              "btn_title": "Call to Action",
+              "btn_url": ""
+            }
+          }
+        ],
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

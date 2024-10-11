@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_KwGf4N": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_zdjKJi": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Private Label & Custom Blends",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_rich_text_6MFFWg": {
+      "type": "component__rich-text",
+      "blocks": {
+        "richtext_r3ddda": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>We’re putting this out there right away: Spiceology has a 2000 lbs order minimum for any private label or custom blend project. And yes, that’s a LOT of spice-y product.<br\/><br\/>If you’re still reading, on to our private label program.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_r3ddda"
+      ],
+      "settings": {
+      }
+    },
+    "component_home_image_text_HK7cJF": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_Yg7Fgk": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_Yg7Fgk"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/private-label.jpg",
+        "image_ratio_desk": "75%",
+        "image_ratio": "75%",
+        "image_size": "medium",
+        "image_position": "left",
+        "subheading": "",
+        "heading": "The Program",
+        "description": "From our SQF certified headquarters in Spokane, WA, Spiceology offers an end-to-end private label spice program. Services include: R&D, Product certification (Ex - Kosher), Packaging design, Manufacturing, and Fulfillment",
+        "btn_text": "",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_home_double_image_text_MDJP68": {
+      "type": "component__home-double-image-text",
+      "settings": {
+        "subheading": "Shake Shack x Spiceology",
+        "heading": "",
+        "description": "“The Spiceology team is always excited to dig deep in the spice world and help us develop new and exciting flavor combinations for special menu items.”",
+        "btn_text": "",
+        "btn_url": "",
+        "main_image": "shopify:\/\/shop_images\/shake-shack.png",
+        "second_image": "shopify:\/\/shop_images\/4oz-target-black-bleu-closeup-raw.jpg",
+        "team_photo": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_12.05.52_PM_43fdbd09-fb0c-451c-b201-2e3d70e2d41f.png",
+        "team_name": "John Karangis \nExec Chef & Vice President @Shake Shack"
+      }
+    },
+    "component_heading_icons_AhJ6e9": {
+      "type": "component__heading-icons",
+      "blocks": {
+        "image_Y7V48e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_3_4d87018a-e3ca-434a-807d-6124589d6181.png?v=1724511216",
+            "title": "Quick Order Tools",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        },
+        "image_gjWe7J": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_d38748b3-b87a-4974-bdad-9f4f846dacf2.png?v=1724511216",
+            "title": "Free Shipping",
+            "content": "On Orders $99. Lorem Ipdum dolor siet amet."
+          }
+        },
+        "image_p4KFG9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_1.png?v=1724511216",
+            "title": "Payment Terms",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at nunc nec purus."
+          }
+        },
+        "image_CX63dG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_4.png?v=1724511216",
+            "title": "1-Click Reordering",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          }
+        }
+      },
+      "block_order": [
+        "image_Y7V48e",
+        "image_gjWe7J",
+        "image_p4KFG9",
+        "image_CX63dG"
+      ],
+      "settings": {
+        "heading": "The Process",
+        "padding_bottom": "medium"
+      }
+    },
+    "1726874000106626d3": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_bqnVTF": {
+          "type": "shopify:\/\/apps\/powerful-form-builder\/blocks\/app-block\/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"NTc0NjY=\"><\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_bqnVTF"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_KwGf4N",
+    "component_headline_zdjKJi",
+    "component_rich_text_6MFFWg",
+    "component_home_image_text_HK7cJF",
+    "component_home_double_image_text_MDJP68",
+    "component_heading_icons_AhJ6e9",
+    "1726874000106626d3"
+  ]
+}

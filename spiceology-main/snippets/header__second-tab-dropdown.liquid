@@ -1,0 +1,187 @@
+<div x-show="$store.main.currentDropdown === 2" x-cloak class="flex flex-col w-full max-h-[calc(100vh-(var(--nav-height)))] overflow-y-scroll">
+  <div class="flex w-full">
+      {% for link in second_tab_menu.links %}
+        {% assign index = forloop.index %}
+          <div
+            class="dropdown-panel-content flex flex-col items-start opacity-0 border-black"
+            id="{{ link.title}}"
+            role="menu"
+            aria-labelledby="{{ link.title }}-dropdown"
+            :style="$store.main.isNavOpen ? 'animation: fadeIn 200ms ease-in-out 150ms forwards' : 'animation: fadeOut 150ms ease-in-out forwards'"
+          >
+            <h6 class="utility-lg uppercase pb-2">{{ link.title }}</h6>
+            <div class="flex gap-x-2.5 w-full pb-30">
+              <div class="w-full flex flex-col justify-between min-h-fit">
+                {% if index == 2 %}
+                  {% assign recipe_1 = section.settings.second_dropdown_tab_recipe_1 %}
+                  <a href="{{ recipe_1.url }}" class="flex flex-col">
+                    {% render 'image', 
+                      image_desktop: recipe_1.image,  
+                      width_desktop: '1000x', 
+                      width_mobile: '500x', 
+                      ratio_desktop: '66%',
+                      ratio_mobile: '66%',
+                      lazy: true,
+                      image_classes: 'rounded-4' 
+                    %}
+                    <h6 x-data="{ 
+                      blog: '', 
+                      getBlogId: function(url){
+                        return url.split('/')[2]
+                      },
+                      init(){
+                        let url = '{{ recipe_1.url }}'
+                        this.blog = url.split('/')[2]
+                      }
+                    }" x-text="blog" class="utility-lg uppercase pt-2.5"></h6>
+                    <h5 class="heading-sm pt-[5px]">{{ recipe_1.title }}</h5>
+                    {% if recipe_1.metafields.custom.short_description %}
+                      <p class="body-sm pt-[5px]">{{ recipe_1.metafields.custom.short_description }}</p>
+                    {% endif %}
+                    {% assign is_recipe = false %}
+                    {% for tag in recipe_1.tags %}
+                      {% if tag contains 'recipe' %}
+                        {% assign is_recipe = true %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if is_recipe %}
+                      <span class="link-underlined pt-5">View Recipe</span>
+                    {% else %}
+                      <span class="link-underlined pt-5">Read More</span>
+                    {% endif %}
+                  </a>
+                {% elsif index == 3 %}
+                  {% assign recipe_2 = section.settings.second_dropdown_tab_recipe_2 %}
+                  <a href="{{ recipe_2.url }}" class="flex flex-col">
+                    {% render 'image', 
+                      image_desktop: recipe_2.image,  
+                      width_desktop: '1000x', 
+                      width_mobile: '500x', 
+                      ratio_desktop: '66%',
+                      ratio_mobile: '66%',
+                      lazy: true,
+                      image_classes: 'rounded-4' 
+                    %}
+                    <h6 x-data="{ 
+                      blog: '', 
+                      getBlogId: function(url){
+                        return url.split('/')[2]
+                      },
+                      init(){
+                        let url = '{{ recipe_1.url }}'
+                        this.blog = url.split('/')[2]
+                      }
+                    }" x-text="blog" class="utility-lg uppercase pt-2.5"></h6>
+                    <h5 class="heading-sm pt-[5px]">{{ recipe_2.title }}</h5>
+                    {% if recipe_2.metafields.custom.short_description %}
+                      <p class="body-sm pt-[5px]">{{ recipe_2.metafields.custom.short_description }}</p>
+                    {% endif %}
+                    {% assign is_recipe = false %}
+                    {% for tag in recipe_2.tags %}
+                      {% if tag contains 'recipe' %}
+                        {% assign is_recipe = true %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if is_recipe %}
+                      <span class="link-underlined pt-5">View Recipe</span>
+                    {% else %}
+                      <span class="link-underlined pt-5">Read More</span>
+                    {% endif %}
+                  </a>
+                {% elsif index == 4 %}
+                  {% assign recipe_3 = section.settings.second_dropdown_tab_recipe_3 %}
+                  <a href="{{ recipe_3.url }}" class="flex flex-col">
+                    {% render 'image', 
+                      image_desktop: recipe_3.image,  
+                      width_desktop: '1000x', 
+                      width_mobile: '500x', 
+                      ratio_desktop: '66%',
+                      ratio_mobile: '66%',
+                      lazy: true,
+                      image_classes: 'rounded-4' 
+                    %}
+                    <h6 x-data="{ 
+                      blog: '', 
+                      getBlogId: function(url){
+                        return url.split('/')[2]
+                      },
+                      init(){
+                        let url = '{{ recipe_1.url }}'
+                        this.blog = url.split('/')[2]
+                      }
+                    }" x-text="blog" class="utility-lg uppercase pt-2.5"></h6>
+                    <h5 class="heading-sm pt-[5px]">{{ recipe_3.title }}</h5>
+                    {% if recipe_3.metafields.custom.short_description %}
+                      <p class="body-sm pt-[5px]">{{ recipe_3.metafields.custom.short_description }}</p>
+                    {% endif %}
+                    {% assign is_recipe = false %}
+                    {% for tag in recipe_3.tags %}
+                      {% if tag contains 'recipe' %}
+                        {% assign is_recipe = true %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if is_recipe %}
+                      <span class="link-underlined pt-5">View Recipe</span>
+                    {% else %}
+                      <span class="link-underlined pt-5">Read More</span>
+                    {% endif %}
+                  </a>
+                {% else %}
+                  <ul class="flex flex-col pr-5">
+                  {%- for sub_link in link.links -%}
+                    <li class="flex flex-col gap-y-1">
+                      <a href="{{ sub_link.url }}">
+                        <h3 class="menu-link {% if index == 1 %}large{% endif %} pb-4">{{ sub_link.title }}</h3>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                {% endif %}
+              </div> 
+            </div>
+          </div>
+      {% endfor %}
+      {% if section.settings.second_dropdown_tab_image %}
+        <div x-show="$store.main.currentDropdown === 1" class="w-1/4 block pb-11">
+          <a href="" class="group">
+            <div
+              class="flex items-start pt-[11px] px-[30px] opacity-0 overflow-hidden relative"
+              :style="$store.main.isNavOpen ? 'animation: fadeIn 200ms ease-in-out 100ms forwards' : 'animation: fadeOut 100ms ease-in-out forwards'"
+            >
+              <div class="relative min-w-[225px]">
+                {% render 'image',
+                  image_desktop: section.settings.second_dropdown_tab_image,
+                  width_desktop: '1000x',
+                  width_mobile: '500x',
+                  ratio_desktop: '143%',
+                  ratio_mobile: '143%',
+                  lazy: true,
+                  image_classes: ''
+                %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="flex flex-col w-full px-5">
+      <div class="flex flex-col items-center w-full pb-10 border-t border-black">
+        <div class="flex justify-between items-center gap-2 w-full border-b border-black py-5 px-[4px]">
+          <h4 class="heading-md">{{ section.settings.second_dropdown_tab_cta_1_heading }}</h4>
+          <a href="{{ section.settings.second_dropdown_tab_cta_1_link }}" class="link-underlined w-max">
+            {{ section.settings.second_dropdown_tab_cta_1_text }}
+          </a>
+        </div>
+        <div class="flex justify-between items-center gap-2 w-full border-b border-black py-5 px-[4px] mb-5">
+          <h4 class="heading-md">{{ section.settings.second_dropdown_tab_cta_2_heading }}</h4>
+          <a href="{{ section.settings.second_dropdown_tab_cta_2_link }}" class="link-underlined w-max">
+            {{ section.settings.second_dropdown_tab_cta_2_text }}
+          </a>
+        </div>
+        <button @click.prevent="$store.main.closeMenus()" class="mx-auto button__secondary grey">Close</button>
+      </div>
+    </div>
+</div>

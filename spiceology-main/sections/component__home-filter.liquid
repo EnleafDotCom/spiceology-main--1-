@@ -1,0 +1,179 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-20 py-12 opacity-0">
+  <div class="lg:px-16 px-2.5 max-w-[1072px] mx-auto"   x-data="{
+    randomLimit: {{ section.settings.random_limit }},
+    scenarioCount: {{ section.settings.random_scenario_count }},
+    submitFilter() {
+      let filterUrl = '/collections/all';
+      document.querySelectorAll(`[data-home-filter][data-selected='true']`).forEach((ele) => {
+        if(filterUrl == '/collections/all') {
+          filterUrl = filterUrl + '?filter.p.m.custom.' + ele.dataset.filterType + '=' + ele.dataset.value;
+        }
+        else {
+          filterUrl = filterUrl + '&filter.p.m.custom.' + ele.dataset.filterType + '=' + ele.dataset.value;
+        }
+      });
+
+      location.href = filterUrl;
+    },
+    submitRandom() {
+      const currentScenarioId = parseInt(this.scenarioCount * Math.random()) + 1;
+      document.querySelectorAll(`[data-home-filter][data-selected='true']`).forEach((ele) => {
+        ele.dataset.selected = 'false';
+      });
+      let eleList =  document.querySelectorAll(`[data-home-filter][data-scenario-id='${currentScenarioId}']`);
+      let count = this.randomLimit;
+      while(count > 0) {
+        const randomIndex = parseInt((eleList.length) * Math.random());
+        if(eleList[randomIndex].dataset.selected == 'false')  {
+          eleList[randomIndex].dataset.selected = 'true';
+          count--;
+        }
+      }
+      setTimeout(this.submitFilter(), 1000);
+    }
+  }">
+    <div class="heading-2xl capitalize mb-12 text-center">{{ section.settings.title }}</div>
+    <div class="flex flex-wrap lg:gap-x-4 lg:gap-y-5 gap-x-2 gap-y-2 justify-center">
+      {% for block in section.blocks %}
+        {% style %}
+        #filter-{{ block.id }}:hover, #filter-{{ block.id }}[data-selected="true"] {
+          color: {{ block.settings.text_color }};
+          background-color: {{ block.settings.bg_color }};
+        }
+        {% endstyle %}
+        <div x-data='{
+          param: null,
+          getQueryParam(id) {
+            this.param = id;
+          },
+          init() {
+            Alpine.store("main").graphQl(`
+              {
+                metaobject(handle: { type: "{{ block.settings.filter_type }}", handle: "{{ block.settings.filter_id }}" }) {
+                  id
+                }
+              }
+            `).then((response) => {
+              this.getQueryParam(response.data.metaobject.id);
+            });
+          },
+          clickFilter() {
+            if(document.getElementById(`filter-{{ block.id }}`).dataset.selected == "false") {
+              document.getElementById(`filter-{{ block.id }}`).dataset.selected = "true";
+            }
+            else {
+              document.getElementById(`filter-{{ block.id }}`).dataset.selected = "false";
+            }
+          }
+        }' id="filter-{{ block.id }}" @click="clickFilter()" data-scenario-id="{{ block.settings.scenario_id }}" data-home-filter data-filter-type="{{ block.settings.filter_type }}" :data-value="param" data-selected="false" class="bg-white transition-all rounded-[100px] cursor-pointer lg:px-7.5 px-5 lg:h-17 h-12 flex items-center justify-center heading-xl">{{ block.settings.text }}</div>
+      {% endfor %}
+    </div>
+    <div class="flex lg:gap-3.5 justify-center mt-16 lg:flex-row flex-col-reverse gap-2 items-center">
+      <button class="button__secondary md:w-auto w-full" @click="submitRandom()">{{ section.settings.random_filter_text }}</button>
+      <button class="button__primary dark md:w-auto w-full" @click="submitFilter()">{{ section.settings.shop_btn_text }}</button>
+    </div>
+  </div>
+</section>
+{% comment %} <script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('main').graphQl(`
+      {
+        metaobject(handle: { type: 'flavors', handle: 'bitter' }) {
+          id
+        }
+      }
+    `).then((response) => {
+      console.log(response);
+    });
+  });
+</script> {% endcomment %}
+{% schema %}
+  {
+    "name": "[Component] Home Filter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "What Are You In The Mood For?"
+      },
+      {
+        "type": "text",
+        "id": "shop_btn_text",
+        "label": "Shop Button Text"
+      },
+      {
+        "type": "header",
+        "content": "Random Filter"
+      },
+      {
+        "type": "range",
+        "id": "random_limit",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Filter Count",
+        "default": 3 
+      },
+      {
+        "type": "range",
+        "id": "random_scenario_count",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "label": "Random Scenario Count",
+        "default": 3 
+      },
+      {
+        "type": "text",
+        "id": "random_filter_text",
+        "label": "Button Text"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Filter",
+        "type": "filter",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "filter_type",
+            "label": "Filter Type"
+          },
+          {
+            "type": "text",
+            "id": "filter_id",
+            "label": "Filter Id"
+          },
+          {
+            "type": "text",
+            "id": "scenario_id",
+            "label": "Random Scenario Id"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Color",
+            "default": "#fff"
+          },
+          {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#000"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Component] Home Filter"
+      }
+    ],
+  }
+{% endschema %}

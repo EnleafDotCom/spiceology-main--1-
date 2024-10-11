@@ -1,0 +1,43 @@
+.select__primary-wrapper {
+  @apply relative;
+  width: 100%;
+  min-height: 64px;
+  border-radius: 8px;
+  z-index: 100;
+  @screen md {
+    min-height: 64px;
+  }
+}
+.select__primary {
+  @apply bg-white border border-black border-solid cursor-pointer py-3;
+  width: 100%;
+  min-height: 64px;
+  border-radius: 8px;
+  z-index: 100;
+  @screen md {
+    min-height: 64px;
+  }
+  & .label {
+    @apply px-4 text-gray-6;
+  }
+
+  & .selected-item {
+    @apply pt-1 px-4 relative;
+    & svg {
+      @apply absolute right-4 -top-2.5 transform;
+      width: 12px;
+      transition: all 150ms ease-in-out;
+    }
+    &.open {
+      & svg {
+        @apply rotate-180;
+      }
+    }
+  }
+  & .option {
+    @apply text-gray-7 py-2 px-4 hover:text-black transition-all;
+    &.selected {
+      @apply text-black bg-gray-3 mx-2 px-2;
+    }
+  }
+}

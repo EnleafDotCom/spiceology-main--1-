@@ -1,0 +1,107 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "home_video_text_without_button_Pq3fzn": {
+      "type": "home-video-text-without-button",
+      "settings": {
+        "heading": "Derek Wolf x Spiceology",
+        "description": "Spiceology Collaborator Derek Wolf is on a journey to bring fire, food, and people together. For almost a decade, Derek has inspired millions of folks across the globe to play with fire through his Over the Fire Cooking social channels. \n\nAnd, he’s sharing his favorite flavors with you.",
+        "video": "shopify:\/\/files\/videos\/Derek Wolf Beer Can Launch Video (1) (1).mp4"
+      }
+    },
+    "component_headline_ncHbB9": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Beer-Infused Rubs",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_product_card_grid_XzA7fx": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "derek-wolf-beer-infused-rubs",
+        "product_limit": 12
+      }
+    },
+    "component_headline_AqCmaf": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Americana Blends",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_product_card_grid_8f9McN": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "derek-wolf-americana",
+        "product_limit": 8
+      }
+    },
+    "component_headline_fDYU74": {
+      "type": "component__headline",
+      "settings": {
+        "title": "South American Blends",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_product_card_grid_zPYgcq": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "derek-wolf-south-american",
+        "product_limit": 8
+      }
+    },
+    "component_headline_yLFpjC": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Spirit-Infused Blends",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_product_card_grid_WNT4fP": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "derek-wolf-spirit-infused",
+        "product_limit": 8
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "main",
+    "home_video_text_without_button_Pq3fzn",
+    "component_headline_ncHbB9",
+    "component_product_card_grid_XzA7fx",
+    "component_headline_AqCmaf",
+    "component_product_card_grid_8f9McN",
+    "component_headline_fDYU74",
+    "component_product_card_grid_zPYgcq",
+    "component_headline_yLFpjC",
+    "component_product_card_grid_WNT4fP"
+  ]
+}

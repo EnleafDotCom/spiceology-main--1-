@@ -1,0 +1,69 @@
+<script src="{{ 'component-filter-and-sort.js' | asset_url }}"></script>
+
+<div
+  class="flex border-solid border-b border-black relative"
+>
+    <div class="w-full items-center flex flex-col py-20 px-10">
+      <h6 class="flex text-gray-7 mb-2">
+        {{ search.results_count }} result{% unless search.results_count == 1 %}s{% endunless %}
+      </h6>
+      <h1 class="heading-xl mb-6 flex justify-center text-center">Search results for "{{ search.terms }}"</h1>
+    </div>
+</div>
+
+
+<div
+  class="section-p-b"
+  x-data=filterAndSort
+  x-cloak
+  x-bind="updateForm"
+  x-init="initializeData('{{ search.sort_by }}', 'search', '')"
+>
+  {% comment %} <form class="" x-ref="filter_form">
+    <!-- set x-data for filterPanel -->
+    <div class="bg-grey-light" style="animation: fadeIn 400ms ease-in-out">
+      <h2 id="filter-heading" class="sr-only">Filters</h2>
+      <div aria-labelledby="filter-heading" class="flex justify-between items-center section-p-x pt-1 xl:pt-9 pb-2 md:pb-8">
+        {% render 'collection__filter-toggle' %}
+        {% render 'collection__sort' %}
+      </div>
+      {% render 'collection__filter-panel', , collection: collections['all']  %}
+    </div>
+  </form> {% endcomment %}
+
+  <div id="productGridContainer" class="section-p-x section-container pt-5 transition-opacity duration-300" :class="{'opacity-50': loading }">
+    {% paginate search.results by 30 %}
+      <div class="product-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-10">
+        {% if search.performed %}
+          {% for item in search.results %}
+            {% if item.object_type == 'product' -%}
+              <div class="col-span-1">
+                  {%- render 'product__card', product: item -%}
+              </div>
+            {% else %}
+              <div class="col-span-1">
+                 {% render 'article__card', article: item, class: "" %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% render 'paginate', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</div>
+
+<script>
+  gtag("event", "search", {
+    search_term: {{ search.terms }},
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Search results",
+    "settings": [
+
+    ]
+  }
+{% endschema %}

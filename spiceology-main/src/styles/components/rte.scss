@@ -1,0 +1,193 @@
+.rte {
+  &.legal {
+    color: #1c1307;
+
+    h2 {
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-top: 60px;
+      margin-bottom: 15px;
+      @screen md {
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+
+      @screen md {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &.article {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-top: 60px;
+      margin-bottom: 15px;
+      @screen md {
+        margin-bottom: 20px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+
+      @screen md {
+        font-size: 18px;
+      }
+    }
+    li {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+
+      @screen md {
+        font-size: 18px;
+      }
+
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    figure {
+      margin-bottom: 20px;
+    }
+  }
+
+  &-simple {
+    p {
+      a {
+        text-decoration: underline;
+        position: relative;
+        width: 100%;
+        transition: background 200ms ease-in-out;
+
+        &:hover {
+          @apply bg-yellow-light;
+        }
+      }
+    }
+  }
+
+  &-story {
+    h1,
+    h2,
+    h4,
+    h5 {
+      font-weight: 500;
+    }
+    p {
+      @apply lg:text-18 text-16 lg:leading-150 tracking-4 mb-3;
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    h3 {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 25px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      margin-bottom: 30px;
+
+      @screen md {
+        padding-left: 30px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &-article {
+    @apply text-18 leading-150 tracking-4;
+    color: #1c1307;
+  }
+  &-ingredients {
+    @apply text-18 text-[#1C1307] leading-150 tracking-4;
+    ul {
+      margin-bottom: 18px;
+    }
+    p {
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+  }
+
+  &-steps {
+    h3 {
+      @apply text-30 capitalize leading-100 mb-7.5;
+      &:not(:first-child) {
+        margin-top: 60px;
+        @screen lg {
+          @apply lg:mt-15 mt-10;
+        }
+      }
+    }
+    p {
+      @apply text-18 leading-150 tracking-6;
+      color: #1c1307;
+      padding-left: 48px;
+      position: relative;
+      strong {
+        position: absolute;
+        left: 0;
+        height: 23px;
+        width: 23px;
+        background-color: #fff;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 2px;
+      }
+      margin-bottom: 12px;
+    }
+  }
+  &.product-description {
+    p {
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 20px;
+      list-style: disc;
+      margin-bottom: 10px;
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

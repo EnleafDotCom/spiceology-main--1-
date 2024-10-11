@@ -1,0 +1,14 @@
+{% assign color_1 = product.metafields.custom.periodic_symbol.value.color %}
+{% if product.metafields.custom.periodic_symbol.value.solid_background_color_optional %}
+    {% assign color_2 = product.metafields.custom.periodic_symbol.value.solid_background_color_optional %}
+{% endif %}
+
+<div 
+{% if color_2 %}
+    style="color: {{ color_1 }}; border-color: {{ color_2 }}; background-color: {{ color_2 }}" 
+{% else %}
+    style="color: {{ color_1 }}; border-color: {{ color_1 }}" 
+{% endif %}
+class="font-sans font-500 text-[12px] flex justify-center items-center min-w-[24px] w-[24px] min-h-[24px] h-[24px] border-2">
+    {{ product.metafields.custom.periodic_symbol.value.letters }}
+</div>

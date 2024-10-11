@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "component_header_spacer_fy9nDL": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_jJbaKy": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Find Spiceology Near You",
+        "description": "Please know our product assortment at each store varies and is subject to availability",
+        "alignment": "between"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_store_locator_WMe98B": {
+      "type": "component__store-locator",
+      "settings": {
+        "html": "<div data-map-id=\"161b3966a778a4\" id=\"storepoint-container\"><\/div>\n<script>(function(){var a=document.createElement(\"script\");a.type=\"text\/javascript\";a.async=!0;a.src=\"https:\/\/cdn.storepoint.co\/api\/v1\/js\/161b3966a778a4.js\";var b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(a,b);}());<\/script>"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_fy9nDL",
+    "component_headline_jJbaKy",
+    "main",
+    "component_store_locator_WMe98B"
+  ]
+}

@@ -1,0 +1,128 @@
+{% unless active_variant %}
+	{% assign active_variant = product.selected_or_first_available_variant %}
+{% endunless %}
+
+{% capture product_card_variants %}
+  {% render 'product__hydrate-variants', product: product, active_variant: active_variant %}
+{% endcapture -%}
+
+<div
+  x-data="productForm({{ product_card_variants | strip }}, {{ active_variant.id }})"
+  class="flex flex-col bg-white h-full p-[15px] lg:p-5 rounded-6"
+>
+  <a href="{{ product.url | within: collection }}" class="relative pt-5 group">
+    {% if product.featured_image %}
+      <div class="relative aspect-square w-full">
+        <img src="{{ product.featured_image | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-cover {% if product.metafields.custom.image_for_card != blank %}group-hover:hidden{% endif %}">
+        {% for image in product.images %}
+          <img x-show="reactiveData?.activeVariant?.image?.id == {{ image.id }}" src="{{ image | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-cover {% if product.metafields.custom.image_for_card != blank %}group-hover:hidden{% endif %}">  
+        {% endfor %}
+        {% if product.metafields.custom.image_for_card != blank %}
+          <img src="{{ product.metafields.custom.image_for_card | image_url: width: 1000 }}" class="absolute inset-0 w-full h-full object-cover hidden group-hover:flex">
+        {% endif %}
+      </div>
+     
+     {% else %}
+     <div class="flex justify-center items-center w-full h-full aspect-square object-cover bg-grey-light/50">
+        {{ 'image' |  placeholder_svg_tag }}
+     </div>
+     
+    {% endif %}
+    {% if product.metafields.custom.callout_card != blank %}
+      <span class="font-kremlin body-lg absolute top-0 -left-1.5 body-md transform rotate-[-4deg] w-[70%]">
+        {{ product.metafields.custom.callout_card }}
+      </span>
+    {% endif %}
+  </a>
+  <div class="flex flex-col pt-4">
+    {% assign type = product.type |  handleize %}
+    {% assign product_type = shop.metaobjects.product_type[type] %}
+    <div 
+      style="background-color: {{ product_type.color }}; {% if product_type and product_type.color != '#FFFFFF' %}border-color: {{ product_type.color }};{% else %}border-color: '#181613';{% endif %}" 
+      class="utility-sm text-[9px] uppercase flex items-center h-[15px] px-1 border rounded-2 w-max mb-[5px] {% if product.type == 'Blend' or product.type == 'Veg Powder' %}text-white{% else %}text-black{% endif %}">{{ product.type }}</div>
+    <div class="">
+      <a href="{{ product.url | within: collection }}">
+      <h2 class="heading-sm lg:heading-md {% if product.has_only_default_variant %}pr-16{% endif %}">{{ product.title }}</h2>
+      </a>
+      <div class="flex justify-between gap-2 pb-2.5 relative ">
+        <div class="flex pr-20">
+          {% for option in product.options_with_values %}
+            {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+            {% if option.name != 'Title' and option.name != 'title' %}
+              <div class="pt-2.5">
+                <div class="flex justify-start flex-wrap gap-[5px]">
+                  {% if option.name contains 'color' or option.name contains 'Color' %}
+                    {% render 'product__color-selector',
+                      product: product,
+                      activeVariant: activeVariant,
+                      optionIndex: optionIndex,
+                      option: option,
+                      style: '',
+                      pdp: true,
+                      hideUnavailable: true
+                    %}
+                  {% else %}
+                    {% render 'product__option-selector',
+                      product: product,
+                      activeVariant: activeVariant,
+                      optionIndex: optionIndex,
+                      option: option,
+                      style: '',
+                      pdp: true,
+                      hideUnavailable: true
+                    %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="absolute bottom-2.5 right-0 utility-sm text-[13px]" x-price="reactiveData.activeVariant?.variantPrice"></div>
+      </div>
+     
+      <hr class="h-0.5 w-full">
+      {% if product.metafields.custom.key_ingredients_text and product.type != 'Variety Pack' %}
+        <div class="inline-block pr-2.5 leading-[120%] pt-2">
+          <span class="utility-sm uppercase opacity-75 text-[10px] pr-1.5">Key Ingredients</span>
+          <p class="inline body-md text-[14px] leading-[120%]">{{ product.metafields.custom.key_ingredients_text }}</p>
+        </div>
+      {% endif %}
+      {% if product.metafields.custom.flavors.value != blank %}
+        <ul class="flex flex-wrap items-center gap-[6px] pt-2.5">
+          {% assign overCount = 0 %}
+          {% for flavor in product.metafields.custom.flavors.value %}
+            {% if forloop.index < 4 %}
+            <li class="utility-sm text-[11px] flex justify-center items-center px-2 h-[17px] rounded-[21px] bg-grey">
+              <a href="/collections/{{ flavor.flavor | handleize }}">{{ flavor.flavor }}</a>
+            </li>
+            {% else %}
+              {% assign overCount = overCount | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          {% if overCount > 0 %}
+            <li class="utility-sm text-[11px] flex justify-center items-center h-[17px]">+{{ overCount }}</li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+  <div
+    x-data="{
+      handleAtcClick() {
+        $store.main.addVariant({
+          id: reactiveData.activeVariant.id,
+          openCart: true,
+          quantity: 1,
+        })
+      }
+    }"
+    class="flex flex-col flex-grow justify-end pt-[30px] lg:pt-5"
+  >
+    <button
+      class="button__secondary grey w-full"
+      @click.prevent="handleAtcClick()"
+      x-text="reactiveData.activeVariant.isAvailable ? 'Add To Cart' : 'Sold Out'"
+      :disabled="!reactiveData.activeVariant.isAvailable"
+    ></button>
+  </div>
+</div>

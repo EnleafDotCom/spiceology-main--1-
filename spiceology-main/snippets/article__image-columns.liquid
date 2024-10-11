@@ -1,0 +1,22 @@
+<section class="lg:py-12 py-7.5">
+  {% assign images = article.metafields.accentuate.images.value %}
+  {% assign count = 0 %}
+  {% for image in images %}
+    {% assign count = count | plus: 1 %}
+  {% endfor %}
+  <div class="max-w-[1282] px-15 grid lg:gap-5 gap-3 grid-cols-{{ count }}">
+    {% for image in images %}
+      <div class="md:col-span-1 col-span-full">
+        {% render 'image', 
+          image_desktop: image,  
+          width_desktop: '1000x', 
+          width_mobile: '500x', 
+          ratio_desktop: '120%',
+          ratio_mobile: '120%',
+          lazy: true,
+          image_classes: 'rounded-6' 
+        %}
+      </div>
+    {% endfor %}
+  </div>
+</section>

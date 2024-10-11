@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "content": {
+      "type": "basic-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "content"
+  ]
+}

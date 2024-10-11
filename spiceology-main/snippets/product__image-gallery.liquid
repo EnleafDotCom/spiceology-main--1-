@@ -1,0 +1,746 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('productImages', () => ({
+      zoomed: false,
+      posX: null,
+      posY: null,
+      resetZoom() {
+        this.zoomed = false;
+      },
+      handleImageClick(id, variantId, index) {
+        this.resetZoom();
+        this.activeImageId = id;
+        if (index === 0) {
+          Alpine.store('main').showPDPCoverImage = true
+        } else {
+          Alpine.store('main').showPDPCoverImage = false
+        }
+      },
+      handleNextImage() {
+        this.resetZoom();
+        const currentIndex = this.images.findIndex((image) => image.id === this.activeImageId);
+        if (currentIndex === this.images.length - 1) {
+          this.activeImageId = this.images[0].id;
+          return;
+        }
+        this.activeImageId = this.images[currentIndex + 1].id;
+      },
+      handlePreviousImage() {
+        this.resetZoom();
+        const currentIndex = this.images.findIndex((image) => image.id === this.activeImageId);
+        if (currentIndex === 0) {
+          this.activeImageId = this.images[this.images.length - 1].id;
+          return;
+        }
+        this.activeImageId = this.images[currentIndex - 1].id;
+      },
+      mouseHandler(event) {
+        if (!this.zoomed) return;
+        let posX = event.offsetX;
+        let posY = event.offsetY;
+        this.posX = posX;
+        this.posY = posY;
+      },
+      handleZoomClick() {
+        if (!this.zoomed) {
+        let posX = event.offsetX;
+        let posY = event.offsetY;
+        this.posX = posX;
+        this.posY = posY;
+        this.zoomed = true;
+        } else {
+          this.zoomed = false;
+        }
+      },
+      checkMoreImagesButtonActive() {
+        const activeImageIndex = this.images.findIndex((image) => image.id === this.activeImageId);
+        return activeImageIndex > 5;
+      },
+      images: (() => {
+        const productImages = [
+          {% for image in product.images %}
+            {% assign variantId = 0 %}
+            {% if image.attached_to_variant? %}
+              {% for variant in image.variants %}
+                {% assign variantId = variant.id %}
+              {% endfor %}
+            {% endif %}
+              {
+                id: {{ image.id }},
+                variantId: {{ variantId }},
+                src: '{{ image | img_url: '1000x' }}',
+                mobileSrc: '{{ image | img_url: '100x' }}',
+                zoomSrc: '{{ image | img_url: '7000x' }}',
+                srcset: '{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w',
+                sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px',
+                width: {{ image.width }},
+                height: {{ image.height }},
+                type: 'image',
+                index: {{ forloop.index }}
+              }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ];
+
+        const videos = [
+          {% for media in product.media %}
+            {% if media.media_type == 'video' %}
+              {% assign media_index = forloop.index0 %}
+              {% for source in media.sources %}
+                {% if source.format == 'mp4' %}
+                  {
+                    src: '{{ media.preview_image | img_url: '500x' }}',
+                    mobileSrc: '{{ media.preview_image | img_url: '100x' }}',
+                    id: {{ media.id }},
+                    videoSrc: '{{ source.url }}',
+                    type: 'video',
+                    index: {{ media_index }}
+                  }{% unless forloop.last %},{% endunless %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        ];
+
+        const imagesAndVideos = [...productImages, ...videos].sort((a, b) => a.index - b.index);
+
+        return [...imagesAndVideos];
+      })()
+    }));
+  });
+</script>
+
+<div
+  class="w-full lg:w-[60%] h-full"
+  :class="{'lg:sticky': !showImageModal }"
+  id="product-image-gallery"
+  x-init="$nextTick(() => initTop())"
+>
+  <div class="block h-full overflow-x-hidden" x-data="productImages()">
+    {% assign variant_images_count = 0 %}
+    {% for variant in product.variants %}
+      {% if variant.featured_image %}
+        {% assign variant_images_count = variant_images_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% assign variants_count = product.variants | size %}
+
+    {% comment %} this gallery is for products WITH MORE THAN ONE VARIANT IMAGE {% endcomment %}
+    {% if variant_images_count > 1 %}
+       {% render 'product__image-gallery-modal', product: product, type: 'variant' %} 
+      <!-- Mobile Gallery -->
+      <button-slider
+        data-slider-options='
+          {
+            "breakpoints": {
+              "(max-width: 1024px)": {
+                "mode": "snap",
+                "rtl": false,
+                "loop": true,
+                "slides": { "perView": "1", "spacing": 10 }
+              },
+              "(min-width: 1024px)": {
+                "disabled": true
+              }
+            }
+          }
+        '
+      >
+        <div
+          class="keen-slider flex lg:hidden hover:cursor-grab mb-2.5 lg:mb-4 mx-2.5"
+          x-ref="slides"
+          data-use-index-btns="true"
+        >
+          
+          <template x-for="(image, index) in images">
+            <div>
+              <template x-if="image.type === 'image'">
+                <div x-cloak class="keen-slider__slide">
+                  <img
+                    loading="lazy"
+                    class="w-full aspect-square object-cover rounded-4"
+                    :src="image.src"
+                    :srcset="image.srcset"
+                    :sizes="image.sizes"
+                    :width="image.width"
+                    :height="image.height"
+                  >
+                </div>
+              </template>
+              <template x-if="image.type === 'video'">
+                <div
+                  x-cloak
+                  class="keen-slider__slide"
+                  :data-active-slide="reactiveData.activeVariant.id === image.variantId ? index : null"
+                >
+                  <div
+                    x-data="
+                      {
+                        play: false,
+                        togglePlay() {
+                          this.play = !this.play
+                          this.$refs.video[this.play ? 'play' : 'pause']()
+                        }
+                      }
+                    "
+                    class="relative pt-[100%] w-full h-fit bg-white-warm/90 rounded-4 overflow-hidden flex justify-center"
+                  >
+                    <video
+                      x-ref="video"
+                      class="absolute inset-0 h-full w-full object-cover rounded-4"
+                      :src="image.videoSrc + '#t=0.001'"
+                      x-on:ended="play = false"
+                    ></video>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2"
+                      x-show="!play"
+                    >
+                      Play Video
+                    </button>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2  hover:opacity-100 transition-all duration-200"
+                      x-show="play"
+                    >
+                      Pause Video
+                    </button>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+        <div
+          class="flex flex-nowrap gap-x-2.5 overflow-x-scroll pb-7 lg:pb-4 px-2.5 lg:hidden hide-scrollbars"
+          x-data
+          x-init="
+            $watch('reactiveData.activeVariant.id', (value) => {
+              const activeImage = images.find((image) => image.variantId === value);
+              const variantButton = $el.querySelector('.variant-id-' + value);
+              if (activeImage && variantButton) {
+                variantButton.click();
+              }
+            })
+          "
+        >
+          <template x-for="(image, index) in images">
+            <button
+              class="thumbnail  rounded-2"
+              :style="{ animation: `slideInFromBottom 200ms var(--slide-animation-bezier) ${index}00ms forwards` }"
+              x-ref="image.id"
+              :class="'variant-id-' + image.variantId"
+            >
+              <div class="w-[72px] h-[72px] rounded-2 overflow-hidden">
+                <div class="relative  w-full h-full transition-all duration-300 ease-in-out">
+                  <img class="w-full h-full object-cover transition-all duration-300 ease-in-out" :src="image.mobileSrc"/>
+                  <span
+                    class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    x-show="image.type === 'video'"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
+                      <path opacity="0.8" d="M20.5 11.634C21.1667 12.0189 21.1667 12.9811 20.5 13.366L1.75 24.1913C1.08333 24.5762 0.250001 24.0951 0.250001 23.3253L0.250002 1.67468C0.250002 0.904882 1.08334 0.423756 1.75 0.808656L20.5 11.634Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </button>
+          </template>
+        </div>
+      </button-slider>
+      <!-- Desktop Gallery -->
+      <div class="hidden lg:flex gap-5 relative">
+        <!-- Thumbnails -->
+        <div
+          class="flex justify-center flex-wrap  gap-3 w-full lg:w-[13%] lg:min-w-[13%] mb-6 lg:mb-0"
+          x-data
+          x-show="images.length > 1"
+          x-cloak
+          @keydown.right.prevent.stop="$focus.wrap().next()"
+          @keydown.home.prevent.stop="$focus.first()"
+          @keydown.page-up.prevent.stop="$focus.first()"
+          @keydown.left.prevent.stop="$focus.wrap().prev()"
+          @keydown.end.prevent.stop="$focus.last()"
+          @keydown.page-down.prevent.stop="$focus.last()"
+          x-init="
+            $nextTick(() => {
+              if (!activeImageId) {
+                activeImageId = images[0].id;
+              } 
+            })
+          "
+        >
+          <template x-for="(image, index) in images">
+              <button
+                x-show="index < 5"
+                x-data="{
+                  init(){
+                    $watch('reactiveData.activeVariant.id', (value) => {
+                      if (value === image.variantId) {
+                        activeImageId = image.id;
+                      }
+                    });
+                  }
+                }"
+                :id="image.id"
+                class="rounded-4 hover:cursor-pointer transition-all duration-300 ease-in-out relative  w-full aspect-square outline-offset-1"
+                @mouseenter="handleImageClick(image.id, image.variantId, index)"
+                @focus="handleImageClick(image.id, image.variantId, index)"
+                :tabindex="(index === 0 && $store.main.showPDPCoverImage) || (!$store.main.showPDPCoverImage && activeImageId === image.id) ? 0 : -1"
+                :style="{ animation: `slideInFromBottom 200ms var(--slide-animation-bezier) ${index}00ms forwards` }"
+              >
+                <div
+                  class="relative w-full pt-[100%] transition-all duration-300 ease-in-out rounded-4"
+                  {% comment %} :style="`background-image: url(${image.src})`" {% endcomment %}
+                >
+                  <img class="absolute inset-0 w-full h-full object-cover transition-all duration-300 ease-in-out rounded-4" :src="image.src"/>
+                  <div
+                    class="absolute inset-0 w-full h-full bg-black rounded-4 transition-all duration-150"
+                    :class="((index === 0 && $store.main.showPDPCoverImage) || (!$store.main.showPDPCoverImage && activeImageId === image.id)) ? 'opacity-10' : 'opacity-0'"
+                  ></div>
+                </div>
+              </button>
+          </template>
+          <button
+            class="text-black opacity-90 text-xs leading-4 font-400 font-sans bg-white hover:bg-black hover:text-white transition-all duration-150 rounded-[35px] flex items-center justify-center flex-grow"
+            :class="{'text-white bg-black': checkMoreImagesButtonActive(), 'text-black bg-black/5': !checkMoreImagesButtonActive()}"
+            x-text="'+&nbsp;' + (images.length - 6) + '&nbsp;More'"
+            x-show="images.length > 6"
+            @click="openImageModal"
+          ></button>
+        </div>
+        <!-- Main Gallery -->
+        <div
+          class="flex flex-col  gap-y-[16px] flex-grow "
+          style="animation: slideInFromBottom 450ms var(--slide-animation-bezier) 100ms forwards;"
+        >
+          <template x-for="(image, index) in images">
+            <template x-if="image.type === 'image'">
+              <div
+                x-show="activeImageId === image.id"
+                :data-activeImageId="activeImageId"
+                :data-image="image.id"
+                class="relative w-full bg-gray/20"
+              >
+                <div
+                  class="relative pt-[100%] w-full h-full bg-white-warm/90  rounded-4 overflow-hidden"
+                  :class="zoomed ? 'lg:cursor-zoom-out' : 'lg:cursor-zoom'"
+                  @click="handleZoomClick"
+                  @mousemove="mouseHandler($event)"
+                >
+                  <img
+                    loading="lazy"
+                    alt="{{ product.title }}"
+                    :src="image.src"
+                    :srcset="image.srcset"
+                    :sizes="image.sizes"
+                    class="absolute inset-0 h-full object-cover rounded-4"
+                    draggable="false"
+                    :width="image.width"
+                    :height="image.height"
+                  >
+                  <div
+                    x-show="zoomed"
+                    x-ref="hoverImage"
+                    :style="`background-image: url(${image.zoomSrc}); background-position: ${-posX}px ${-posY}px; background-size: 78vw auto`"
+                    class="hidden lg:block absolute inset-0 w-full h-full rounded-4 bg-center bg-no-repeat"
+                    :width="image.width"
+                    :height="image.height"
+                  ></div>
+                </div>
+              </div>
+            </template>
+          </template>
+          <template x-for="image in images">
+            <template x-if="image.type === 'video'">
+              <div
+                x-show="activeImageId === image.id"
+                x-data="
+                  {
+                    play: false,
+                    togglePlay() {
+                      this.play = !this.play
+                      this.$refs.video[this.play ? 'play' : 'pause']()
+                    }
+                  }
+                "
+                class="relative pt-[100%] flex items-center justify-center w-full h-full bg-white-warm/90  rounded-4 overflow-hidden"
+              >
+                <video
+                  x-ref="video"
+                  class="absolute inset-0 h-full w-full object-cover rounded-4"
+                  :src="image.videoSrc + '#t=0.001'"
+                  x-on:ended="play = false"
+                ></video>
+                <button
+                  @click="togglePlay"
+                  class="absolute button__primary top-1/2 transform -translate-y-1/2"
+                  x-show="!play"
+                >
+                  Play Video
+                </button>
+                <button
+                  @click="togglePlay"
+                  class="absolute button__primary top-1/2 transform -translate-y-1/2  hover:opacity-100 transition-all duration-200"
+                  x-show="play"
+                >
+                  Pause Video
+                </button>
+              </div>
+            </template>
+          </template>
+        </div>
+        {% comment %} <div class="absolute bottom-4 right-4 flex gap-x-2.5" x-show="images.length > 1">
+          <button
+            aria-label="Previous image"
+            class="bg-white/70 hover:bg-white/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center"
+            @click="handlePreviousImage"
+          >
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                <path d="M7 14L0 7L7 0" fill="#4C5F4E"/>
+              </svg>
+            </span>
+          </button>
+          <button
+            aria-label="Next image"
+            class="bg-white/70 hover:bg-white/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center"
+            @click="handleNextImage"
+          >
+            <span class="transform rotate-180 block">
+              <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                <path d="M7 14L0 7L7 0" fill="#4C5F4E"/>
+              </svg>
+            </span>
+          </button>
+        </div> {% endcomment %}
+      </div>
+    {% else %}
+      {% render 'product__image-gallery-modal', product: product, type: 'product' %} 
+      <!-- Mobile Gallery -->
+      <button-slider
+        data-slider-options='
+          {
+            "breakpoints": {
+              "(max-width: 1024px)": {
+                "mode": "snap",
+                "rtl": false,
+                "loop": true,
+                "slides": { "perView": "1", "spacing": 0 }
+              },
+              "(min-width: 1024px)": {
+                "disabled": true
+              }
+            }
+          }
+        '
+      >
+        <div class="pr-2.5">
+        <div
+          x-data
+          x-cloak
+          class="keen-slider flex overflow-x-hidden lg:hidden hover:cursor-grab mb-2.5 lg:mb-4"
+        >
+          {% for media in product.media %}
+            {% if media.media_type == 'image' %}
+              {% assign image = media.image %}
+              <div class="keen-slider__slide w-full">
+                <div class="relative pt-[126%]">
+                  <img
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full object-cover rounded-4"
+                    alt="{{ product.title }}"
+                    src="{{ image | img_url: '800x' }}"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+            {% endif %}
+            {% if media.media_type == 'video' %}
+              {% for source in media.sources %}
+                {% if source.format == 'mp4' %}
+                  <div class="keen-slider__slide w-full">
+                    <div
+                      x-data="
+                        {
+                          play: false,
+                          togglePlay() {
+                            this.play = !this.play
+                            this.$refs.video[this.play ? 'play' : 'pause']()
+                          }
+                        }
+                      "
+                      class="relative pt-[100%] w-full h-fit bg-white-warm/90 rounded-4 overflow-hidden flex justify-center"
+                    >
+                      <video
+                        x-ref="video"
+                        class="absolute inset-0 h-full w-full object-cover rounded-4"
+                        src="{{ source.url }}#t=0.001"
+                        x-on:ended="play = false"
+                      ></video>
+                      <button
+                        @click="togglePlay"
+                        class="absolute button__primary top-1/2 transform -translate-y-1/2"
+                        x-show="!play"
+                      >
+                        Play Video
+                      </button>
+                      <button
+                        @click="togglePlay"
+                        class="absolute button__primary top-1/2 transform -translate-y-1/2  hover:opacity-100 transition-all duration-200"
+                        x-show="play"
+                      >
+                        Pause Video
+                      </button>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+          <!-- Thumbnails -->
+        </div>
+        </div>
+        <div class="flex flex-nowrap gap-x-2 overflow-x-scroll pb-7 lg:pb-4 lg:hidden hide-scrollbars">
+          {% for media in product.media %}
+            {% if media.media_type == 'image' %}
+              {% assign image = media.image %}
+              <button class="thumbnail rounded-2">
+                <div class="w-[60px] h-[60px] rounded-2 overflow-hidden">
+                  <img class="w-full h-full object-cover transition-all duration-300 ease-in-out rounded-2" src="{{ image | image_url: width: 100 }}"/>
+                </div>
+              </button>
+            {% endif %}
+            {% if media.media_type == 'video' %}
+              {% assign image = media.preview_image %}
+              <button
+                class="thumbnail  rounded-2"
+                style="animation: slideInFromBottom 200ms var(--slide-animation-bezier) {{ forloop.index }}00ms forwards;"
+              >
+                <div class="w-[60px] h-[60px] rounded-2 overflow-hidden">
+                  <div class="relative  w-full h-full transition-all duration-300 ease-in-out">
+                    <img class="relative bg-cover w-full h-full transition-all duration-300 ease-in-out rounded-2" src="{{ image | image_url: width: 100 }}" />
+                    <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
+                        <path opacity="0.8" d="M20.5 11.634C21.1667 12.0189 21.1667 12.9811 20.5 13.366L1.75 24.1913C1.08333 24.5762 0.250001 24.0951 0.250001 23.3253L0.250002 1.67468C0.250002 0.904882 1.08334 0.423756 1.75 0.808656L20.5 11.634Z" fill="white"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </button-slider>
+      {% comment %} this gallery is for products WITH ONE OR LESS VARIANT IMAGES {% endcomment %}
+      <!-- Desktop Gallery -->
+      <div
+        class="hidden lg:flex gap-5 relative"
+        x-data="
+          {
+            activeImage: 1,
+            handleNextImage() {
+              if (this.activeImage < $refs.images.children.length) {
+                this.activeImage++;
+              } else {
+                this.activeImage = 1;
+              }
+            },
+            handlePreviousImage() {
+              if (this.activeImage > 1) {
+                this.activeImage--;
+              } else {
+                this.activeImage = $refs.images.children.length;
+              }
+            }
+          }
+        "
+      >
+        <!-- Thumbnails -->
+        <div
+          class="flex justify-start flex-col gap-3 w-[97px] min-w-[97px] mb-6 lg:mb-0"
+          x-data
+          x-show="$refs.images.children.length > 1"
+          x-cloak
+          @keydown.right.prevent.stop="$focus.wrap().next()"
+          @keydown.home.prevent.stop="$focus.first()"
+          @keydown.page-up.prevent.stop="$focus.first()"
+          @keydown.left.prevent.stop="$focus.wrap().prev()"
+          @keydown.end.prevent.stop="$focus.last()"
+          @keydown.page-down.prevent.stop="$focus.last()"
+        >
+          {% for media in product.media %}
+            {% if forloop.index < 5 %}
+            {% if media.media_type == 'image' %}
+              {% assign image = media.image %}
+              <button
+                class="test rounded-4 hover:cursor-pointer transition-all duration-300 ease-in-out relative  w-full aspect-square outline-offset-1"
+                @mouseenter="activeImage = {{ forloop.index }}; resetZoom()"
+                @focus="activeImage = {{ forloop.index }}; resetZoom()"
+                :tabindex="activeImage === {{ forloop.index }} ? 0 : -1"
+                style="animation: slideInFromBottom 200ms var(--slide-animation-bezier) {{ forloop.index }}00ms forwards;"
+              >
+
+                <div
+                  class="relative bg-cover w-full h-full transition-all duration-300 ease-in-out rounded-4 bg-bottom"
+                  {% comment %} style="background-image: url({{ image | img_url: '1000x' }})" {% endcomment %}
+                >
+                  <img class="relative object-cover w-full h-full transition-all duration-300 ease-in-out rounded-4 bg-bottom" src="{{ image | img_url: '1000x' }}" />
+                  {% comment %} <div
+                    class="absolute inset-0 w-full h-full bg-black/50 rounded-4 transition-all duration-150"
+                    :class="activeImage == {{ forloop.index }} ? 'opacity-20' : ''"
+                  ></div> {% endcomment %}
+                </div>
+              </button>
+            {% endif %}
+            {% if media.media_type == 'video' %}
+              {% assign image = media.preview_image %}
+              <button
+                class="rounded-4 hover:cursor-pointer transition-all duration-300 ease-in-out relative  w-full aspect-square outline-offset-1"
+                @mouseenter="activeImage = {{ forloop.index }}; resetZoom()"
+                @focus="activeImage = {{ forloop.index }}; resetZoom()"
+                :tabindex="activeImage === {{ forloop.index }} ? 0 : -1"
+                style="animation: slideInFromBottom 200ms var(--slide-animation-bezier) {{ forloop.index }}00ms forwards;"
+              >
+                <div
+                  class="relative w-full h-full transition-all duration-300 ease-in-out rounded-4 bg-bottom aspect-square"
+
+                >
+                  <img class="relative object-cover w-full aspect-square transition-all duration-300 ease-in-out rounded-4 bg-bottom" src="{{ image | img_url: '1000x' }}" />
+                  <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
+                      <path opacity="0.8" d="M20.5 11.634C21.1667 12.0189 21.1667 12.9811 20.5 13.366L1.75 24.1913C1.08333 24.5762 0.250001 24.0951 0.250001 23.3253L0.250002 1.67468C0.250002 0.904882 1.08334 0.423756 1.75 0.808656L20.5 11.634Z" fill="white"/>
+                    </svg>
+                  </span>
+                  <div
+                    class="w-full h-full bg-black rounded-4 transition-all duration-150"
+                    :class="activeImage == {{ forloop.index }} ? 'opacity-20' : ''"
+                  ></div>
+                </div>
+              </button>
+            {% endif %}
+            {% endif %}
+          {% endfor %}
+          <button
+            class="text-green opacity-90 text-xs leading-4 font-400 font-sans bg-black/5 hover:bg-green hover:text-white transition-all duration-150 rounded-[35px] flex items-center justify-center flex-grow"
+            x-text="'+&nbsp;' + ($refs.images.children.length - 5) + '&nbsp;More'"
+            x-show="$refs.images.children.length > 5"
+            @click="openImageModal"
+          ></button>
+        </div>
+        <!-- Main Gallery -->
+        <div
+          class="flex flex-col gap-y-[16px] flex-grow "
+          style="animation: slideInFromBottom 450ms var(--slide-animation-bezier) 100ms forwards;"
+          x-ref="images"
+        >
+          {% for media in product.media %}
+            {% if media.media_type == 'image' %}
+              {% assign image = media.image %}
+              <div
+                x-show="activeImage == {{ forloop.index }}"
+                aria-label="{{ product.title }} image {{ forloop.index }} of {{ product.images.size }}"
+                :aria-hidden="activeImage != {{ forloop.index }}"
+                class="relative w-full h-full bg-gray/20"
+              >
+                <div
+                  class="relative pt-[100%] w-full h-full bg-white-warm/90 rounded-4 overflow-hidden"
+                  :class="zoomed ? 'lg:cursor-zoom-out' : 'lg:cursor-zoom'"
+                  @click="handleZoomClick"
+                  @mousemove="mouseHandler($event)"
+                >
+                  <img
+                    loading="lazy"
+                    alt="{{ product.title }}"
+                    src="{{ image | img_url: '1000x' }}"
+                    srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
+                    sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
+                    class="absolute inset-0 h-full object-cover rounded-4"
+                    :class="zoomed ? 'w-[175vw]' : 'w-full'"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                    draggable="false"
+                  >
+                  <div
+                    x-show="zoomed"
+                    x-ref="hoverImage"
+                    :style="`background-image: url({{ image | img_url: '7000x' }}); background-position: ${-posX}px ${-posY}px; background-size: 78vw auto`"
+                    class="hidden lg:block absolute inset-0 w-full h-full rounded-4 bg-center bg-no-repeat"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                  ></div>
+                </div>
+              </div>
+            {% endif %}
+            {% assign outer_index = forloop.index %}
+            {% if media.media_type == 'video' %}
+              {% for source in media.sources %}
+                {% if source.format == 'mp4' %}
+                  <div
+                    x-show="activeImage == {{ outer_index }}"
+                    aria-label="{{ product.title }} image {{ outer_index.index }} of {{ product.images.size }}"
+                    :aria-hidden="activeImage != {{ outer_index.index }}"
+                    x-data="
+                      {
+                        play: false,
+                        togglePlay() {
+                          this.play = !this.play
+                          this.$refs.video[this.play ? 'play' : 'pause']()
+                        }
+                      }
+                    "
+                    class="relative pt-[100%] w-full h-full bg-white-warm/90 rounded-4 overflow-hidden flex justify-center"
+                  >
+                    <video
+                      x-ref="video"
+                      class="absolute inset-0 h-full w-full object-cover rounded-4"
+                      src="{{ source.url }}#t=0.001"
+                      x-on:ended="play = false"
+                    ></video>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2"
+                      x-show="!play"
+                    >
+                      Play Video
+                    </button>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2  hover:opacity-100 transition-all duration-200"
+                      x-show="play"
+                    >
+                      Pause Video
+                    </button>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% comment %} <div class="absolute bottom-4 right-4 flex gap-x-2.5" x-show="$refs.images.children.length > 1">
+          <button
+            aria-label="Previous image"
+            class="bg-white/70 hover:bg-white/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center"
+            @click="handlePreviousImage"
+          >
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                <path d="M7 14L0 7L7 0" fill="#4C5F4E"/>
+              </svg>
+            </span>
+          </button>
+          <button
+            aria-label="Next image"
+            class="bg-white/70 hover:bg-white/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center"
+            @click="handleNextImage"
+          >
+            <span class="transform rotate-180 block">
+              <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                <path d="M7 14L0 7L7 0" fill="#4C5F4E"/>
+              </svg>
+            </span>
+          </button>
+        </div> {% endcomment %}
+      </div>
+    {% endif %}
+  </div>
+</div>

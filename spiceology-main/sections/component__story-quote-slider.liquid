@@ -1,0 +1,93 @@
+{{ 'component-story-quote-slider.css' |  asset_url |  stylesheet_tag }}
+
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:pt-35 lg:pb-30 pb-30 pt-45 px-5 opacity-0">
+  <div class="swiper quote-slider">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide text-center">
+          <div class="lg:flex inline-flex mx-auto lg:gap-5 lg:mb-7.5 mb-5 justify-center lg:px-15 px-10">
+            <div class="heading-2xl text-black text-center">{{ block.settings.text }}</div>
+          </div>
+          <div class="text-13 leading-140 tracking-2 text-black-light text-center uppercase">{{ block.settings.name }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next">
+      {% render 'button__slider-next' %}
+    </div>
+    <div class="swiper-button-prev">
+      {% render 'button__slider-prev' %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<script>
+  const quoteSlider = new Swiper(".quote-slider", {
+    slidesPerView: 1,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+</script>
+{% schema %}
+  {
+    "name": "[Story] Quote Slider",
+    "class": "section-story-quote-slider",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Quote Slider",
+        "blocks": [
+          {
+            "type": "slide",
+            "settings": {
+              "text": "I would sprinkle this on my grave",
+              "name": "Bon Appetit"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "text": "I would sprinkle this on my grave",
+              "name": "Bon Appetit"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "text": "I would sprinkle this on my grave",
+              "name": "Bon Appetit"
+            }
+          }
+        ],
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

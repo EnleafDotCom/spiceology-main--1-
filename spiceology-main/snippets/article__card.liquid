@@ -1,0 +1,26 @@
+{% comment %}
+    Renders an article card for a given blog with settings to either show the date or not.
+
+    Accepts:
+    - blog: {Object} Blog object
+    - article: {Object} Article object
+    - show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+    - show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+    Usage:
+    {%- render 'article__card'
+      blog: blog,
+      article: article,
+      show_date: section.settings.show_date
+    -%}
+{% endcomment %}
+
+<article class="{{ class }}" aria-labelledby="Press-{{ article.id }}">
+  <a class="lg:mb-5 mb-2.5 block" href="{{ article.url }}">
+    {% render 'image', image_desktop: article.image, width_desktop: '1000x', width_mobile: '500x', ratio_desktop: '75%', ratio_mobile: '75%', lazy: true, image_classes: 'rounded-6 w-full h-full object-cover' %}
+  </a>
+  <div class="utility-lg lg:mb-2.5 mb-1 opacity-75 uppercase">{{ blog.title }}</div>
+  <a class="block lg:text-30 text-24 leading-100 font-400 mb-2.5 capitalize" href="{{ article.url }}">{{ article.title }}</a>
+  <div class="lg:text-16 text-15 lg:leading-130 tracking-3 lg:mb-6 mb-5">{{ article.metafields.custom.short_description }}</div>
+  <a class="link-underlined" href="{{ article.url }}">Read More</a>
+</article>

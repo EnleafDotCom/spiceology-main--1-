@@ -1,0 +1,38 @@
+<div class="section-p-x pt-[200px] pb-10 bg-grey">
+  <div class="flex flex-col gap-3 md:gap-10 pb-10">
+    <h1 class="heading-3xl pb-2">Header 1</h1>
+    <h2 class="heading-2xl pb-2">Header 2</h2>
+    <h3 class="heading-xl pb-2">Header 3</h3>
+    <h4 class="heading-lg pb-2">Header 4</h4>
+    <h5 class="heading-md pb-2">Header 5</h5>
+    <h6 class="heading-sm pb-2">Header 6</h6>
+    <h6 class="heading-sm pb-2">Header 7</h6>
+    <p class="body-lg pb-2">Body 1</p>
+    <p class="body-sm pb-2">Body 2</p>
+    <p class="utility-lg pb-2">Utility 1</p>
+    <p class="utility-md pb-2">Utility 2</p>
+    <p class="utility-sm pb-2">Utility 3</p>
+    <p class="handwriting pb-2">Handwriting</p>
+    <button class="button__primary">Call to Action</button>
+    <button class="button__primary" disabled>Call to Action</button>
+    <button class="button__secondary">Call to Action</button>
+    <button class="button__secondary" disabled>Call to Action</button>
+    <div class="flex gap-2">
+     {% render 'button__slider-prev' %}
+     {% render 'button__slider-next' %}
+    </div>
+    {% render 'svg__caret' %}
+    <div class="flex flex-col">
+      <label>Label<sup>&#9733;</sup></label>
+      <input class="input__primary" placeholder="Input" />
+    </div>
+    
+
+    
+  </div>
+  <div class="max-w-[250px]">
+    <div class="select__primary-wrapper" x-data="customSelect" x-init="setOptions(['one', 'two', 'three'])">
+      {% render 'input__select', label: 'Test Select', options: categories, classes: 'select__primary absolute' %}
+    </div>
+  </div>
+</div>

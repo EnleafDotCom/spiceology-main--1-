@@ -1,0 +1,82 @@
+{% unless activeVariant %}
+  {% assign activeVariant = product.selected_or_first_available_variant %}
+{% endunless %}
+
+{%- capture productCardVariants -%}
+  {%- render 'product__hydrate-variants', product: product, activeVariant: activeVariant -%}
+{%- endcapture -%}
+
+{% assign portraitImages = '' %}
+{% assign landscapeImages = '' %}
+
+
+{% assign show_bis_form = true %}
+{% for tag in product.tags %}
+  {% if tag == 'bis-hidden' or tag == 'bis-paused' %}
+    {% assign show_bis_form = false %}
+  {% endif %}
+{% endfor %}
+
+<section
+  class="pt-2.5 lg:pt-5 lg:px-5 mb-20"
+  x-init="$store.main.storeRecentProduct('{{ product.handle }}')"
+  x-data="
+    {
+      showImageModal: false,
+      activeImageId: null,
+      showPDPCoverImage: true,
+      openImageModal() {
+        this.showImageModal = true
+        document.body.style.overflow = 'hidden'
+      },
+      closeImageModal() {
+        this.showImageModal = false
+        document.body.style.overflow = 'auto'
+      },
+      getTop() {
+        const headerHeight = document.querySelector('.header-global').getBoundingClientRect().height + 14
+        const windowHeight = window.innerHeight - headerHeight
+        const galleryHeight = document.querySelector('#product-image-gallery').getBoundingClientRect().height
+        if (galleryHeight > windowHeight) {
+          document.querySelector('#product-image-gallery').style.top = `${headerHeight - (galleryHeight - windowHeight) - 14}px`
+        } else {
+          document.querySelector('#product-image-gallery').style.top = `${headerHeight}px`
+        }
+      },
+      initTop() {
+        this.getTop()
+        window.addEventListener('resize', this.getTop)
+      }
+    }
+  "
+>
+  <div class="hidden md:block utility-sm pb-5 text-opacity-50">
+    <a class=" hover:underline" href="/collections/all">Shop all</a>
+    …
+    {% if collection.url %}
+      <a class="hover:underline" href="{{ collection.url }}">
+        {{ collection.title }}
+      </a>
+      …
+    {% endif %}
+    <span class="">
+      {{ product.title }}
+    </span>
+  </div>
+
+  <div
+    x-data="productForm({{ productCardVariants | strip }}, {{ activeVariant.id }}, true)"
+    class="flex flex-col lg:flex-row gap-y-1 gap-x-[5.6%] h-full"
+  >
+    {% render 'product__image-gallery', product: product %}
+    {% render 'product__form', product: product %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "[Product] Hero",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+<section>
+  <div class="pt-10">
+    <div class="relative">
+        <button-slider
+          data-slider-options='{
+            "breakpoints": {
+              "(max-width: 1280px)": {
+                "loop": true,
+                "slides": { "perView": "3", "spacing": 20 }
+              },
+              "(min-width: 1280px)": {
+                "loop": true,
+                "slides": { "perView": "4", "spacing": 20 }
+              },
+              "(max-width: 768px)": {
+                "loop": true,
+                "slides": { "perView": "1.2", "spacing": 10 }
+              }
+            }
+          }'
+        >
+          <div class="flex justify-between items-center px-10 lg:px-5">
+            <div class="heading-xl capitalize mb-8 text-center">{{ section.settings.heading }}</div>
+            <div class="flex justify-between gap-2">
+              {% render 'button__slider-prev', classes: "hidden lg:flex" %}
+              {% render 'button__slider-next', classes: "hidden lg:flex" %}
+            </div>
+          </div>
+          
+          <div class="keen-slider flex mx-2.5 lg:mx-5">
+              <div class="flex">
+              {% for tag in article.tags %}
+                {% if tag contains 'product_' %}
+                    {% assign product_handle = tag | remove: 'product_' %}
+                    {% assign product = all_products[product_handle] %}
+                    <div class="keen-slider__slide">
+                        {%- render 'product__card', product: product -%}
+                    </div>
+                {% endif %}
+              {% endfor %}
+              </div>
+          </div>
+        </button-slider>
+    </div>
+  </div>
+</section>
+
+{% schema %}  
+    {
+        "name": "Recipe Product Carousel",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Recipe Products"
+            }
+        ],
+      
+        "presets": [
+            {
+            "name": "Recipe Product Carousel",
+            "category": "Custom"
+            }
+        ]
+    }
+{% endschema %} 

@@ -1,0 +1,96 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-12 py-9 lg:px-5 opacity-0">
+  <div class="heading-xl capitalize lg:text-left text-center lg:px-0 px-2.5 lg:mb-8 mb-7.5">{{ section.settings.heading }}</div>
+  <div class="lg:grid lg:grid-cols-3 lg:gap-5 gap-2.5 flex overflow-scroll no-scrollbar snap-x snap-mandatory scroll-pl-2.5">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.collection.url }}" class="snap-start lg:col-span-1 lg:min-w-auto min-w-[66.66%] block relative group {% if forloop.index == 1 %} lg:ml-0 ml-2.5 {% endif %} {% if forloop.index == section.blocks.size %} lg:mr-0 mr-2.5 {% endif %}" href="{{ block.settings.url }}">
+        {% render 'image', 
+          image_desktop: block.settings.collection.image,  
+          image_mobile: block.settings.collection.image, 
+          width_desktop: '1000x', 
+          width_mobile: '500x', 
+          ratio_desktop: '75%',
+          ratio_mobile: '75%',
+          lazy: true,
+          image_classes: 'rounded-6 group-hover:p-2.5 bg-white !transition-all' 
+        %}
+        <div class="p-7.5 group-hover:top-[calc(50%-20px)] transition-all flex gap-2 heading-xl capitalize text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-full text-center">
+          <span>{{ block.settings.collection.title | replace: '/', ' / ' }}</span>
+          <span class="utility-lg min-w-max relative h-7.5 flex items-center">{{ block.settings.collection.products.size }}</span>
+        </div>
+        <div class="opacity-0 group-hover:opacity-100 transition-all body-md text-white font-sans border-b border-white absolute bottom-9 left-1/2 -translate-x-1/2">Shop Now</div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "[Home] Collection List",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Collection",
+        "type": "collection",
+        "settings": [ 
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Collection List",
+        "blocks": [
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "herbs"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "modernist"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "spices"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "salts"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection": "chiles"
+            }
+          }
+        ],
+        "settings": {
+          "heading": "Shop By Cuisine"
+        }
+      }
+    ]
+  }
+{% endschema %}

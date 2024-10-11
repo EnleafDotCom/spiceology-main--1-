@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "MeatEater x Spiceology",
+        "content": "“After working my ass off in the mountains to bring home some meat, the last thing I want to do is come home and screw it up with the wrong seasonings. There isn’t a critter alive that one of these blends won’t work for.” - Steven Rinella",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/DTC-MeatEater_7_Pack_LS.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "meateater",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Sasquatch BBQ",
+        "text": "<p>A James Beard Foundation-nominated Netflix show that’s in its ninth season, the largest podcast network dedicated to hunting and fishing in the world and a best-selling cookbook, MeatEater inspires people across the globe.<\/p><p>Founded by Steven Rinella with the belief that a deeper understanding of the natural world enriches our lives, MeatEater is dedicated to providing entertaining and educational hunting, fishing, conservation, and cooking advice… and to quote them… “they have a damn good time doing it.”<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

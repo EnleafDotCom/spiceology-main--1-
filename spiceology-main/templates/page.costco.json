@@ -1,0 +1,162 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_EVNraW": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Costco Exclusive",
+        "description": "",
+        "alignment": "between"
+      }
+    },
+    "component_rich_image_6qqCTU": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_xxfkDw": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/costco-korean-bbq.png",
+            "heading": "Korean BBQ",
+            "description": "Put on the K-Pop and get ready to rev up your ramen… stir fry… rice… you get it.",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_bMziNm": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/costco-greek-freak_d1c1b4a2-aaa1-4cf4-ae1b-f18bf27f0637.png",
+            "heading": "Greek Freak",
+            "description": "An aromatic, herbaceous,\nput-it-on-everything Mediterranean blend.",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_Y8Ltmi": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/costco-prime-rib.png",
+            "heading": "Prime Rib",
+            "description": "Keep me on the counter for when\nyou need a savory, steakhouse-style\nseasoning.",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__secondary"
+          }
+        }
+      },
+      "block_order": [
+        "image_xxfkDw",
+        "image_bMziNm",
+        "image_Y8Ltmi"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "Korean BBQ",
+        "description": "Put on the K-Pop and get ready to rev up your ramen… stir fry… rice… you get it.",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "home_video_text_without_button_TxbVTy": {
+      "type": "home-video-text-without-button",
+      "settings": {
+        "heading": "Add Some Korean BBQ to That Costco Haul",
+        "description": "Our best-seller and fan-favorite Korean BBQ blend is now available at select Costcos across the nation. Salmon, green beans, stir frys, nuts, ribs – this mouthwatering mix of tamari, sesame, chili flake, and orange peel add a delicious kick to any dish.",
+        "video": "shopify:\/\/files\/videos\/V4 16x9 Grilling Center Ad (1).mp4"
+      }
+    },
+    "component_store_locator_8AAVRL": {
+      "type": "component__store-locator",
+      "settings": {
+        "html": "<div id=\"storepoint-container\" data-tags=\"costco prime rib,costco greek freak,costco korean bbq\" data-map-id=\"161b3966a778a4\"><\/div><script>(function(){var a=document.createElement(\"script\");a.type=\"text\/javascript\";a.async=!0;a.src=\"https:\/\/cdn.storepoint.co\/api\/v1\/js\/161b3966a778a4.js\";var b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(a,b);}());<\/script><style><\/style>"
+      }
+    },
+    "component_home_recipe_slider_8KM9wf": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_yRjrNF": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-bbq-brussels-sprouts"
+          }
+        },
+        "article_hMcLTj": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-bbq-st-louis-style-ribs"
+          }
+        },
+        "article_T93DeW": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/slow-cooker-butter-chicken"
+          }
+        },
+        "article_BG6nJQ": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-bbq-cauliflower-fried-rice"
+          }
+        }
+      },
+      "block_order": [
+        "article_yRjrNF",
+        "article_hMcLTj",
+        "article_T93DeW",
+        "article_BG6nJQ"
+      ],
+      "settings": {
+        "title": "Recipe Inspiration",
+        "product": "smoky-honey-habanero-seasoning",
+        "eyebrow": "PRO TIP",
+        "description": "We get it, I mean who doesn’t love cocktail wieners. WE love cocktail wieners."
+      }
+    },
+    "home_video_text_without_button_gE4jAQ": {
+      "type": "home-video-text-without-button",
+      "settings": {
+        "heading": "Meet Our Founders",
+        "description": "From Spokane, WA farmer’s market roots to the aisles of Costco, learn about the evolution of Spiceology from our Founders, Heather Scholten and Pete Taylor.",
+        "video": "shopify:\/\/files\/videos\/Alt Coscto-SHH (1).mp4"
+      }
+    },
+    "component_header_spacer_9PdJXc": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_headline_EVNraW",
+    "component_rich_image_6qqCTU",
+    "home_video_text_without_button_TxbVTy",
+    "component_store_locator_8AAVRL",
+    "component_home_recipe_slider_8KM9wf",
+    "home_video_text_without_button_gE4jAQ",
+    "component_header_spacer_9PdJXc",
+    "main"
+  ]
+}

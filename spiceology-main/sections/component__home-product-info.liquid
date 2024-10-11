@@ -1,0 +1,146 @@
+{% assign type = section.settings.product.type |  handleize %}
+{% assign product_type = shop.metaobjects.product_type[type] %}
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-18 py-16 2xl:px-19 px-5 opacity-0">
+  <div class="heading-2xl capitalize lg:mb-6 mb-5 text-center">{{ section.settings.heading }}</div>
+  <div class="rounded-6 bg-white lg:min-h-[700px] relative lg:block flex flex-col-reverse">
+    <div class="flex flex-col justify-center lg:px-16 lg:max-w-[580px] w-full h-full z-10 relative lg:py-24 px-5 py-5">
+      <div class="flex lg:pb-7 pb-4 border-b flex-col">
+        <div style="background-color: {{ product_type.color }}; {% if product_type and product_type.color != '#FFFFFF' %}border-color: {{ product_type.color }};{% else %}border-color: '#181613';{% endif %}"  class="w-fit utility-sm px-1.5 py-1 rounded-2 uppercase lg:mb-2 mb-1 {% if section.settings.product.type == 'Blend' or section.settings.product.type == 'Veg Powder' %}text-white{% else %}text-black{% endif %}">{{ section.settings.product.type }}</div>
+        <div class="heading-xl font-500 capitalize lg:mb-5 mb-2.5">{{ section.settings.product.title }}</div>
+        <div class="body-md">{% if section.settings.description != blank %}{{ section.settings.description }}{% else %}{{ section.settings.product.metafields.custom.short_description }}{% endif %}</div>
+      </div>
+      {% if section.settings.product.metafields.custom.key_ingredients_detail != blank or section.settings.product.metafields.custom.key_ingredients_not_products_detail != blank %}
+      <div class="flex pt-4 lg:pb-7 pb-4 flex-col gap-3 border-b">
+        <div class="utility-lg">KEY INGREDIENTS</div>
+        <div 
+          x-data="{
+              key_ingredients: [
+                  {% for product in section.settings.product.metafields.custom.key_ingredients_detail.value %}
+                      {
+                          title: '{{ product.title }}',
+                          {% if product.metafields.custom.periodic_symbol.value.color %}
+                            {% if product.metafields.custom.periodic_symbol.value.solid_background_color_optional %}
+                              periodic_color: '{{ product.metafields.custom.periodic_symbol.value.solid_background_color_optional }}',
+                            {% else %}
+                              periodic_color: '{{ product.metafields.custom.periodic_symbol.value.color }}',
+                            {% endif %}
+                          {% endif %}
+                          {% if product.metafields.custom.periodic_symbol.value.letters %}
+                              periodic_letters: '{{ product.metafields.custom.periodic_symbol.value.letters }}',
+                          {% endif %}
+                      },
+                  {% endfor %}
+                  {% for product in section.settings.product.metafields.custom.key_ingredients_not_products_detail.value %}
+                      {
+                          title: '{{ product.name }}'
+                      },
+                  {% endfor %}
+              ],
+              orderIngredients() {
+                  this.key_ingredients.sort((a, b) => a.title.localeCompare(b.title));
+              }
+          }"
+          x-init="orderIngredients()"
+        >
+          <ul class="grid grid-cols-2">
+              <template x-for="ingredient in key_ingredients" :key="ingredient.title">  
+                  <li class="flex items-center gap-2 pb-2.5 col-span-1">
+                      <div :style="`color: ${ingredient.periodic_color}; border-color: ${ingredient.periodic_color};`" :class="ingredient.periodic_color === undefined && 'opacity-0'" class="font-sans font-500 text-[12px] tracking-[-0.12px] flex justify-center items-center min-w-[24px] h-6 px-0.5 border-2" x-text="ingredient.periodic_letters"></div>
+                      <span x-text="ingredient.title"></span>
+                  </li>
+              </template>
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      
+      <div class="lg:py-5 py-4 flex flex-col items-start gap-y-2 border-b">
+        {% if section.settings.product.metafields.custom.flavors.value %}
+          <div class="flex items-start">
+            <span class="body-md w-[86px]">Flavors:</span>
+            <ul class="flex items-center gap-2.5 flex-wrap gap-y-1 pt-[3px]">
+              {% for flavor in section.settings.product.metafields.custom.flavors.value %}
+                <li class="utility-lg flex justify-center items-center px-2 h-[17px] rounded-[21px] bg-grey">
+                  <a href="/collections/{{ flavor.flavor |  handleize }}">{{ flavor.flavor }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% if section.settings.product.metafields.custom.good_on_items.value %}
+          <div class="flex items-start">
+            <span class="body-md w-[86px] min-w-[86px]">Good on:</span>
+            <ul class="flex items-center gap-2.5 flex-wrap gap-y-1">
+              {% for item in section.settings.product.metafields.custom.good_on_items.value %}
+                <li class="body-md flex justify-center items-center">
+                  {{ item.title }}{% unless forloop.last %},{% endunless %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+      <div class="lg:pt-6 pt-5">
+        <a class="button__primary px-20 lg:w-auto w-full" href="{{ section.settings.product.url }}">Shop Now</a>
+      </div>
+    </div>
+    <div class="relative lg:absolute z-0 w-full h-auto  {% if section.settings.inset %}p-5 lg:p-0 lg:h-[calc(100%-40px)] lg:top-5 lg:right-5 lg:w-[calc(100%-600px)] {% else %} lg:top-0 lg:right-0 lg:w-[calc(100%-620px)] lg:h-full {% endif %}">
+      {% render 'image', 
+        image_desktop: section.settings.image,  
+        image_mobile: section.settings.image,  
+        width_desktop: '1000x', 
+        width_mobile: '500x', 
+        lazy: true,
+        image_classes: 'relative lg:absolute lg:h-full w-full object-cover rounded-6' 
+      %}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "[Home] Product Info",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Aspect: 1x1, Min Width: 3000px, File Type: JPG/PNG/GIF/MP4"
+      },
+      {
+        "type": "checkbox",
+        "id": "inset",
+        "label": "Inset Image?",
+        "info": "Check if image does not have white background",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+        "info": "Limit to 200 characters / no more than 4 lines of text on desktop."
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Product Info",
+        "settings": {
+          "heading": "Featured Flavor",
+          "image": "shopify:\/\/shop_images\/Group_4216.png",
+          "product": "tomatador-mediterranean-seasoning",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+        }
+      }
+    ]
+  }
+{% endschema %}

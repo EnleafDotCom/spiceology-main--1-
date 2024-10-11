@@ -1,0 +1,10 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="opacity-0">
+  <div>
+    {% for block in section.blocks %}
+      {%- case block.type -%}
+        {%- when '@app' -%}
+          {% render block %}
+      {%- endcase -%}
+    {% endfor %}
+  </div>
+</section>

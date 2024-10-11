@@ -1,0 +1,102 @@
+<div
+    class="search-recommendations bg-light text-black rounded "
+    x-show="results && window.innerWidth >= 1024"
+    x-collapse
+  >
+    <div class="w-full opacity-0 p-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-0 bg-grey-light mt-[-1px]" :style="results ? 'animation: fadeIn 200ms ease-in-out 150ms forwards' : 'animation: fadeOut 150ms ease-in-out forwards'">
+    <div
+      class="py-0 md:py-5"
+      x-show="!results?.products.length && !results?.articles.length"
+    >
+      <span class="heading-sm">No Results Found</span>
+    </div>
+    {% comment %} <div
+      class="py-0 md:py-5"
+      x-show="results?.queries.length"
+    >
+      <div class="text-black text-opacity-40 mb-4   ">
+        Suggestions
+      </div>
+      <template x-for="querySuggestion in results?.queries">
+        <a
+          class="text-base tracking-2pc my-2 font-sans block"
+          :href="querySuggestion.url"
+          x-html="querySuggestion.styled_text"
+        ></a>
+      </template>
+    </div> {% endcomment %}
+
+    <div
+      class="md:col-span-2 border-t md:border-t-0 border-black pt-4 pb-16 md:py-5"
+      x-show="results?.products.length"
+    >
+      <h6 class="utility-lg uppercase text-black/50 mb-4">
+        Products
+      </h6>
+      <div class="grid grid-cols-6">
+        <div class="col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5 xl:gap-5">
+          <template x-for="product in results?.products?.slice(0, 3)">
+            <a
+              class="flex flex-row sm:flex-col gap-3 bg-white rounded-6 p-4"
+              :href="product.url"
+            >
+              <img
+                class="aspect-5/6 object-cover object-center rounded overflow-hidden w-13 sm:w-auto"
+                :src="product.featured_image.url"
+                :width="product.featured_image.width"
+                :height="product.featured_image.height"
+                :alt="product.featured_image.alt"
+                loading="lazy"
+              >
+              <div>
+                <h3
+                  class="heading-sm mb-1"
+                  x-text="product.title"
+                ></h3>
+                <template x-for="subtitle in (product.subtitles ?? [])">
+                  <h4
+                    class=" text-black text-opacity-75 mb-1"
+                    x-text="subtitle"
+                  ></h4>
+                </template>
+              </div>
+            </a>
+          </template>
+        </div>
+      </div>
+      
+    </div>
+  
+    <div
+      class="md:pl-4 lg:pl-8 mt-4 md:mt-0 pt-4 pb-0 md:py-5"
+      x-show="results?.articles.length"
+    >
+      <h6 class="utility-lg uppercase text-black/50 mb-4">
+        Recipes
+      </h6>
+      <div class="grid grid-cols-1 gap-2.5 xl:gap-10">
+        <template x-for="article in results?.articles?.slice(0, 1)">
+          <a
+            class="flex flex-col gap-3 w-[13.8vw] group"
+            :href="article.url"
+          >
+            <img
+              class="rounded-6 aspect-[1.28] object-cover overflow-hidden"
+              :src="article.featured_image.url"
+              :width="article.featured_image.width"
+              :height="article.featured_image.height"
+              :alt="article.featured_image.alt"
+              loading="lazy"
+            >
+            <div>
+              <h3
+                class="heading-sm group-hover:bg-yellow-light w-max transition-colors duration-200 ease"
+                x-text="article.title"
+              ></h3>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div> 
+    </div>
+  </div>

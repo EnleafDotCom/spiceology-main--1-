@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_g9iTGq": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Press",
+        "description": "Founded in 2012, Spiceology has been making headlines ever since",
+        "alignment": "between"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_press_bt38Qf": {
+      "type": "component_press",
+      "settings": {
+        "blog": "press"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_headline_g9iTGq",
+    "main",
+    "component_press_bt38Qf"
+  ]
+}

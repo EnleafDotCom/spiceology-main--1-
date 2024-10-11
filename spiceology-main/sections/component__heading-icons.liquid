@@ -1,0 +1,117 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="opacity-0 section-p-b {{ section.settings.padding_bottom }}">
+    <div class="flex flex-col items-center text-center">
+        <h2 class="heading-lg md:heading-2xl px-12 pb-6 md:pb-16">{{ section.settings.heading }}</h2>
+        <div class="grid grid-cols-2 gap-y-10 gap-x-5 lg:flex lg:justify-between w-full px-5 md:px-[7vw]">
+            {% for block in section.blocks %}
+                <div class="flex flex-col items-center lg:max-w-[215px]">
+                    <img src="{{ block.settings.image | img_url: '500x' }}" class="w-full aspect-square object-cover mb-4">
+                    <h6 class="heading-md pb-2.5">{{ block.settings.title }}</h6>
+                    <p class="utility-md">{{ block.settings.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}  
+    {
+        "name": "Heading + Icons",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "select",
+                "id": "padding_bottom",
+                "label": "Padding Bottom",
+                "default": "medium",
+                "options": [
+                    {
+                        "value": "small",
+                        "label": "Small"
+                    },
+                    {
+                        "value": "medium",
+                        "label": "Medium"
+                    },
+                    {
+                        "value": "large",
+                        "label": "Large"
+                    }
+                ]
+            }
+        ],
+        "blocks": [
+            {
+                "type": "image",
+                "name": "Image",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image",
+                        "info": "Aspect Ratio: 1x1 | Min Width: 500px | File Type: PNG"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "content",
+                        "label": "Content"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "category": "Content",
+                "name": "Heading + Icons",
+                "settings": {
+                    "heading": "the Benefits for Pro Chefs"
+                },
+                "blocks": [
+                    {
+                        "type": "image",
+                        "settings": {
+                            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_3_4d87018a-e3ca-434a-807d-6124589d6181.png?v=1724511216",
+                            "title": "Quick Order Tools",
+                            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        }
+                    },
+                    {
+                        "type": "image",
+                        "settings": {
+                            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_d38748b3-b87a-4974-bdad-9f4f846dacf2.png?v=1724511216",
+                            "title": "Free Shipping",
+                            "content": "On Orders $99. Lorem Ipdum dolor siet amet."
+                        }
+                    },
+                    {
+                        "type": "image",
+                        "settings": {
+                            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_2_1.png?v=1724511216",
+                            "title": "Payment Terms",
+                            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at nunc nec purus."
+                        }
+                    },
+                    {
+                        "type": "image",
+                        "settings": {
+                            "image": "shopify:\/\/shop_images\/Screenshot_2024-05-21_at_11.59_4.png?v=1724511216",
+                            "title": "1-Click Reordering",
+                            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                        }
+                    }
+                ]
+            }
+        ],
+        "enabled_on": {
+            "templates": ["index", "page"]
+        }
+    }
+{% endschema %}

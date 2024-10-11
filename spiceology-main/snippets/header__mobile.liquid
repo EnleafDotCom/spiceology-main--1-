@@ -1,0 +1,189 @@
+{% assign first_tab_menu = section.settings.first_dropdown_tab_menu_mobile %}
+{% assign second_tab_menu = section.settings.second_dropdown_tab_menu_mobile %}
+
+<div class="w-full flex flex-col xl:hidden">
+  <div 
+    {% if section.settings.header_style == 'transparent' %}
+    :class="{ 
+      'bg-white': $store.main.isScrolled || (!$store.main.homepage && !$store.main.isScrolled && !$store.main.isMobileNavOpen)
+    }"
+    {% endif %}
+    class="flex-1 flex flex-row items-center min-h-[60px] h-[60px] z-[2000] px-4 {% unless section.settings.header_style == 'transparent' %}bg-white{% endunless %}"
+  >
+    <div class="flex flex-1 items-center">
+      <button
+        @click="$store.main.toggleMobileNav()"
+        type="button"
+        :aria-expanded="$store.main.isMobileNavOpen"
+        aria-controls="mobile-nav"
+        aria-label="Open Mobile Navigation"
+      >
+        <span x-show="!$store.main.isMobileNavOpen" x-cloak>
+          {% render 'svg__mobile-menu' %}
+        </span>
+        <span x-show="$store.main.isMobileNavOpen" x-cloak>
+          {% render 'svg__close' %}
+        </span>
+      </button>
+    </div>
+    <a href="/" aria-label="Messermeister">
+      {% render 'svg__main-logo', class: 'h-7' %}
+    </a>
+    <div class="flex justify-end items-center flex-1 text-right">
+      <button @click="$store.main.toggleMobileSearch()" class="search pr-[18px]">
+        <i x-show="!$store.main.isMobileSearchOpen">{% render 'svg__magnifying-glass-mobile' %}</i>
+        <i x-show="$store.main.isMobileSearchOpen">{% render 'svg__close' %}</i>
+      </button>
+      <button
+        class="cart-icon"
+        @click="$store.main.setMiniCartOpen(true)"
+        type="button"
+        :aria-expanded="$store.main.isMiniCartOpen"
+        aria-controls="cart"
+        :aria-label="'Cart with ' + $store.main.cart?.item_count + ' items'"
+      >
+        {% render 'svg__cart' %}
+      </button>
+    </div>
+  </div>
+  <hr x-show="$store.main.isMobileNavOpen || $store.main.isMobileSearchOpen" class="absolute top-[calc(var(--nav-height)-1px)] left-[10px] w-[calc(100%-20px)] h-[1px] z-[2001] text-black"/>
+
+  <nav
+    id="mobile-nav"
+    x-cloak
+    x-data="{
+      menu: null,
+      level1: null,
+      level2: null,
+    }"
+    x-show="$store.main.isMobileNavOpen"
+    x-collapse
+    x-trap="$store.main.isMobileNavOpen"
+    @keydown.escape.prevent.stop="$store.main.toggleMobileNav()"
+    class="h-screen-nav fixed top-0 z-header max-w-full bg-white w-full flex flex-col justify-between overflow-hidden px-2.5 pb-5"
+  >
+    <div class="opacity-0" :style="$store.main.isMobileNavOpen ? 'animation: fadeIn 200ms ease-in-out 150ms forwards' : 'animation: fadeOut 150ms ease-in-out forwards'">
+      <div class="mt-[var(--nav-height)]">
+        <ul class="flex flex-col">
+          <li>
+            <button 
+              @click="openedMobileMenu = '{{ section.settings.first_dropdown_tab_label }}'"
+              :aria-expanded="openedMobileMenu == '{{ section.settings.first_dropdown_tab_label}}'"
+              :aria-controls="'child-mobile-menu-' + '{{ section.settings.first_dropdown_tab_label }}'"
+              class="heading-md px-2.5 flex justify-between items-center w-full py-5 border-b border-black"
+            >
+              <span>{{ section.settings.first_dropdown_tab_label }}</span>
+              <span class="">{% render 'svg__chevron-side' %}</span>
+            </button>
+          </li>
+          <li>
+            <button
+              @click="openedMobileMenu = '{{ section.settings.second_dropdown_tab_label }}'"
+              :aria-expanded="openedMobileMenu == '{{ section.settings.second_dropdown_tab_label }}'"
+              :aria-controls="'child-mobile-menu-' + '{{ section.settings.second_dropdown_tab_label }}'"
+              class="heading-md px-2.5 flex justify-between items-center w-full py-5 border-b border-black"
+            >
+              <span>{{ section.settings.second_dropdown_tab_label }}</span>
+              <span class="">{% render 'svg__chevron-side' %}</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% render 'header__right-tabs-mobile' %}
+    <div
+      :class="!!openedMobileMenu ? 'translate-x-0' : 'translate-x-full'"
+      class="fixed w-full left-0 top-nav transition-transform duration-300 transform-gpu pb-safari h-screen-nav bg-white px-2.5 overflow-y-scroll"
+    >
+      {% render 'header__first-tab-mobile-menu', first_tab_menu: first_tab_menu %}
+      {% render 'header__second-tab-mobile-menu', second_tab_menu: second_tab_menu %}
+    </div>
+    <div class="flex flex-col gap-5 pt-7 px-[6px]">
+      <img class="w-full aspect-[1.64] object-cover rounded-4" src="{{ section.settings.mobile_featured_promo_card_image | img_url: '500x' }}" alt="{{ section.settings.mobile_featured_promo_card_image.alt }}" class="w-full">
+      <a href="{{ section.settings.first_dropdown_tab_large_cta_link }}" class="button w-full">{{ section.settings.first_dropdown_tab_large_cta_text }}</a>
+    </div>
+  </nav>
+
+  <form
+    action="{{ routes.search_url }}" autocomplete="off"
+    class="search-dropdown fixed top-0 z-header max-w-full bg-grey-light w-full overflow-hidden px-3"
+    x-show="$store.main.isMobileSearchOpen"
+    x-collapse
+    x-trap="$store.main.isMobileSearchOpen"
+    @keydown.escape.prevent.stop="$store.main.toggleMobileSearch()"
+  >
+    <div class="w-full h-[calc(var(--nav-height))]"></div>
+    <div class="max-h-[calc(100vh-(var(--nav-height)))] overflow-y-scroll hide-scrollbars">
+      <div  class="flex items-end w-full py-5">
+        <div class="relative w-full">
+          <i class="absolute top-1/2 left-2.5 transform -translate-y-1/2 z-10">
+            {% render 'svg__magnifying-glass' %}
+          </i>
+          <input
+            x-ref="query"
+            class="input__primary utility-lg uppercase w-full px-7 rounded-2"
+            type="text"
+            placeholder="Search..."
+            name="q"
+            @focus="search_focused = true"
+            @input.debounce="search()"
+            x-model="query"
+          >
+        </div>
+      </div>
+      <div x-collapse x-show="results && window.innerWidth < 1023" class="search-recommendations bg-light text-black rounded">
+        <div class="w-full opacity-0 py-4 grid grid-cols-1 gap-[30px] bg-grey-light pb-5" :style="results ? 'animation: fadeIn 200ms ease-in-out 150ms forwards' : 'animation: fadeOut 150ms ease-in-out forwards'">
+          <div x-show="!results?.queries.length" class="">
+            <span class="heading-sm">No Results Found</span>
+          </div>
+          <div x-show="results?.products.length" class="pt-4">
+            <h6 class="utility-lg uppercase text-black/50 mb-2.5">
+              Products
+            </h6>
+            <div class="grid grid-cols-2 gap-2.5">
+              <template x-for="product in results?.products?.slice(0, 3)">
+                <a :href="product.url" class="flex flex-col bg-white rounded-6">
+                  <img
+                    class="aspect-5/6 object-cover object-center rounded overflow-hidden w-full"
+                    :src="product.featured_image.url"
+                    :width="product.featured_image.width"
+                    :height="product.featured_image.height"
+                    :alt="product.featured_image.alt"
+                    loading="lazy"
+                  >
+                  <div class="px-3 pb-3">
+                    <h3 x-text="product.title" class="heading-xs text-14"></h3>
+                    <template x-for="subtitle in (product.subtitles ?? [])">
+                      <h4 x-text="subtitle" class="text-black text-opacity-75 mt-1"></h4>
+                    </template>
+                  </div>
+                </a>
+              </template>
+            </div>
+          </div>
+          <div x-show="results?.articles.length">
+            <h6 class="utility-lg uppercase text-black/50 mb-2.5">
+              Recipes
+            </h6>
+            <div class="grid grid-cols-2 gap-2.5">
+              <template x-for="article in results?.articles?.slice(0, 1)">
+                <a :href="article.url" class="flex flex-col gap-3 group">
+                  <img
+                    class="rounded-6 aspect-[1.28] object-cover overflow-hidden"
+                    :src="article.featured_image.url"
+                    :width="article.featured_image.width"
+                    :height="article.featured_image.height"
+                    :alt="article.featured_image.alt"
+                    loading="lazy"
+                  >
+                  <h3 x-text="article.title" class="heading-xs text-14"></h3>
+                </a>
+              </template>
+            </div>
+          </div> 
+          <button type="submit" class="button__primary w-full">View All Results</button>
+        </div>
+      </div>  
+    </div>
+  </form>
+</div>

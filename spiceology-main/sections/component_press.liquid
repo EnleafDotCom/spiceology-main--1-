@@ -1,0 +1,31 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:px-5 px-2.5 opacity-0">
+
+  {% paginate section.settings.blog.articles by 50 %}
+  <div class="lg:pt-5 pt-2.5 pb-35 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-5 lg:gap-y-12 gap-y-10">
+    {% for article in section.settings.blog.articles  %}
+      {% render 'press__card', article: article, class: "" %}
+    {% endfor %}
+  </div>
+
+  {% render 'paginate', paginate: paginate %}
+  {% endpaginate %}
+</section>
+
+{% schema %}
+{
+  "name": "Press",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,68 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="md:p-15 opacity-0">
+  <div class="max-w-[1280px] mx-auto relative">
+    {% render 'image', image_desktop: section.settings.image, width_desktop: '2000x', width_mobile: '800x',  ratio_desktop: '75%', ratio_mobile: '75%', lazy: true, image_classes: 'lg:rounded-6' %}
+    <div class="py-5 px-6 absolute 
+      {% if section.settings.position == "top-left" %} md:top-10 md:-left-10 md:bottom-auto md:right-auto {% endif %}
+      {% if section.settings.position == "top-right" %} md:top-10 md:-right-5  md:bottom-auto md:left-auto  {% endif %}
+      {% if section.settings.position == "bottom-left" %} md:bottom-10 md:-left-10  md:top-auto md:right-auto {% endif %}
+      {% if section.settings.position == "bottom-right" %} md:bottom-10 md:-right-10  md:top-auto md:left-auto {% endif %}
+      md:max-w-[320px] bg-white font-kremlin text-16 leading-130 left-6 right-6 bottom-0 md:translate-y-0 translate-y-3/4"
+    >
+      <div class="-rotate-2">
+      {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "[Story] Image with Text",
+    "class": "story-image-with-text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Aspect: 4x3, Min Width: 3000px, File Type: JPG/PNG/GIF"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "position",
+        "label": "Position",
+        "options": [
+          {
+            "value": "top-left",
+            "label": "Top Left"
+          },
+          {
+            "value": "top-right",
+            "label": "Top Right"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Bottom Left"
+          },
+          {
+            "value": "bottom-right",
+            "label": "Bottom Right"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Image with Text",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/d158116b272702d6e40a72dc1ef78d81.jpg",
+          "text": "Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s kitchen,\nMasterchef, Top Chef, Iron Chef, and many more.",
+          "position": "top-right"
+        }
+      }
+    ]
+  }
+{% endschema %}

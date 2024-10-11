@@ -1,0 +1,75 @@
+
+<div 
+    x-data="{
+        key_ingredients: [
+            {% for product in product.metafields.custom.key_ingredients_detail.value %}
+                {
+                    title: '{{ product.title }}',
+                    {% if product.url %}
+                        url: '{{ product.url }}',
+                    {% endif %}
+                    {% if product.metafields.custom.periodic_symbol.value.color %}
+                        {% if product.metafields.custom.periodic_symbol.value.solid_background_color_optional %}
+                        periodic_color: '{{ product.metafields.custom.periodic_symbol.value.solid_background_color_optional }}',
+                        {% else %}
+                        periodic_color: '{{ product.metafields.custom.periodic_symbol.value.color }}',
+                        {% endif %}
+                    {% endif %}
+                    {% if product.metafields.custom.periodic_symbol.value.letters %}
+                        periodic_letters: '{{ product.metafields.custom.periodic_symbol.value.letters }}',
+                    {% endif %}
+                },
+            {% endfor %}
+            {% for product in product.metafields.custom.key_ingredients_not_products_detail.value %}
+                {
+                    title: '{{ product.name }}'
+                },
+            {% endfor %}
+        ],
+        orderIngredients() {
+            this.key_ingredients.sort((a, b) => a.title.localeCompare(b.title));
+        }
+    }"
+    x-init="orderIngredients()"
+>
+    <div x-data="{ expanded: false }" role="region">
+        <h6>
+            <button x-on:click="expanded = !expanded" :aria-expanded="expanded"
+                class="flex w-full items-center justify-between font-bold h-12">
+                <span class="body-md">Ingredients</span>
+                <div
+                    class="flex justify-center items-center w-10 h-10 rounded-[12px] md:hover:bg-gray-10 transition-all duration-200 ease-in-out ml-4">
+                    <span x-show="expanded" aria-hidden="true" class="">{% render 'svg__caret', class: 'transform
+                        -scale-y-100' %}</span>
+                    <span x-show="!expanded" aria-hidden="true" class="">{% render 'svg__caret' %}</span>
+                </div>
+            </button>
+        </h6>
+        <div x-show="expanded" x-collapse>
+            <div class="flex flex-col py-4">
+                <span class="utility-sm text-black/50 uppercase text-[11px] pb-2.5">Key Ingredients</span>
+                <ul class="columns-2">
+                    <template x-for="ingredient in key_ingredients" :key="ingredient.title">  
+                        <li>
+                            <template x-if="ingredient.url">
+                                <a :href="ingredient.url" class="flex items-center pb-2.5 group">
+                                    <div x-show="ingredient.periodic_color" :style="`color: ${ingredient.periodic_color}; border-color: ${ingredient.periodic_color};`" class="font-sans font-500 text-[12px] flex justify-center items-center min-w-[24px] w-[24px] min-h-[24px] h-[24px] border-2 mr-2.5" x-text="ingredient.periodic_letters"></div>
+                                    <span x-text="ingredient.title" class="border-b border-black/50 group-hover:border-black transition-colors duration-200 ease-in-out w-max"></span>
+                                </a>
+                            </template>
+                            <template x-if="!ingredient.url">
+                                <span class="flex items-center pb-2.5 pl-[34px]">
+                                    <div x-show="ingredient.periodic_color" :style="`color: ${ingredient.periodic_color}; border-color: ${ingredient.periodic_color};`" class="font-sans font-500 text-[12px] flex justify-center items-center min-w-[24px] w-[24px] min-h-[24px] h-[24px] border-2 mr-2.5" x-text="ingredient.periodic_letters"></div>
+                                    <span x-text="ingredient.title"></span>
+                                </span>
+                            </template>
+                        </li>
+                    </template>
+                </ul>
+                <span class="utility-sm text-black/50 uppercase text-[11px] pt-7 pb-2.5">Full List</span>
+                <p class="body-md">{{ product.metafields.custom.full_ingredients }}</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>

@@ -1,0 +1,251 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_XR9tEH": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_UkLyJp": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Gift Shop",
+        "description": "Give the gift of good taste.",
+        "alignment": "between"
+      }
+    },
+    "component_home_hero_TXPF3a": {
+      "type": "component__home-hero",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/ab0a1dc5f8301147a1ff36d2760824a6.png",
+        "image_mob": "shopify://shop_images/2820c5a82faafa2ae1907fcf26f0bca0.jpg",
+        "heading": "[VIDEO - Scan the Tablescape. Think Tomatador-style]",
+        "description": "disclaimer: pics are placeholder - need to discus with Jeanne",
+        "btn_text": "",
+        "btn_url": "shopify://pages/about-us",
+        "placement": "top",
+        "color": "light"
+      }
+    },
+    "component_rich_image_yf3EwB": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_ehczxB": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/gifts_for_25_245bf529-d29f-4508-b65c-086d788c0dce.jpg",
+            "heading": "Under $25",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_iiikWQ": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/38615fd320fdd431aff111c9cd635ce8.png",
+            "heading": "Under $50",
+            "description": "This is a subheadline lorem ipsum dolor sit amet",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_yjafR4": {
+          "type": "Image",
+          "settings": {
+            "heading": "Under $100",
+            "description": "",
+            "button_url": "",
+            "button_text": "",
+            "color": "white",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_ehczxB",
+        "image_iiikWQ",
+        "image_yjafR4"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "2",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left",
+        "image_ratio": "square"
+      }
+    },
+    "component_product_split_image_7TU3YA": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": "",
+        "product": "ultimate-rub-collection-12-mini-rub-jars",
+        "image": "shopify://shop_images/Black_Bleu_Mashed_Potatoes_2_SQ.jpg",
+        "image_position": "left",
+        "description": "These are Spiceology’s top sellers, aka the very best flavors, all very different, all chef-created.",
+        "name": "– Jeanne R, Vice President of Marketing"
+      }
+    },
+    "component_product_split_image_6U86E6": {
+      "type": "component__product-split-image",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "product": "achiote-blend",
+        "image": "shopify://shop_images/build-a-box.png",
+        "image_position": "right",
+        "description": "These are Spiceology’s top sellers, aka the very best flavors, all very different, all chef-created.",
+        "name": "– Jeanne R, Vice President of Marketing"
+      }
+    },
+    "component_image_carousel_rBBYiV": {
+      "type": "component__image-carousel",
+      "blocks": {
+        "item_xNppWj": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Popcorn_Gift_Set_Holiday_2021_-_3.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_rBVEBX": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/0c396ac5b11875dffcbdfea8e681bdb0.png",
+            "subheading": "For Dad",
+            "description": "This brand new 4-pack takes you on a regional road trip around the States to celebrate some of Derek’s personal favorite styles of BBQ.",
+            "url": "",
+            "size": "large"
+          }
+        },
+        "item_KK9PER": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/92b4ae7ca8b7240249793983d35ba43b.png",
+            "subheading": "FOR DAD",
+            "description": "This brand new 4-pack takes you on a regional road trip around the States to celebrate some of Derek’s personal favorite styles of BBQ.",
+            "url": "",
+            "size": "medium"
+          }
+        },
+        "item_dLCBfm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/2820c5a82faafa2ae1907fcf26f0bca0.jpg",
+            "subheading": "Test",
+            "description": "Lorem ipsum lorem ipsum lorem",
+            "url": "",
+            "size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "item_xNppWj",
+        "item_rBVEBX",
+        "item_KK9PER",
+        "item_dLCBfm"
+      ],
+      "settings": {
+      }
+    },
+    "component_image_split_carousel_xHUaGm": {
+      "type": "component__image-split-carousel",
+      "blocks": {
+        "product_nnX7z7": {
+          "type": "product",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "product_nnX7z7"
+      ],
+      "settings": {
+        "title": "Gifts For Grillers",
+        "image": "shopify://shop_images/2-beer-6-pack-DSC00762-square_1x1_a8df9f5f-d403-44af-97a8-76ec2f2fc5d6.png",
+        "collection": "gifts-for-grillers"
+      }
+    },
+    "component_image_split_carousel_H4wzyK": {
+      "type": "component__image-split-carousel",
+      "settings": {
+        "title": "Gifts for Foodies",
+        "image": "shopify://shop_images/Screenshot_2024-10-03_at_10.58.46_PM.png",
+        "collection": "gift-shop"
+      }
+    },
+    "component_product_split_image_4E86VF": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": "",
+        "product": "derek-wolf-6-pack-beer-infused-rub-sampler",
+        "image": "shopify://shop_images/beer-cans_edited.jpg",
+        "image_position": "right",
+        "description": "Beer-Infused Beer Can Rubs",
+        "name": "– Jeanne R, Vice President of Marketing"
+      }
+    },
+    "component_product_card_grid_jg7EbT": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "Gift Packs",
+        "heading_size": "64",
+        "heading_align": "center",
+        "collection": "gift-packs",
+        "product_limit": 8
+      }
+    },
+    "component_cta_button_QpEDbn": {
+      "type": "component__cta-button",
+      "settings": {
+        "btn_text": "Shop all Gift Packs",
+        "btn_url": "shopify://collections/gift-packs"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_XR9tEH",
+    "component_headline_UkLyJp",
+    "component_home_hero_TXPF3a",
+    "component_rich_image_yf3EwB",
+    "component_product_split_image_7TU3YA",
+    "component_product_split_image_6U86E6",
+    "component_image_carousel_rBBYiV",
+    "component_image_split_carousel_xHUaGm",
+    "component_image_split_carousel_H4wzyK",
+    "component_product_split_image_4E86VF",
+    "component_product_card_grid_jg7EbT",
+    "component_cta_button_QpEDbn"
+  ]
+}

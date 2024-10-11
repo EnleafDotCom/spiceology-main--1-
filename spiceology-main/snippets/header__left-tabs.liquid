@@ -1,0 +1,64 @@
+<ul role="menubar" class="flex items-center w-2/5 gap-[6.5px]">
+    <li role="menuitem">
+        <button 
+            id="{{ section.settings.first_dropdown_tab_label }}-dropdown" 
+            aria-haspopup="true"
+            :aria-expanded="$store.main.currentDropdown === 1"
+            class="header-link group"
+            :class="$store.main.currentDropdown === 1 && 'text-accent active'" 
+            @click="handleDropdownClick(1)" 
+            x-cloak
+        >
+            <span>{{ section.settings.first_dropdown_tab_label }}</span>
+            <span :class="$store.main.currentDropdown === 1 && 'transform -scale-y-100'">
+                {% comment %} {% render 'svg__small-arrow', index: 1 %} {% endcomment %}
+            </span>
+        </button>
+    </li>
+    <li role="menuitem">
+        <button id="{{ section.settings.second_dropdown_tab_label }}-dropdown" aria-haspopup="true"
+            :aria-expanded="$store.main.currentDropdown === 2"
+            class="header-link group"
+            :class="$store.main.currentDropdown === 2 && 'text-accent active'" @click="handleDropdownClick(2)" x-cloak>
+            <span>{{ section.settings.second_dropdown_tab_label }}</span>
+            <span :class="$store.main.currentDropdown === 2 && 'transform -scale-y-100'">
+                {% comment %} {% render 'svg__small-arrow', index: 2 %} {% endcomment %}
+            </span>
+        </button>
+    </li>
+    
+    <li role="menuitem">
+        <form @click="$store.main.currentDropdown = null" @click.outside="search_focused = false" :class="search_focused ? 'w-[200px] bg-white' : 'w-[87px] bg-transparent'" class="flex items-center relative border border-black rounded-2 h-[26px] max-h-[26px] pl-2.5 transition-all duration-300 ease-in-out" action="{{ routes.search_url }}" autocomplete="off">
+            {% render 'svg__magnifying-glass', class: 'w-3 min-w-3 mr-[5px]' %}
+            <input type="hidden" name="type" value="product,article" />
+            <div class="w-full">
+              <label class="sr-only" for="search">Search Input</label>
+              <input
+                x-ref="query"
+                class="search-input w-full bg-transparent placeholder:text-black"
+                type="text"
+                placeholder="Search"
+                name="q"
+                id="search"
+                @focus="search_focused = true"
+                @input.debounce="search()"
+                x-model="query"
+                :class="search_focused ? `pr-7` : `pr-0`"
+              >
+            </div>
+            <button
+              x-show="search_focused"
+              x-transition:enter="transition-opacity ease-in-out delay-[100ms] duration-[100ms]"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
+              class="button__arrow transition-all duration-150 absolute top-0 right-0 bg-white h-full border-l border-black px-2.5"
+              type="submit"
+              aria-label="Search"
+            >
+                <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.772 3.796L0 6.448L0 5.356L4.706 3.224L0 1.092L0 0L5.772 2.652L5.772 3.796Z" fill="#181613"/>
+                </svg>
+            </button>
+        </form>
+    </li>
+</ul>

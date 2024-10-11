@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Isaac Toups x Spiceology",
+        "content": "With a culinary style inspired equally by his time in the fine-dining kitchen of Emeril Lagasse and time spent at his grandmother’s kitchen table, Chef Isaac is delivering his unique take on Cajun cuisine to your family table.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/isaac-toups-66.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "chef-isaac-toups",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Chef Isaac Toups",
+        "text": "<p>One hundred percent Cajun, born and braised, Chef Isaac Toups is a fan favorite… no really, he was voted fan favorite on Season 13 of Bravo’s Top Chef. This James Beard-nominated chef and owner of Toups’ Meatery is known for his updated sophisticated approach to Cajun cuisine and penchant for being photographed with his two-handed gumbo paddle.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

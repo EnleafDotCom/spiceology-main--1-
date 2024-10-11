@@ -1,0 +1,151 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_home_hero_MHcJxy": {
+      "type": "component__home-hero",
+      "settings": {
+        "full_width": true,
+        "image": "shopify:\/\/shop_images\/18ef29261503c02a5489b0acd71e8eb9_cb608253-84a8-475d-8062-a299fe97b38e.png?v=1724074089",
+        "heading": "Derek Wolf x Spiceology",
+        "description": "Spiceology Collaborator Derek Wolf is on a journey to bring fire, food, and people together. For almost a decade, Derek has inspired millions of folks across the globe to play with fire through his Over the Fire Cooking social channels. \n\nAnd, he’s sharing his favorite flavors with you.",
+        "btn_text": "Shop Now",
+        "btn_url": "\/collections\/all",
+        "color": "light"
+      }
+    },
+    "component_product_slider_UzaJkM": {
+      "type": "component__product-slider",
+      "blocks": {
+        "product_39wLi9": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        },
+        "product_j94gMt": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        },
+        "product_DkRjJy": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        },
+        "product_GXrGPj": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_39wLi9",
+        "product_j94gMt",
+        "product_DkRjJy",
+        "product_GXrGPj"
+      ],
+      "settings": {
+        "subheading": "BEST SELLERS",
+        "heading": "Find your new grilling go to"
+      }
+    },
+    "component_product_split_image_VTcpA3": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": "The line that start it all - Derek Wolf’s Americana Blends",
+        "product": "derek-wolf-maple-bourbon-bbq-rub",
+        "image": "shopify:\/\/shop_images\/DEREK_WOLF_3.jpg",
+        "image_position": "left",
+        "description": "Quote - Put a place holder. we’ll get from him",
+        "name": "– Jeanne R,\u2028Vice President of Marketing"
+      }
+    },
+    "home_video_text_without_button_J94yF9": {
+      "type": "home-video-text-without-button",
+      "settings": {
+        "heading": "Beer-Infused Rubs VIDEO",
+        "description": ""
+      }
+    },
+    "component_product_split_image_Da3GGh": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": "Derek Wolf Beer-Infused Rubs, need we say more?",
+        "product": "derek-wolf-4-pack-beer-infused-rub-sampler",
+        "image": "shopify:\/\/shop_images\/4-pack-2.png",
+        "image_position": "left",
+        "description": "Quote - Put a place holder. we’ll get from him",
+        "name": "– Jeanne R,\u2028Vice President of Marketing"
+      }
+    },
+    "component_product_split_image_JRj7ry": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": "We’re going south, waaaaaayyyyyy south - Derek Wolf’s South American Blends",
+        "product": "derek-wolf-garlic-herb-rub",
+        "image": "shopify:\/\/shop_images\/Garlic_Herb_Picanha_with_Chimichurri_Butter.jpg",
+        "image_position": "right",
+        "description": "Quote - Put a place holder. we’ll get from him",
+        "name": "– Jeanne R,\u2028Vice President of Marketing"
+      }
+    },
+    "component_product_split_image_c6kHi4": {
+      "type": "component__product-split-image",
+      "settings": {
+        "heading": " Derek Wolf’s Spirits-Infused Blends",
+        "product": "derek-wolf-maple-bourbon-bbq-rub",
+        "image": "shopify:\/\/shop_images\/Copy_of_Maple_Bourbon_ceee6a07-7706-4db8-93e7-8fde54d1d6af.png",
+        "image_position": "right",
+        "description": "Quote - Put a place holder. we’ll get from him",
+        "name": "– Jeanne R,\u2028Vice President of Marketing"
+      }
+    },
+    "component_customer_spotlight_xDhp9n": {
+      "type": "component__customer-spotlight",
+      "settings": {
+        "eyebrow": "COLLAB SPOTLIGHT",
+        "customer_name": "Derek Wolf",
+        "seen_on": "@overthefirecooking",
+        "restaurants": "Food x Fire and Flavor x Fire",
+        "accolades": "Accolades",
+        "link": "",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_story_text_eCHyQz": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "ABOUT THE CHEF",
+        "text": "<p>My name is Derek Wolf, and I have been on a many year journey to find how cooking with fire brings people together. I started the page Over The Fire Cooking on Instagram to document this adventure.<\/p><p>Along the way, I have met, worked, shared, and cooked with endless chefs & cooks from around the world that love cooking with fire. As my Instagram grew, we started writing recipes on my blog, doing how-to videos, cooking at live events and ultimately making a line of spices with Spiceology. My inspiration comes from my time living in West Texas. The endless flavors of the Latin American culture have propelled me to fall in love with robust, savory and spicy ingredients to make food that will be delicious when kissed by the flame.<\/p><p>From South America to Nashville, I am determined to learn how every culture cooks with fire. Come join me on my journey. Through my eyes & taste buds, we will learn that cooking over a fire not only brings us together but perhaps might show us that we are not that different, to begin with.<\/p>"
+      }
+    },
+    "component_story_image_text_gmVzct": {
+      "type": "component__story-image-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/d158116b272702d6e40a72dc1ef78d81.jpg",
+        "text": "Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s kitchen,\nMasterchef, Top Chef, Iron Chef, and many more.",
+        "position": "top-right"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_home_hero_MHcJxy",
+    "component_product_slider_UzaJkM",
+    "component_product_split_image_VTcpA3",
+    "home_video_text_without_button_J94yF9",
+    "component_product_split_image_Da3GGh",
+    "component_product_split_image_JRj7ry",
+    "component_product_split_image_c6kHi4",
+    "component_customer_spotlight_xDhp9n",
+    "component_story_text_eCHyQz",
+    "component_story_image_text_gmVzct"
+  ]
+}

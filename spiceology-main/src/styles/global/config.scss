@@ -1,0 +1,49 @@
+html {
+  scroll-behavior: smooth;
+  @apply bg-grey-light;
+}
+
+body {
+  --z-index-cart: 1100;
+  --z-index-underlay: 1000;
+  --z-index-header: 1050;
+
+  --button-height: 55px;
+  --input-height: 48px;
+
+  --container-padding-desktop: 20px;
+  --container-padding-mobile: 10px;
+
+  --nav-height-desktop: 80px;
+  --nav-height-desktop-scrolled: 80px;
+  --nav-height-mobile: 60px;
+
+  --banner-height-desktop: 30px;
+  --banner-height-mobile: 30px;
+
+  --nav-height-desktop-banner: calc(
+    var(--nav-height-desktop) + var(--banner-height-desktop)
+  );
+  --nav-height-desktop-scrolled-banner: calc(
+    var(--nav-height-desktop-scrolled) + var(--banner-height-desktop)
+  );
+  --nav-height-mobile-banner: calc(
+    var(--nav-height-mobile) + var(--banner-height-mobile)
+  );
+
+  --nav-height: var(--nav-height-mobile-banner);
+  --container-padding: var(--container-padding-mobile);
+
+  @screen md {
+    --container-padding: var(--container-padding-desktop);
+  }
+
+  @screen xl {
+    --nav-height: var(--nav-height-desktop-banner);
+  }
+
+  &.has-banner {
+    --banner-height-desktop: 43px;
+    --banner-height-mobile: 40px;
+  }
+}

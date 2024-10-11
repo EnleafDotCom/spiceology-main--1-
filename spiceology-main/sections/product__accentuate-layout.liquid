@@ -1,0 +1,43 @@
+{% assign sections = shop.metafields.acf_settings.product_layouts | where: "id", product.id | first | map: "sections" | where: "visible" %}
+
+{% for section in sections %}
+  {% case section.name %}
+    {% when "big_headline_thumbnail" %}
+      {% render "product__big-headline-thumbnail", product: product %}
+    {% when "ingredients_breakdown" %}
+      {% render "product__ingredients-breakdown", product: product  %}
+    {% when "size_guide" %}
+      {% render "product__size-guide", product: product %}
+    {% when "video_split" %}
+      {% render "product__video_split", product: product %}
+    {% when "image_split" %}
+      {% render "product__image-split", product: product %}
+    {% when "recipes_carousel" %}
+      {% render "product__recipes-carousel", product: product %}
+    {% when 'single_ingredient_detail' %}
+      {% render 'product__single-ingredient-detail', product: product %}
+  {% endcase %}
+{% endfor %}
+
+<!-- The following sections are added to every PDP and are fixed at the bottom -->
+{% render 'product__reviews', product: product %}
+{% render 'product__recommended_products', product: product %}
+
+{% schema %}
+{
+  "name": "[Product] Accentuate",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "[Product] Accentuate"
+    }
+  ]
+}
+{% endschema %}

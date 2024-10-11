@@ -1,0 +1,65 @@
+.keen-slider__slide.home-product {
+  @screen lg {
+    opacity: 0;
+    /* transition: opacity 0ms ease-out; */
+    pointer-events: none;
+  }
+}
+
+.keen-slider__slide.home-product > div {
+  @screen lg {
+    transition: transform 50ms, opacity 50ms ease-in-out;
+  }
+}
+
+.keen-slider__slide.home-product {
+  @screen lg {
+    transform: scale(1) translateX(0);
+    &.active,
+    &.active-2,
+    &.active-3 {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 300ms ease-in-out;
+      & > div {
+        transform: scale(1.2) translateX(0);
+      }
+    }
+  }
+
+  @screen xl {
+    transform: scale(1) translateX(0);
+    &.active,
+    &.active-2,
+    &.active-3 {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 300ms ease-in-out;
+      & > div {
+        transform: scale(1.4) translateX(0);
+      }
+    }
+  }
+
+  // @screen lg {
+  //   &.active-4 {
+  //     opacity: 1;
+  //     pointer-events: auto;
+  //     transition: opacity 300ms ease-in-out;
+  //     & > div {
+  //       transform: scale(1.2) translateX(0);
+  //     }
+  //   }
+  // }
+
+  @screen xl {
+    &.active-4 {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 300ms ease-in-out;
+      & > div {
+        transform: scale(1.4) translateX(0);
+      }
+    }
+  }
+}

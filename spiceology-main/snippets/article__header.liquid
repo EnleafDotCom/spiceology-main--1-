@@ -1,0 +1,22 @@
+{% assign author_photo = article.metafields.accentuate.author_photo | first %}
+<section class="lg:px-5 px-2.5">
+  <div class="flex lg:flex-row flex-col lg:pt-7.5 lg:pb-7.5 pt-2.5 pb-5 border-b border-black lg:px-2.5 gap-2.5">
+    <div class="block lg:w-1/2 w-full">
+      <div class="utility-lg uppercase opacity-75 lg:mb-2.5 mb-1">{{ blog.title }}</div>
+      <div class="lg:text-48 text-28 leading-100 capitalize">{{ article.title }}</div>
+    </div>
+    <div class="flex lg:w-1/2 lg:justify-end gap-4 items-end justify-start">
+      <div class="w-10">
+        <img class=" w-full aspect-square rounded-full" src="{{ author_photo.src | append: '&width=1000' }}" alt="{{ image.alt }}" loading="lazy">
+      </div>
+      <div class="block">
+        
+        <div class="flex flex-col items-start text-left">
+          <div class="utility-lg">{{ article.author }}</div>
+          <p class="utility-lg">{{ article.metafields.accentuate.author_id }}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>

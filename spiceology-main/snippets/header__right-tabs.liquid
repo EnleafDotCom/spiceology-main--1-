@@ -1,0 +1,41 @@
+<ul role="menubar" class="flex items-center justify-end w-2/5 gap-[6.5px]">
+   {% if section.settings.third_dropdown_tab.title %}
+    <li role="menuitem" >
+        <a
+            href="{{ section.settings.third_dropdown_tab.url }}"
+            aria-haspopup="true"
+            :aria-expanded="$store.main.currentDropdown === 4"
+            class="header-link no-caret utility-sm text-[13px] uppercase flex items-center transition-colors duration-100 ease-in-out resize-button"
+        >
+            {{ section.settings.third_dropdown_tab.title }}
+        </a>
+    </li>
+   {% endif %}
+
+    <li role="menuitem">
+        <a 
+            id="account-link" 
+             {% if customer %}
+            href="/account" 
+            {% else %}
+            href="/account/login" 
+            {% endif %}
+            class="header-link no-caret utility-sm text-[13px] uppercase flex items-center transition-colors duration-100 ease-in-out resize-button"
+        >
+            Account
+        </a>
+    </li>
+    
+    <li role="menuitem">
+        <button 
+            class="header-link no-caret utility-sm text-[13px] uppercase flex items-center cart transition-colors duration-100 ease-in-out resize-button"
+            :class="$store.main.isMiniCartOpen ? 'italic' : ''" 
+            @click="handleCartClick" 
+            aria-label="toggle cart"
+            :aria-expanded="$store.main.isMiniCartOpen"
+        >
+            <span>Cart</span>
+            [<span class="" x-text="$store.main.cart.item_count"></span>]
+        </button>
+    </li>
+</ul>

@@ -1,0 +1,196 @@
+<div>
+    <hr>
+    <div class="hidden lg:flex flex-col">
+        <div class="pb-4"
+            x-data="{
+            expanded: false,
+            defaultHeight: 0,
+            height: 0,
+            clickReadmore() {
+                if(this.expanded) {
+                    this.expanded = false;
+                    this.height = 92;
+                }
+                else {
+                    this.expanded = true;
+                    this.height = this.defaultHeight;
+                }
+                console.log(this.height);
+                console.log(this.defaultHeight);
+            },
+            init() {
+                this.defaultHeight = $refs.description.offsetHeight;
+                this.height = this.defaultHeight;
+                if(this.defaultHeight > 92) {
+                    this.height = 92;
+                }
+                console.log(this.height);
+                console.log(this.defaultHeight);
+            }
+        }">
+            <div class="body-md pt-5 pr-6 rte product-description overflow-hidden" :style="`height: ${height}px;`" 
+                x-ref="description">{{ product.description }}</div>
+            <a href="#" @click.prevent="clickReadmore()" x-show="defaultHeight > 92 " class="mt-2 inline-block underline">Read More</a>
+        </div>
+        <div class="flex flex-col items-start gap-y-2 pb-5">
+            {% if product.metafields.custom.flavors.value %}
+                <div class="flex items-start">
+                    <span class="body-md w-[86px]">Flavors:</span>
+                    <ul class="flex items-center gap-1 flex-1 flex-wrap">
+                        {% for flavor in product.metafields.custom.flavors.value %}
+                            <li class="utility-lg flex justify-center items-center px-2 h-[17px] rounded-[21px] bg-grey mt-1">
+                                <a href="/collections/{{ flavor.flavor |  handleize }}">{{ flavor.flavor }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.good_on_items.value %}
+                <div class="flex items-start">
+                    <span class="body-md w-[86px]">Good on:</span>
+                    <ul class="flex items-center gap-1 flex-1 flex-wrap">
+                        {% for item in product.metafields.custom.good_on_items.value %}
+                            <li class="body-md flex justify-center items-center">
+                                {{ item.title }}{% unless forloop.last %},{% endunless %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <hr>
+    </div>
+    
+    {% for option in product.options_with_values %}
+        {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+        {% if option.name != 'Title' and option.name != 'title' %}
+            <div class="pt-5">
+                <h2 class="utility-lg text-black/75 text-center uppercase pb-3">
+                    {{ option.name }}
+                </h2>
+                <div class="flex justify-center flex-wrap gap-1.5">
+                    {% if option.name contains 'color' or option.name contains 'Color' %}
+                        {% render 'product__color-selector',
+                            product: product,
+                            activeVariant: activeVariant,
+                            optionIndex: optionIndex,
+                            option: option,
+                            style: 'large',
+                            pdp: true
+                        %}
+                    {% else %}
+                        {% render 'product__option-selector',
+                            product: product,
+                            activeVariant: activeVariant,
+                            optionIndex: optionIndex,
+                            option: option,
+                            style: 'large',
+                            pdp: true
+                        %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="flex justify-center pt-7 pb-8"
+        :class="{ 'opacity-30 pointer-events-none': !reactiveData.activeVariant.isAvailable }">
+        <div class="button__qty flex lg:gap-1.5">
+            <button type="button" name="subtract" class="button__minus"
+                @click.prevent="quantity < 2 ? quantity = 1 : quantity--" :disabled="quantity === 1"
+                aria-label="Subtract one from quantity">
+                {% render 'svg__caret' %}
+            </button>
+            <div
+                class="utility-sm uppercase text-[11px] lg:body-md lg:normal-case leading-[20px] flex items-center w-min lg:bg-black/5  pl-4 pr-2 lg:pl-5 lg:pr-4">
+                <h2 class="">Qty:</h2>
+                <div class="flex-1 text-center overflow-hidden w-6 h-5">
+                    <div class="transition-transform" :style="{ transform: `translateY(-${quantity * 20}px)` }">
+                        {% for number in (0..100) %}
+                        <div style="line-height: 20px; height: 20px; vertical-align: middle;">
+                            {{ number }}
+                        </div>
+                        {% endfor %}
+                        <input type="hidden" name="quantity" :value="quantity">
+                    </div>
+                </div>
+            </div>
+            <button type="button" name="add" class="button__plus transform -scale-y-100"
+                @click.prevent="quantity++" aria-label="Add one to quantity">
+                {% render 'svg__caret' %}
+            </button>
+        </div>
+    </div>
+    <button 
+        class="button__primary text-[16px] w-full px-6"
+        :class="{ 'disabled': !reactiveData.activeVariant.isAvailable }" 
+        x-cloak 
+        type="submit" 
+    >
+        <div class="w-full flex flex-row justify-between" x-show="reactiveData.activeVariant.isAvailable">
+            <span x-text="$store.main.isCartUpdating ? 'Adding To Cart…' : 'Add To Cart'"></span>
+            <span x-price="reactiveData.activeVariant?.variantPrice * quantity"></span>
+        </div>
+        <div class="w-full flex flex-row justify-center" x-show="!reactiveData.activeVariant.isAvailable">
+            <span>Sold Out</span>
+        </div>
+    </button>
+    <div class="lg:hidden">
+        <div class="pb-4"
+            x-data="{
+            expanded: false,
+            defaultHeight: 0,
+            height: 0,
+            clickReadmore() {
+                if(this.expanded) {
+                    this.expanded = false;
+                    this.height = 92;
+                }
+                else {
+                    this.expanded = true;
+                    this.height = this.defaultHeight;
+                }
+                console.log(this.height);
+                console.log(this.defaultHeight);
+            },
+            init() {
+                this.defaultHeight = $refs.description.offsetHeight;
+                this.height = this.defaultHeight;
+                if(this.defaultHeight > 92) {
+                    this.height = 92;
+                }
+                console.log(this.height);
+                console.log(this.defaultHeight);
+            }
+        }">
+            <div class="body-md pt-5 pr-6 rte product-description overflow-hidden" :style="`height: ${height}px;`" 
+                x-ref="description">{{ product.description }}</div>
+            <a href="#" @click.prevent="clickReadmore()" x-show="defaultHeight > 92 " class="underline mt-2 inline-block">Read More</a>
+        </div>
+        <div class="flex flex-col items-start gap-y-2 pb-5">
+            {% if product.metafields.custom.flavors.value %}
+                <div class="flex items-start">
+                    <span class="body-md w-[86px]">Flavors:</span>
+                    <ul class="flex items-center gap-1 flex-1 flex-wrap">
+                        {% for flavor in product.metafields.custom.flavors.value %}
+                            <li class="utility-lg flex justify-center items-center px-2 h-[17px] rounded-[21px] bg-grey mt-1">
+                                <a href="/collections/{{ flavor.flavor |  handleize }}">{{ flavor.flavor }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if product.metafields.custom.good_on_items.value %}
+            <div class="flex items-start">
+                <span class="body-md w-[86px]">Good on:</span>
+                <ul class="flex items-center gap-1 flex-1 flex-wrap">
+                    {% for item in product.metafields.custom.good_on_items.value %}
+                        <li class="body-md flex justify-center items-center">
+                            {{ item.title }}{% unless forloop.last %},{% endunless %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+root: .
+
+# Disabling some checks
+RequiredDirectories:
+  enabled: false
+
+# Must be enabled if you care about translations
+MatchingTranslations:
+  enabled: false
+
+LiquidTag:
+  enabled: true
+
+# Ignoring some files
+ignore:
+  - node_modules
+  - .*
+  - tsconfig.json
+  - package.json

@@ -1,0 +1,14 @@
+{% assign video = article.metafields.accentuate.article_video.value %}
+{% assign image = article.metafields.accentuate.article_video_poster.value %}
+{% assign poster_url = video.preview_image | file_url | replace: "files/files/", "files/"%}
+<section class="px-2.5 lg:pb-20 pb-5">
+  <div class="max-w-[1180px] mx-auto">
+    {%
+      render 'video_player',
+      video: video.sources[1].url,
+      poster: poster_url,
+      video_classes: 'aspect-16/9 rounded-6 object-cover w-full',
+      muted: false
+    %}
+  </div>
+</section>

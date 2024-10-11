@@ -1,0 +1,15 @@
+<div class="relative flex gap-2 items-center">
+  <button
+    type="button"
+    aria-controls="disclosure-1"
+    :aria-expanded="filtersOpen"
+    x-ref="filtersButton"
+    @click="toggleFilterPanel"
+    class="button__secondary w-full px-4"
+    :class="{'bg-grey text-black lg:bg-white lg:text-black': filtersOpen }"
+  >
+    <span x-text="filtersOpen ? '< Hide Filters' : 'Show Filters'"></span>
+    <div class="transform transition-all duration-150 ml-1" :class="{ 'rotate-180': filtersOpen }">
+    </div>
+  </button>
+</div>

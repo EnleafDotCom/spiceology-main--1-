@@ -1,0 +1,173 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('customSelect', () => ({
+      open: false,
+      selectedIndex: 0,
+      options: null,
+      handler: null,
+      selectOption(index) {
+        if (this.handler) {
+          this.handler(this.options[index], index);
+        }
+        this.selectedIndex = index;
+        this.$refs.selectedItem.focus();
+        this.open = false;
+      },
+      toggleDropdown() {
+        if (this.open) {
+          this.closeDropdown();
+        } else {
+          this.openDropdown();
+        }
+      },
+      openDropdown() {
+        this.open = true;
+        this.$refs.select.setAttribute('aria-expanded', 'true');
+      },
+      closeDropdown() {
+        this.open = false;
+        this.$refs.select.setAttribute('aria-expanded', 'false');
+      },
+      setOptions(options) {
+        this.options = options;
+      },
+      }))
+    });
+</script>
+
+{% capture categories %}
+  {% for block in section.blocks %}
+    {{ block.settings.category | strip }},
+  {% endfor %}
+{% endcapture %}
+{% assign categories = categories | split: ',' | uniq %}
+<section
+  class="lg:py-20 py-7.5 px-2.5"
+  x-cloak
+  x-data="{
+    changeCategory(category) {
+      const el = document.getElementById(category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, ''))
+      const top = window.innerWidth < 768 ? 129 : 122;            
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const elementPosition = el.getBoundingClientRect().top + scrollPosition;                  
+      window.scrollTo({top: elementPosition - top, scrollBehavior: 'smooth' })     
+    }
+  }">
+  <div class="max-w-[710px] mx-auto animate-slide-up-400">
+    <div class="lg:mb-20 mb-10 flex lg:gap-2 gap-1 lg:justify-center overflow-auto lg:mx-0 -mx-2.5 lg:px-0 px-2.5 no-scrollbar" x-data="{ activeCategory: 1 }" >
+      {% for category in categories %}
+        {% assign spaceRemoved = category | replace : " ", "" %}
+        {% if spaceRemoved != blank %}
+          <div
+            class="faq__category px-4 py-2 rounded-[28px] bg-[#F9F9F9] lg:text-[20px] text-16px leading-100 cursor-pointer capitalize flex gap-1 items-center"
+            :class="activeCategory == {{ forloop.index }} && 'active'"
+            @click="changeCategory('{{ category | handleize }}'); activeCategory = {{ forloop.index }};">
+            {{ category }}
+            {% assign count = 0 %}
+            {% for block in section.blocks %}
+              {% assign spaceRemoved1 = category | strip %}
+              {% assign spaceRemoved2 = block.settings.category | strip %}
+              {% if spaceRemoved1 == spaceRemoved2 %}
+                {% assign count = count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            <span class="utility-lg opacity-75 text-black">{{ count }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="flex flex-col lg:gap-25 gap-15">
+      {% for category in categories %}
+        {% unless forloop.last %}
+        <div id="{{ category | handleize }}" class="">
+          <h3 class="faq-category-heading pb-2.5 border-b-2 border-black text-[13px] font-400 tracking-2 leading-140 opacity-50 uppercase font-mono">
+            {{ category }}
+          </h3>
+          <div>
+            {% for block in section.blocks %}
+              {% assign block_category = category | strip %}
+              {% if block_category == block.settings.category %}
+              
+                <div class="faq-category-question px-2.5 border-b border-black" x-data="{ open: false }">
+                  <div>
+                    <button
+                      class="flex justify-between items-center w-full lg:py-5 py-4 text-left gap:2.5"
+                      @click="open = !open"
+                      @keydown.space.prevent="open = !open"
+                      :aria-expanded="open ? 'true' : 'false'"
+                      aria-label="Toggle FAQ">
+                      <span class="lg:text-20 text-16 font-[500] leading-130 tracking-3 text-black">{{ block.settings.title }}</span>
+                      <div class="lg:w-7.5 lg:h-7.5 w-7 h-7 flex items-center justify-center font-500 leading-100"
+                      :class="open ? 'bg-white' : 'bg-[#E7E7E7]' "
+                      >
+                        <span x-show="open">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="2" viewBox="0 0 8 2" fill="none">
+                            <path d="M7.36001 1.60797H0.640015V0.391968H7.36001V1.60797Z" fill="#181613"/>
+                          </svg>
+                        </span>
+                        <span x-show="!open">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                            <path d="M7.37602 3.39198L7.37602 4.60798L4.60802 4.60798L4.60802 7.37598L3.39202 7.37598L3.39202 4.60798L0.624024 4.60798L0.624024 3.39198L3.39202 3.39198L3.39202 0.623977L4.60802 0.623977L4.60802 3.39198L7.37602 3.39198Z" fill="#181613"/>
+                          </svg>
+                        </span>
+                      </div>
+                    </button>
+                    <div x-show="open" x-collapse>
+                      <div class="rte faq lg:pb-13 pb-10 lg:pr-12 pr-7 transition-opacity ease-in-out" :class="open ? 'opacity-100 duration-700 delay-100' : 'opacity-0'">
+                        {{ block.settings.answer }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "class": "section-faq relative",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Frequently Asked Questions",
+        "info": "50 characters max."
+      }, 
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "FAQ",
+        "type": "faq",
+        "settings": [
+          {
+            "type": "text",
+            "id": "category",
+            "label": "FAQ Category"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Question"
+          }, {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

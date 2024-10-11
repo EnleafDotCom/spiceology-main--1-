@@ -1,0 +1,90 @@
+{% assign length = product.metafields.custom.key_ingredients_detail.value | size %}
+
+<section x-data="{ fadeIn: true }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="opacity-0">
+    <div 
+        x-data="{
+            key_ingredients: [
+            {% for product in product.metafields.custom.key_ingredients_detail.value %}
+                {
+                    title: `{{ product.title }}`,
+                    {% if product.metafields.custom.periodic_symbol.value.color %}
+                        periodic_color: `{{ product.metafields.custom.periodic_symbol.value.color }}`,
+                    {% endif %}
+                    {% if product.metafields.custom.periodic_symbol.value.solid_background_color_optional %}
+                        periodic_bg_color: `{{ product.metafields.custom.periodic_symbol.value.solid_background_color_optional }}`,
+                    {% endif %}
+                    {% if product.metafields.custom.periodic_symbol.value.letters %}
+                        periodic_letters: `{{ product.metafields.custom.periodic_symbol.value.letters }}`,
+                    {% endif %}
+                    {% if product.description %}
+                        description: `{{ product.metafields.custom.short_description }}`,
+                    {% endif %}
+                    {% if product.metafields.custom.image_for_card %}
+                        pile_image: `{{ product.metafields.custom.image_for_card | image_url: width: 1000 }}`,
+                    {% endif %}
+                    {% if product.featured_image %}
+                        image: `{{ product.featured_image | image_url: width: 1000 }}`,
+                    {% endif %}
+                    url: `{{ product.url }}`,
+                },
+            {% endfor %}
+            {% for product in product.metafields.custom.key_ingredients_not_products_detail.value %}
+                {
+                    title: `{{ product.name }}`,
+                    {% if product.short_description %}
+                        description: `{{ product.short_description }}`,
+                    {% endif %}
+                    {% if product.image %}
+                        image: `{{ product.image | image_url: width: 1000 }}`,
+                    {% endif %}
+                },
+            {% endfor %}
+        ],
+        orderIngredients() {
+            this.key_ingredients.sort((a, b) => a.title.localeCompare(b.title));
+        }
+    }" 
+    x-init="orderIngredients()"
+    class="lg:px-5 pb-20 lg:pb-[140px]"
+>
+        <div class="flex flex-col items-start p-[30px] lg:p-12 bg-white">
+            <h3 class="heading-md lg:heading-xl md:w-[500px] pb-5 lg:pb-[30px]">
+                {{ product.metafields.accentuate.ingredients_breakdown_headline }}
+            </h3>
+            <hr class="h-0.5 lg:h-1">
+            <div 
+               
+                :class="key_ingredients.length == 2 ? 'lg:grid-cols-2' : key_ingredients.length == 3 ? 'lg:grid-cols-3' : key_ingredients.length == 5 ? 'lg:grid-cols-5' : 'lg:grid-cols-4'"
+                class="grid grid-cols-1 gap-[30px] lg:gap-5">
+                <template x-for="(ingredient, index) in key_ingredients" :key="ingredient.title">
+                    <div class="flex flex-col items-center">
+                        <hr x-show="index > 0" class="lg:hidden">
+                        <div class="flex flex-col-reverse lg:flex-col w-full">
+                            <div class="relative pb-4 lg:py-7">
+                                <img 
+                                    class="aspect-square object-contain"
+                                    :src="ingredient.pile_image ? ingredient.pile_image : ingredient.image" 
+                                />
+                                <div x-show="index !== key_ingredients.length - 1" class="hidden lg:flex absolute top-1/2 transform -translate-y-1/2 right-[-19px]">
+                                    {% render 'svg__plus' %}
+                                </div>
+                            </div>
+                            <hr class="hidden lg:flex">
+                            <div class="flex items-start gap-2.5 pt-5 pb-1 lg:py-5 lg:px-1">
+                                <div x-show="ingredient.periodic_color" :style="`color: ${ingredient.periodic_color}; border-color: ${ingredient.periodic_color}; border-color: ${ingredient.periodic_bg_color}; background-color: ${ingredient.periodic_bg_color};`" class="font-sans font-500 text-[12px] flex justify-center items-center min-w-[28px] w-[28px] min-h-[28px] h-[28px] border-2" x-text="ingredient.periodic_letters"></div>
+                                <h6 class="heading-xs font-500 lg:heading-md lg:text-[20px] mt-[5px] lg:mt-0" x-text="ingredient.title"></h6>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start w-full">
+                            <div class="body-sm xl:body-md xl:pl-1 xl:pr-14 pb-4" x-text="ingredient.description">
+                            </div>
+                            <a x-show="ingredient.url" :href="ingredient.url" class="link-underlined">
+                                Shop Now
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>

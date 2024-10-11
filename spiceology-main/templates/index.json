@@ -1,0 +1,605 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "test",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_home_hero_jyxiiw": {
+      "type": "component__home-hero",
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/header_desktop.jpg",
+        "image_mob": "shopify://shop_images/header_mobile.jpg",
+        "heading": "We are the \nscience of flavor.",
+        "description": "Spiceology spices and seasonings create \nnever-before-tasted flavors, so you \ncan create never-before-tasted dishes.",
+        "btn_text": "Shop Spices",
+        "btn_url": "",
+        "placement": "top",
+        "color": "light"
+      }
+    },
+    "component_home_product_slider_eP3PJz": {
+      "type": "component__home-product-slider",
+      "blocks": {
+        "product_hyCWaB": {
+          "type": "product",
+          "settings": {
+            "product": "greek-freak-mediterranean-seasoning",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_ewz7jE": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_hdzBzG": {
+          "type": "product",
+          "settings": {
+            "product": "maui-wowee-hawaiian-teriyaki-rub",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_zdD7ii": {
+          "type": "product",
+          "settings": {
+            "product": "black-magic-cajun-blackening-seasoning",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_ixNRa4": {
+          "type": "product",
+          "settings": {
+            "product": "korean-bbq-seasoning",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_MzDAxN": {
+          "type": "product",
+          "settings": {
+            "product": "rosemary-dijon-seasoning",
+            "tall_image": false,
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        }
+      },
+      "block_order": [
+        "product_hyCWaB",
+        "product_ewz7jE",
+        "product_hdzBzG",
+        "product_zdD7ii",
+        "product_ixNRa4",
+        "product_MzDAxN"
+      ],
+      "settings": {
+        "subheading": "Best Sellers",
+        "heading": "Our Faves",
+        "btn_text": "Shop Best Sellers",
+        "btn_url": "shopify://collections/best-sellers",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_home_image_text_yfzUze": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_PkGP4X": {
+          "type": "product",
+          "settings": {
+            "product": "zaatar-spice"
+          }
+        }
+      },
+      "block_order": [
+        "product_PkGP4X"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Image_with_text_block_71ca5a25-cf7f-47cd-a4aa-e129bcfe5bfc.jpg",
+        "image_ratio_desk": "133.33%",
+        "image_ratio": "133.33%",
+        "image_size": "small",
+        "image_position": "left",
+        "subheading": "",
+        "heading": "Reimagining what’s possible in a spoonful of spices",
+        "description": "Spiceology's innovative spices, seasonings, and hard-to-find ingredients inspire pro chefs and homecooks alike to Experiment with Flavor.",
+        "btn_text": "Shop All",
+        "btn_url": "shopify://collections/all",
+        "content_align": "start"
+      }
+    },
+    "component_home_products_BzJMX4": {
+      "type": "component__home-collection-carousel",
+      "blocks": {
+        "collection_gnp9wn": {
+          "type": "collection",
+          "settings": {
+            "title": "blends",
+            "collection": "blends"
+          }
+        },
+        "collection_zPbjyX": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "chiles"
+          }
+        },
+        "collection_HbqxxX": {
+          "type": "collection",
+          "settings": {
+            "title": "Confections",
+            "collection": "confections"
+          }
+        },
+        "collection_RYDkR3": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "herbs"
+          }
+        },
+        "collection_6ffVYc": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "modernist"
+          }
+        },
+        "collection_8YYKL4": {
+          "type": "collection",
+          "settings": {
+            "title": "Powders",
+            "collection": "veg-powders"
+          }
+        },
+        "collection_9PyQym": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "salts"
+          }
+        },
+        "collection_EznCKq": {
+          "type": "collection",
+          "settings": {
+            "title": "Sauce",
+            "collection": "sauce"
+          }
+        },
+        "collection_YU9G7a": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "spices"
+          }
+        }
+      },
+      "block_order": [
+        "collection_gnp9wn",
+        "collection_zPbjyX",
+        "collection_HbqxxX",
+        "collection_RYDkR3",
+        "collection_6ffVYc",
+        "collection_8YYKL4",
+        "collection_9PyQym",
+        "collection_EznCKq",
+        "collection_YU9G7a"
+      ],
+      "settings": {
+        "heading": "Shop the Periodic Table of Flavor"
+      }
+    },
+    "component_home_product_info_ER7k6L": {
+      "type": "component__home-product-info",
+      "settings": {
+        "heading": "New at Spiceology",
+        "image": "shopify://shop_images/feed_6.jpg",
+        "inset": true,
+        "product": "tomatador-mediterranean-seasoning",
+        "description": ""
+      }
+    },
+    "component_home_collection_list_VM3TNb": {
+      "type": "component__home-collection-list",
+      "blocks": {
+        "collection_7gW4yw": {
+          "type": "collection",
+          "settings": {
+            "collection": "african-carribean"
+          }
+        },
+        "collection_8E9hfW": {
+          "type": "collection",
+          "settings": {
+            "collection": "american-bbq"
+          }
+        },
+        "collection_UjQaN7": {
+          "type": "collection",
+          "settings": {
+            "collection": "asian-pacific-islands"
+          }
+        },
+        "collection_aPydQ9": {
+          "type": "collection",
+          "settings": {
+            "collection": "indian"
+          }
+        },
+        "collection_kcWHP3": {
+          "type": "collection",
+          "settings": {
+            "collection": "latin-south-american"
+          }
+        },
+        "collection_kb9YrN": {
+          "type": "collection",
+          "settings": {
+            "collection": "mediterranean-european"
+          }
+        },
+        "collection_L4EGVU": {
+          "type": "collection",
+          "settings": {
+            "collection": "middle-eastern"
+          }
+        },
+        "collection_ECbPzn": {
+          "type": "collection",
+          "settings": {
+            "collection": "modern-american"
+          }
+        }
+      },
+      "block_order": [
+        "collection_7gW4yw",
+        "collection_8E9hfW",
+        "collection_UjQaN7",
+        "collection_aPydQ9",
+        "collection_kcWHP3",
+        "collection_kb9YrN",
+        "collection_L4EGVU",
+        "collection_ECbPzn"
+      ],
+      "settings": {
+        "heading": "Shop By Cuisine"
+      }
+    },
+    "component_home_marquee_83FzRy": {
+      "type": "component__home-marquee",
+      "disabled": true,
+      "settings": {
+        "text": "Never-before-tasted flavors  •  Hard-to-find-ingredients  •  Ground fresh, shipped fresh  •  Created by chefs, not food scientists  •  Real food, no funky stuff •",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_home_video_text_7YUXyN": {
+      "type": "component__home-video-text",
+      "settings": {
+        "heading": "We believe that spices are the heart of the kitchen",
+        "description": "Our 300+ seasonings, spices, and ingredients are changing the way people cook and eat, making unique flavor combinations the centerpiece of every dish.",
+        "btn_text": "About Us",
+        "btn_url": "shopify://pages/about-us",
+        "video": "shopify://files/videos/Website Insert (4).webm"
+      }
+    },
+    "component_home_filter_WE8ekm": {
+      "type": "component__home-filter",
+      "blocks": {
+        "filter_qfUmXG": {
+          "type": "filter",
+          "settings": {
+            "text": "Bitter",
+            "filter_type": "flavors",
+            "filter_id": "bitter",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_Eg8aV6": {
+          "type": "filter",
+          "settings": {
+            "text": "Savory/Umami",
+            "filter_type": "flavors",
+            "filter_id": "savory-umami",
+            "scenario_id": "2",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_zNGYK8": {
+          "type": "filter",
+          "settings": {
+            "text": "Tart",
+            "filter_type": "flavors",
+            "filter_id": "tart",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_qCPgba": {
+          "type": "filter",
+          "settings": {
+            "text": "Herbaceous",
+            "filter_type": "flavors",
+            "filter_id": "herbaceous",
+            "scenario_id": "3",
+            "text_color": "#ffffff",
+            "bg_color": "#0db14b"
+          }
+        },
+        "filter_FcM3yw": {
+          "type": "filter",
+          "settings": {
+            "text": "Salty",
+            "filter_type": "flavors",
+            "filter_id": "salty",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#00a1e4"
+          }
+        },
+        "filter_thzChd": {
+          "type": "filter",
+          "settings": {
+            "text": "Spicy",
+            "filter_type": "flavors",
+            "filter_id": "spicy",
+            "scenario_id": "1",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_TcGhtb": {
+          "type": "filter",
+          "settings": {
+            "text": "Sweet",
+            "filter_type": "flavors",
+            "filter_id": "sweet",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_AmKrmx": {
+          "type": "filter",
+          "settings": {
+            "text": "Beef",
+            "filter_type": "good_on_item",
+            "filter_id": "beef",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_Kf6JmM": {
+          "type": "filter",
+          "settings": {
+            "text": "Poultry",
+            "filter_type": "good_on_item",
+            "filter_id": "poultry",
+            "scenario_id": "1",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_PJtXqU": {
+          "type": "filter",
+          "settings": {
+            "text": "Seafood",
+            "filter_type": "good_on_item",
+            "filter_id": "seafood",
+            "scenario_id": "2",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_Y9HpDp": {
+          "type": "filter",
+          "settings": {
+            "text": "Vegetables",
+            "filter_type": "good_on_item",
+            "filter_id": "vegetables",
+            "scenario_id": "3",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        },
+        "filter_YYQRJw": {
+          "type": "filter",
+          "settings": {
+            "text": "Rice/Grains/Pasta",
+            "filter_type": "good_on_item",
+            "filter_id": "rice-grains-pasta",
+            "scenario_id": "",
+            "text_color": "#ffffff",
+            "bg_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "filter_qfUmXG",
+        "filter_Eg8aV6",
+        "filter_zNGYK8",
+        "filter_qCPgba",
+        "filter_FcM3yw",
+        "filter_thzChd",
+        "filter_TcGhtb",
+        "filter_AmKrmx",
+        "filter_Kf6JmM",
+        "filter_PJtXqU",
+        "filter_Y9HpDp",
+        "filter_YYQRJw"
+      ],
+      "settings": {
+        "title": "What Are You In The Mood For?",
+        "shop_btn_text": "Shop The Results",
+        "random_limit": 2,
+        "random_scenario_count": 3,
+        "random_filter_text": "Surprise Me!"
+      }
+    },
+    "component_home_recipe_slider_GQzPkB": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_xqhCk7": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/blackberry-balsamic-peach-blackberry-hand-pies"
+          }
+        },
+        "article_akpDC8": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/jamaican-jerk-wings-with-pineapple-salsa"
+          }
+        },
+        "article_PjJBax": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/sticky-bourbon-brown-ale-pork-ribs"
+          }
+        },
+        "article_wLGLi7": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/rosemary-dijon-cheesy-potato-bacon-soup"
+          }
+        },
+        "article_EtVHTE": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/black-magic-salmon"
+          }
+        },
+        "article_wGCQ6E": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/purple-haze-cucumber-salad"
+          }
+        },
+        "article_RJEmDN": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/chile-margarita-charred-salsa-verde"
+          }
+        },
+        "article_7Hcigr": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/garlic-herb-roasted-bone-in-pork-loin"
+          }
+        },
+        "article_TGXc7f": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/rosemary-dijon-salmon"
+          }
+        },
+        "article_zifUTw": {
+          "type": "article",
+          "settings": {
+            "article": "recipes/pink-peppercorn-lemon-thyme-crispy-potatoes"
+          }
+        }
+      },
+      "block_order": [
+        "article_xqhCk7",
+        "article_akpDC8",
+        "article_PjJBax",
+        "article_wLGLi7",
+        "article_EtVHTE",
+        "article_wGCQ6E",
+        "article_RJEmDN",
+        "article_7Hcigr",
+        "article_TGXc7f",
+        "article_zifUTw"
+      ],
+      "settings": {
+        "title": "Recipe Inspiration",
+        "product": "",
+        "eyebrow": "",
+        "description": ""
+      }
+    },
+    "component_cta_button_DzaCKM": {
+      "type": "component__cta-button",
+      "custom_css": [
+        ".custom {padding-top: 0;}"
+      ],
+      "settings": {
+        "btn_text": "View All Recipes",
+        "btn_url": "#"
+      }
+    },
+    "component_home_meet_team_zybHhx": {
+      "type": "component__home-double-image-text",
+      "settings": {
+        "subheading": "FOODSERVICE",
+        "heading": "Chefs are in our DNA",
+        "description": "As a chef-founded company, we know that great flavor comes from passionate culinary artists, not food scientists. So we’ve worked hard to build a business that serves the chef community, with the spices and hard-to-find ingredients you seek, the labor-saving solutions you need, and the easy availability that keeps your kitchen running.",
+        "btn_text": "Learn More",
+        "btn_url": "shopify://pages/pro-chefs",
+        "main_image": "shopify://shop_images/Tony_for_website-1.png",
+        "second_image": "shopify://shop_images/double_image_text_2df55b2b-d00c-4219-b450-79feffa006ec.jpg",
+        "team_photo": "shopify://shop_images/headshot-tony-reed.jpg",
+        "team_name": "Chef Tony Reed\n@intothereeds18"
+      }
+    },
+    "1726161204906167ef": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_VrWVNQ": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "disabled": true,
+          "settings": {
+            "enabled": true,
+            "id": "166841",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_VrWVNQ"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_home_hero_jyxiiw",
+    "component_home_product_slider_eP3PJz",
+    "component_home_image_text_yfzUze",
+    "component_home_products_BzJMX4",
+    "component_home_product_info_ER7k6L",
+    "component_home_collection_list_VM3TNb",
+    "component_home_marquee_83FzRy",
+    "component_home_video_text_7YUXyN",
+    "component_home_filter_WE8ekm",
+    "component_home_recipe_slider_GQzPkB",
+    "component_cta_button_DzaCKM",
+    "component_home_meet_team_zybHhx",
+    "1726161204906167ef"
+  ]
+}

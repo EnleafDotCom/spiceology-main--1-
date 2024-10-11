@@ -1,0 +1,18 @@
+<script>
+	var SHOPIFY_DOMAIN = {{ shop.permanent_domain | json }};
+	var CART = {{ cart | json }};
+	var TEMPLATE = {{ template | json }}
+	var KLAVIYO_LIST_ID = {{ settings.klaviyo_list_id | json }}
+
+	{% if customer %}
+		var CUSTOMER_EMAIL = {{ customer.email | json }};
+	{% else %}
+		var CUSTOMER_EMAIL = null;
+	{% endif %}
+
+  var CURRENCY = "{{ cart.currency.iso_code }}";
+
+	var GLOBALS = {
+	};
+
+</script>

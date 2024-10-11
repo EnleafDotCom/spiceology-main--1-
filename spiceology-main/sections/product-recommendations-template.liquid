@@ -1,0 +1,15 @@
+<div class="product-recommendations px-5 md:px-10 mb-20">
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <h2 class="text-3xl pb-8">
+      Customers Also Bought
+    </h2>
+
+    <div class="md:grid grid-cols-4 flex flex-row w-full overflow-x-auto">
+      {% for recommendedProduct in recommendations.products %}
+        <div class="w-64 md:w-full" style="min-width: 256px;">
+          {%- render 'product__card', product: recommendedProduct -%}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

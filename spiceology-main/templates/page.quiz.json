@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "component_header_spacer_BVCKKw": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_BVCKKw",
+    "main"
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "home_video_text_without_button_R7AJAN": {
+      "type": "home-video-text-without-button",
+      "settings": {
+        "heading": "Consider Dinner Done",
+        "description": "Get to Grilling with Spiceology. Found in select Walmart garden centers across the country.",
+        "video": "shopify:\/\/files\/videos\/Feed - Smokey Honey Habanero - Grilled Chicken Sandwhich (1).mp4"
+      }
+    },
+    "component_image_carousel_XXxLb4": {
+      "type": "component__image-carousel",
+      "blocks": {
+        "item_pEWfaw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page-2.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "large"
+          }
+        },
+        "item_fNJMgw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page-3_4014c8f2-3092-4806-a166-e3b913315494.jpg",
+            "subheading": "",
+            "description": "The OG blend that started it all",
+            "url": "",
+            "size": "medium"
+          }
+        },
+        "item_DPAEF4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page-4.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_GWatLx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_iYNtVD": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page-5.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_hDKyV3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-page-6.jpg",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "item_pEWfaw",
+        "item_fNJMgw",
+        "item_DPAEF4",
+        "item_GWatLx",
+        "item_iYNtVD",
+        "item_hDKyV3"
+      ],
+      "settings": {
+      }
+    },
+    "component_headline_66bQk3": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Shop on Walmart.com",
+        "description": "Have Spiceology shipped to you, order for curbside pickup, or delivered via Walmart+.",
+        "alignment": "between"
+      }
+    },
+    "component_rich_image_diwKmV": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_DCmzyr": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-listing-black-magic_e598f3af-edd8-414d-a14e-ce6cd12fce39.png",
+            "heading": "",
+            "description": "",
+            "button_url": "https:\/\/www.walmart.com\/ip\/Spiceology-Black-Magic-Cajun-Seasoning-Blend-4-4-oz-Bottle\/2789988175",
+            "button_text": "Shop on Walmart",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_ywmWAK": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-listing-smoky-honey-hab.png",
+            "heading": "",
+            "description": "",
+            "button_url": "https:\/\/www.walmart.com\/ip\/Spiceology-Smoky-Honey-Habanero-BBQ-Seasoning-Blend-6-oz-Bottle\/2025534256",
+            "button_text": "Shop on Walmart",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_6jKYbw": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-listing-nashville-hot.png",
+            "heading": "",
+            "description": "",
+            "button_url": "https:\/\/www.walmart.com\/ip\/Spiceology-Nashville-Hot-Chicken-Seasoning-Blend-5-2-oz-Bottle\/2221700848",
+            "button_text": "Shop on Walmart",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_rVPdtz": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/walmart-listing-rio-grande.png",
+            "heading": "",
+            "description": "",
+            "button_url": "https:\/\/www.walmart.com\/ip\/Spiceology-Rio-Grande-Taco-and-Fajita-Mexican-Seasoning-Blend-5-2-oz-Bottle\/1386109151",
+            "button_text": "Shop on Walmart",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_DCmzyr",
+        "image_ywmWAK",
+        "image_6jKYbw",
+        "image_rVPdtz"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "2",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_store_locator_LiiHKN": {
+      "type": "component__store-locator",
+      "settings": {
+        "html": "<div id=\"storepoint-container\" data-tags=\"walmart\" data-map-id=\"161b3966a778a4\"><\/div><script>(function(){var a=document.createElement(\"script\");a.type=\"text\/javascript\";a.async=!0;a.src=\"https:\/\/cdn.storepoint.co\/api\/v1\/js\/161b3966a778a4.js\";var b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(a,b);}());<\/script><style>#storepoint-tag-dropdown{display:none!important;}<\/style>"
+      }
+    },
+    "component_home_recipe_slider_ct4yEr": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_V74tLX": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/black-magic-compound-butter-steak"
+          }
+        },
+        "article_VEREyY": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/grilled-smoky-honey-habanero-cedar-plank-salmon"
+          }
+        },
+        "article_WVVEbG": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/nashville-hot-chicken-skewers"
+          }
+        },
+        "article_aP6cGb": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/rio-grande-grilled-fish-tacos"
+          }
+        }
+      },
+      "block_order": [
+        "article_V74tLX",
+        "article_VEREyY",
+        "article_WVVEbG",
+        "article_aP6cGb"
+      ],
+      "settings": {
+        "title": "Recipe Inspiration",
+        "product": "smoky-honey-habanero-seasoning",
+        "eyebrow": "PRO TIP",
+        "description": "We get it, I mean who doesn’t love cocktail wieners. WE love cocktail wieners."
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "home_video_text_without_button_R7AJAN",
+    "component_image_carousel_XXxLb4",
+    "component_headline_66bQk3",
+    "component_rich_image_diwKmV",
+    "component_store_locator_LiiHKN",
+    "component_home_recipe_slider_ct4yEr",
+    "main"
+  ]
+}

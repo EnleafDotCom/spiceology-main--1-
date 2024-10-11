@@ -1,0 +1,56 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-20 py-10 opacity-0">
+  {% for block in section.blocks %}
+  <div class="max-w-[730px] mx-auto px-5 rte-article mb-5">{{ block.settings.text }}</div>
+  {% endfor %}
+</section>
+{% schema %}
+  {
+    "name": "[Component] Rich Text",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "Rich Text",
+        "type": "richtext",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      },
+      {
+        "name": "HTML",
+        "type": "html",
+        "settings": [
+          {
+            "type": "html",
+            "id": "text",
+            "label": "HTML"
+          },
+        ],
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Component] Rich Text",
+        "blocks": [
+          {
+            "type": "richtext",
+            "settings": {
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+            }
+          },
+          {
+            "type": "html",
+            "settings": {
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+            }
+          }
+        ]
+      }
+    ],
+  }
+{% endschema %}

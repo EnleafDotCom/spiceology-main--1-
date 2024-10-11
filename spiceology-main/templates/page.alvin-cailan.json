@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Alvin Cailan x Spiceology",
+        "content": "Chef Alvin Cailan has officially declared it Flavor SZN – all year round. The man knows his burgers, runs a beloved culinary empire, and, for the first time ever, he’s bringing you four ultra-versatile blends to level up whatever you shake them on.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/headshot-alvin-cailan-2.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "alvin-cailan",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Alvin Cailan",
+        "text": "<p>A classically trained chef who studied at the Oregon Culinary Institute and later worked for Thomas Keller at Bouchon and The French Laundry, Cailan went on to open the legendary Eggslut and <a href=\"https:\/\/chefalvincailan.com\/amboy\" target=\"_blank\">Amboy<\/a> in Los Angeles, is the culinary force at <a href=\"https:\/\/www.umamiburger.com\/\" target=\"_blank\">Umami Burger<\/a>, is the Culinary Consultant for Bob’s Burgers and – on top of all that – is host of <a href=\"https:\/\/www.youtube.com\/c\/FirstWeFeast\/featured\" target=\"_blank\">The Burger Show<\/a>.<\/p><p>To top it all off, Cailan is arguably the most high-profile chef in America’s Filipino food movement.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

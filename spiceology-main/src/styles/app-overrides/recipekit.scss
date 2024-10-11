@@ -1,0 +1,131 @@
+#rk,
+#recipe {
+  @apply bg-grey-light;
+  background: #f2f2f2 !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+#rk_parent .rk_modern .rk_container {
+  margin: 0 auto !important;
+  background: white !important;
+  border-radius: 6px !important;
+  border: none !important;
+}
+.rk_description {
+  //   p {
+  //     font-size: 18px !important;
+  //     font-style: normal;
+  //     font-weight: 400 !important;
+  //     line-height: 150% !important; /* 27px */
+  //     letter-spacing: 0.72px !important;
+  //   }
+}
+
+.rk_image img {
+  border-radius: 6px !important;
+}
+
+.rk_heading {
+  font-size: 40px !important;
+  line-height: 2.38rem !important;
+  letter-spacing: 0rem !important;
+}
+
+#rk_parent .rk_rating #rk_rating_thanks {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 122% !important; /* 17.08px */
+  letter-spacing: 0.28px !important;
+
+  //   font-size: 11px !important;
+  //   font-style: normal !important;
+  //   font-weight: 400 !important;
+  //   line-height: 140% !important; /* 15.4px */
+  //   letter-spacing: 0.66px !important;
+  //   text-transform: uppercase !important;
+  //   font-size: 18px !important;
+  //   font-style: normal !important;
+  //   font-weight: 400 !important;
+  //   line-height: 150% !important; /* 27px */
+  //   letter-spacing: 0.72px !important;
+}
+.rk_meta + p {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 122% !important; /* 17.08px */
+  letter-spacing: 0.28px !important;
+}
+
+.rk_meta + p + p {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 122% !important; /* 17.08px */
+  letter-spacing: 0.28px !important;
+}
+
+#rk_parent .rk_modern .rk_container .rk_image,
+#rk_parent .rk_modern .rk_container .rk_description {
+  padding-top: 32px !important;
+}
+
+.rk_description {
+  p {
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 150% !important; /* 27px */
+    letter-spacing: 0.72px !important;
+  }
+
+  & .rk_author {
+    font-family: Chromatic Mono, ui-monospace, monospace !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 122% !important; /* 17.08px */
+    letter-spacing: 0.28px !important;
+
+    p {
+      font-family: Chromatic Mono, ui-monospace, monospace !important;
+      font-size: 14px !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      line-height: 122% !important; /* 17.08px */
+      letter-spacing: 0.28px !important;
+    }
+  }
+}
+
+#rk_parent .rk_modern .rk_container .rk_column_heading {
+  font-size: 30px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 100% !important; /* 30px */
+  padding-bottom: 20px !important;
+}
+
+#recipe-ingredients,
+#recipe-preparation {
+  li p {
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 150% !important; /* 27px */
+    letter-spacing: 0.72px !important;
+  }
+}
+
+#rk_parent .rk_modern .rk_container li {
+  line-height: 27px !important;
+}
+
+.rk_video {
+  border-radius: 6px !important;
+}

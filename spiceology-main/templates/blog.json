@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "component_header_spacer_jpjf4n": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "blogs": ""
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_jpjf4n",
+    "main"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "A Cook Named Matt x Spiceology",
+        "content": "Called “The Most Fun Chef to Watch on TikTok” by Forbes, A Cook Named Matt (aka Matt Broussard) is inspiring millions to Experiment with Flavor. No really, aside from being our Test Kitchen Chef, Matt has 4+ million followers on TikTok, 200,000+ subscribers on YouTube and 350,000+ on Instagram.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/a-cook-named-matt.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 70,
+        "padding_bottom_mob": 70
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "a-cook-named-matt",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Matt Broussard",
+        "text": "<p>Why are millions of folks logging on to see what Matt’s up to? Dude knows how to cook, entertain AND connect with his audience.<\/p><p>After graduating from Le Cordon Bleu, Chef Matt started his culinary career in the kitchens of famed Seattle chef and restauranteur, Tom Douglas. He credits his culinary skills to the years spent across Douglas’ 15 restaurants and the women in his life – his mother, grandmother and aunts. We’d say these ladies were probably pretty proud when Matt appeared live on the NFL’s SuperBowl LV TikTok Tailgate making his famous <a href=\"https:\/\/spiceology.com\/recipes\/super-bowl-wings\/\" target=\"_blank\">Huli Huli wings<\/a>.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

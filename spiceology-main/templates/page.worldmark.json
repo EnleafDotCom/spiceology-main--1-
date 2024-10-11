@@ -1,0 +1,366 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_home_hero_6nH8K7": {
+      "type": "component__home-hero",
+      "settings": {
+        "full_width": true,
+        "image": "shopify:\/\/shop_images\/headr_myndham.png",
+        "image_mob": "shopify:\/\/shop_images\/headr_myndham_mobile_872abd70-315f-4389-8bd6-138daea9512e.png",
+        "heading": "Put that kitchen to use.",
+        "description": "We’ve partnered with Spiceology, the fastest growing spice company in the US, to bring their fresh ground spices and blends to your vacation.",
+        "btn_text": "Shop Now",
+        "btn_url": "\/collections\/all",
+        "color": "light"
+      }
+    },
+    "component_home_recipe_slider_qfJTxn": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_c6AtPx": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoked-salmon-bagel-with-greek-freak-cream-cheese"
+          }
+        },
+        "article_aYB94g": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-radishes"
+          }
+        },
+        "article_Y3Nhhx": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-nuts-bolts-chex-mix"
+          }
+        },
+        "article_YV8wFK": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/green-bean-casserole-bundles"
+          }
+        },
+        "article_efAXMi": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/roasted-asparagus-with-lemon-greek-aioli"
+          }
+        },
+        "article_RaWCcf": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/quick-smoky-honey-habanero-sweet-potato-fries"
+          }
+        },
+        "article_PBMRMx": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-buttered-popcorn"
+          }
+        },
+        "article_MgYYeh": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-salmon-rice-bowl"
+          }
+        },
+        "article_TQiGTb": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-salmon-rice-bowl"
+          }
+        },
+        "article_MkPmPL": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/homemade-greek-freak-garlic-junkie-herby-hummus"
+          }
+        },
+        "article_ERaBJX": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-mushroom-tacos"
+          }
+        },
+        "article_hTJeBh": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoky-honey-habanero-mushroom-tacos"
+          }
+        },
+        "article_JbzAcH": {
+          "type": "article",
+          "settings": {
+            "article": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_c6AtPx",
+        "article_aYB94g",
+        "article_Y3Nhhx",
+        "article_YV8wFK",
+        "article_efAXMi",
+        "article_RaWCcf",
+        "article_PBMRMx",
+        "article_MgYYeh",
+        "article_TQiGTb",
+        "article_MkPmPL",
+        "article_ERaBJX",
+        "article_hTJeBh",
+        "article_JbzAcH"
+      ],
+      "settings": {
+        "title": "Seasonal Flavors",
+        "product": "smoky-honey-habanero-seasoning",
+        "eyebrow": "PRO TIP",
+        "description": "Put those seasonings to work adding fresh ground flavor to your meals."
+      }
+    },
+    "component_image_carousel_bYL3HH": {
+      "type": "component__image-carousel",
+      "blocks": {
+        "item_akcce4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/GREEK_FREAK_CREAM_CHEESE_SPREAD.jpg",
+            "subheading": "GF",
+            "description": "Greek Freak + Cream Cheese Spread",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_Akdjwr": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Smokt_Honey_Habanero_Radishes.jpg",
+            "subheading": "Hb",
+            "description": "Smoky Honey Habanero + Radishes",
+            "url": "",
+            "size": "large"
+          }
+        },
+        "item_A6JMxh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nuts_and_mix.jpg",
+            "subheading": "Hb",
+            "description": "Smoky Honey Habanero Nuts & Bolts Chex Mix",
+            "url": "",
+            "size": "medium"
+          }
+        },
+        "item_qKkqiF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2820c5a82faafa2ae1907fcf26f0bca0.jpg",
+            "subheading": "Test",
+            "description": "Lorem ipsum lorem ipsum lorem",
+            "url": "",
+            "size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "item_akcce4",
+        "item_Akdjwr",
+        "item_A6JMxh",
+        "item_qKkqiF"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_home_marquee_Vw34jV": {
+      "type": "component__home-marquee",
+      "settings": {
+        "text": "Bold Travels •  Big Flavors • Better quality, chef-created blends designed for ultra-versatile use •"
+      }
+    },
+    "component_home_image_text_h3FXXH": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_d48QHX": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_d48QHX"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/greek-freak-sachet.jpg",
+        "image_ratio_desk": "auto",
+        "image_ratio": "auto",
+        "image_size": "small",
+        "image_position": "left",
+        "subheading": "",
+        "heading": "I’m Greek Freak",
+        "description": "Grab me if you think every meal deserves some herbs, garlic and sun-dried tomato and you know that citrus can brighten any meal (hence the orange peel). I’m like a good friend – interesting and always a great addition. I’m your new breakfast-lunch-and-dinner Mediterranean blend.",
+        "btn_text": "Learn More",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_home_image_text_B9GPjw": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_3LMTem": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_3LMTem"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/garlic-junkie-sachet.jpg",
+        "image_ratio_desk": "auto",
+        "image_ratio": "auto",
+        "image_size": "small",
+        "image_position": "right",
+        "subheading": "",
+        "heading": "I’m Garlic Junkie",
+        "description": "Grab me if you think you can never have enough garlic. Savory and rich with the perfect amount of salt, pepper and herbs I’m your new shake me on any protein, veggie, starch, you name it all-purpose blends.",
+        "btn_text": "Learn More",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_home_image_text_VHT9cM": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_wyTBDh": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_wyTBDh"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/smoky-honey-habanero-sachet.jpg",
+        "image_ratio_desk": "auto",
+        "image_ratio": "auto",
+        "image_size": "small",
+        "image_position": "left",
+        "subheading": "NEED HEADLINE",
+        "heading": "I’m Smoky Honey Habanero",
+        "description": "Grab me if you want never before tasted granulated sexiness. Just try to find a dish that this smoky paprika, honey granules and tiny bit of habanero powder combo doesn’t work on. I’m your new must have sweet and spicy blend.",
+        "btn_text": "Learn More",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_story_tabs_4JaMhi": {
+      "type": "component__story-tabs",
+      "blocks": {
+        "tab_EjdqtE": {
+          "type": "tab",
+          "settings": {
+            "title": "<h2>#TasteofWorldMark<\/h2>",
+            "content": "",
+            "handwriting_text": "Food and flavor is better when shared.\nTag, post and show off your Owner culinary chops."
+          }
+        }
+      },
+      "block_order": [
+        "tab_EjdqtE"
+      ],
+      "settings": {
+        "heading": "Our Story"
+      }
+    },
+    "component_story_text_yPKEYx": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "#TasteofWorldMark",
+        "text": "<p><\/p><p>And, we’ve added Spiceology’s fresh ground, grade A cinnamon and red pepper flakes, to flavor up your morning oatmeal, family pizza night, and more. Follow us at <a href=\"https:\/\/www.instagram.com\/worldmarkbywyndham\" target=\"_blank\" title=\"https:\/\/www.instagram.com\/worldmarkbywyndham\">@worldmarkbywyndham<\/a><\/p>"
+      }
+    },
+    "component_image_carousel_fnRwUf": {
+      "type": "component__image-carousel",
+      "blocks": {
+        "item_rNAKVq": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1.png",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        },
+        "item_rabwUw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2.png",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "large"
+          }
+        },
+        "item_cpDXkE": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3.png",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "medium"
+          }
+        },
+        "item_tK9aMi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4.png",
+            "subheading": "",
+            "description": "",
+            "url": "",
+            "size": "small"
+          }
+        }
+      },
+      "block_order": [
+        "item_rNAKVq",
+        "item_rabwUw",
+        "item_cpDXkE",
+        "item_tK9aMi"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_home_hero_6nH8K7",
+    "component_home_recipe_slider_qfJTxn",
+    "component_image_carousel_bYL3HH",
+    "component_home_marquee_Vw34jV",
+    "component_home_image_text_h3FXXH",
+    "component_home_image_text_B9GPjw",
+    "component_home_image_text_VHT9cM",
+    "component_story_tabs_4JaMhi",
+    "component_story_text_yPKEYx",
+    "component_image_carousel_fnRwUf",
+    "main"
+  ]
+}

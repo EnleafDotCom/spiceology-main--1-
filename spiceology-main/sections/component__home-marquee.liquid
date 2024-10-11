@@ -1,0 +1,49 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-12 py-9 opacity-0 section-p-b {{ section.settings.padding_bottom }}">
+  <div class="lg:h-20 h-12 relative overflow-hidden [--offset:0%] [--move-initial:calc(0%_+_var(--offset))] [--move-final:calc(-100%_+_var(--offset))]">
+    <div class="w-fit flex absolute transform-[translate3d(var(--move-initial),0,0)] animate-marquee [animation-play-state:running]" aria-hidden="true">
+      {%- for i in (1..10) -%}
+      <span class="heading-2xl capitalize w-max">{{ section.settings.text }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "[Home] Marquee",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+       {
+                "type": "select",
+                "id": "padding_bottom",
+                "label": "Padding Bottom",
+                "default": "medium",
+                "options": [
+                    {
+                        "value": "small",
+                        "label": "Small"
+                    },
+                    {
+                        "value": "medium",
+                        "label": "Medium"
+                    },
+                    {
+                        "value": "large",
+                        "label": "Large"
+                    }
+                ]
+            }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Marquee",
+        "settings": {
+          "text": "Never-before-tasted flavors  •  Hard-to-find-ingredients  •  Ground fresh, shipped fresh  •  Created by chefs, not food scientists  •  Real food, no funky stuff  •"
+        }
+      }
+    ]
+  }
+{% endschema %}

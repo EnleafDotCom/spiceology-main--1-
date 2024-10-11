@@ -1,0 +1,73 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-20 py-12 lg:px-16 px-2.5 opacity-0">
+  <div class="lg:grid grid-cols-12 gap-5 flex flex-col-reverse">
+    <div class="lg:col-span-5 flex flex-col lg:w-auto w-full">
+      <div class="heading-xl capitalize lg:mb-6 mb-5 lg:pr-10">{{ section.settings.heading }}</div>
+      <div class="body-md mb-10 lg:pr-10">{{ section.settings.description }}</div>
+      <a class="button__secondary lg:w-fit w-full" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+    </div>
+    <div class="lg:col-span-7 lg:w-auto w-full">
+      {% if section.settings.image != blank %}
+        {% assign poster_url = section.settings.image | img_url: '1000x' %}  
+      {% else %}
+      {% assign poster_url = section.settings.video.preview_image | file_url | replace: "files/files/", "files/"%}
+      {% endif %}
+      
+      {%
+        render 'video_player',
+        video: section.settings.video.sources[1].url,
+        poster: poster_url,
+        video_classes: 'h-[52vw] lg:h-[36vw] object-cover w-full rounded-6',
+        muted: false
+      %}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "[Home] Video with Text",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Video Cover Image"
+      },
+    ],
+    "presets": [
+      {
+        "name": "[Home] Video with Text",
+        "settings": {
+          "heading": "We believe that spices are the heart of the kitchen",
+          "description": "Our 300+ seasoning blends and ingredients are changing the way people cook and eat, making unique flavor combinations the centerpiece of every dish.",
+          "btn_text": "About Us",
+          "btn_url": "",
+          "video": "shopify:\/\/files\/videos\/-feef-4d46-b1f1-ad8e63fe230b.mov"
+        }
+      }
+    ]
+  }
+{% endschema %}

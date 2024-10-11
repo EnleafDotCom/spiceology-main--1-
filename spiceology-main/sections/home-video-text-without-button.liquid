@@ -1,0 +1,55 @@
+<section class="lg:py-20 py-12 lg:px-16 px-2.5">
+  <div class="lg:grid grid-cols-12 gap-5 flex flex-col-reverse">
+    <div class="lg:col-span-5 flex flex-col lg:w-auto w-full">
+      <div class="heading-xl capitalize lg:mb-6 mb-5 lg:pr-10">{{ section.settings.heading }}</div>
+      <div class="body-md mb-10 lg:pr-10">{{ section.settings.description }}</div>
+    </div>
+    <div class="lg:col-span-7 lg:w-auto w-full">
+      {% if section.settings.image != blank %}
+        {% assign poster_url = section.settings.image | img_url: '1000x' %}  
+      {% else %}
+      {% assign poster_url = section.settings.video.preview_image | file_url | replace: "files/files/", "files/"%}
+      {% endif %}
+      
+      {%
+        render 'video_player',
+        video: section.settings.video.sources[1].url,
+        poster: poster_url,
+        video_classes: 'h-[52vw] lg:h-[36vw] object-cover w-full rounded-6',
+        muted: false
+      %}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Video without button",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Video Cover Image"
+      },
+    ],
+    "presets": [
+      {
+        "name": "[Home] Video with Text"
+      }
+    ]
+  }
+{% endschema %}

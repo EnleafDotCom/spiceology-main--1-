@@ -1,0 +1,68 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "component_header_spacer_6tWHzT": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_qdbgPb": {
+      "type": "component__headline",
+      "settings": {
+        "title": "We're Here to Help",
+        "description": "Our customer service hours are Monday – Friday, 8am – 3:30pm PST.",
+        "alignment": "between"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "description": "",
+        "padding_top_desk": 50,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 50,
+        "padding_bottom_mob": 60
+      }
+    },
+    "component_story_text_mA3Bdt": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "Other Ways To Contact Us",
+        "text": "<p><strong>Email Us: </strong>info@spiceology.com</p><p><strong>Call Us: </strong>509-241-3040</p><p><strong>Write Us: </strong>2770 E Ferry Ave, Spokane, WA 99202</p>"
+      }
+    },
+    "1728522351576c543b": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_RYkTtE": {
+          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"NTI2OTk=\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_RYkTtE"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_6tWHzT",
+    "component_headline_qdbgPb",
+    "1728522351576c543b",
+    "main",
+    "component_story_text_mA3Bdt"
+  ]
+}

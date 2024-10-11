@@ -1,0 +1,144 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-18 py-12 overflow-x-hidden opacity-0">
+  <div class="heading-xl capitalize px-10 lg:px-5 lg:mb-12 mb-8 text-center">{{ section.settings.heading }}</div>
+  <div  x-data="{ tab: 'tab1' }">
+    <div class="flex pt-3 xl:gap-2 gap-1.5 xl:justify-center mb-7.5 overflow-x-scroll lg:overflow-hidden no-scrollbar">
+      {% for block in section.blocks %}
+        <div class="{% if forloop.index == 1 %} ml-2.5 lg:ml-5 {% endif %} {% if forloop.index == section.blocks.size %} xl:mr-0 mr-2.5 {% endif %} button__tab button__rounded" @click.prevent="tab = 'tab{{ forloop.index }}'"  :class="tab == 'tab{{ forloop.index }}' && 'active'">
+          {% if block.settings.title != blank %}
+            <span>{{ block.settings.title }}</span>
+          {% else %}
+            <span>{{ block.settings.collection.title }}</span>
+          {% endif %}
+          <span class="utility-lg">{{ block.settings.collection.all_products_count }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="relative">
+      {% for block in section.blocks %}
+        <button-slider
+          data-slider-options='{
+            "breakpoints": {
+              "(max-width: 1280px)": {
+                "loop": true,
+                "slides": { "perView": "3", "spacing": 20 }
+              },
+              "(min-width: 1280px)": {
+                "loop": true,
+                "slides": { "perView": "4", "spacing": 20 }
+              },
+              "(max-width: 768px)": {
+                "loop": true,
+                "slides": { "perView": "1.2", "spacing": 10 }
+              }
+            }
+          }'
+          class="{% if forloop.index != 1 %} absolute top-0 left-0 right-0 {% endif %}"
+          :class="tab == 'tab{{ forloop.index }}' ? 'opacity-1 z-0' : 'opacity-0 -z-10 invisible'"
+        >
+         
+          <div
+            role="tabpanels"
+            class="keen-slider flex mx-2.5 lg:mx-5"
+          >
+              <div class="flex">
+              {% for product in block.settings.collection.products %}
+                <div class="keen-slider__slide">
+                {%- render 'product__card', product: product -%}
+                </div>
+              {% endfor %}
+              </div>
+          </div>
+
+          <div class="flex justify-between lg:px-5 lg:mt-10 mt-3 px-2.5">
+            {% render 'button__slider-prev', classes: "hidden lg:flex" %}
+            <a class="button__primary md:w-fit w-full mx-auto capitalize" href="{{ block.settings.collection.url }}">Shop All {{ block.settings.collection.title }}</a>
+            {% render 'button__slider-next', classes: "hidden lg:flex" %}
+          </div>
+        </button-slider>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "[Home] Collection Slider",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+    ],
+    "blocks": [
+      {
+        "name": "Collection",
+        "type": "collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Collection Slider",
+        "settings": {
+          "heading": "Shop the Periodic Table of Flavor"
+        },
+        "blocks": [
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "title": "",
+              "collection": "blends"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

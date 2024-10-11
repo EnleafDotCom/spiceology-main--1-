@@ -1,0 +1,1 @@
+!function(){class e extends HTMLElement{constructor(){super(),fetch(this.dataset.url).then((e=>e.text())).then((e=>{const t=document.createElement("div");t.innerHTML=e,this.innerHTML="",this.appendChild(t)}))}}customElements.get("product-recommendations")||customElements.define("product-recommendations",e)}();

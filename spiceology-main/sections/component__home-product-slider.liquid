@@ -1,0 +1,223 @@
+{{ 'component-home-product-slider.css' |  asset_url | stylesheet_tag }}
+
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:pt-20 lg:pb-20 pt-15 pb-8 overflow-x-hidden opacity-0 section-p-b {{ section.settings.padding_bottom }}">
+  <div class="xl:px-16 md:px-7.5 px-0 flex lg:flex-row flex-col">
+    <div class="lg:w-1/3 w-full flex flex-col lg:pr-10 justify-center mb-16 lg:mb-0 md:px-0 px-7.5">
+      <div class="utility-lg lg:text-left text-center lg:mb-2 mb-2.5 capitalize">{{ section.settings.subheading }}</div>
+      <div class="heading-2xl capitalize lg:mb-13 lg:text-left text-center">{{ section.settings.heading }}</div>
+      {% if section.settings.btn_text != blank %}
+        <a class="button__primary lg:w-fit w-full lg:flex hidden" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    </div>
+    <div class="lg:w-2/3 w-full relative lg:px-20">
+      <button-slider
+        data-slider-options='{
+          "breakpoints": {
+            "(min-width: 769px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "2", "spacing": 0, "origin": "center"  }
+            },
+            "(min-width: 1024px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "3", "spacing": 0 }
+            },
+            "(min-width: 1280px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "4", "spacing": 0 }
+            },
+            "(max-width: 768px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "2", "spacing": 40, "origin": "center" }
+            }
+          }
+        }'
+        x-data="{
+            activeIndex: 1,
+            updateSlide(index) {
+                $el.slider.moveToIdx(index - 1)
+            },
+            init(){
+                this.activeIndex = window.innerWidth < 1024 ? 1 : 'null'
+            }
+        }"
+      >
+        <div class="hidden lg:flex justify-between absolute w-full top-1/2 -translate-y-1/2 left-0 z-[1000] pointer-events-none">
+          {% render 'button__slider-prev' %}
+          {% render 'button__slider-next' %}
+        </div>
+       
+        <div role="tabpanels" class="keen-slider home-slider">
+          <div class="flex ">
+            {% for block in section.blocks %}
+              {% assign type = block.settings.product.type |  handleize %}
+              {% assign product_type = shop.metaobjects.product_type[type] %}
+              <a
+                href="{{ block.settings.product.url }}"
+                class="keen-slider__slide home-product relative pt-15 pb-20 mix-blend-darken group {% if forloop.first %}active{% elsif forloop.index == 2 %}active-2{% elsif forloop.index == 3 %}active-3{% elsif forloop.index == 4 %}active-4{% endif %}"
+                x-data="{ tooltip: false }"
+                x-init="() => {
+                  new MutationObserver(() => {
+                    if ($el.classList.contains('active')) {
+                      activeIndex = {{ forloop.index }};
+                    }
+                  }).observe($el, { attributes: true });
+                }"
+              >
+                <div class="lg:group-hover:scale-110 transition-scale duration-500 bg-grey-light" :class="activeIndex == {{ forloop.index }} ? 'scale-[200%] md:scale-[150%] lg:scale-100 ' : 'scale-[185%] md:scale-[135%] lg:scale-100'">
+                    {% render 'image', 
+                      image_desktop: block.settings.product.featured_image,
+                      image_mobile: block.settings.product.featured_image,
+                      width_desktop: '500x', 
+                      width_mobile: '500x', 
+                      ratio_desktop: '130%',
+                      ratio_mobile: '130%',
+                      lazy: true,
+                      image_classes: 'mix-blend-darken' 
+                    %}
+                </div>
+                {% unless block.settings.product.type == 'Variety Pack' %}
+                  <div class="font-kremlin text-12 leading-120 text-center -rotate-3 absolute line-clamp-2 text-[#1C1307] opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 ease-in-out {% if block.settings.tall_image %}top-[-76px] md:top-1 xl:-top-4{% else %}top-3 md:top-[60px] xl:top-10{% endif %}" :class="activeIndex == {{ forloop.index }} ? 'lg:opacity-0 opacity-100' : 'opacity-0'">
+                    {{ block.settings.product.metafields.custom.callout_card }}
+                  </div>
+                {% endunless %}
+                <div class="flex flex-col gap-1 items-center absolute w-full opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 ease-in-out {% if block.settings.tall_image %}bottom-[-74px] md:bottom-5 lg:bottom-[-16px] {% else %} bottom-[-64px] md:bottom-5 lg:bottom-[-16px]{% endif %}" :class="activeIndex == {{ forloop.index }} ? 'lg:opacity-0 opacity-100' : 'opacity-0'" >
+                  <div 
+                    style="background-color: {{ product_type.color }}; {% if product_type and product_type.color != '#FFFFFF' %}border-color: {{ product_type.color }};{% else %}border-color: '#181613';{% endif %}" 
+                    class="w-fit utility-sm px-1.5 py-1 border rounded-2 uppercase {% if block.settings.product.type == 'Blend' or block.settings.product.type == 'Veg Powder' %}text-white{% else %}text-black{% endif %}"
+                  >
+                    {{ block.settings.product.type }}
+                  </div>
+                  <div class="text-16 font-500 leading-110 md:px-3 px-7.5 text-center">{{ block.settings.product.title }}</div>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </button-slider>
+    </div>
+    {% if section.settings.btn_url != blank and section.settings.btn_text != blank %}
+      <a class="button__primary lg:hidden flex w-full mt-20 md:mt-10 max-w-[312px] mx-auto" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product Slider B",
+    "settings": [
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+                "type": "select",
+                "id": "padding_bottom",
+                "label": "Padding Bottom",
+                "default": "medium",
+                "options": [
+                    {
+                        "value": "small",
+                        "label": "Small"
+                    },
+                    {
+                        "value": "medium",
+                        "label": "Medium"
+                    },
+                    {
+                        "value": "large",
+                        "label": "Large"
+                    }
+                ]
+            }
+    ],
+    "blocks": [
+      {
+        "name": "Product",
+        "type": "product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "checkbox",
+            "id": "tall_image",
+            "label": "Tall Feature Image?",
+            "default": false
+          },
+          {
+            "type": "textarea",
+            "id": "callout_text",
+            "label": "Callout Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Slider B",
+        "settings": {
+          "subheading": "Best Sellers",
+          "heading": "Our Favs",
+          "btn_text": "Shop Blends",
+          "btn_url": "/collections/all"
+        },
+        "blocks": [
+          {
+            "type": "product",
+            "settings": {
+              "product": "smoky-honey-habanero-seasoning",
+              "callout_text": "Herbaceous and aromatic with a slow burning heat"
+            }
+          },
+          {
+            "type": "product",
+            "settings": {
+              "product": "smoky-honey-habanero-seasoning",
+              "callout_text": "Herbaceous and aromatic with a slow burning heat"
+            }
+          },
+          {
+            "type": "product",
+            "settings": {
+              "product": "smoky-honey-habanero-seasoning",
+              "callout_text": "Herbaceous and aromatic with a slow burning heat"
+            }
+          },
+          {
+            "type": "product",
+            "settings": {
+              "product": "smoky-honey-habanero-seasoning",
+              "callout_text": "Herbaceous and aromatic with a slow burning heat"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

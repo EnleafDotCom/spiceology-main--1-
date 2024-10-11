@@ -1,0 +1,228 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_header_spacer_a787ai": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_story_header_abrBbG": {
+      "type": "component__story-header",
+      "settings": {
+        "image": "shopify://shop_images/Livestyle-in-airbnb-edited-more.jpg",
+        "video": "shopify://files/videos/Website Insert (4).webm",
+        "title": "Our Story:\nAn Experiment with Flavor",
+        "description": "",
+        "btn_text": "",
+        "btn_url": "",
+        "text_align_mob": "center"
+      }
+    },
+    "component_story_text_wRcWJG": {
+      "type": "component__story-text",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "heading": "",
+        "text": "<h4>At Spiceology, the love of flavor drives us to keep dreaming and pushing the boundaries of what’s possible in a spoonful of spices.</h4>"
+      }
+    },
+    "component_story_text_zGDdA3": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "What We Believe",
+        "text": "<p><strong>We believe in flavor, not flavoring. </strong>We source only premium, natural ingredients, with no fillers or funky stuff.</p><p><strong>We believe that fresh matters. </strong>Our spices are ground fresh in small batches and shipped fresh from our Spokane, WA facility</p><p><strong>We believe in experimenting with flavor. </strong>Our never-before-tasted flavors are the foundation of endless creativity for chefs and home cooks alike</p><p><strong>We believe great food is better when it’s shared.</strong> We are part of a flavor community, sharing recipes and ideas with hundreds of thousands of chefs and home cooks each day. </p><p><strong>We believe in catering to the give-a-shit crowd. </strong>We’re not for those who just want a fast meal. We’re for those who want every meal, fast or slow, to be exceptional every time.</p><p><strong>We believe that spice is the variety of life. </strong>Does the world really need us to make 300+ spices and blends? Maybe not, but the world would sure be blander without them.</p>"
+      }
+    },
+    "component_story_image_slider_aT9CMA": {
+      "type": "component__story-image-slider",
+      "blocks": {
+        "slide_hwKFwd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_PeWphW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        },
+        "slide_Ncargt": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_qxMHfi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        },
+        "slide_7ACkLB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_2.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "top-left",
+            "ratio": "portrait"
+          }
+        },
+        "slide_W4fpxx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/386551161_18386726998015823_2530654139114142124_n_3.png",
+            "subheading": "2013",
+            "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+            "position": "bottom-right",
+            "ratio": "landscape"
+          }
+        }
+      },
+      "block_order": [
+        "slide_hwKFwd",
+        "slide_PeWphW",
+        "slide_Ncargt",
+        "slide_qxMHfi",
+        "slide_7ACkLB",
+        "slide_W4fpxx"
+      ],
+      "settings": {
+      }
+    },
+    "component_story_tabs_bXhKhw": {
+      "type": "component__story-tabs",
+      "blocks": {
+        "tab_gfH8zP": {
+          "type": "tab",
+          "settings": {
+            "title": "<p><span style=\"text-decoration:underline\">Never-Before</span>-Tasted <strong>Flavors</strong></p>",
+            "content": "<p>From humble beginnings at Spokane area farmers’ markets in 2013, Spiceology has grown to become the <a href=\"https://www.prnewswire.com/news-releases/spiceology-named-inc-5000-fastest-growing-spice-company-for-fifth-year-in-a-row-301900208.html\" target=\"_blank\" title=\"https://www.prnewswire.com/news-releases/spiceology-named-inc-5000-fastest-growing-spice-company-for-fifth-year-in-a-row-301900208.html\">fastest-growing spice company in the</a> world, listed on the Inc 5000 for six years and counting.</p><p>Spiceology‘s founders, executive chef Pete Taylor and food blogger Heather Scholten, saw a stale spice and seasoning market ripe for disruption: chefs and home cooks lacked easy access to unique ingredients and blends that could bring an extra dose of magic to their cooking.</p><p>Pete‘s first blend, <a href=\"/products/smoky-honey-habanero-seasoning\" title=\"Smoky Honey Habanero Seasoning\">Smoky Honey Habanero</a>, put Spiceology on the map with its smoky-sweet heat that brightens every dish. It remains a bestseller to this day, but it‘s now joined by nearly 300 original blends and core spices, such as chiles, herbs, salts, confections, fruit and vegetable powders.</p><p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of millions of home cooks, and in the kitchens of some of the world’s greatest chefs.</p><p>Our “cult of flavor” includes collaborations with such culinary luminaries as <a href=\"/collections/jet-tila\" title=\"Jet Tila\">Chef Jet Tila</a>, <a href=\"/collections/alvin-cailan\" title=\"Alvin Cailan\">Chef Alvin Cailan</a>, and grillmaster <a href=\"/collections/derek-wolf\" title=\"Derek Wolf\">Derek Wolf</a>. Our spices can also be seen in the hands of chefs on 25 seasons of popular shows like <em>Hell‘s Kitchen</em>, <em>Masterchef</em>, <em>Top Chef</em>, <em>Iron Chef</em>, and many more.</p><p>Through it all, Spiceology has remained true to its chef DNA. Our “Experiment with Flavor” ethos inspires chefs and home cooks alike to dream deliciously, with never-before-tasted flavors that drive endless experimentation but consistently tasty results. And when our customers complete the circle by sharing their culinary creations with us, it reminds us why we do this.</p>",
+            "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+          }
+        },
+        "tab_LE8Jzf": {
+          "type": "tab",
+          "settings": {
+            "title": "<p><strong>Freshly</strong> <span style=\"text-decoration:underline\">Ground</span></p>",
+            "content": "<p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of hundreds of thousands of home cooks, and in the kitchens of some of the world’s greatest chefs.</p><p>Our “cult of flavor” among chefs includes collaborations with such culinary luminaries as <a href=\"/collections\" title=\"All collections\">Chef Jet Tila, Chef Alvin Cailan</a>, and Chef Kwame Onwuachi and many more. </p><p>Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s Kitchen, Masterchef, Top Chef, Iron Chef, and many more.Spiceology has also developed unique seasoning lines for national brands, including Mod Pizza and Shake Shack, and popular venues such as Climate Pledge Arena and Lumen Field, home of the Seattle Seahawks.</p>",
+            "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+          }
+        },
+        "tab_DKfqBy": {
+          "type": "tab",
+          "settings": {
+            "title": "<p><span style=\"text-decoration:underline\">Ultra</span>-Versatile <strong>Blends</strong></p>",
+            "content": "<p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of hundreds of thousands of home cooks, and in the kitchens of some of the world’s greatest chefs.</p><p>Our “cult of flavor” among chefs includes collaborations with such culinary luminaries as Chef Jet Tila, Chef Alvin Cailan, and Chef Kwame Onwuachi and many more. </p><p>Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s Kitchen, Masterchef, Top Chef, Iron Chef, and many more.Spiceology has also developed unique seasoning lines for national brands, including Mod Pizza and Shake Shack, and popular venues such as Climate Pledge Arena and Lumen Field, home of the Seattle Seahawks.</p>",
+            "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+          }
+        }
+      },
+      "block_order": [
+        "tab_gfH8zP",
+        "tab_LE8Jzf",
+        "tab_DKfqBy"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "heading": "Our Story"
+      }
+    },
+    "component_story_image_text_XpwW6G": {
+      "type": "component__story-image-text",
+      "settings": {
+        "image": "shopify://shop_images/Livestyle_in_airbnb-106.jpg",
+        "text": "Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s kitchen,\nMasterchef, Top Chef, Iron Chef, and many more.",
+        "position": "top-right"
+      }
+    },
+    "component_story_quote_slider_jPjCrd": {
+      "type": "component__story-quote-slider",
+      "blocks": {
+        "slide_qEFGAU": {
+          "type": "slide",
+          "settings": {
+            "text": "\"... anyone can find a new favorite rub among Spiceology’s variety of spices.\"",
+            "name": "Food & Wine"
+          }
+        },
+        "slide_iK9MM6": {
+          "type": "slide",
+          "settings": {
+            "text": "\"These rich flavors are dish-changers...\"",
+            "name": "Forbes"
+          }
+        },
+        "slide_rTFTBy": {
+          "type": "slide",
+          "settings": {
+            "text": "\"... spice blends to zhuzh up your dishes.\"",
+            "name": "The Strategist"
+          }
+        },
+        "slide_fADiQR": {
+          "type": "slide",
+          "settings": {
+            "text": "\"...the company is masters with flavor combinations.\"",
+            "name": "Reader’s Digest"
+          }
+        }
+      },
+      "block_order": [
+        "slide_qEFGAU",
+        "slide_iK9MM6",
+        "slide_rTFTBy",
+        "slide_fADiQR"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_a787ai",
+    "component_story_header_abrBbG",
+    "component_story_text_wRcWJG",
+    "component_story_text_zGDdA3",
+    "component_story_image_slider_aT9CMA",
+    "component_story_tabs_bXhKhw",
+    "component_story_image_text_XpwW6G",
+    "component_story_quote_slider_jPjCrd"
+  ]
+}

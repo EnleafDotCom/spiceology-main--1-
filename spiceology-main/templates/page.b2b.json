@@ -1,0 +1,397 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "component_home_hero_jyxiiw": {
+      "type": "component__home-hero",
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/Tony_for_website-31.jpg",
+        "image_mob": "shopify://shop_images/Tony_for_website-31.jpg",
+        "heading": "We’ve been in Your Clogs",
+        "description": "With more than 300 spices, blends, herbs, chiles, salts, confections, fruit and vegetable powders and modernist ingredients, add superior flavor and organization to your kitchen.",
+        "btn_text": "Sign Up",
+        "btn_url": "#footer",
+        "placement": "top",
+        "color": "light"
+      }
+    },
+    "component_home_marquee_83FzRy": {
+      "type": "component__home-marquee",
+      "settings": {
+        "text": "Never-before-tasted flavors  •  Hard-to-find-ingredients  •  Ground fresh, shipped fresh  •  Created by chefs, not food scientists  •  Real food, no funky stuff  •",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_heading_icons_w93hw": {
+      "type": "component__heading-icons",
+      "blocks": {
+        "image_rhVVa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Client-Sucess-Manager.png",
+            "title": "Client Success Manager",
+            "content": "Our pro chef customers are paired with a dedicated CSM to answer any questions you may have."
+          }
+        },
+        "image_AA8fU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/same-day-shipping.png",
+            "title": "Same-Day Shipping",
+            "content": "Pro chef orders placed before 1pm PT are shipped out the same day, so you get your Spiceology ASAP (exclusions apply)."
+          }
+        },
+        "image_3hbjy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/300_-products.png",
+            "title": "300+ Products",
+            "content": "From our innovative blends to kitchen staples to hard-to-find ingredients, we've got your kitchen covered."
+          }
+        },
+        "image_Kh3KH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/always-fresh.png",
+            "title": "Always Fresh",
+            "content": "We source the highest-quality ingredients, and unlike other spice companies, we only grind them when we’re ready to pack them."
+          }
+        }
+      },
+      "block_order": [
+        "image_rhVVa",
+        "image_AA8fU",
+        "image_3hbjy",
+        "image_Kh3KH"
+      ],
+      "settings": {
+        "heading": "Pro Chef Benefits",
+        "padding_bottom": "medium"
+      }
+    },
+    "1724736294f8e3737d": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_rpeQ7": {
+          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"NTI2OTQ=\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_rpeQ7"
+      ],
+      "settings": {
+      }
+    },
+    "component_periodic_collection_grid_wdWrA": {
+      "type": "component__periodic-collection-grid",
+      "blocks": {
+        "collection_VVwt48": {
+          "type": "collection",
+          "settings": {
+            "collection": "blends",
+            "description": ""
+          }
+        },
+        "collection_V9ndE": {
+          "type": "collection",
+          "settings": {
+            "collection": "chiles",
+            "description": ""
+          }
+        },
+        "collection_y39E8": {
+          "type": "collection",
+          "settings": {
+            "collection": "confections",
+            "description": ""
+          }
+        },
+        "collection_DLHrc": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbs",
+            "description": ""
+          }
+        },
+        "collection_EfFTfQ": {
+          "type": "collection",
+          "settings": {
+            "collection": "modernist",
+            "description": ""
+          }
+        },
+        "collection_daQgJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "veg-powders",
+            "description": ""
+          }
+        },
+        "collection_c9kVL": {
+          "type": "collection",
+          "settings": {
+            "collection": "salts",
+            "description": ""
+          }
+        },
+        "collection_y7EfL": {
+          "type": "collection",
+          "settings": {
+            "collection": "spices",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_VVwt48",
+        "collection_V9ndE",
+        "collection_y39E8",
+        "collection_DLHrc",
+        "collection_EfFTfQ",
+        "collection_daQgJ",
+        "collection_c9kVL",
+        "collection_y7EfL"
+      ],
+      "settings": {
+        "heading": "Shop by Collection",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_home_video_text_7YUXyN": {
+      "type": "component__home-video-text",
+      "settings": {
+        "heading": "We believe that spices are the heart of the kitchen",
+        "description": "Our 300+ seasoning blends and ingredients are changing the way people cook and eat, making unique flavor combinations the centerpiece of every dish.",
+        "btn_text": "About Us",
+        "btn_url": "shopify://pages/about-us",
+        "video": "shopify://files/videos/Foodservice Overview - Tony.mp4"
+      }
+    },
+    "component_home_collection_list_VM3TNb": {
+      "type": "component__home-collection-list",
+      "blocks": {
+        "collection_btKMiB": {
+          "type": "collection",
+          "settings": {
+            "collection": "african-carribean"
+          }
+        },
+        "collection_jyrxyc": {
+          "type": "collection",
+          "settings": {
+            "collection": "american-bbq"
+          }
+        },
+        "collection_YtbT3H": {
+          "type": "collection",
+          "settings": {
+            "collection": "asian-pacific-islands"
+          }
+        },
+        "collection_6N6CJq": {
+          "type": "collection",
+          "settings": {
+            "collection": "indian"
+          }
+        },
+        "collection_g6Wa38": {
+          "type": "collection",
+          "settings": {
+            "collection": "latin-south-american"
+          }
+        },
+        "collection_b9xV4T": {
+          "type": "collection",
+          "settings": {
+            "collection": "mediterranean-european"
+          }
+        },
+        "collection_khxg9Y": {
+          "type": "collection",
+          "settings": {
+            "collection": "middle-eastern"
+          }
+        },
+        "collection_iXAeJn": {
+          "type": "collection",
+          "settings": {
+            "collection": "modern-american"
+          }
+        }
+      },
+      "block_order": [
+        "collection_btKMiB",
+        "collection_jyrxyc",
+        "collection_YtbT3H",
+        "collection_6N6CJq",
+        "collection_g6Wa38",
+        "collection_b9xV4T",
+        "collection_khxg9Y",
+        "collection_iXAeJn"
+      ],
+      "settings": {
+        "heading": "Shop By Cuisine"
+      }
+    },
+    "component_product_card_grid_pgiAG": {
+      "type": "component__product-card-grid",
+      "blocks": {
+        "product_zMfUkj": {
+          "type": "Product",
+          "settings": {
+            "product": "candied-bacon-sriracha-blend"
+          }
+        },
+        "product_JRBFyA": {
+          "type": "Product",
+          "settings": {
+            "product": "bleu-cheese-buffalo-blend"
+          }
+        },
+        "product_XBNFFP": {
+          "type": "Product",
+          "settings": {
+            "product": "black-pepper-coarse"
+          }
+        },
+        "product_BbraYb": {
+          "type": "Product",
+          "settings": {
+            "product": "paprika-smoked"
+          }
+        },
+        "product_eFJBej": {
+          "type": "Product",
+          "settings": {
+            "product": "onion-granules"
+          }
+        },
+        "product_RP3pUQ": {
+          "type": "Product",
+          "settings": {
+            "product": "seasoned-salt"
+          }
+        },
+        "product_LABnb3": {
+          "type": "Product",
+          "settings": {
+            "product": "oregano-mediterranean"
+          }
+        },
+        "product_zPYcjB": {
+          "type": "Product",
+          "settings": {
+            "product": "mustard-ground-yellow"
+          }
+        }
+      },
+      "block_order": [
+        "product_zMfUkj",
+        "product_JRBFyA",
+        "product_XBNFFP",
+        "product_BbraYb",
+        "product_eFJBej",
+        "product_RP3pUQ",
+        "product_LABnb3",
+        "product_zPYcjB"
+      ],
+      "settings": {
+        "heading": "Most Popular for Chefs",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "",
+        "product_limit": 8
+      }
+    },
+    "component_accordion_split_BLWmX": {
+      "type": "component__accordion-split",
+      "blocks": {
+        "faq_CEb9i": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Spiceology’s spices so high quality -  and why should I care?",
+            "answer": "<p>Spiceology always seeks the best possible prices for our ingredients and core spices without compromising our standards of quality, because these standards deliver the most value to our customers. <strong>The fact is that cheaper, lower quality spices are simply less cost-effective in the long run.</strong></p><p>How is this possible?</p><p>A recipe that calls for a pound of ground beef is always going to need -- wait for it -- a pound of ground beef. But the same is not true for the seasoning on that ground beef. A dish that's seasoned with fresh spices is going to be more flavorful, and, this is important, it's going to require a smaller amount of seasoning to get to that big flavor.</p><p>Why is that?</p><p>The big flavor we get from fresh herbs and spices comes from volatile oils, and so do the bright colors and the intense aromas. The \"volatile\" part is important, because it </p><p>means the presence of those oils will diminish from spices over time.</p><p>That timeline starts as soon as spices are ground, which is why we grind fresh and ship fresh, working with suppliers who provide us with freshly harvested ingredients. Our grinding techniques control for the oil count to ensure lasting freshness.</p><p>Compare any Spiceology core ingredient or blend to a similar product from any other supplier, and you will immediately see, smell, and taste the difference. <strong>Our bigger-flavored, longer-lasting, oil-rich spices are a better value because they go further in every dish, allowing chefs to use less but get more flavor. </strong></p>"
+          }
+        },
+        "faq_GDziq": {
+          "type": "faq",
+          "settings": {
+            "question": "Which foodservice distributors can I purchase Spiceology through?",
+            "answer": "<p>You can find a full list of our foodservice distributors here [insert link to distributor list page]</p>"
+          }
+        },
+        "faq_NqR6B": {
+          "type": "faq",
+          "settings": {
+            "question": "What should I do if a product I want to purchase is out of stock?",
+            "answer": "<p>Sign up for the out of stock alert on the specific product listing. We’ll then email you once the product is back in stock. Or, you can reach out to chef@spiceology.com and we can manually place the order to automatically fulfill when it's back in stock.</p>"
+          }
+        },
+        "faq_HE7dp": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer payment terms if I want to pay for my order in installments?",
+            "answer": "<p>Terms are not available via <a href=\"http://spiceology.com\">spiceology.com</a> however, if you're a multi-unit operation, please reach out to <a href=\"mailto:chef@spiceology.com\"><span style=\"text-decoration:underline\">chef@spiceology.com</span></a> for questions regarding terms.\"</p>"
+          }
+        },
+        "faq_xgrRJn": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer samples for your products?",
+            "answer": "<p>If you want to sample Spiceology, reach out to your Client Success Manager or chef@spiceology.com to be assigned a rep if you don’t have one.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_CEb9i",
+        "faq_GDziq",
+        "faq_NqR6B",
+        "faq_HE7dp",
+        "faq_xgrRJn"
+      ],
+      "settings": {
+        "heading": "Foodservice FAQ",
+        "image": "shopify://shop_images/christian_in_airbnb-21.jpg",
+        "padding_bottom": "medium"
+      }
+    },
+    "image_with_text_WaAFU": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Also Available Nation-Wide Through our Distributors",
+        "content": "As chef-owned and operated, we know fresh matters. Which is why we partner with premium distributors across the country to provide our customers with a new way to get your favorite periodic table of flavor delivered.",
+        "btn_text": "Learn More",
+        "btn_url": "shopify://pages/distributor-list",
+        "image": "shopify://shop_images/Livestyle_in_airbnb-090.jpg",
+        "image_position": "left",
+        "padding_top_desk": 60,
+        "padding_top_mob": 60,
+        "padding_bottom_desk": 180,
+        "padding_bottom_mob": 140
+      }
+    }
+  },
+  "order": [
+    "component_home_hero_jyxiiw",
+    "component_home_marquee_83FzRy",
+    "component_heading_icons_w93hw",
+    "1724736294f8e3737d",
+    "component_periodic_collection_grid_wdWrA",
+    "component_home_video_text_7YUXyN",
+    "component_home_collection_list_VM3TNb",
+    "component_product_card_grid_pgiAG",
+    "component_accordion_split_BLWmX",
+    "image_with_text_WaAFU"
+  ]
+}

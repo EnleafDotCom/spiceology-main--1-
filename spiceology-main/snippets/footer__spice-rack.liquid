@@ -1,0 +1,193 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('spiceRack', () => ({
+      show_spice_rack: false,
+      desktop: window.innerWidth > 1024 ? true : false,
+      mobile_spice_rack_expanded: false,
+      order: 'alphabetical',
+      products: [
+        {% paginate collections.all.products by 1000 %}
+        {% for product in collections.all.products %}
+          {
+            title: `{{ product.title }}`,
+            color: `{{ product.metafields.custom.periodic_symbol.value.color }}`,
+            category: `{{ product.type }}`,
+            url: `{{ product.url }}`
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        {% endpaginate %}
+      ],
+      products_alphabetized: [],
+      products_categorized: [],
+      showSpiceRack() {
+        return this.desktop ? true : this.mobile_spice_rack_expanded;
+      },
+      init() {
+        // Alphabetize products
+        this.products.sort((a, b) => a.title.localeCompare(b.title));
+        this.products_alphabetized = this.products.reduce((acc, product) => {
+          const firstLetter = product.title.charAt(0).toUpperCase();
+          if (!acc[firstLetter]) {
+            acc[firstLetter] = [];
+          }
+          acc[firstLetter].push(product);
+          return acc;
+        }, {});
+        this.products_alphabetized = Object.keys(this.products_alphabetized).map(letter => ({
+          letter,
+          products: this.products_alphabetized[letter]
+        }));
+
+        // Categorize products
+         this.products_categorized = this.products.reduce((acc, product) => {
+          const category = product.category || 'Uncategorized';
+          if (!acc[category]) {
+            acc[category] = [];
+          }
+          acc[category].push(product);
+          return acc;
+        }, {});
+
+        // Convert to an array of objects with category and products
+        this.products_categorized = Object.keys(this.products_categorized).map(category => ({
+          category,
+          products: this.products_categorized[category]
+        }));
+      }
+    }))
+  })
+</script>
+
+<div x-data="spiceRack()" x-intersect.threshold.40="show_spice_rack = true" class="flex flex-col w-full px-5 pb-[50px] lg:pb-[100px]">
+  <div class="flex items-center justify-between w-full py-6">
+    <h6 class="heading-md lg:heading-sm">Spice Rack</h6>
+    <div class="hidden lg:flex gap-2">
+      <button @click="order = 'alphabetical'" :class="order == 'alphabetical' ? 'white' : 'black'" class="button__rounded-dark">Alphabetical</button>
+      <button @click="order = 'category'" :class="order == 'alphabetical' ? 'black' : 'white'" class="button__rounded-dark">Category</button>
+    </div>
+    <button @click="mobile_spice_rack_expanded = !mobile_spice_rack_expanded" :class="mobile_spice_rack_expanded ? '-scale-y-100' : 'scale-y-100'" class="lg:hidden">{% render 'svg__caret' %}</button>
+  </div>
+  <div 
+    x-data="{ 
+      scrollToTop() { 
+        console.log('scroll clicked. list new:'); 
+        const element = this.$refs.list; 
+        const position = element.getBoundingClientRect().top + window.scrollY - 80; // Subtract 40 pixels
+        window.scrollTo({ top: position, behavior: 'smooth' }); 
+      } 
+    }" 
+    x-show="showSpiceRack()" 
+    x-collapse 
+  >
+    <div  x-ref="list" class="lg:hidden flex justify-center gap-[4px] lg:gap-2 w-full">
+      <button @click="order = 'alphabetical'" :class="order == 'alphabetical' ? 'white' : 'black'" class="button__rounded-dark">Alphabetical</button>
+      <button @click="order = 'category'" :class="order == 'alphabetical' ? 'black' : 'white'" class="button__rounded-dark">Category</button>
+    </div>
+    <div x-show="show_spice_rack && (order === 'alphabetical')" class="columns-1 lg:columns-4 gap-5 pt-4">
+      <template x-for="(letter, index) in products_alphabetized" :key="letter.letter">
+        <div 
+          
+          x-show="show_spice_rack && (order === 'alphabetical')"
+          x-transition:enter="transition-all ease-in-out duration-[800ms]"
+          x-transition:enter-start="opacity-0 translate-y-5"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :style="`transition-delay: ${index * 15}ms`"
+          class="flex gap-5 lg:border-b lg:border-white/[0.1] py-4 lg:py-5 pr-24 lg:pr-0 transition-all duration-[800ms] ease-in-out">
+          <h6 class="font-sans text-[14px] text-grey-light/50 pt-[2px]" x-text="letter.letter"></h6>
+          <div class="flex flex-col">
+            <template x-for="(product, index) in letter.products" :key="product.url">
+              <a :href="product.url" x-show="product.title != 'Spiceology Gift Card'" class="font-sans text-[14px] text-grey-light/80 leading-[25.6px] hover:underline relative group">
+                <span :style="`background-color: ${product.color}`" class="absolute top-[9px] left-[-14px] w-2 h-2 rounded-full opacity-0 transform translate-x-[5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-in-out"></span>
+                <span x-text="product.title"></span>
+              </a>
+            </template>
+          </div>  
+        </div>
+      </template>
+    </div>
+    <div 
+    x-show="order === 'category'"
+        
+    class="columns-2 lg:columns-4 gap-5 pt-4">
+      <template x-for="(category, index) in products_categorized" :key="category.category">
+        <div 
+          x-data='{
+            color: "#181613",
+            getCollectionColor(collectionTitle){
+              let handle = collectionTitle.toLowerCase().replace(" ", "-");
+              Alpine.store("main").graphQl(`
+                {
+                  collectionByHandle(handle: "${handle}s",) {
+                    id
+                    title
+                    handle
+                    color: metafield(
+                      namespace: "custom"
+                      key: "color"
+                    ) {
+                      value
+                    }
+                  }
+                }
+              `).then((response) => {
+                if(response.data.collectionByHandle) {
+                  this.color = response.data.collectionByHandle?.color?.value || "#FFFFFF";
+                  if(this.color == "#181613") {
+                    this.color = "#FFFFFF";
+                  }
+                }
+                else {
+                  Alpine.store("main").graphQl(`
+                    {
+                      collectionByHandle(handle: "${handle}",) {
+                        id
+                        title
+                        handle
+                        color: metafield(
+                          namespace: "custom"
+                          key: "color"
+                        ) {
+                          value
+                        }
+                      }
+                    }
+                  `).then((response) => {
+                    this.color = response.data.collectionByHandle?.color?.value || "#FFFFFF";
+                    if(this.color == "#181613") {
+                      this.color = "#FFFFFF";
+                    }
+                  });
+                }
+              });
+            },
+            init(){
+              this.getCollectionColor(category.category)
+            }
+          }' 
+          x-show="order === 'category' && category.category != 'Insurance'"
+          x-transition:enter="transition-all ease-in-out duration-[800ms]"
+          x-transition:enter-start="opacity-0 translate-y-5"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :style="desktop ? `border-top: 4px solid ${color}; transition-delay: ${index * 15}ms;` : `transition-delay: ${index * 15}ms`" 
+          class="flex flex-col gap-[6px] pb-7 lg:py-5 transition-all duration-[800ms] ease-in-out"
+        >
+          <h6 :style="!desktop && `color: ${color};`" class="font-sans text-[14px] uppercase text-grey-light/50" x-text="category.category" x-show="category.category != 'Insurance'"></h6>
+          <div class="inline lg:pl-7" x-show="category.category != 'Insurance'">
+            <template x-for="product in category.products" :key="product.url">
+              <a :href="product.url" 
+                x-show="product.title != 'Spiceology Gift Card'"
+                 class="font-sans text-[14px] text-grey-light/80 leading-[25.6px] hover:underline relative group">
+                <span :style="`background-color: ${product.color}`" class="absolute top-[9px] left-[-14px] w-2 h-2 rounded-full opacity-0 transform translate-x-[5px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 ease-in-out"></span>
+                <span x-text="product.title"></span>
+              </a>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+    <button class="button hidden lg:flex justify-end items-center gap-1.5 pt-10 w-full" @click="scrollToTop()">
+      <span class="link-underlined">Scroll Up</span>
+      <span>{% render 'svg__caret-up' %}</span>
+    </button>
+  </div>
+</div>

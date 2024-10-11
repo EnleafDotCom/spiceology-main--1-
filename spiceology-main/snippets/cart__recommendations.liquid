@@ -1,0 +1,126 @@
+<script src="{{ 'component-cart-recommendations.js' | asset_url }}"></script>
+{{ 'component-swiper.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'component-swiper.js' | asset_url }}" defer></script>
+
+<template x-if="$store.main.cart.items.length > 0">
+  <div
+    class="mt-6 transition-opacity"
+    :class="loading ? 'opacity-30' : 'opacity-100'"
+    x-data="cartRecommendations"
+    x-show="products?.length"
+    x-transition
+  >
+    <h4 class="text-18 font-500 font-serif py-6 mx-8 border-t border-solid border-dark border-opacity-50">
+      Goes Great With
+    </h4>
+
+    <swiper-carousel
+      class="block mb-8"
+      data-swiper='{
+        "slidesPerView": "1.2",
+        "loop": false,
+        "centerInsufficientSlides": false,
+        "spaceBetween": 15,
+        "dots": false
+      }'
+    >
+      <div class="swiper">
+        <div
+          class="swiper-wrapper"
+          role="region"
+          aria-label="product image carousel"
+          aria-live="polite"
+        >
+          <template
+            x-for="product in products"
+            :key="product.id"
+          >
+            <template x-if="product?.variants">
+              <div
+                class="swiper-slide first-of-type:ml-8"
+                role="group"
+                aria-roledescription="slide"
+              >
+                <div
+                  x-data="productForm(product.variants, product.active_variant_id, false)"
+                  class="border border-dark border-solid border-opacity-50 flex flex-row"
+                >
+                  <a :href="product.url">
+                    <img
+                      :src="product.featured_image"
+                      :alt="product.title"
+                      class="w-40 aspect-4/5 object-center object-cover"
+                    >
+                  </a>
+                  <div class="p-4 flex flex-col gap-5 flex-1">
+                    <a :href="product.url" class="flex-1">
+                      <div class="flex flex-row justify-between md:justify-start text-dark gap-5 flex-1">
+                        <div
+                          class="text-16 tracking-1 font-700 capitalize leading-120"
+                          x-text="product.title"
+                        ></div>
+                        <div
+                          class="text-14 -tracking-3"
+                          x-price="reactiveData?.activeVariant?.variantPrice"
+                        ></div>
+                      </div>
+                      <div
+                        class="mt-1 mb-2 text-dark text-opacity-75 capitalize tracking-1"
+                        x-text="reactiveData?.activeVariant?.variantTitle?.split('/')[0]"
+                      ></div>
+                    </a>
+                    <div
+                      style="--input-height: 30px; --button-height: 30px;"
+                      class="flex flex-col md:flex-row gap-4"
+                    >
+                      <div class="flex-1">
+                        <div class="select__filters">
+                          <select
+                            name="variant"
+                            @change="changeActiveVariant($event.target.value)"
+                          >
+                            <template x-for="variant in product.variants">
+                              <option
+                                :selected="variant.id === reactiveData.activeVariant.id"
+                                :disabled="!variant.isAvailable"
+                                :value="variant.id"
+                                x-text="variant.variantTitle?.split('/')[1]"
+                              ></option>
+                            </template>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="flex-1">
+                        <button
+                          type="button"
+                          class="button__primary px-0 w-full text-12"
+                          x-data="{ loading: false }"
+                          :disabled="loading"
+                          @click.prevent="
+                            loading = true
+                            $store.main.addVariant({
+                              id: reactiveData.activeVariant.id,
+                              openCart: true,
+                              quantity: 1,
+                            }).then(() => {
+                              loading = false
+                              added = true;
+                            }).catch(() => {
+                              loading = false
+                            })
+                          "
+                        >
+                          add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </template>
+        </div>
+      </div>
+    </swiper-carousel>
+  </div>
+</template>

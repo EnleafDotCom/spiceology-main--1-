@@ -1,0 +1,48 @@
+<div class="w-full" style="background-color: {{ section.settings.color }};">
+   <div class="hidden md:block" style="min-height: {{ section.settings.height_desktop }}px"></div>
+   <div class="md:hidden" style="min-height: {{ section.settings.height_mobile }}px"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Spacer",
+  "class": "section-spacer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Component Settings"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "height_desktop",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacer Height - Desktop",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 0,
+      "max": 320,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacer Height - Mobile",
+      "default": 160
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacer"
+    }
+  ]
+}
+{% endschema %}

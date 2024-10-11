@@ -1,0 +1,330 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('recipes', (tag1, tag2) => ({
+      recipes_loaded: false,
+      tab_recipes: [],
+      fetchRecipes(){
+        Alpine.store('main').graphQl(`{
+          articles(
+                query: "tag:${tag1} AND tag:${tag2}"
+                first: 10
+                sortKey: PUBLISHED_AT
+          ) {
+            edges {
+              node {
+                id
+                image {
+                  src
+                  height
+                  width
+                  altText
+                }
+                title
+                onlineStoreUrl
+                tags
+                previewImage: metafield( 
+                    namespace: "custom"
+                    key: "preview_image"
+                ) {
+                    reference {
+                        ... on MediaImage {
+                          image {
+                            originalSrc
+                          }
+                        }
+                    }
+                }
+                short_description: metafield(
+                    namespace: "custom"
+                    key: "short_description"
+                ) {
+                    value
+                }
+                featuredProduct: metafield(
+                    namespace: "custom"
+                    key: "recipe_featured_product"
+                ) {
+                    value
+                }
+              }
+            }
+          }
+        }
+        `).then((response) => {
+          if (response?.data?.articles?.edges) {
+            this.tab_recipes = response.data.articles.edges.map(edge => edge.node);
+          } 
+          const promises = this.tab_recipes.flatMap(recipe => {
+            if (recipe.tags.length > 0) {
+              recipe.products = []
+              return recipe.tags.flatMap(tag => {
+                if (tag.includes('product_')) {
+                  let product_handle = tag.split('_')[1]
+                  return Alpine.store('main').graphQl(`{
+                    product(handle: "${product_handle}") {
+                      id
+                      title
+                      periodic_symbol: metafield(
+                        namespace: "custom"
+                        key: "periodic_symbol"
+                      ) {
+                        reference {
+                           ... on Metaobject {
+                             fields {
+                               key
+                               value
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  `).then((response) => {
+                    if (response?.data?.product) {
+                      recipe.products.push({
+                        id: response.data.product.id,
+                        title: response.data.product.title,
+                        periodic_color: response.data.product.periodic_symbol?.reference.fields[0].value,
+                        periodic_letters: response.data.product.periodic_symbol?.reference.fields[1].value 
+                      })
+                    } 
+                  });
+                } else {
+                  return [];
+                }
+              })
+            } else {
+              return [];
+            }
+          })
+          Promise.all(promises).then(() => {
+            this.recipes_loaded = true;
+          });
+        });
+      },
+    }))
+  })
+</script>
+
+{% for tab in product.metafields.accentuate.tab_name %}
+  {% assign first_block_id = product.metafields.accentuate.tab_name[forloop.index0] %}
+  {% break %}
+{% endfor %}
+
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="section-p-b pb-20 lg:pb-[140px] overflow-x-hidden opacity-0" x-cloak >
+  <div
+    class="relative"
+    x-data="{
+      selectedId: '{{ first_block_id }}',
+      slideCount: 0,
+      handleTabClick(id) {
+        this.selectedId = id
+        if ($refs[id]) {
+          $refs[id].slider.update()
+        }
+        
+      },
+      isSelected(id) {
+        return this.selectedId === id
+      }
+    }"
+    x-cloak
+  >
+    <div class="w-full lg:h-12 relative">
+      <h3 class="flex justify-center lg:justify-start items-center heading-lg pb-5 lg:pb-0 text-center lg:text-left h-full px-5">{{ product.metafields.accentuate.recipes_carousel_headline }}</h3>
+      <div class="overflow-x-scroll no-scrollbar">
+        <ul
+          x-ref="tablist"
+          @keydown.right.prevent.stop="$focus.wrap().next()"
+          @keydown.home.prevent.stop="$focus.first()"
+          @keydown.page-up.prevent.stop="$focus.first()"
+          @keydown.left.prevent.stop="$focus.wrap().prev()"
+          @keydown.end.prevent.stop="$focus.last()"
+          @keydown.page-down.prevent.stop="$focus.last()"
+          role="tablist"
+          class="lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 flex w-max gap-x-2"
+        >
+          {% for tab in product.metafields.accentuate.tab_name %}
+            {% assign first = false %}
+            {% assign last = false %}
+            {% if forloop.first %}
+                {% assign first = true %}
+            {% elsif forloop.last %}
+                {% assign last = true %}
+            {% endif %}
+            <li class="flex items-center relative py-2 {% if first == true %}pl-2.5 lg:pl-0{% elsif last == true %}pr-2.5 lg:pr-0{% endif %}">
+              <button
+                @click="handleTabClick('{{ product.metafields.accentuate.tab_name[forloop.index0] }}')"
+                @focus="handleTabClick('{{ product.metafields.accentuate.tab_name[forloop.index0] }}')"
+                type="button"
+                :tabindex="isSelected('{{ product.metafields.accentuate.tab_name[forloop.index0] }}') ? 0 : -1"
+                :aria-selected="isSelected('{{ product.metafields.accentuate.tab_name[forloop.index0] }}')"
+                role="tab"
+                x-data
+                x-cloak
+                class="button__tab button__rounded"
+                :class="isSelected('{{ product.metafields.accentuate.tab_name[forloop.index0] }}') && 'active'"
+              >
+                {{ product.metafields.accentuate.tab_name[forloop.index0] }}
+              </button>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% for tab in product.metafields.accentuate.tab_name %}
+      {% assign index = forloop.index %}
+      {% assign current_tab = product.metafields.accentuate.tab_name[forloop.index0] %}
+      <template x-if="isSelected('{{ current_tab }}')">
+        <button-slider
+          x-ref="{{ current_tab }}"
+          data-slider-options='{
+            "breakpoints": {
+              "(max-width: 1024px)": {
+                "mode": "snap",
+                "rtl": false,
+                "loop": true,
+                "slides": { "perView": "1.2", "spacing": 20 }
+              },
+              "(min-width: 1024px)": {
+                "mode": "snap",
+                "rtl": false,
+                "loop": true,
+                "slides": { "perView": "auto", "spacing": 0 }
+              }
+            }
+          }'
+          {% if product.metafields.accentuate.tag_1[forloop.index0] %}
+            x-data="recipes('{{ product.metafields.accentuate.tag_1[forloop.index0] }}', 'product_{{ product.handle }}')"
+            x-init="fetchRecipes(); $watch('recipes_loaded', () => { $el.slider.update()  });"
+          {% endif %}
+        >
+          <div class="hidden lg:flex absolute top-0 right-5 gap-2.5">
+            {% render 'button__slider-prev' %}
+            {% render 'button__slider-next' %}
+          </div>
+          <div
+            x-data
+            x-cloak
+            role="tabpanels"
+            :class="recipes_loaded ? 'opacity-100' : 'opacity-0'"
+            class="keen-slider tab-panels overflow-x-hidden overflow-y-hidden relative h-fit pt-3 lg:pt-8 pl-2.5 lg:pl-0 transition-opacity duration-100 ease"
+          >
+            <!-- Panel -->
+            <section x-cloak role="tabpanel" class="flex flex-col">
+              <div class="flex cursor-grab">
+                {% if product.metafields.accentuate.featured_card_image[0] != blank %}
+                <a
+                  x-data
+                  x-cloak
+                  class="pl-5"
+                  :class="{ 'keen-slider__slide': isSelected('{{ current_tab }}'), '': !isSelected('{{ current_tab }}') }"
+                >
+                <div class="min-w-[31.5vw] w-[31.5vw] p-2.5 lg:p-5 bg-white rounded-6">
+                  <div class="h-full">
+                    {% assign image = product.metafields.accentuate.featured_card_image[0] | first %}
+                    <div class="relative">
+                        <img class="aspect-[1.05] lg:h-[30vw] object-cover rounded-6 mb-4 lg:mb-5" src="{{ image.src }}">
+                        {% if product.metafields.accentuate.featured_card_product != blank %}
+                            <div class="absolute left-4 bottom-4 flex gap-2.5 justify-center items-center h-10 px-3 heading-xs bg-white">
+                                {% render 'periodic__symbol', product: all_products[product.metafields.accentuate.featured_card_product[0]] %}
+                                {{ all_products[product.metafields.accentuate.featured_card_product[0]].title }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h5 class="utility-sm uppercase opacity-75 text-left lg:text-center pb-2.5">{{ product.metafields.accentuate.featured_card_eyebrow }}</h5>
+                    <div class="lg:px-10">
+                        <p class="!font-kremlin heading-xs lg:heading-md w-full pb-2 transform rotate-[-2deg] text-left lg:text-center pr-7 lg:pr-0">{{ product.metafields.accentuate.featured_card_text }}</p>
+                    </div>
+                  </div>
+                  </div>
+                </a>
+                {% endif %}
+                {% if product.metafields.accentuate.tag_1[forloop.index0] != blank %}
+                  <template x-for="recipe in tab_recipes" :key="recipe.id">
+                    <div
+                      x-data="{
+                        blog_title: '',
+                        products: [],
+                        init(){
+                          this.blog_title = recipe.onlineStoreUrl.split('/')[4]
+                        }
+                      }"
+                      x-cloak
+                      class="w-max lg:pl-5"
+                      :class="{ 'keen-slider__slide': isSelected('{{ current_tab }}'), 'mr-2.5': !isSelected('{{ current_tab }}') }"
+                    >
+                      <div class="h-full">
+                        <div class="relative">
+                          <a :href="recipe.onlineStoreUrl">
+                          <img class="aspect-square lg:aspect-unset lg:min-w-[40.5vw] lg:h-[31.7vw] lg:min-h-[31.8vw] xl:h-[31.5vw] xl:min-h-[31.5vw] object-cover rounded-6 mb-5" :src="recipe.image.src">
+                          </a>
+                          {% comment %} <div x-show="recipe.products" class="absolute left-4 bottom-4 flex flex-col items-start gap-2.5 justify-center">
+                            <template x-for="(product, index) in recipe.products">
+                              <template x-if="index < 2 && product.periodic_color && product.periodic_letters">
+                                <div class="flex justify-center items-center gap-2 h-10 px-2 heading-xs bg-white">
+                                  <div :style="`color: ${ product.periodic_color }; border-color: ${ product.periodic_color };`" class="font-sans font-500 text-[12px] tracking-[-0.12px] flex justify-center items-center min-w-[24px] h-6 px-0.5 border-2" x-text="product.periodic_letters"></div>
+                                  <h6 class="body-sm text-[14px] font-500 w-max" x-text="product.title"></h6>
+                                </div>
+                              </template>
+                            </template>
+                          </div> {% endcomment %}
+                        </div>
+                        <a class="flex flex-col" :href="recipe.onlineStoreUrl">
+                          <h6 class="utility-lg uppercase opacity-75 pb-2" x-text="blog_title"></h6>
+                          <h5 class="heading-md lg:heading-lg pb-2.5 flex flex-wrap lg:max-w-[39vw]" x-text="recipe.title"></h5>
+                          <p class="lg:w-[65%] pb-4 lg:pb-7 body-md" x-text="recipe?.short_description?.value"></p>
+                          <span class="link-underlined">View Recipe</span>
+                        </a>
+                      </div>
+                    </div>
+                  </template>
+                {% else %}
+                  {% assign count = 0 %}
+                  {% assign recipes = product.metafields.accentuate.recipes[forloop.index0] | split: '|' %}
+                  {% for recipe in recipes %}
+                    {% assign url_parts = articles[recipe].url | split: '/' %}
+                    {% assign blog_title = url_parts[2] %}
+                    <template x-if="isSelected('{{ current_tab }}')">
+                    <div
+                      x-data
+                      x-cloak
+                      href="{{ articles[recipe].url }}"
+                      class="w-max pl-5"
+                      :class="{ 'keen-slider__slide': isSelected('{{ current_tab}}'), '': !isSelected('{{ current_tab }}') }"
+                    >
+                      <div class="h-full">
+                        <div class="relative">
+                          <a :href="recipe.onlineStoreUrl">
+                          <img class="aspect-square lg:aspect-unset lg:min-w-[40.5vw] lg:h-[31.7vw] lg:min-h-[31.8vw] xl:h-[31.5vw] xl:min-h-[31.5vw] object-cover rounded-6 mb-5" src="{{ articles[recipe].image | image_url: width: 1000 }}">
+                          </a>
+                          {% if articles[recipe].metafields.custom.recipe_featured_product.value %}
+                              <div class="absolute left-4 bottom-4 flex gap-2.5 justify-center items-center h-10 px-3 heading-xs bg-white">
+                                  {% render 'periodic__symbol', product: articles[recipe].metafields.custom.recipe_featured_product.value %}
+                                  {{ articles[recipe].metafields.custom.recipe_featured_product.value.title }}
+                              </div>
+                          {% endif %}
+                        </div>
+                        <a class="flex flex-col" :href="recipe.onlineStoreUrl">
+                          <h6 class="utility-lg uppercase opacity-75 pb-2">{{ blog_title }}</h6>
+                          <h5 class="heading-md lg:heading-lg pb-2.5 flex flex-wrap lg:max-w-[39vw]">{{ articles[recipe].title }}</h5>
+                          <p class="lg:w-[65%] pb-4 lg:pb-7 body-md">{{ articles[recipe].metafields.custom.short_description }}</p>
+                          <span class="link-underlined">View Recipe</span>
+                        </a>
+                      </div>
+                    </div>
+                    </template>
+                    {% assign count = count | plus: 1 %}
+                    {% if count == 8 %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </section>
+          </div>
+        </button-slider>
+      </template>
+    {% endfor %}
+  </div>
+</section>

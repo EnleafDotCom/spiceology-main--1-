@@ -1,0 +1,180 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-20 py-12 opacity-0">
+  <button-slider
+    data-slider-options='{
+      "breakpoints": {
+        "(max-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "1.2", "spacing": 20 }
+        },
+        "(min-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "auto", "spacing": 20 }
+        }
+      }
+    }'
+    class="relative"
+  >
+    
+    <div class="flex flex-col lg:flex-row justify-start items-center w-full h-12 px-5 relative">
+      <h3 class="heading-xl pb-10 lg:pb-0">{{ section.settings.title }}</h3>
+    </div>
+
+    <div class="hidden lg:flex absolute top-0 right-5 gap-2.5">
+        {% render 'button__slider-prev' %}
+        {% render 'button__slider-next' %}
+    </div>
+
+    <div
+      role="tabpanels"
+      class="keen-slider tab-panels overflow-x-hidden overflow-y-hidden relative h-fit pb-1.5 pt-8 pl-2.5 lg:pl-5"
+    >
+      <!-- Panel -->
+      <section
+        role="tabpanel"
+        class="flex flex-col min-h-[118vw] md:min-h-fit"
+      >
+        {% assign product = section.settings.product %}
+        <div class="flex">
+          {% if section.settings.product != blank and section.settings.image != blank %}
+            <a
+              class="min-w-[31.5vw] w-[31.5vw] p-2.5 lg:p-5 bg-white rounded-6 keen-slider__slide"
+            >
+              <div class="h-full">
+                
+                <div class="relative">
+                    <img class="aspect-[1.05] lg:h-[30vw] object-cover rounded-6 mb-4 lg:mb-5" src="{{ section.settings.image.src }}">
+                    {% if section.settings.product != blank %}
+                        <div class="absolute lg:left-4 left-2.5 lg:max-w-[calc(100%-32px)] max-w-[calc(100%-20px)] lg:bottom-4 bottom-2.5 inline-flex gap-2.5 justify-center items-center h-10 px-3 heading-xs bg-white">
+                            {% render 'periodic__symbol', product: section.settings.product %}
+                            {{ section.settings.product.title }}
+                        </div>
+                    {% endif %}
+                </div>
+                <h5 class="utility-sm uppercase opacity-75 text-left pb-2.5">{{ section.settings.eyebrow }}</h5>
+                <div class="">
+                    <p class="!font-kremlin heading-xs lg:heading-md w-full pb-2 transform rotate-[-2deg] text-left pr-7 lg:pr-0">{{ section.settings.description }}</p>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+          {% for block in section.blocks %}
+            {% assign article = block.settings.article %}
+            <a
+              x-data
+              x-cloak
+              href="{{ article.url }}"
+              class="w-max keen-slider__slide"
+            >
+              <div class="h-full">
+                <div class="relative">
+                    <img class="aspect-square lg:aspect-unset lg:min-w-[40.5vw] lg:h-[31.7vw] lg:min-h-[31.8vw] xl:h-[31.5vw] xl:min-h-[31.5vw] object-cover rounded-6 mb-5" src="{{ article.image | image_url: width: 1000 }}">
+                    {% if article.metafields.custom.recipe_featured_product.value %}
+                        <div class="absolute lg:left-4 left-2.5 lg:max-w-[calc(100%-32px)] max-w-[calc(100%-20px)] lg:bottom-4 bottom-2.5 inline-flex gap-2.5 justify-center items-center h-10 px-3 heading-xs bg-white">
+                            {% render 'periodic__symbol', product: article.metafields.custom.recipe_featured_product.value %}
+                            {{ article.metafields.custom.recipe_featured_product.value.title }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% assign split_1 = article.url | split: '/blogs/'  %}
+                {% assign split_2 = split_1[1] | split: '/' %}
+                {% assign blog_handle = split_2[0] | strip %}
+                {% assign article_blog = blogs[blog_handle] %}
+                
+                <h6 class="utility-lg uppercase opacity-75 pb-2">{{ article_blog.title }}</h6>
+                <h5 class="heading-md lg:heading-lg pb-2.5 flex flex-wrap lg:max-w-[39vw]">{{ article.title }}</h5>
+                <p class="lg:w-[65%] pb-4 lg:pb-7 body-md">{{ article.metafields.custom.short_description }}</p>
+                <span class="link-underlined">View Recipe</span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </button-slider>
+</section>
+{% schema %}
+  {
+    "name": "[Home] Recipe Slider",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "product",
+        "id": "product",
+        "label": "Pro Tip Product"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Pro Tip Image" 
+      },
+      {
+        "type": "text",
+        "id": "eyebrow",
+        "label": "EyeBrow"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Article",
+        "type": "article",
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Recipe Slider",
+        "blocks": [
+          {
+            "type": "article",
+            "settings": {
+              "article": "recipes\/black-magic-spatchcock-chicken"
+            }
+          },
+          {
+            "type": "article",
+            "settings": {
+              "article": "recipes\/korean-deviled-eggs"
+            }
+          },
+          {
+            "type": "article",
+            "settings": {
+              "article": "recipes\/slow-cooker-butter-chicken"
+            }
+          },
+          {
+            "type": "article",
+            "settings": {
+              "article": "recipes\/honey-mustard-ipa-wings"
+            }
+          }
+        ],
+        "settings": {
+          "title": "Recipe Inspiration",
+          "product": "smoky-honey-habanero-seasoning",
+          "eyebrow": "PRO TIP",
+          "description": "We get it, I mean who doesn’t love cocktail wieners. WE love cocktail wieners."
+        }
+      }
+    ]
+  }
+{% endschema %}

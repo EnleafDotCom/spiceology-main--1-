@@ -1,0 +1,37 @@
+.color-swatch {
+	height: 14px;
+	width: 14px;
+	display: inline-block;
+	border-radius: 50%;
+  @apply bg-black;
+	position: relative;
+	margin-right: 6px;
+	outline: none;
+	vertical-align: middle;
+	border: 1px solid transparent;
+
+	&:focus:active,
+	&:focus {
+		outline: none;
+	}
+
+	&.active:before {
+		content: '';
+		width: calc(100% + 4px);
+		height: calc(100% + 4px);
+		border-radius: 50%;
+		border: 2px solid currentColor;
+		display: inline-block;
+		position: absolute;
+		top: -4px;
+		left: -4px;
+	}
+
+	&--white {
+    @apply border-gray;
+
+		&.active {
+			border-color: transparent;
+		}
+	}
+}

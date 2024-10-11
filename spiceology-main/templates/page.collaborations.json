@@ -1,0 +1,298 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "component_rich_image_ijPxg4": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_nYwUQT": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DEREK_WOLF_36073aa4-1f6d-41b2-9b1c-4a52b0ba71bf.jpg",
+            "heading": "Derek Wolf",
+            "description": "Grill like a pro with these BBQ seasonings, blends, and meat rubs.",
+            "button_url": "shopify:\/\/pages\/derek-wolf",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_E9HB9N": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sasquatch-bbq.jpg",
+            "heading": "Sasquatch BBQ",
+            "description": "Heavy and flavorful BBQ blends inspired from the Pacific Northwest",
+            "button_url": "shopify:\/\/pages\/sasquatch-bbq-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_3Ypmra": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a-cook-named-matt.jpg",
+            "heading": "A Cook Named Matt",
+            "description": "Flavor Boost. Delicate Crunch. Hella Fancy. Killer Flake Salts.",
+            "button_url": "shopify:\/\/pages\/a-cook-named-matt-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_nYwUQT",
+        "image_E9HB9N",
+        "image_3Ypmra"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_image_TQVNXX": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_xDcEcW": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/headshot-alvin-cailan-2.jpg",
+            "heading": "Alvin Cailan",
+            "description": "Ultra-versatile Flavor SZN blends to level up whatever you shake them on.",
+            "button_url": "shopify:\/\/pages\/alvin-cailan",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_BjFpTb": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/hells-kitchen.jpg",
+            "heading": "Hell's Kitchen",
+            "description": "Sinfully delicious seasonings.",
+            "button_url": "shopify:\/\/pages\/hells-kitchen-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_7cktxK": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/the-grill-dads-1024x607.jpg",
+            "heading": "The Grill Dads",
+            "description": "Salt & pepper BBQ blends.",
+            "button_url": "shopify:\/\/pages\/the-grill-dads-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_xDcEcW",
+        "image_BjFpTb",
+        "image_7cktxK"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_image_UhhKwz": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_XAdNaM": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/markey-kitchen-trio_8b246dec-8f87-483f-b927-440e3b85b41f.jpg",
+            "heading": "Marley Kitchen",
+            "description": "Caribbean-inspired spice blends from the Marley family’s favorite dishes.",
+            "button_url": "shopify:\/\/pages\/marley-kitchen-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_KHtc8K": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/DTC-MeatEater_7_Pack_LS.jpg",
+            "heading": "MeatEater",
+            "description": "From Fur to Feather, Fin to Forage, start here for wild game seasonings and spices.",
+            "button_url": "shopify:\/\/pages\/meateater-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_HaAzRd": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/isaac-toups-66.jpg",
+            "heading": "Chef Isaac Toups",
+            "description": "Cajun-inspired flavors for burgers, fries, and seafood.",
+            "button_url": "shopify:\/\/pages\/chef-isaac-toups-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_XAdNaM",
+        "image_KHtc8K",
+        "image_HaAzRd"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_image_XhgrNp": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_Ha83qm": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/headshot-jet-tila.jpg",
+            "heading": "Jet Tila",
+            "description": "Experiment with this twist on the vibrant and savory flavors of classic Korean fare.",
+            "button_url": "shopify:\/\/pages\/jet-tila-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_EyRGFy": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-06_at_3.38.14_PM.png",
+            "heading": "New Belgium Brewing",
+            "description": "Get ready to experiment with delicious beer-infused flavors from New Belgium Brewing.",
+            "button_url": "shopify:\/\/pages\/new-belgium-brewing-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_Ha83qm",
+        "image_EyRGFy"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "Marley Kitchen",
+        "description": "Caribbean-inspired spice blends from the Marley family’s favorite dishes.",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_rich_image_Q7TXjG": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_Xj947z": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Chef_Chad_White_cbe3e6f4-9168-43c7-9e91-e62aa3ff1158.jpg",
+            "heading": "Chef Chad White",
+            "description": "A new take on BBQ blends for the PNW. Ladies and gentlemen, meet PNWQ.",
+            "button_url": "shopify:\/\/pages\/chef-chad-white-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_3VFnLg": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/headshot-adam-mckenzie.jpg",
+            "heading": "Adam McKenzie",
+            "description": "Garlicky, smoky, and spicy meat rubs. A perfect match for your Traeger grill.",
+            "button_url": "shopify:\/\/pages\/adam-mckenzie-x-spiceology",
+            "button_text": "Shop",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_Xj947z",
+        "image_3VFnLg"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "main",
+    "component_rich_image_ijPxg4",
+    "component_rich_image_TQVNXX",
+    "component_rich_image_UhhKwz",
+    "component_rich_image_XhgrNp",
+    "component_rich_image_Q7TXjG"
+  ]
+}

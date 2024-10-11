@@ -1,0 +1,11 @@
+.story-image-slider.swiper {
+  padding: 10px;
+
+  @screen md {
+    padding: 0 150px;
+  }
+
+  @screen 2xl {
+    padding: 0 280px;
+  }
+}

@@ -1,0 +1,49 @@
+body {
+  @apply text-black font-sans;
+}
+
+hr {
+  @apply text-black bg-black;
+  height: 1px;
+  width: 100%;
+
+  &.dashed {
+    @apply text-transparent bg-transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='225' height='2' viewBox='0 0 225 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0.927503' y1='1.5' x2='224.157' y2='1.39683' stroke='%23181613' stroke-dasharray='2 4'/%3E%3C/svg%3E%0A");
+    background-repeat: repeat-x;
+    height: 3px;
+  }
+}
+// AlpineJS
+[x-cloak] {
+  display: none !important;
+}
+
+.anchor-scroll:target {
+  scroll-margin-top: var(--nav-height);
+}
+
+// image lazy loading
+img[loading="lazy"] {
+  transition: opacity ease 300ms;
+
+  &.loading {
+    opacity: 0;
+  }
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.mt-10 {
+  margin-top: 40px !important;
+}
+
+.hide-scrollbars {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

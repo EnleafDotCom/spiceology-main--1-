@@ -1,0 +1,28 @@
+<div
+    x-data="{
+        id: {{ index }},
+        get expanded() {
+            return this.active === this.id
+        },
+        set expanded(value) {
+            this.active = value ? this.id : null
+        },
+    }" role="region" class="border-b border-black/[0.2]"
+>
+    <h2>
+        <button
+            x-on:click="expanded = !expanded"
+            :aria-expanded="expanded"
+            class="flex w-full items-center justify-between font-bold h-[46px] md:h-[70px]"
+        >
+            <span class="font-bold text-black/[0.9] ">{{ block.question }}</span>
+            <div class="flex justify-center items-center w-10 h-10 rounded-[12px] md:hover:bg-gray-10 transition-all duration-200 ease-in-out ml-4">
+              <span x-show="expanded" aria-hidden="true" class="">{% render 'svg__x-accordion' %}</span>
+              <span x-show="!expanded" aria-hidden="true" class="">{% render 'svg__plus' %}</span>
+            </div>
+        </button>
+    </h2>
+    <div x-show="expanded" x-collapse>
+      <div class="pb-4 text-black/[0.9]">{{ block.answer | metafield_tag }}</div>
+    </div>
+</div>

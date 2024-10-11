@@ -1,0 +1,20 @@
+<section class="py-20 px-5">
+  <div class="max-w-[1180px] mx-auto lg:grid lg:grid-cols-10 flex flex-col lg:gap-5 gap-15 ">
+    <div class="col-span-3">
+      <div class="flex flex-col gap-4 p-6 bg-white rounded-6 px-6">
+        <div class="flex justify-between pb-4 border-b-[4px]">
+          <div class="text-30 leading-100 capitalize">Ingredients</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="38" viewBox="0 0 36 38" fill="none">
+            <rect width="36" height="38" rx="6" fill="#F2F2F2"/>
+            <rect x="10.5" y="11.5" width="14" height="19" stroke="#181613"/>
+            <path d="M23.5 13.5H28.5V27.5H13.5V7.5H23V13V13.5H23.5Z" fill="#F2F2F2" stroke="#181613"/>
+            <path d="M28.5 13.5L23 7.5V13.5H28.5Z" fill="#F2F2F2" stroke="#181613" stroke-linejoin="bevel"/>
+          </svg>
+        </div>
+        <div class="rte-ingredients">{{ article.metafields.accentuate.ingredients | metafield_tag }}</div>
+      </div>
+    </div>
+    <div class="lg:col-span-1 lg:block hidden"></div>
+    <div class="lg:col-span-6 rte-steps">{{ article.metafields.accentuate.steps | metafield_tag }}</div>
+  </div>
+</section>

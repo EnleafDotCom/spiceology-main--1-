@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "component_header_spacer_EDbVMt": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "legal",
+      "settings": {
+        "padding_top_desk": 80,
+        "padding_top_mob": 50,
+        "padding_bottom_desk": 160,
+        "padding_bottom_mob": 140
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_EDbVMt",
+    "main"
+  ]
+}

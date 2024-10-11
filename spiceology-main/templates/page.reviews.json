@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_rich_text_MdTJ8y": {
+      "type": "component__rich-text",
+      "blocks": {
+        "html_riFFfL": {
+          "type": "html",
+          "settings": {
+            "text": "<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"866391\"><\/div>"
+          }
+        }
+      },
+      "block_order": [
+        "html_riFFfL"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_rich_text_MdTJ8y",
+    "main"
+  ]
+}

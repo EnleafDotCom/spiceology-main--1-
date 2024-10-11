@@ -1,0 +1,51 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:px-5 px-2.5 opacity-0">
+  <div class="py-7.5 lg:px-2.5 px-2 flex gap-4 {% if section.settings.alignment == 'between' %} lg:flex-row {% endif %}flex-col justify-between items-center border-b border-black">
+    <h1 class="{% if section.settings.alignment == 'between' %} lg:text-left {% endif %} text-center heading-2xl font-400 capitalize">{{ section.settings.title }}</h1>
+    <div class="{% if section.settings.alignment == 'between' %} lg:text-left {% endif %} text-center body-lg font-400 lg:max-w-[400px]">{{ section.settings.description }}</div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Headline",
+    "class": "section-headline",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Align",
+        "options": [
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "between",
+            "label": "Between"
+          }
+        ],
+        "default": "between"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Headline",
+        "settings": {
+          "title": "Lorem Ipsum",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "alignment": "between"
+        }
+      }
+    ]
+  }
+{% endschema %}

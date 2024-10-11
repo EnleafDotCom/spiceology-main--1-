@@ -1,0 +1,289 @@
+<div
+  class="w-screen h-full max-h-screen fixed top-0 left-0 bg-grey-light backdrop-blur z-[2000] hidden lg:flex justify-center items-center transition-all duration-300 ease-in-out"
+  id="image-modal"
+  x-trap="showImageModal"
+  x-cloak
+  :class="{'opacity-0 pointer-events-none': !showImageModal }"
+  @keydown.window.escape="closeImageModal"
+  @keydown.arrow-left="previousImage"
+  @keydown.arrow-right="nextImage"
+  @click="handleClickAway"
+  x-data="
+    {
+      previousImage() {
+        $el.querySelector('.slider-btn:first-of-type').click()
+      },
+      nextImage() {
+        $el.querySelector('.slider-btn:last-of-type').click()
+      },
+      handleClickAway(event) {
+        if (event.target.id === 'image-modal') {
+          closeImageModal()
+        }
+      }
+    }
+  "
+>
+  <button
+    class="absolute top-4 right-4 button__secondary"
+    @click="closeImageModal"
+  >Close</button>
+  {% if type == 'variant' %}
+    <button-slider
+      data-slider-options='
+        {
+          "breakpoints": {
+            "(min-width: 1024px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "1", "spacing": 0 }
+            }
+          }
+        }
+      '
+    >
+      <div class="flex items-center gap-x-10">
+        
+          
+        <button 
+          aria-label="Previous image" 
+          @click.prevent.stop 
+          type="button" 
+          class="slider-button group w-fit transform -scale-x-100">
+          <span class="sr-only">Carousel Button Prev</span>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="48" y="48" width="48" height="48" transform="rotate(-180 48 48)" fill="white"/>
+              <path d="M29.0024 24.512L19.2344 29L19.2344 27.152L27.1984 23.544L19.2344 19.936L19.2344 18.088L29.0024 22.576L29.0024 24.512Z" fill="#181613"/>
+          </svg>
+        </button>
+        <div
+          class="keen-slider w-full max-w-[30vw] mx-auto flex overflow-x-hidden hover:cursor-grab mb-[42px]"
+          x-ref="slides"
+        >
+          <template x-for="(image, index) in images" :key="index">
+            <div>
+              <template x-if="image.type === 'image'" :key="index">
+                <div
+                  x-cloak
+                  class="keen-slider__slide"
+                >
+                  <div class="relative pt-[100%]">
+                    <img
+                      loading="lazy"
+                      class="absolute inset-0 w-full h-full object-cover rounded-4"
+                      :src="image.src"
+                      :srcset="image.srcset"
+                      :sizes="image.sizes"
+                      :width="image.width"
+                      :height="image.height"
+                    >
+                  </div>
+                </div>
+              </template>
+              <template x-if="image.type == 'video'" :key="index">
+                <div
+                  x-cloak
+                  class="keen-slider__slide"
+                  :data-active-slide="reactiveData.activeVariant.id === image.variantId ? index : null"
+                >
+                  <div
+                    x-data="
+                      {
+                        play: false,
+                        togglePlay() {
+                          this.play = !this.play
+                          this.$refs.video[this.play ? 'play' : 'pause']()
+                        }
+                      }
+                    "
+                    class="relative pt-[100%] w-full h-full bg-white-warm/90 rounded-4 overflow-hidden flex justify-center"
+                  >
+                    <video
+                      x-ref="video"
+                      class="absolute inset-0 h-full w-full object-cover rounded-4"
+                      :src="image.videoSrc"
+                      x-on:ended="play = false"
+                    ></video>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2"
+                      x-show="!play"
+                    >
+                      Play Video
+                    </button>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2 opacity-0 hover:opacity-100 transition-all duration-200"
+                      x-show="play"
+                    >
+                      Pause Video
+                    </button>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+       
+
+        <button 
+           aria-label="Next image"
+          @click.prevent.stop 
+          type="button" 
+          class="slider-button group w-fit">
+          <span class="sr-only">Carousel Button Next</span>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="48" y="48" width="48" height="48" transform="rotate(-180 48 48)" fill="white"/>
+              <path d="M29.0024 24.512L19.2344 29L19.2344 27.152L27.1984 23.544L19.2344 19.936L19.2344 18.088L29.0024 22.576L29.0024 24.512Z" fill="#181613"/>
+          </svg>
+        </button>
+      </div>
+      <div class="flex justify-center flex-wrap gap-x-2.5">
+        <template x-for="(image, index) in images">
+          <button class="thumbnail opacity-50 w-[54px] h-[54px] rounded-2 overflow-hidden bg-bottom">
+            <div
+              class="relative bg-cover w-full h-full transition-all duration-300 ease-in-out"
+              :style="`background-image: url(${image.src})`"
+            ></div>
+          </button>
+        </template>
+      </div>
+    </button-slider>
+  {% else %}
+    <button-slider
+      data-slider-options='
+        {
+          "breakpoints": {
+            "(min-width: 1024px)": {
+              "mode": "snap",
+              "rtl": false,
+              "loop": true,
+              "slides": { "perView": "1", "spacing": 0 }
+            }
+          }
+        }
+      '
+    >
+      <div class="flex items-center gap-x-10">
+        <button
+          aria-label="Previous image"
+          class="slider-btn bg-green/70 hover:bg-green/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center text-white"
+        >
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+              <path d="M7 14L0 7L7 0" fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
+        <div
+          class="keen-slider w-full max-w-[20vw] mx-auto flex overflow-x-hidden hover:cursor-grab mb-[42px]"
+          x-ref="slides"
+        >
+          {% for media in product.media %}
+            {% if media.media_type == 'image' %}
+              {% assign image = media %}
+              <div
+                x-cloak
+                class="keen-slider__slide w-[514px]"
+              >
+                <div class="relative pt-[100%]">
+                  <img
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full object-cover rounded-4"
+                    alt="{{ product.title }}"
+                    src="{{ image | img_url: '1000x' }}"
+                    srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
+                    sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                    draggable="false"
+                  >
+                </div>
+              </div>
+            {% endif %}
+            {% if media.media_type == 'video' %}
+              {% for source in media.sources %}
+                {% if source.format == 'mp4' %}
+                  <div
+                    class="keen-slider__slide w-[514px]"
+                    aria-label="{{ product.title }} image {{ outer_index.index }} of {{ product.images.size }}"
+                    x-data="
+                      {
+                        play: false,
+                        togglePlay() {
+                          this.play = !this.play
+                          this.$refs.video[this.play ? 'play' : 'pause']()
+                        }
+                      }
+                    "
+                    class="relative pt-[100%] w-full h-full bg-white-warm/90 rounded-4 overflow-hidden flex justify-center"
+                  >
+                    <video
+                      x-ref="video"
+                      class="absolute inset-0 h-full w-full object-cover rounded-4"
+                      src="{{ source.url }}"
+                      x-on:ended="play = false"
+                    ></video>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2 left-1/2 -translate-x-1/2"
+                      x-show="!play"
+                    >
+                      Play Video
+                    </button>
+                    <button
+                      @click="togglePlay"
+                      class="absolute button__primary top-1/2 transform -translate-y-1/2 left-1/2 -translate-x-1/2 opacity-0 hover:opacity-100 transition-all duration-200"
+                      x-show="play"
+                    >
+                      Pause Video
+                    </button>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <button
+          aria-label="Next image"
+          class="slider-btn bg-green/70 hover:bg-green/100 transition-all duration-150 ease-in-out rounded-4 w-10 h-10 flex items-center justify-center text-white"
+        >
+          <span class="transform rotate-180 block">
+            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+              <path d="M7 14L0 7L7 0" fill="currentColor"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="flex justify-center flex-wrap gap-x-2.5">
+        {% for media in product.media %}
+          {% if media.media_type == 'image' %}
+            {% assign image = media %}
+            <button class="thumbnail opacity-50 w-[54px] h-[54px] rounded-2 overflow-hidden ">
+              <div
+                class="relative bg-cover w-full h-full transition-all duration-300 ease-in-out bg-bottom"
+                style="background-image: url({{ image | img_url: '100x' }})"
+              ></div>
+            </button>
+          {% endif %}
+          {% if media.media_type == 'video' %}
+            {% assign image = media.preview_image %}
+            <button class="thumbnail opacity-50 w-[54px] h-[54px] rounded-2 overflow-hidden">
+              <div
+                class="relative bg-cover w-full h-full transition-all duration-300 ease-in-out bg-bottom"
+                style="background-image: url({{ image | img_url: '100x' }})"
+              >
+                <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25" fill="none">
+                    <path opacity="0.8" d="M20.5 11.634C21.1667 12.0189 21.1667 12.9811 20.5 13.366L1.75 24.1913C1.08333 24.5762 0.250001 24.0951 0.250001 23.3253L0.250002 1.67468C0.250002 0.904882 1.08334 0.423756 1.75 0.808656L20.5 11.634Z" fill="white"/>
+                  </svg>
+                </span>
+              </div>
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </button-slider>
+  {% endif %}
+</div>

@@ -1,0 +1,391 @@
+{{ 'component-header.css' | asset_url | stylesheet_tag }}
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('header', () => ({
+      query: '',
+      results: null,
+      search_focused: false,
+      openedMobileMenu: null,
+      checkNavItemInactive(dropdown) {
+        if (Alpine.store('main').currentDropdown === null) {
+          return false;
+        }
+        if (Alpine.store('main').currentDropdown === dropdown) {
+          return false;
+        }
+        if (Alpine.store('main').isSearchOpen) {
+          return false;
+        }
+        return true
+      },
+      handleDropdownClick(dropdown) {
+        this.results = null;
+        if (Alpine.store('main').currentDropdown === dropdown) {
+          Alpine.store('main').isNavOpen = false;
+          document.documentElement.classList.remove("overflow-hidden");
+          setTimeout(() => {
+            Alpine.store('main').currentDropdown = null;
+          }, 300);
+          return;
+        }
+        Alpine.store('main').currentDropdown = dropdown;
+        Alpine.store('main').isSearchOpen = false;
+        document.documentElement.classList.add("overflow-hidden");
+        if (!Alpine.store('main').isNavOpen) {
+          setTimeout(() => {
+            Alpine.store('main').isNavOpen = true;
+          }, 10);
+        }
+      },
+      handleMobileMenuClick() {
+        if (Alpine.store('main').isMobileNavOpen) {
+          Alpine.store('main').isMobileNavOpen = false;
+          Alpine.store('main').isSearchOpen = false;
+          document.documentElement.classList.remove("overflow-hidden");
+        } else {
+          Alpine.store('main').isMobileNavOpen = true;
+          document.documentElement.classList.add("overflow-hidden");
+        }
+      },
+      handleCartClick() {
+        Alpine.store('main').setMiniCartOpen(!Alpine.store('main').isMiniCartOpen);
+      },
+      handleSearchClick() {
+        if (Alpine.store('main').isNavOpen) {
+          Alpine.store('main').isNavOpen = false;
+          document.documentElement.classList.remove("overflow-hidden");
+          setTimeout(() => {
+            Alpine.store('main').currentDropdown = null;
+            Alpine.store('main').isSearchOpen = true;
+          }, 300);
+          return;
+        }
+        Alpine.store('main').isSearchOpen = !Alpine.store('main').isSearchOpen;
+      },
+      checkIfHomepage() {
+        if (window.location.pathname === '/') {
+          Alpine.store('main').homepage = true;
+        }
+      },
+      search() {
+        this.results = null
+        Alpine.store("main").search(this.query, {
+          type: "query,product,article",
+          limit_scope: "each",
+          limit: 3
+        }).then((response) => {
+        Alpine.store('main').currentDropdown = null;
+        Alpine.store('main').isNavOpen = false;
+          this.results = response.resources.results
+          console.log('this.results')
+          console.log(this.results)
+          this.results?.products?.slice(0, 3).forEach((product) => {
+            Alpine.store("main").graphQl(`{
+              product(handle: "${product.handle}") {
+                metafield(key: "tea_type", namespace: "my_fields") {
+                  value
+                }
+              }
+            }`).then((graphQlResponse) => {
+              if (graphQlResponse?.data?.product?.metafield?.value) {
+                product.subtitles = JSON.parse(graphQlResponse?.data?.product?.metafield?.value)
+              }
+            })
+          })
+        })
+      },
+      init() {
+        this.checkIfHomepage();
+      },
+    }))
+  })
+  document.documentElement.style.setProperty('--nav-height-mobile', '68px')
+  document.documentElement.style.setProperty('--nav-height-desktop', '90px')
+
+  {% if section.settings.show_banner %}
+    document.documentElement.style.setProperty('--banner-height', '38px')
+    document.documentElement.style.setProperty('--full-nav-height-mobile', '106px')
+    document.documentElement.style.setProperty('--full-nav-height-desktop', '128px')
+  {% else %}
+    document.documentElement.style.setProperty('--banner-height', '0px')
+  {% endif %}
+</script>
+
+<div
+  x-data
+  x-cloak
+  class="header__underlay hidden md:block"
+  :class="{
+    active: $store.main.isNavOpen || $store.main.isSearchOpen
+  }"
+  @click="$store.main.closeMenus();"
+></div>
+
+<header
+  x-data="header()"
+  :class="{
+    'fix-header': $store.main.homepage,
+    {% if section.settings.show_banner %}
+    '-translate-y-[30px]': $store.main.isScrolled
+    {% endif %}
+  }"
+  class="header-global flex flex-col will-change-transform transform transition-transform ease-in-out relative"
+  @click.outside="results = null;"
+  x-cloak
+>
+  {% if section.settings.show_banner %}
+    {% render 'header__banner' %}
+  {% endif %}
+  <div class="w-full" x-cloak>
+    {% render 'header__desktop' %}
+    {% render 'header__mobile' %}
+  </div>
+</header>
+{% comment %} {% render 'header__mobile-drawer' %} {% endcomment %}
+{% comment %} <div x-data x-show="$store.main.showHeaderSpacer" class="header-spacer"></div> {% endcomment %}
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Style"
+    },
+    {
+      "type": "select",
+      "id": "header_style",
+      "label": "Header Style",
+      "default": "transparent",
+      "options": [
+        {
+          "value": "opaque",
+          "label": "Opaque"
+        },
+        {
+          "value": "transparent",
+          "label": "Transparent"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Banner Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner",
+      "label": "Show Banner?",
+      "default": true,
+      "info": "This will show the banner above the header."
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Banner Text",
+      "info": "This text will show up on the left side of the banner",
+      "default": "Free shipping on orders over $50"
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner Link"
+    },
+    {
+      "type": "select",
+      "id": "banner_bg_color",
+      "label": "Banner Background Color",
+      "options": [
+        {
+          "value": "#181613",
+          "label": "Black"
+        },
+        {
+          "value": "#FDB916",
+          "label": "Yellow"
+        },
+        {
+          "value": "#00A1E4",
+          "label": "Blue"
+        },
+        {
+          "value": "#0DB14B",
+          "label": "Green"
+        },
+        {
+          "value": "#84549B",
+          "label": "Purple"
+        },
+        {
+          "value": "#ED1B2F",
+          "label": "Red"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "First Dropdown Tab Settings"
+    },
+    {
+      "type": "text",
+      "id": "first_dropdown_tab_label",
+      "label": "First Dropdown Tab Label",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "first_dropdown_tab_menu",
+      "label": "First Dropdown Tab Menu - Desktop"
+    },
+    {
+      "type": "link_list",
+      "id": "first_dropdown_tab_menu_mobile",
+      "label": "First Dropdown Tab Menu - Mobile"
+    },
+    {
+      "type": "textarea",
+      "id": "first_dropdown_tab_cta_1_heading",
+      "label": "First Dropdown Tab CTA 1 Heading"
+    },
+    {
+      "type": "url",
+      "id": "first_dropdown_tab_cta_1_link",
+      "label": "First Dropdown Tab CTA 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "first_dropdown_tab_cta_1_text",
+      "label": "First Dropdown Tab CTA 1 Text"
+    },
+    {
+      "type": "textarea",
+      "id": "first_dropdown_tab_cta_2_heading",
+      "label": "First Dropdown Tab CTA 2 Heading"
+    },
+    {
+      "type": "url",
+      "id": "first_dropdown_tab_cta_2_link",
+      "label": "First Dropdown Tab CTA 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "first_dropdown_tab_cta_2_text",
+      "label": "First Dropdown Tab CTA 2 Text"
+    },
+    {
+      "type": "header",
+      "content": "Second Dropdown Tab Settings"
+    },
+    {
+      "type": "text",
+      "id": "second_dropdown_tab_label",
+      "label": "Second Dropdown Tab Label",
+      "default": "Inspiration"
+    },
+    {
+      "type": "link_list",
+      "id": "second_dropdown_tab_menu",
+      "label": "Second Dropdown Tab Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "second_dropdown_tab_menu_mobile",
+      "label": "Second Dropdown Tab Menu - Mobile"
+    },
+    {
+      "type": "article",
+      "id": "second_dropdown_tab_recipe_1",
+      "label": "Second Dropdown Tab Recipe 1"
+    },
+    {
+      "type": "article",
+      "id": "second_dropdown_tab_recipe_2",
+      "label": "Second Dropdown Tab Recipe 2"
+    },
+    {
+      "type": "article",
+      "id": "second_dropdown_tab_recipe_3",
+      "label": "Second Dropdown Tab Recipe 3"
+    },
+    {
+      "type": "textarea",
+      "id": "second_dropdown_tab_cta_1_heading",
+      "label": "Second Dropdown Tab CTA 1 Heading"
+    },
+    {
+      "type": "text",
+      "id": "second_dropdown_tab_cta_1_text",
+      "label": "Second Dropdown Tab CTA 1 Text",
+      "default": "Take the quiz"
+    },
+    {
+      "type": "url",
+      "id": "second_dropdown_tab_cta_1_link",
+      "label": "Second Dropdown Tab CTA 1 Link"
+    },
+    {
+      "type": "textarea",
+      "id": "second_dropdown_tab_cta_2_heading",
+      "label": "Second Dropdown Tab CTA 2 Heading"
+    },
+     {
+      "type": "text",
+      "id": "second_dropdown_tab_cta_2_text",
+      "label": "Second Dropdown Tab CTA 2 Text",
+      "default": "Take the quiz"
+    },
+    {
+      "type": "url",
+      "id": "second_dropdown_tab_cta_2_link",
+      "label": "Second Dropdown Tab CTA 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Third Dropdown Tab Settings"
+    },
+    {
+      "type": "page",
+      "id": "third_dropdown_tab",
+      "label": "Third Dropdown Tab"
+    },
+    {
+      "type": "text",
+      "id": "featured_image_label",
+      "label": "Featured Image Label - Desktop",
+      "info": "This text will show up above the featured image on desktop"
+    },
+    {
+      "type": "text",
+      "id": "featured_image_label_mobile",
+      "label": "Featured Image Label - Mobile",
+      "info": "This text will show up next to the featured image on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Featured Promo Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_featured_promo_card_image",
+      "label": "Mobile Featured Promo Card Image"
+    },
+    {
+      "type": "richtext",
+      "id": "mobile_featured_promo_card_heading",
+      "label": "Mobile Featured Promo Card Heading"
+    },
+    {
+      "type": "url",
+      "id": "mobile_featured_promo_card_link",
+      "label": "Mobile Featured Promo Card Link"
+    },
+    {
+      "type": "text",
+      "id": "mobile_featured_promo_card_link_text",
+      "label": "Mobile Featured Promo Card Link Text"
+    }
+  ]
+}
+{% endschema %}

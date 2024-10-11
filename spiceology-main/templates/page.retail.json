@@ -1,0 +1,240 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "component_header_spacer_xAcxaf": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_headline_HnLpLK": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Retail, Grocery & CPG",
+        "description": "Add shelf-worthy flavor to your store or CPG products with our wholesale pricing.",
+        "alignment": "between"
+      }
+    },
+    "component_rich_image_zBNpzQ": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_bxTWDY": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/spicewall-38.jpg",
+            "heading": "Retail",
+            "description": "Add never-before-tasted flavors to your shelves with our wholesale, case-pack pricing.",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_RiUPWx": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/4oz-target-buffalo-lemon-pepper-closeup-edit.jpg",
+            "heading": "Grocery",
+            "description": "Add text",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_FQq7ta": {
+          "type": "Image",
+          "settings": {
+            "heading": "CPG",
+            "description": "Add details",
+            "button_url": "",
+            "button_text": "",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_bxTWDY",
+        "image_RiUPWx",
+        "image_FQq7ta"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "Grocery & Retail",
+        "description": "Add never-before-tasted flavors to your shelves with our wholesale, case-pack pricing. Order directly from Spiceology or enjoy additional perks on Faire.com.",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left",
+        "image_ratio": "4/3"
+      }
+    },
+    "component_headline_wJiKHh": {
+      "type": "component__headline",
+      "settings": {
+        "title": "How to Order",
+        "description": "Order directly from Spiceology or enjoy additional perks on Faire.com.",
+        "alignment": "center"
+      }
+    },
+    "faire_widget_Q8De6W": {
+      "type": "faire-widget",
+      "settings": {
+        "copy": ""
+      }
+    },
+    "1728515886e279f485": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_gDQXUa": {
+          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"NjAxMzU=\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_gDQXUa"
+      ],
+      "settings": {
+      }
+    },
+    "component_spacer_VBEQ6H": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#f2f2f2",
+        "height_desktop": 64,
+        "height_mobile": 56
+      }
+    },
+    "component_accordion_split_GVtK7k": {
+      "type": "component__accordion-split",
+      "blocks": {
+        "faq_crwBWK": {
+          "type": "faq",
+          "settings": {
+            "question": "Why should I carry Spiceology?",
+            "answer": "<p>At Spiceology, we’re on a mission to elevate the culinary experience in the finest retail stores across the U.S. With our expanding network of retail partners, we make it simple and profitable to carry our artisan-inspired products that your customers will love.<br/><br/>Our spices and blends are not just ingredients; they’re a gateway to culinary creativity. Featured in Buzzfeed, Goop, Forbes, and Bon Appétit, Spiceology brings a touch of gourmet flair that transforms everyday cooking into an adventure. Your customers will return time and again, eager to explore new flavors and elevate their meals.</p>"
+          }
+        },
+        "faq_jdJ9nw": {
+          "type": "faq",
+          "settings": {
+            "question": "How can I order Spiceology wholesale?",
+            "answer": "<ol><li>Shop Spiceology on <a href=\"http://faire.com\"><span style=\"text-decoration:underline\">Faire.com</span></a> - Faire carries the complete Spiceology wholesale assortment and matches our retailer policies for order minimums, case pack sizes, and pricing.</li><li>Direct - Wholesale orders may also be submitted by email to <strong>wholesale@spiceology.com</strong>. </li></ol>"
+          }
+        },
+        "faq_kPVbF4": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you have wholesale order minimums & case packs",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.</p>"
+          }
+        },
+        "faq_MK99Bq": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you have wholesale order minimums & case packs?",
+            "answer": "<ul><li>New orders: $100 (Faire.com only)</li><li>Re-orders: $50 (Faire.com only)</li><li>All items are sold in a Case Pack of 6 units per item.</li><li>Wholesale orders are required to be in full case pack multiples. </li></ul>"
+          }
+        },
+        "faq_zcMchC": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I experience order discrepancies or damages?",
+            "answer": "<p>Upon receipt, please examine the contents of your package to ensure that they are correct and complete. If any items are missing or damaged, please let us know by </p><ul><li>Direct - emailing us at <strong>wholesale@spiceology.com.</strong></li><li>Faire - Submitting missing or damaged report via the Faire portal</li></ul>"
+          }
+        },
+        "faq_n46h83": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your SLA?",
+            "answer": "<p>3-5 business days from receipt to shipment. </p>"
+          }
+        },
+        "faq_pC7pjA": {
+          "type": "faq",
+          "settings": {
+            "question": "What are your invoicing & payment policies?",
+            "answer": "<ul><li>Direct Orders - Opening orders must be paid prior to shipment by credit card or ACH payment. Paperwork for both is provided upon account setup. Payment for reorders is due upon receipt, payment methods include credit card, ACH or check. Application for credit terms is provided upon request, we offer Net 30 for qualifying customers in business more than 1 year. </li><li>Faire orders - Paid via portal based on Faire terms</li></ul>"
+          }
+        },
+        "faq_bXfWBn": {
+          "type": "faq",
+          "settings": {
+            "question": "What are your MAP policies?",
+            "answer": "<ul><li>Amazon.com, Walmart.com, Ebay, etc. have exclusive contracts with Spiceology. Our products may NOT  be added to Amazon, Walmart or Ebay from any other source without prior written approval.</li><li>Products may not be resold/redistributed at wholesale without written permission.</li><li>If the Buyer is authorized to resell via ecommerce, Spiceology will provide a “digital package” for use on the Buyer’s website, which includes unique product descriptions and imagery. We ask that these assets are utilized instead of copying and pasting information from <a href=\"http://spiceology.com/\">spiceology.com</a>, which can incur duplicate content and harm our ranking on search engines.</li><li>Your minimum advertised price must be equal to or greater than Spiceology, Inc. Manufacturer Suggested Retail Price on every product.   </li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_crwBWK",
+        "faq_jdJ9nw",
+        "faq_kPVbF4",
+        "faq_MK99Bq",
+        "faq_zcMchC",
+        "faq_n46h83",
+        "faq_pC7pjA",
+        "faq_bXfWBn"
+      ],
+      "settings": {
+        "heading": "Retail FAQs",
+        "image": "shopify://shop_images/christian_in_airbnb-21.png",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_headline_JD3RCP": {
+      "type": "component__headline",
+      "disabled": true,
+      "settings": {
+        "title": "Where to Find Spiceology",
+        "description": "",
+        "alignment": "center"
+      }
+    },
+    "component_store_locator_dJinmV": {
+      "type": "component__store-locator",
+      "disabled": true,
+      "settings": {
+        "html": "<div data-map-id=\"161b3966a778a4\" id=\"storepoint-container\"></div>\n<script>(function(){var a=document.createElement(\"script\");a.type=\"text/javascript\";a.async=!0;a.src=\"https://cdn.storepoint.co/api/v1/js/161b3966a778a4.js\";var b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(a,b);}());</script>"
+      }
+    },
+    "component_header_spacer_cCTNNx": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_xAcxaf",
+    "main",
+    "component_headline_HnLpLK",
+    "component_rich_image_zBNpzQ",
+    "component_headline_wJiKHh",
+    "faire_widget_Q8De6W",
+    "1728515886e279f485",
+    "component_spacer_VBEQ6H",
+    "component_accordion_split_GVtK7k",
+    "component_headline_JD3RCP",
+    "component_store_locator_dJinmV",
+    "component_header_spacer_cCTNNx"
+  ]
+}

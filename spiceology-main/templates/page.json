@@ -1,0 +1,235 @@
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_T7eEMG": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Grilling Center",
+        "description": "Fire up that grill - it’s time to find your new go-to grilling flavors.",
+        "alignment": "between"
+      }
+    },
+    "component_home_hero_bdyPEd": {
+      "type": "component__home-hero",
+      "settings": {
+        "full_width": true,
+        "image": "shopify:\/\/shop_images\/18ef29261503c02a5489b0acd71e8eb9_cb608253-84a8-475d-8062-a299fe97b38e.png?v=1724074089",
+        "heading": "[VIDEO - Use vid Wes made for advertising]",
+        "description": "",
+        "btn_text": "",
+        "btn_url": "\/collections\/all",
+        "color": "light"
+      }
+    },
+    "component_home_product_info_mYmw8b": {
+      "type": "component__home-product-info",
+      "settings": {
+        "heading": "",
+        "image": "shopify:\/\/shop_images\/salt-pepper-garlic.jpg",
+        "product": "salt-pepper-garlic-spg-seasoning"
+      }
+    },
+    "component_rich_image_WXzaN7": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_VCc6Qp": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/derek-wolf-beer-can-6-pack-05-web.png",
+            "heading": "Spiceology x Grill Greats",
+            "description": "Check out our grilling blend collaborations with some of the best.",
+            "button_url": "",
+            "button_text": "Shop Collabs",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_dEigCB": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/VarietyPack-seafood-lovers-4pack-6.png",
+            "heading": "Global Flavors",
+            "description": "Get out that flavor passport, we’re going global with innovative ingredients.",
+            "button_url": "",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_VCc6Qp",
+        "image_dEigCB"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "2",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_home_marquee_ezAMFc": {
+      "type": "component__home-marquee",
+      "settings": {
+        "text": "Never-before-tasted flavors  •  Hard-to-find-ingredients  •  Ground fresh, shipped fresh  •  Created by chefs, not food scientists  •  Real food, no funky stuff  •"
+      }
+    },
+    "component_home_product_slider_MLTeGQ": {
+      "type": "component__home-product-slider",
+      "blocks": {
+        "product_zrHU8L": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_iA6teR": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_HNe8nA": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        },
+        "product_rVPYjP": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "callout_text": "Herbaceous and aromatic with a slow burning heat"
+          }
+        }
+      },
+      "block_order": [
+        "product_zrHU8L",
+        "product_iA6teR",
+        "product_HNe8nA",
+        "product_rVPYjP"
+      ],
+      "settings": {
+        "subheading": "TOP 10 GRILLING BLENDS",
+        "heading": "You asked. We’re sharing.",
+        "btn_text": "Shop Blends",
+        "btn_url": "\/collections\/all"
+      }
+    },
+    "component_home_image_text_dzhYr8": {
+      "type": "component__home-image-text",
+      "blocks": {
+        "product_tiARbr": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning"
+          }
+        }
+      },
+      "block_order": [
+        "product_tiARbr"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/DEREK_WOLF_2.jpg",
+        "image_ratio_desk": "auto",
+        "image_ratio": "auto",
+        "image_size": "small",
+        "image_position": "left",
+        "subheading": "FEATURED COLLAB",
+        "heading": "Over the Fire Cooking",
+        "description": "Derek Wolf loves to play with fire… and share grilling techniques, recipes, and innovative flavors with his five million followers from around the globe.",
+        "btn_text": "Learn More",
+        "btn_url": "",
+        "content_align": "start"
+      }
+    },
+    "component_home_double_image_text_hmmzHM": {
+      "type": "component__home-double-image-text",
+      "settings": {
+        "subheading": "FLAVOR FOCUS",
+        "heading": "Cali-Baja Cuisine",
+        "description": "Learn from Chefs Claudia Sandoval and Chad White about that ultra-fresh surf and turf bounty with big, bold flavors that is Cali-Baja cuisine. Grilling on the beach? Yes, please.",
+        "btn_text": "Read More",
+        "btn_url": "",
+        "main_image": "shopify:\/\/shop_images\/Cali-Baja-header.png",
+        "second_image": "shopify:\/\/shop_images\/caudia-sandoval.jpg",
+        "team_photo": "shopify:\/\/shop_images\/DEREK_WOLF.png",
+        "team_name": ""
+      }
+    },
+    "component_home_recipe_slider_WgMLAn": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_NFjkQ8": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/black-magic-spatchcock-chicken"
+          }
+        },
+        "article_dKGHLC": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-deviled-eggs"
+          }
+        },
+        "article_HAapF4": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/slow-cooker-butter-chicken"
+          }
+        },
+        "article_TMceaW": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/honey-mustard-ipa-wings"
+          }
+        }
+      },
+      "block_order": [
+        "article_NFjkQ8",
+        "article_dKGHLC",
+        "article_HAapF4",
+        "article_TMceaW"
+      ],
+      "settings": {
+        "title": "Recipe Inspiration",
+        "product": "smoky-honey-habanero-seasoning",
+        "eyebrow": "PRO TIP",
+        "description": "We get it, I mean who doesn’t love cocktail wieners. WE love cocktail wieners."
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_headline_T7eEMG",
+    "component_home_hero_bdyPEd",
+    "component_home_product_info_mYmw8b",
+    "component_rich_image_WXzaN7",
+    "component_home_marquee_ezAMFc",
+    "component_home_product_slider_MLTeGQ",
+    "component_home_image_text_dzhYr8",
+    "component_home_double_image_text_hmmzHM",
+    "component_home_recipe_slider_WgMLAn",
+    "main"
+  ]
+}

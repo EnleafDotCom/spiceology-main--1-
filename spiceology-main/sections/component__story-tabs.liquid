@@ -1,0 +1,132 @@
+{{ 'component-story-tabs.css' |  asset_url |  stylesheet_tag }}
+
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-30 py-20 px-5 opacity-0">
+  {% if section.settings.heading != blank %}
+    <div class="utility-lg opacity-75 text-center lg:mb-5 mb-1">{{ section.settings.heading }}</div>
+  {% endif %}
+  <div class="lg:flex hidden flex-col gap-40" x-data="{tab: 1}">
+    <div class="flex flex-col gap-5 text-center story-tabs items-center">
+      {% for block in section.blocks %}
+        <div class="heading-xl 2xl:heading-2xl cursor-pointer inline-flex relative story-tab-item" @click.prevent="tab = {{ forloop.index }}" :class="tab === {{ forloop.index }}? 'selected' : ''">
+          {{ block.settings.title }}
+          <div class="max-w-[220px] text-center handwriting font-kremlin text-16 leading-110">{{ block.settings.handwriting_text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="max-w-[690px] mx-auto">
+      {% for block in section.blocks %}
+      <div class="rte-story" x-show="tab === {{ forloop.index }}">{{ block.settings.content }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="lg:hidden flex flex-col story-tabs">
+    <div class="swiper story-title-slider w-full">
+      <div class="swiper-wrapper items-center">
+        {% for block in section.blocks %}
+          <div class="swiper-slide py-5 text-center">
+            <div class="heading-xl 2xl:heading-2xl cursor-pointer relative story-tab-item mb-2.5 text-black">
+              {{ block.settings.title }}
+            </div>
+            <div class="text-center -rotate-2 font-kremlin text-16 leading-110 text-black">{{ block.settings.handwriting_text }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="w-full swiper story-content-slider">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="rte-story">{{ block.settings.content }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var storyTitleSwiper = new Swiper(".story-title-slider", {
+    spaceBetween: 10,
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+  var storyContentSwiper = new Swiper(".story-content-slider", {
+    spaceBetween: 10,
+  });
+  
+  storyTitleSwiper.controller.control = storyContentSwiper;
+  storyContentSwiper.controller.control = storyTitleSwiper;
+</script>
+
+{% schema %}
+  {
+    "name": "[Story] Tabs",
+    "class": "section-story-tabs",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Tab",
+        "type": "tab",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          },
+          {
+            "type": "textarea",
+            "id": "handwriting_text",
+            "label": "Handwriting Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Tabs",
+        "blocks": [
+          {
+            "type": "tab",
+            "settings": {
+              "title": "<p><span style=\"text-decoration:underline\">Never-Before<\/span>-Tasted <strong>Flavors<\/strong><\/p>",
+              "content": "<p>From humble beginnings at Spokane area farmers’ markets in 2013, Spiceology has grown to become the <a href=\"https:\/\/newsdirect.com\/news\/spiceology-named-inc-5000-fastest-growing-spice-company-in-america-for-third-year-in-a-row-776851009\">fastest-growing spice company in the<\/a> world, listed on the Inc 5000 for six years and counting.<\/p><p>Spiceology‘s founders, executive chef Pete Taylor and food blogger Heather Scholten, saw a stale spice and seasoning market ripe for disruption: chefs and home cooks lacked easy access to unique ingredients and blends that could bring an extra dose of magic to their cooking.<\/p><p>Pete‘s first blend, <a href=\"https:\/\/spiceology.com\/products\/smoky-honey-habanero-sweet-spicy-rub-glass-jar\/\">Smoky Honey Habanero<\/a>, put Spiceology on the map with its smoky-sweet heat that brightens every dish. It remains a bestseller to this day, but it‘s now joined by nearly 300 original blends and core spices, such as chiles, herbs, salts, confections, fruit and vegetable powders.<\/p><p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of millions of home cooks, and in the kitchens of some of the world’s greatest chefs.<\/p><p>Our “cult of flavor” includes collaborations with such culinary luminaries as <a href=\"https:\/\/spiceology.com\/collaborations\/jet-tila\/\">Chef Jet Tila<\/a>, <a href=\"https:\/\/spiceology.com\/collaborations\/alvin-cailan\/\">Chef Alvin Cailan<\/a>, and grillmaster Derek Wolf. Our spices can also be seen in the hands of chefs on 25 seasons of popular shows like <em>Hell‘s Kitchen<\/em>, <em>Masterchef<\/em>, <em>Top Chef<\/em>, <em>Iron Chef<\/em>, and many more.<\/p><p>Through it all, Spiceology has remained true to its chef DNA. Our “Experiment with Flavor” ethos inspires chefs and home cooks alike to dream deliciously, with never-before-tasted flavors that drive endless experimentation but consistently tasty results. And when our customers complete the circle by sharing their culinary creations with us, it reminds us why we do this.<\/p>",
+              "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+            }
+          },
+          {
+            "type": "tab",
+            "settings": {
+              "title": "<p><strong>Freshly<\/strong> <span style=\"text-decoration:underline\">Ground<\/span><\/p>",
+              "content": "<p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of hundreds of thousands of home cooks, and in the kitchens of some of the world’s greatest chefs.<\/p><p>Our “cult of flavor” among chefs includes collaborations with such culinary luminaries as <a href=\"\/collections\" title=\"All collections\">Chef Jet Tila, Chef Alvin Cailan<\/a>, and Chef Kwame Onwuachi and many more. <\/p><p>Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include Hell‘s Kitchen, Masterchef, Top Chef, Iron Chef, and many more.Spiceology has also developed unique seasoning lines for national brands, including Mod Pizza and Shake Shack, and popular venues such as Climate Pledge Arena and Lumen Field, home of the Seattle Seahawks.<\/p>",
+              "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+            }
+          },
+          {
+            "type": "tab",
+            "settings": {
+              "title": "<p><span style=\"text-decoration:underline\">Ultra<\/span>-Versatile <strong>Blends<\/strong><\/p>",
+              "content": "<p>Spiceology‘s ingredients and blends can be found in the aisles of retailers large and small, in the pantries of hundreds of thousands of home cooks, and in the kitchens of some of the world’s greatest chefs.<\/p><p>Our “cult of flavor” among chefs includes collaborations with such culinary luminaries as Chef Jet Tila, Chef Alvin Cailan, and Chef Kwame Onwuachi and many more. <\/p><p>Spiceology‘s spices can also be seen in the hands of chefs on popular shows that include <a href=\"\/collections\" title=\"All collections\">Hell‘s Kitchen, Masterchef, Top Chef, Iron Chef<\/a>, and many more.Spiceology has also developed unique seasoning lines for national brands, including Mod Pizza and Shake Shack, and popular venues such as Climate Pledge Arena and Lumen Field, home of the Seattle Seahawks.<\/p>",
+              "handwriting_text": "The first thing I do whenever I write a cookbook is pack a suitcase."
+            }
+          }
+        ],
+        "settings": {
+          "heading": "Our Story"
+        }
+      }
+    ]
+  }
+{% endschema %}

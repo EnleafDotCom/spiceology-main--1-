@@ -1,0 +1,168 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "current": {
+    "klaviyo_list_id": "QTzssm",
+    "social_facebook_link": "https://www.facebook.com/spiceology/",
+    "social_pinterest_link": "https://www.pinterest.com/spiceology/",
+    "social_instagram_link": "https://www.instagram.com/spiceology/",
+    "social_tiktok_link": "https://www.tiktok.com/@spiceology",
+    "social_youtube_link": "https://www.youtube.com/channel/UCcmur99D0feaDO8metz58DA",
+    "favicon": "shopify://shop_images/Square_Logo_2.jpg",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_style": "opaque",
+          "show_banner": true,
+          "banner_text": "Free shipping on orders over $50",
+          "banner_link": "",
+          "banner_bg_color": "#181613",
+          "first_dropdown_tab_label": "Shop",
+          "first_dropdown_tab_menu": "bf-main",
+          "first_dropdown_tab_menu_mobile": "bf-main",
+          "first_dropdown_tab_cta_1_heading": "Take the flavor quiz to find your personal flavor",
+          "first_dropdown_tab_cta_1_link": "shopify://pages/quiz",
+          "first_dropdown_tab_cta_1_text": "Find Your Flavor Quiz",
+          "first_dropdown_tab_cta_2_heading": "Sign Up for a Pro Chef Account for Extra Perks",
+          "first_dropdown_tab_cta_2_link": "shopify://pages/pro-chefs",
+          "first_dropdown_tab_cta_2_text": "Sign Up",
+          "second_dropdown_tab_label": "Inspiration",
+          "second_dropdown_tab_menu": "bf-header-tab-2",
+          "second_dropdown_tab_menu_mobile": "bf-header-tab-2",
+          "second_dropdown_tab_recipe_1": "recipes/jamaican-jerk-grilled-carrot-salad",
+          "second_dropdown_tab_recipe_2": "recipes/maui-wowee-grilled-half-chicken",
+          "second_dropdown_tab_recipe_3": "recipes/cowboy-crust-smash-burgers-with-vampire-killer-sauce",
+          "second_dropdown_tab_cta_1_heading": "Sign up for the Spiceology newsletter for exclusive offers & tasty recipes",
+          "second_dropdown_tab_cta_1_text": "Sign Me Up",
+          "second_dropdown_tab_cta_1_link": "",
+          "second_dropdown_tab_cta_2_heading": "",
+          "second_dropdown_tab_cta_2_text": "",
+          "second_dropdown_tab_cta_2_link": "",
+          "third_dropdown_tab": "pro-chefs",
+          "featured_image_label": "",
+          "featured_image_label_mobile": "",
+          "mobile_featured_promo_card_image": "shopify://shop_images/holiday_promo_-_popcorn.jpg",
+          "mobile_featured_promo_card_heading": "<p>Explore the Gift Shop</p>",
+          "mobile_featured_promo_card_link": "shopify://pages/gift-center",
+          "mobile_featured_promo_card_link_text": "Shop Now"
+        }
+      },
+      "cart-menu": {
+        "type": "cart-menu",
+        "settings": {
+          "shipping": "Shipping calculated at checkout",
+          "upsellHeading": "Have a spare ready!",
+          "recommendedType": "related"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "social_icons_ngxyNR": {
+            "type": "social_icons",
+            "settings": {
+              "image": "shopify://shop_images/social.png",
+              "url": "https://www.facebook.com/spiceology/",
+              "title": ""
+            }
+          },
+          "social_icons_67fi96": {
+            "type": "social_icons",
+            "settings": {
+              "image": "shopify://shop_images/social_1.png",
+              "url": "https://www.linkedin.com/company/18114276",
+              "title": ""
+            }
+          },
+          "social_icons_mGRYCb": {
+            "type": "social_icons",
+            "settings": {
+              "image": "shopify://shop_images/social_2.png",
+              "url": "https://www.youtube.com/channel/UCcmur99D0feaDO8metz58DA",
+              "title": ""
+            }
+          },
+          "social_icons_68Aw7d": {
+            "type": "social_icons",
+            "settings": {
+              "image": "shopify://shop_images/social_3.png",
+              "url": "https://www.instagram.com/spiceology/",
+              "title": ""
+            }
+          },
+          "social_icons_Ci7Ftq": {
+            "type": "social_icons",
+            "settings": {
+              "image": "shopify://shop_images/social_4.png",
+              "url": "https://www.pinterest.com/spiceology/",
+              "title": ""
+            }
+          }
+        },
+        "block_order": [
+          "social_icons_ngxyNR",
+          "social_icons_67fi96",
+          "social_icons_mGRYCb",
+          "social_icons_68Aw7d",
+          "social_icons_Ci7Ftq"
+        ],
+        "settings": {
+          "footer_menu": "bf-footer-menu",
+          "footer_legal_menu": "privacy-legal"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "17428600031447253342": {
+        "type": "shopify://apps/attentive/blocks/attn-tag/8df62c72-8fe4-407e-a5b3-72132be30a0d",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "8962992520437913685": {
+        "type": "shopify://apps/yotpo-loyalty-rewards/blocks/loader-app-embed-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+        "disabled": false,
+        "settings": {
+          "inject_modules_loader": true,
+          "inject_sdk_loader": true
+        }
+      },
+      "14339172867238703359": {
+        "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews_tab/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {
+          "product": ""
+        }
+      },
+      "7570552984445421165": {
+        "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "8257630261509358238": {
+        "type": "shopify://apps/yotpo-subscriptions/blocks/app-embed-block/ef25e582-ada5-4bb0-b4e7-f94e97ab1bb4",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  }
+}

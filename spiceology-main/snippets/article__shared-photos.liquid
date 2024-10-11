@@ -1,0 +1,65 @@
+<section class="lg:py-12 py-7.5">
+  <div class="lg:text-40 text-32 lg:leading-100 leading-110 capitalize lg:mb-5 mb-4 text-center">{{ article.metafields.accentuate.shared_photos_heading }}</div>
+  <div class="text-15 lg:tracking-4 tracking-3 lg:leading-120 leading-130 text-center max-w-[400px] px-8 mx-auto mb-7">{{ article.metafields.accentuate.shared_photos_subheading | metafield_tag}}</div>
+  <button-slider
+    data-slider-options='{
+      "breakpoints": {
+        "(min-width: 768px)": {
+          "mode": "free-snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "4", "spacing": 20, "origin": "center" }
+        },
+        "(max-width: 768px)": {
+          "mode": "free-snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "1.3", "spacing": 40 }
+        }
+      }
+    }'
+    class=""
+  >
+    <div class="hidden">
+          {% render 'button__slider-prev' %}
+        {% render 'button__slider-next' %}
+    </div>
+   
+    <div
+      class="keen-slider tab-panels overflow-x-hidden overflow-y-hidden relative h-fit pl-2.5 lg:pl-5"
+    >
+      <!-- Panel -->
+      <section
+        x-cloak
+        role="tabpanel"
+        class="flex flex-col min-h-[118vw] md:min-h-fit"
+      >
+        <div class="flex">
+          {% assign images = article.metafields.accentuate.shared_photos_images.value %}
+          {% assign descriptions = article.metafields.accentuate.shared_photos_description.value %}
+          {% assign owners = article.metafields.accentuate.share_photos_owners.value %}
+          {% for image in images %}
+            <div
+              class="keen-slider__slide"
+            >
+              <div class="mb-5">
+                {% assign image_ratio = image.aspect_ratio | times: 100 | append: '%' %}
+                {% render 'image', 
+                  image_desktop: image,  
+                  width_desktop: '500x', 
+                  width_mobile: '500x', 
+                  ratio_desktop: image_ratio,
+                  ratio_mobile: image_ratio,
+                  lazy: true,
+                  image_classes: 'rounded-6' 
+                %}
+              </div>
+              <div class="max-w-[75%] -rotate-3 font-kremlin mb-5 text-16 leading-110 text-[#1C1307]">{{ descriptions[forloop.index0] | metafield_tag }}</div>
+              <div class="font-mono leading-140 tracking-2 opacity-75">{{ owners[forloop.index0] }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </button-slider>
+</section>

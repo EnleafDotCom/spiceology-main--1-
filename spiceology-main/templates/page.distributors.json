@@ -1,0 +1,303 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "component_header_spacer_E77dj6": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_rich_text_HJr7BK": {
+      "type": "component__rich-text",
+      "blocks": {
+        "html_VcERPB": {
+          "type": "html",
+          "settings": {
+            "text": "<table>\n  <tbody>\n<tr>\n    <th>Person 1</th>\n    <th>Person 2</th>\n    <th>Person 3</th>\n  </tr>\n  <tr>\n    <td>Emil</td>\n    <td>Tobias</td>\n    <td>Linus</td>\n  </tr>\n  <tr>\n    <td>16</td>\n    <td>14</td>\n    <td>10</td>\n  </tr>\n</tbody>\n</table>"
+          }
+        }
+      },
+      "block_order": [
+        "html_VcERPB"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "table {border-width: thin; border-spacing: 2px; border-style: solid; margin-left: auto; margin-right: auto; font: Chromatic Pro Grotesque;}",
+        "th,td {padding-inline: 15px 40px; text-align: left; border: 1px solid #ddd; webkit-border-vertical-spacing: 1px solid;}"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_headline_KWg8KM": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Distributors",
+        "description": "We partner with distributors across the country to provide our pro chef customers immediate access to fresh spices.",
+        "alignment": "between"
+      }
+    },
+    "component_accordion_split_Tx4Hjq": {
+      "type": "component__accordion-split",
+      "blocks": {
+        "faq_apcqhU": {
+          "type": "faq",
+          "settings": {
+            "question": "Online Marketplaces",
+            "answer": "<ul><li><a href=\"https://www.suppliesonthefly.com/\" target=\"_blank\" title=\"https://www.suppliesonthefly.com/\">Sysco Supplies on the Fly</a></li><li><a href=\"https://www.usfoods.com/why-us-foods/our-programs/us-foods-direct.html\" target=\"_blank\" title=\"https://www.usfoods.com/why-us-foods/our-programs/us-foods-direct.html\">US Foods Direct</a></li><li><a href=\"https://gfs.com/en-us/\" target=\"_blank\" title=\"https://gfs.com/en-us/\">Gordon Food Service EPO</a></li><li><a href=\"https://www.cheneybrothers.com/\" target=\"_blank\" title=\"https://www.cheneybrothers.com/\">Cheney Bros</a></li></ul>"
+          }
+        },
+        "faq_9UDDgw": {
+          "type": "faq",
+          "settings": {
+            "question": "Nationwide",
+            "answer": "<p>European Imports</p>"
+          }
+        },
+        "faq_Hthdrg": {
+          "type": "faq",
+          "settings": {
+            "question": "Arizona",
+            "answer": "<p>Peddler's Son</p>"
+          }
+        },
+        "faq_LmgdKy": {
+          "type": "faq",
+          "settings": {
+            "question": "California",
+            "answer": "<ul><li>Moceri Produce</li><li>Nature's Produce</li><li>Penjoyan Produce</li><li>Vesta Foodservice</li></ul>"
+          }
+        },
+        "faq_rzBipV": {
+          "type": "faq",
+          "settings": {
+            "question": "Colorado",
+            "answer": "<ul><li>Sysco FreshPoint</li></ul>"
+          }
+        },
+        "faq_HgARty": {
+          "type": "faq",
+          "settings": {
+            "question": "Delaware",
+            "answer": "<p>Capital Seaboard</p>"
+          }
+        },
+        "faq_rmDR9z": {
+          "type": "faq",
+          "settings": {
+            "question": "Florida",
+            "answer": "<p>Sysco FreshPoint</p>"
+          }
+        },
+        "faq_4pCU8e": {
+          "type": "faq",
+          "settings": {
+            "question": "Georgia",
+            "answer": "<p>Royal Foodservice</p>"
+          }
+        },
+        "faq_tB7fJf": {
+          "type": "faq",
+          "settings": {
+            "question": "Idaho",
+            "answer": "<p>Charlie's Produce</p>"
+          }
+        },
+        "faq_icALHA": {
+          "type": "faq",
+          "settings": {
+            "question": "Iowa",
+            "answer": "<p>Loffredo</p>"
+          }
+        },
+        "faq_PzXtzx": {
+          "type": "faq",
+          "settings": {
+            "question": "Kansas",
+            "answer": "<p>Loffredo</p>"
+          }
+        },
+        "faq_WHmCQM": {
+          "type": "faq",
+          "settings": {
+            "question": "Lousiana",
+            "answer": "<p>Sysco FreshPoint</p>"
+          }
+        },
+        "faq_YkgbFY": {
+          "type": "faq",
+          "settings": {
+            "question": "Maryland",
+            "answer": "<p>Capital Seaboard</p>"
+          }
+        },
+        "faq_PJaWwG": {
+          "type": "faq",
+          "settings": {
+            "question": "Massachusetts",
+            "answer": "<p>Land & Sea Provisions</p>"
+          }
+        },
+        "faq_LbaMy3": {
+          "type": "faq",
+          "settings": {
+            "question": "Minnesota",
+            "answer": "<ul><li>Loffredo</li><li>Bix Produce</li></ul>"
+          }
+        },
+        "faq_zrM9MM": {
+          "type": "faq",
+          "settings": {
+            "question": "Mississippi",
+            "answer": "<p>Sunrise Fresh Produce</p>"
+          }
+        },
+        "faq_r4NEYF": {
+          "type": "faq",
+          "settings": {
+            "question": "Missouri",
+            "answer": "<p>SGC Foodservice</p>"
+          }
+        },
+        "faq_RMUfgj": {
+          "type": "faq",
+          "settings": {
+            "question": "Nevada",
+            "answer": "<p>Vesta Foodservice</p>"
+          }
+        },
+        "faq_yihFEn": {
+          "type": "faq",
+          "settings": {
+            "question": "New Hampshire",
+            "answer": "<p>Land & Sea Provisions</p>"
+          }
+        },
+        "faq_HAEdPU": {
+          "type": "faq",
+          "settings": {
+            "question": "North Dakota",
+            "answer": "<p>USF</p>"
+          }
+        },
+        "faq_3xHBby": {
+          "type": "faq",
+          "settings": {
+            "question": "Ohio",
+            "answer": "<p>Sirna & Sons</p>"
+          }
+        },
+        "faq_TPbikX": {
+          "type": "faq",
+          "settings": {
+            "question": "Oregon",
+            "answer": "<p>Charlie's Produce</p>"
+          }
+        },
+        "faq_ppcjpn": {
+          "type": "faq",
+          "settings": {
+            "question": "Rhode Island",
+            "answer": "<p>Land & Sea Provisions</p>"
+          }
+        },
+        "faq_EV9PpE": {
+          "type": "faq",
+          "settings": {
+            "question": "Tennessee",
+            "answer": "<p>PFG</p>"
+          }
+        },
+        "faq_ywY9rW": {
+          "type": "faq",
+          "settings": {
+            "question": "Texas",
+            "answer": "<ul><li>BEK</li><li>Sysco FreshPoint</li><li>Masters Distribution</li></ul>"
+          }
+        },
+        "faq_FNiibT": {
+          "type": "faq",
+          "settings": {
+            "question": "Utah",
+            "answer": "<p>Charlie's Produce</p>"
+          }
+        },
+        "faq_QGgycB": {
+          "type": "faq",
+          "settings": {
+            "question": "Virginia",
+            "answer": "<ul><li>Capital Seaboard</li><li>Coastal Sunbelt Produce</li></ul>"
+          }
+        },
+        "faq_Q68aTw": {
+          "type": "faq",
+          "settings": {
+            "question": "Washington",
+            "answer": "<ul><li>Charlie's Produce</li><li>Harbor</li></ul>"
+          }
+        },
+        "faq_bifX77": {
+          "type": "faq",
+          "settings": {
+            "question": "Wisconsin",
+            "answer": "<p>Loffredo</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_apcqhU",
+        "faq_9UDDgw",
+        "faq_Hthdrg",
+        "faq_LmgdKy",
+        "faq_rzBipV",
+        "faq_HgARty",
+        "faq_rmDR9z",
+        "faq_4pCU8e",
+        "faq_tB7fJf",
+        "faq_icALHA",
+        "faq_PzXtzx",
+        "faq_WHmCQM",
+        "faq_YkgbFY",
+        "faq_PJaWwG",
+        "faq_LbaMy3",
+        "faq_zrM9MM",
+        "faq_r4NEYF",
+        "faq_RMUfgj",
+        "faq_yihFEn",
+        "faq_HAEdPU",
+        "faq_3xHBby",
+        "faq_TPbikX",
+        "faq_ppcjpn",
+        "faq_EV9PpE",
+        "faq_ywY9rW",
+        "faq_FNiibT",
+        "faq_QGgycB",
+        "faq_Q68aTw",
+        "faq_bifX77"
+      ],
+      "settings": {
+        "heading": "",
+        "image": "shopify://shop_images/tony-foodservice.jpg",
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_E77dj6",
+    "component_rich_text_HJr7BK",
+    "main",
+    "component_headline_KWg8KM",
+    "component_accordion_split_Tx4Hjq"
+  ]
+}

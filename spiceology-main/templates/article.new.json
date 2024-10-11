@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "component_header_spacer_6rcPhC": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "article_accentuate_layout_QzKLhY": {
+      "type": "article__accentuate-layout",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_6rcPhC",
+    "main",
+    "article_accentuate_layout_QzKLhY"
+  ]
+}

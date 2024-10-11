@@ -1,0 +1,66 @@
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} section {
+    padding-top: {{ section.settings.padding_top_desk }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desk }}px;
+  }
+  @media (max-width: 768px) { 
+    #shopify-section-{{ section.id }} section {
+      padding-top: {{ section.settings.padding_top_mob }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+    } 
+  }
+{% endstyle %}
+
+<section>
+  <div class="max-w-[708px] mx-auto px-2.5 rte legal">{{ page.content }}</div>
+</section>
+
+{% schema %}
+{
+  "name": "Legal",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top_desk",
+      "min": 30,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Top(Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 30,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Top(Mobile)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desk",
+      "min": 30,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom(Desktop)",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 30,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Bottom(Mobile)",
+      "default": 140
+    }
+  ]
+}
+{% endschema %}

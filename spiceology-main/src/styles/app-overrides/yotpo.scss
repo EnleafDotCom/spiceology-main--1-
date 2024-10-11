@@ -1,0 +1,382 @@
+/*-- Subscriptions --*/
+.yotpo-widget-subscriptions-add-to-cart .yotpo-selling-plans {
+  margin-bottom: 20px !important;
+  //   border-top: 1px solid rgba(0, 0, 0, 0.25) !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-radio-container.yotpo-selected {
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.yotpo-radio-buy-once-container {
+  border-top: 1px solid rgba(0, 0, 0, 0.25) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.25) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.25) !important;
+
+  &.yotpo-selected {
+    border-top: 1px solid #181613 !important;
+    border-left: 1px solid #181613 !important;
+    border-right: 1px solid #181613 !important;
+    border-bottom: 1px solid #181613 !important;
+  }
+}
+
+.yotpo-radio-subscription-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.25) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.25) !important;
+
+  &.yotpo-selected {
+    border: 1px solid #181613 !important;
+  }
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-radio-container {
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-selling-plan-radio-label:after {
+  width: 12px !important;
+  height: 12px !important;
+  box-shadow: 0 0 0 1px #dcdbda !important;
+}
+
+// .yotpo-widget-subscriptions-add-to-cart
+//   .yotpo-selling-plan-radio-label.yotpo-checked:after {
+//   box-shadow: 0 0 0 1px #181613 !important;
+//   background-color: #181613 !important;
+// }
+
+// .yotpo-widget-subscriptions-add-to-cart
+//   .yotpo-selling-plan-radio-label.yotpo-selected:after {
+//   box-shadow: 0 0 0 1px #181613 !important;
+//   background-color: #181613 !important;
+// }
+
+.yotpo-widget-subscriptions-add-to-cart
+  .yotpo-radio-label.yotpo-radio-label-text {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-radio-container.yotpo-radio-buy-once-container.yotpo-not-selected,
+.yotpo-radio-container.yotpo-radio-subscription-container.yotpo-not-selected {
+  input:after {
+    box-shadow: 0 0 0 1px #dcdbda !important;
+  }
+}
+
+.yotpo-radio-container.yotpo-radio-buy-once-container.yotpo-selected,
+.yotpo-radio-container.yotpo-radio-subscription-container.yotpo-selected {
+  input:after {
+    box-shadow: 0 0 0 1px #181613 !important;
+    background-color: #181613 !important;
+  }
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-frequency-options {
+  border-radius: 0 !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-radio-and-dropdown-label {
+  font-size: 16px !important;
+}
+
+.yotpo-radio-container.yotpo-radio-subscription-container {
+  .yotpo-frequency-options {
+    border-color: rgba(0, 0, 0, 0.25) !important;
+  }
+}
+
+.yotpo-radio-container.yotpo-radio-subscription-container.yotpo-selected {
+  .yotpo-frequency-options {
+    border-color: #181613 !important;
+  }
+}
+
+.yotpo-radio-and-dropdown-option:checked
+  + .yotpo-radio-and-dropdown-label:after {
+  border: 0 !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='7' viewBox='0 0 8 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.488 6.87602L0.384 0.124023L1.728 0.124023L4.192 5.56402L6.656 0.124023L8 0.124023L4.896 6.87602L3.488 6.87602Z' fill='%23181613'/%3E%3C/svg%3E%0A") !important;
+}
+
+.yotpo-radio-and-dropdown-label {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+  &:hover {
+    text-decoration: underline !important;
+    text-decoration-thickness: 0.75px !important;
+    text-underline-offset: 2px !important;
+  }
+}
+// .yotpo-widget-subscriptions-add-to-cart .yotpo-radio-and-dropdown-label {
+//   font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+//     Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+//     BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+//     sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+//     Noto Color Emoji !important;
+// }
+
+.yotpo-subscription-policy {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart
+  .yotpo-selected
+  .yotpo-subscription-label-price {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+}
+.yotpo-subscription-policy-text-header {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 140% !important; /* 15.4px */
+  letter-spacing: 0.66px !important;
+  text-transform: uppercase !important;
+  color: #181613 !important;
+  margin: 0 !important;
+  padding-bottom: 4px !important;
+}
+
+.yotpo-subscription-policy-text-main {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 120% !important; /* 16.8px */
+  letter-spacing: 0.28px !important;
+  color: #181613 !important;
+  margin: 0 !important;
+  padding-bottom: 40px !important;
+}
+
+.yotpo-subscription-label-prefix {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-subscription-label-price {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+}
+
+/*-- Rewards page --*/
+
+.yotpo-widget-loyalty-page {
+  * {
+    font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+      Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+      BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+      sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+      Noto Color Emoji !important;
+  }
+}
+
+.yotpo-rectangular-btn-type {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+  text-transform: none !important;
+  background-color: #181613 !important;
+  color: #fff !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 0 40px !important;
+  height: 49px !important;
+  width: fit-content !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 130% !important; /* 20.8px */
+  letter-spacing: 0.48px !important;
+  transition: transform 200ms ease !important;
+  width: 100% !important;
+
+  @screen md {
+    &:hover {
+      transform: translateY(-2px) !important;
+    }
+
+    &:active {
+      transform: translateY(0) !important;
+    }
+  }
+
+  &:disabled {
+    @apply bg-grey text-white;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: unset;
+    }
+  }
+}
+
+.yotpo-logged-out-tile {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-selling-plans-wrapper {
+  margin-top: 0 !important;
+}
+
+.yotpo-widget-subscriptions-add-to-cart .yotpo-plans-and-policy-wrapper {
+  margin: 0 auto !important;
+}
+
+// Stars
+
+.yotpo-reviews-star-ratings-widget {
+  margin-bottom: 0px !important;
+}
+
+.yotpo-sr-bottom-line-summary {
+  align-items: center !important;
+  height: 15px !important;
+
+  div {
+    height: 15px !important;
+  }
+}
+
+.star-container {
+  svg {
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+  }
+}
+
+.yotpo-sr-bottom-line-text.yotpo-sr-bottom-line-text--right-panel {
+  font-family: Chromatic Mono, ui-monospace, monospace !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 140% !important; /* 15.4px */
+  letter-spacing: 0.66px !important;
+  text-transform: uppercase !important;
+}
+
+// Reviews
+
+.yotpo-reviews-trademark.yotpo-reviews-by {
+  display: none !important;
+}
+
+.yotpo-empty-state {
+  svg {
+    display: none !important;
+  }
+}
+
+.yotpo-base-layout {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-headline {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-title-text {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-body-text {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+}
+
+.yotpo-btn-l,
+.yotpo-new-review-submit {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important; /* #ffffff */
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(
+    24 22 19 / var(--tw-bg-opacity)
+  ) !important; /* #181613 */
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 0 70px !important;
+  height: 49px !important;
+  width: fit-content !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 130% !important; /* 20.8px */
+  letter-spacing: 0.48px !important;
+  border-radius: 0 !important;
+  transition: transform 200ms ease !important;
+
+  @screen md {
+    &:hover {
+      transform: translateY(-2px) !important;
+    }
+
+    &:active {
+      transform: translateY(0) !important;
+    }
+  }
+
+  &:disabled {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(
+      220 219 218 / var(--tw-bg-opacity)
+    ) !important; /* #dcdbda */
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important; /* #ffffff */
+    cursor: not-allowed !important;
+
+    &:hover {
+      transform: unset !important;
+    }
+  }
+}

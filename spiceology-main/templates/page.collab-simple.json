@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Hell's Kitchen x Spiceology",
+        "content": "Whether you’re a die-hard fan of Hell’s Kitchen or are just looking to experiment with viral-worthy flavor, these blends will be sure to get you to the final round. Trust us, you’ll feel like one hell of a cook.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/hells-kitchen.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "hells-kitchen",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Hell's Kitchen",
+        "text": "<p>Bloody Hell! With 20 seasons under their belt (and more on the way), Hell’s Kitchen has become a television staple. Equally known for delicious dishes and witty (and somehow supportive) insults, Hell’s Kitchen features ambitious cooks duking it out to recreate his signature dishes and earn a job at one of his amazing restaurants.<\/p><p>And, while the hilarious (and mostly loving) critiques are thrown, the goal is to help the chefs be the best they can be in the kitchen. That’s where the synergy between Spiceology and Hell’s Kitchen is. We’re both on a mission to make people better cooks.<\/p><p><\/p><p><em>©️ 2022 ITV Studios Ltd. HELL’S KITCHEN™️, HK™️ and the HK and pitchfork logo are trademarks of ITV Studios Ltd. Used under license. All rights reserved.<\/em><\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

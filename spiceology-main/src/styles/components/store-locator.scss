@@ -1,0 +1,48 @@
+.component__store-locator {
+  #storepoint-container {
+    border: unset;
+    #storepoint-search {
+      border-bottom: 1px solid var(--Blend, #181613);
+    }
+    .storepoint-location {
+      border-bottom: 1px solid var(--Blend, #181613);
+
+      .storepoint-name {
+        @apply text-black md:text-20 text-16 font-500 leading-130 tracking-3 p-0;
+      }
+      .storepoint-address {
+        @apply text-black md:text-20 text-16 leading-130 tracking-3 p-0;
+      }
+      .storepoint-distance {
+        @apply mt-3.5 p-0 text-black font-mono leading-120 tracking-6 uppercase opacity-50 text-13;
+        padding-top: 0 !important;
+      }
+      .storepoint-tags {
+        display: none;
+      }
+      .storepoint-contact.storepoint-contact-website {
+        display: none;
+      }
+      .storepoint-contact {
+        display: none;
+      }
+      @media (max-width: 600px) {
+        border: unset;
+        border-bottom: 1px solid var(--Blend, #181613);
+      }
+    }
+    #storepoint-panel {
+      @media (max-width: 600px) {
+        #storepoint-results {
+          padding: 0;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      #storepoint-map {
+        border-bottom: 1px solid #181613;
+      }
+    }
+  }
+}

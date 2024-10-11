@@ -1,0 +1,171 @@
+<div
+  x-data="{
+    provinces: [],
+    init() {
+      {% if form.country != '' %}
+        const selectEl = document.getElementById('country_select_form_{{ form.id }}')
+        this.onCountryChange(selectEl)
+      {% endif %}
+    },
+    onCountryChange(target) {
+      const selectedOptions = target.selectedOptions;
+      if (selectedOptions?.length && selectedOptions[0].dataset.provinces) {
+        this.provinces = JSON.parse(selectedOptions[0].dataset.provinces);
+      } else {
+        this.provinces = []
+      }
+    }
+  }"
+  class="grid gap-5 grid-cols-1 md:grid-cols-3"
+>
+  <input
+    type="text"
+    placeholder="First name"
+    name="address[first_name]"
+    class="input__primary"
+    value="{{ form.first_name }}"
+    autocapitalize="words"
+    autocomplete="given-name"
+    required
+  >
+
+  <input
+    type="text"
+    placeholder="Last name"
+    name="address[last_name]"
+    class="input__primary"
+    value="{{ form.last_name }}"
+    autocapitalize="words"
+    autocomplete="family-name"
+  >
+
+  <input
+    type="text"
+    placeholder="Company"
+    name="address[company]"
+    class="input__primary"
+    value="{{ form.company }}"
+    autocapitalize="words"
+    autocomplete="organization"
+  >
+
+  <input
+    type="text"
+    name="address[address1]"
+    placeholder="Address line 1"
+    class=" md:col-span-3 input__primary"
+    value="{{ form.address1 }}"
+    autocapitalize="words"
+    autocomplete="address-line1"
+    required
+  >
+
+  <input
+    type="text"
+    name="address[address2]"
+    placeholder="Address line 2"
+    class="md:col-span-3 input__primary"
+    value="{{ form.address2 }}"
+    autocapitalize="words"
+    autocomplete="address-line2"
+  >
+
+  <select
+    @change="onCountryChange($event.target)"
+    id="country_select_form_{{ form.id }}"
+    name="address[country]"
+    placeholder="Country"
+    class="w-full select__primary"
+    value="{{ form.country }}"
+    autocomplete="country"
+    required
+  >
+    {% if form.country == '' %}
+      <option
+        value=""
+        disabled
+        selected
+      >
+        Country
+      </option>
+    {% endif %}
+
+    {{ all_country_option_tags }}
+  </select>
+
+  <select
+    name="address[province]"
+    class="w-full select__primary"
+    value="{{ form.province }}"
+    autocomplete="address-level1"
+    required
+  >
+    {% unless form.province %}
+      <option
+        value=""
+        disabled
+        selected
+      >
+        State
+      </option>
+    {% endunless %}
+
+    <template x-for="province in provinces">
+      <option
+        :value="province[0]"
+        x-text="province[1]"
+      ></option>
+    </template>
+  </select>
+
+  <input
+    type="text"
+    placeholder="City"
+    name="address[city]"
+    class="input__primary"
+    value="{{ form.city }}"
+    autocapitalize="words"
+    autocomplete="address-level2"
+    required
+  >
+
+  <input
+    type="text"
+    placeholder="Zip"
+    name="address[zip]"
+    class="input__primary"
+    value="{{ form.zip }}"
+    autocapitalize="characters"
+  >
+
+  <input
+    type="tel"
+    placeholder="Phone"
+    name="address[phone]"
+    class="input__primary"
+    value="{{ form.phone }}"
+    autocomplete="tel"
+  >
+
+  <div class="flex items-center gap-3">
+    <input
+      type="checkbox"
+      id="address_default_address_{{ form.id }}"
+      name="address[default]"
+      {% if default %}
+        checked
+      {% endif %}
+      value="1"
+    >
+    <label
+      for="address_default_address_{{ form.id }}"
+      class="text-black"
+    >
+      Set as default address
+    </label>
+  </div>
+</div>
+
+<div class="text-pink my-5">
+  {{ form.errors | default_errors }}
+</div>

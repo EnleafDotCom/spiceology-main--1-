@@ -1,0 +1,15 @@
+<section class="lg:py-20 py-10 lg:px-5">
+  <div class="lg:grid lg:grid-cols-12 flex flex-col lg:gap-20">
+    <div class="lg:col-span-3 lg:px-0 px-2.5 lg:text-left text-center">
+      <div class="lg:text-48 text-32 lg:leading-100 leading-110 lg:mb-5 mb-7.5">{{ article.metafields.accentuate.related_spices_heading }}</div>
+      <div class="lg:text-18 lg:leading-150 lg:tracking-4 text-15 leading-130 tracking-3">{{ article.metafields.accentuate.related_spices_description | metafield_tag }}</div>
+    </div>
+    <div class="lg:col-span-9 lg:grid lg:grid-cols-3 flex overflow-auto lg:gap-5 gap-4">
+      {% for product in article.metafields.accentuate.related_spices_products.value %}
+        <div class="lg:col-span-1 lg:min-w-auto min-w-[80%] {% if forloop.index == 1 %} lg:ml-0 ml-2.5 {% endif %} {% if forloop.index == article.metafields.accentuate.related_spices_products.value.size %} lg:mr-0 mr-2.5 {% endif %}">
+          {% render "product__card", product: product %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

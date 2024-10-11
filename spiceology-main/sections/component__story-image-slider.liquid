@@ -1,0 +1,193 @@
+{{ 'component-story-image-slider.css' |  asset_url |  stylesheet_tag }}
+
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="py-7.5 opacity-0">
+  <div class="swiper story-image-slider">
+    <div class="swiper-wrapper items-center">
+      {% for block in section.blocks %}
+        <div class="swiper-slide lg:py-6 py-10">
+          <div class="relative">
+            {% assign image_ratio = 100 | divided_by: block.settings.image.aspect_ratio %}
+            {% assign image_ratio = image_ratio | append: "%" %}
+            {% render 'image', image_desktop: block.settings.image, width_desktop: '1000x', width_mobile: '500x',  ratio_desktop: image_ratio, ratio_mobile: image_ratio, lazy: true, image_classes: 'rounded-6 w-full' %}
+            <div class="lg:p-4 p-2.5 absolute 
+              {% if block.settings.position == "top-left" %} lg:top-5 lg:-left-5 -top-9 left-3 {% endif %}
+              {% if block.settings.position == "top-right" %} lg:top-5 lg:-right-5 -top-9 right-3 {% endif %}
+              {% if block.settings.position == "bottom-left" %} lg:-bottom-5 lg:-left-5 -bottom-9 left-3 {% endif %}
+              {% if block.settings.position == "bottom-right" %} lg:-bottom-5 lg:-right-5 -bottom-9 right-3 {% endif %}
+              {% if block.settings.ratio == "portrait" %} lg:max-w-[152px] {% else %} lg:max-w-[218px] {% endif %} max-w-[166px] bg-white"
+            >
+              <div class="utility-lg text-black opacity-50">{{ block.settings.subheading }}</div>
+              <div class="font-kremlin -rotate-2 lg:text-16 text-14 leading-110">{{ block.settings.description }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  const storyImageSlider = new Swiper(".story-image-slider", {
+    slidesPerView: 1.2,
+    spaceBetween: 40,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 70,
+      },
+      1024: {
+        slidesPerView: 2,
+        spaceBetween: 100,
+      },
+    },
+  });
+</script>
+{% schema %}
+  {
+    "name": "[Story] Image Slider",
+    "class": "section-image-slider",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+        "name": "Slide",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Aspect: Various, Min Width: 1500px, File Type: JPG/PNG/GIF"
+          },
+          {
+            "type": "header",
+            "content": "Text Area"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "info": "Max Characters: 200"
+          },
+          {
+            "type": "select",
+            "id": "position",
+            "label": "Position",
+            "options": [
+              {
+                "value": "top-left",
+                "label": "Top Left"
+              },
+              {
+                "value": "top-right",
+                "label": "Top Right"
+              },
+              {
+                "value": "bottom-left",
+                "label": "Bottom Left"
+              },
+              {
+                "value": "bottom-right",
+                "label": "Bottom Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "ratio",
+            "label": "Ratio",
+            "options": [
+              {
+                "value": "landscape",
+                "label": "Landscape"
+              },
+              {
+                "value": "portrait",
+                "label": "Portrait"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Image Slider",
+        "blocks": [
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "top-left",
+              "ratio": "portrait"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "bottom-right",
+              "ratio": "landscape"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "top-left",
+              "ratio": "portrait"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "bottom-right",
+              "ratio": "landscape"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_2.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "top-left",
+              "ratio": "portrait"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/386551161_18386726998015823_2530654139114142124_n_3.png",
+              "subheading": "2013",
+              "description": "The first thing I do whenever I write a cookbook is pack a suitcase.",
+              "position": "bottom-right",
+              "ratio": "landscape"
+            }
+          }
+        ],
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

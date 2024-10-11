@@ -1,0 +1,106 @@
+<section class="container">
+  <div class="md:grid grid-cols-12">
+    <div class="md:col-span-2">
+      {% render 'account__nav', section: 'account' %}
+    </div>
+
+    <div class="md:col-span-10 pb-5">
+      <div class="md:px-7">
+        <h2 class="text-4xl text-black pt-5 md:pt-14 pt6--md mb-5">
+          Order History
+        </h2>
+
+        {% if customer.orders.size != 0 %}
+          <table class="table-auto w-full">
+            <thead>
+              <tr>
+                <th class="hidden md:table-cell font-bold border border-khaki p-2.5">
+                  Order
+                </th>
+                <th class="hidden md:table-cell font-bold border border-khaki p-2.5">
+                  Date
+                </th>
+                <th class="hidden md:table-cell font-bold border border-khaki p-2.5">
+                  Payment status
+                </th>
+                <th class="hidden md:table-cell font-bold border border-khaki p-2.5">
+                  Fulfillment status
+                </th>
+                <th class="hidden md:table-cell font-bold border border-khaki p-2.5">
+                  Total
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="border border-khaki">
+                  <td class="md:border border-khaki px-3 py-2 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="font-bold md:hidden">
+                      Order
+                    </span>
+                    <span class="underline">
+                      {{ order.name | link_to: order.customer_url }}
+                    </span>
+                  </td>
+                  <td class="md:border border-khaki px-3 py-2 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="font-bold md:hidden">
+                      Date
+                    </span>
+                    <span>
+                      {{ order.created_at | time_tag: format: 'date' }}
+                    </span>
+                  </td>
+                  <td class="md:border border-khaki px-3 py-2 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="font-bold md:hidden">
+                      Payment Status
+                    </span>
+                    <span>
+                      {{ order.financial_status_label }}
+                    </span>
+                  </td>
+                  <td class="md:border border-khaki px-3 py-2 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="font-bold md:hidden">
+                      Fulfillment status
+                    </span>
+                    <span>
+                      {{ order.fulfillment_status_label }}
+                    </span>
+                  </td>
+                  <td class="md:border border-khaki px-3 py-2 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="font-bold md:hidden">
+                      Total
+                    </span>
+                    <span>
+                      {{ order.total_price | money }}
+                    </span>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="">
+            No orders
+          </p>
+        {% endif %}
+
+        <p class="md:hidden text-center mt-10">
+          <a
+            href="/account/logout"
+            class="underline"
+          >
+            Logout
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.account.name",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

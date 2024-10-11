@@ -1,0 +1,13 @@
+<a 
+  href="{{ section.settings.banner_link }}" 
+  class="group z-[100]" 
+  :class="{ 
+      '': $store.main.isScrolled, 
+      '': (!$store.main.homepage && !$store.main.isScrolled && !$store.main.isNavOpen && !$store.main.isMobileNavOpen)
+  }"
+  style="background-color: {{ section.settings.banner_bg_color }};"
+>
+  <div class="banner px-container flex justify-center items-center">
+    <p class="font-mono text-12 leading-120 tracking-5 {% if section.settings.banner_bg_color == '#181613' %}text-white{% else %}text-black{% endif %}">{{ section.settings.banner_text }}</p>
+  </div>
+</a>

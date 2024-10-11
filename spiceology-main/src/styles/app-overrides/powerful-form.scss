@@ -1,0 +1,49 @@
+h3.title.globo-heading {
+  font-size: 40px !important;
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  line-height: 95% !important;
+  letter-spacing: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.description.globo-description {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 18px !important;
+  line-height: 150% !important;
+}
+
+.globo-form-app {
+  max-width: 946px !important;
+  width: 100% !important;
+}
+
+.globo-form-control .globo-form-input input:focus-visible {
+  border: 1px solid #181613;
+}
+
+
+.globo-form-control input, .globo-form-control textarea, .globo-form-control select {
+  background-color: #fff !important;
+}
+
+.globo-form-control .gfb__dropzone {
+  background: #fff !important;
+}
+
+
+.globo-formbuilder-wizard {
+  font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+.gfb__footer.wizard__footer {
+  text-align: center;
+}
+
+button.action.next.submit.flat-button.wizard__submit {
+  padding-top: .875rem;
+  padding-bottom: .875rem;
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+  height: 52px;
+
+}

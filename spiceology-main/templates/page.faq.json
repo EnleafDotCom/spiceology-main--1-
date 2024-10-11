@@ -1,0 +1,194 @@
+{
+  "sections": {
+    "component_header_spacer_eYTTM3": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_GTY7hj": {
+      "type": "component__headline",
+      "settings": {
+        "title": "FAQs",
+        "description": "Below is a hit list of our most Frequently Asked Questions about our Periodic Table of Flavor.",
+        "alignment": "between"
+      }
+    },
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "faq_pgiFDK": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "Do your products contain allergens?",
+            "answer": "<p>Spiceology products are produced in a facility that processes allergens, including soy, coconut, gluten, mustard, celery, milk and sesame seed. Allergen declarations are included at the end of the ingredient section of each product. Some of our products also include sulfites which will be listed within the product’s ingredient statement. If you have any specific questions regarding allergens or food sensitivities with Spiceology, please contact info@spiceology.com.<\/p>"
+          }
+        },
+        "faq_6zQUtj": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Can I return or exchange my purchase?",
+            "answer": "<p>Due to the nature of our products and keeping them safe for the public, we are unable to accept returns or exchanges on grocery products. However, if we make an error on an order or if there is a defect with your product, we will absolutely make it right through either a refund or a replacement.<\/p>"
+          }
+        },
+        "faq_jXcV3G": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "Can I buy your spices and seasonings in person?",
+            "answer": "<p>Probably! We are sold at a variety of retailers across the country - <a href=\"\/pages\/store-locator\" title=\"Store Locator\"><span style=\"text-decoration:underline\">please visit our Store Locator to find a location in your area.<\/span> <\/a><\/p><p>Unfortunately, Spiceology does not currently have our own storefront, however, if you live in the Spokane, WA area where we’re based, you can find a variety of our products at these local retailers: My Fresh Basket, The Kitchen Engine, Egger’s Meat Market, Mountain View Custom Meats or Thorpe Fruit Market.<\/p>"
+          }
+        },
+        "faq_6mzKyb": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "Do you ship Internationally?",
+            "answer": "<p>Yep. Spiceology’s products are used and preferred all over the world. Add some to your cart to review our shipping rates and delivery times. <strong>Please note:<\/strong> we can only process refunds if your order has been delayed 60 days or longer, due to shipping complications. There are some countries that we don't ship to due to carrier restrictions. <\/p>"
+          }
+        },
+        "faq_FN4Arf": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "What’s your shipping process?",
+            "answer": "<p>Once you place your order on Spiceology.com, you will receive an email confirmation. If you have questions about your order, please call us at (509) 241-3040. Please note, once your order has been placed, it may no longer be eligible for change or cancellation.<\/p>"
+          }
+        },
+        "faq_VPxBrT": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "How long will my order take to arrive?",
+            "answer": "<p>During non-holiday times, you can expect your order to be shipped within 3 business days of order placement. Once it has been shipped, you will receive a confirmation email with your tracking number. During holidays, please allow additional time for your order to be shipped.<\/p>"
+          }
+        },
+        "faq_Xy3Rmy": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "How much does shipping cost?",
+            "answer": "<p>We are pleased to provide free shipping on all orders over $49.99 within the contiguous U.S. For any orders shipping within the contiguous U.S. under that threshold, we charge a flat shipping rate of $7.95. There are additional shipping charges for customers shipping outside of the contiguous U.S., which will be displayed at checkout.<\/p>"
+          }
+        },
+        "faq_8tVnUV": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "What is Route Package Protection?",
+            "answer": "<p>Route’s Green Package Protection is a package protection solution that helps cover your order in the event that your order gets lost, stolen, or damaged while in transit while also protecting the planet. We know how frustrating it can be to have something happen to your order, so we’ve partnered with Route to offer added assurance that you’re supported, no matter what. Green Package Protection can be added during checkout.<\/p><p>You can also utilize the Route App to visually track all of your online orders in one place and easily file a claim with their team. Whether you’re tracking via the Route App or online Route’s real-time shipping updates keep you in the loop throughout every part of your delivery. Haven’t downloaded the app yet? <a href=\"https:\/\/apps.apple.com\/us\/app\/route-visual-package-tracking\/id1449803898\"><em><strong>Download here<\/strong><\/em><\/a>.<\/p><p><em>Purchased Route’s Green Package Protection and looking to file a shipping issue online? <\/em><a href=\"https:\/\/claims.route.com\/\"><em><strong>File here<\/strong><\/em><\/a><em>.<\/em><\/p>"
+          }
+        },
+        "faq_4Q39Bq": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping",
+            "title": "How does Route process refunds or reorders?",
+            "answer": "<p>Refunds: When refunding an item, Route covers the subtotal, shipping, and taxes if the merchant has Automatic Issue Resolution enabled.  <\/p><p>In both cases, the Route Premium cost will not be refunded. <\/p><p>Reorders: Route will reorder the items, depending on in-stock availability. Unavailable items will be refunded. Route will cover the cost of any reorders including shipping, taxes, and Route Shipping Protection.<\/p>"
+          }
+        },
+        "faq_VT3DGq": {
+          "type": "faq",
+          "settings": {
+            "category": "Wholesale",
+            "title": "Can I buy wholesale quantities?",
+            "answer": "<p>Our spices and blends can be purchased in bulk as part of our Wholesale program. We offer competitive pricing, fast shipping and a dedicated Account Executive. <\/p><p>Ready to get started? <a href=\"\/pages\/retail\" title=\"Retail\">Click here to learn more<\/a>.<\/p>"
+          }
+        },
+        "faq_X3abye": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "What are your top-selling items?",
+            "answer": "<p>Many of our Signature Blends are our top sellers, including:<\/p><ul><li>Greek Freak Mediterranean Blend <\/li><li>Smoky Honey Habanero Sweet & Spicy Blend<\/li><li>Maui Wowee Hawaiian Teriyaki Blend <\/li><li>Black & Bleu Cajun & Bleu Cheese Blend <\/li><li>Salt Pepper Garlic - a always-on-hand staple for grillers <\/li><\/ul><p>We also have a (rather convenient) <a href=\"\/products\/bbq-rubs-variety-pack-top-8-seasoning-blends\" title=\"BBQ Rubs Variety Pack - Top 8 Seasoning Blends\"><span style=\"text-decoration:underline\">Top 8 Seasonings Variety Pack<\/span><\/a>. <\/p>"
+          }
+        },
+        "faq_kPRexV": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "Which seasoning container size is right for me?",
+            "answer": "<p>Spiceology offers a variety of container sizes to help you experiment with flavor. The right fit for you depends on your cooking needs, your frequency of use and the serving size.<\/p><p>For cooking at home and pantry staples, we suggest starting with “home cook” sizes like the PET (mini), Glass Jars (small) and PCM (medium), which contain between 2 oz up to 10 oz and are ideal for smaller portions, family meals or taking new flavors for a taste drive. These sizes work great for the weekend grilling warrior and an afternoon spent BBQing meat or veggies.<\/p><p>For the rubs and blends that you just can’t do without, we suggest grabbing a larger size, like our PCM (medium) or PC1 (large) container. These are best for family meals on heavy rotation and larger recipes.<\/p><p>For professional chefs and restaurants, PC1 (large) and PC5 (extra large) sizes are the most cost-effective containers for fresh cut ingredients, spices and blends. These sizes range from 18 oz up to 80 oz and proudly display our Periodic Table of Flavor, making them the best pick for larger batches and everyday use.<\/p>"
+          }
+        },
+        "faq_FDCXc9": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "What is the best way to store my Spiceology spices, meat rubs and blends?",
+            "answer": "<p>Got a pantry full of our flavorful spices and want to make the flavor last? No problem. Be sure to store your dried spices and blends in a cool and dry place, removed from direct sunlight. We recommend that you keep them away from the heat of a stove or vent, as this will cause the flavors to fade over time. Most importantly, be sure to keep the containers tightly sealed when not in use.<\/p>"
+          }
+        },
+        "faq_AUnmH7": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "Why doesn't my container look filled to the very top?",
+            "answer": "<p>Great question. The short answer: fill weight. <\/p><p>Now here’s the long(er) answer: our spices and blends are ground fresh, packed fresh and filled according to weight by an automated machine rather than a human-ran fill line. Some ingredients weigh more than others; for example a fruit powder typically weighs less than whole juniper berries and each would take up a different amount of space in the bottle. We guarantee each bottle contains the correct weight stated on the label. <\/p><p>Also, fill weights can vary due to the density and moisture content of each blend, which can cause some products to appear less “full” in the bottle than others. Your spices may have settled during shipping, and we recommend giving the bottles a good shake when you first receive them to bring the ingredients back to their original fill level.<\/p>"
+          }
+        },
+        "faq_CqqwMe": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "What does “spices” listed under a product’s Ingredients mean?",
+            "answer": "<p>Some of our rubs and blends include “spices” in the ingredient lists - and you may be wondering what the heck that means. The term spice has a broad meaning, but mostly consists of any aromatic vegetable substance in a ground form that is added to our blends for flavor, not nutrition. Items within “spices” are FDA approved and will never contain any of the USA big 9 allergens. <\/p><p>Examples of popular spices include Allspice, Cardamom, Cinnamon, Tarragon, and many others. To tell you any more might be sharing our secret sauce… or, secret spice, but if you have additional questions, please contact info@spiceology.com for more information.<\/p>"
+          }
+        },
+        "faq_Vz8fzA": {
+          "type": "faq",
+          "settings": {
+            "category": "Products",
+            "title": "How long do spices last?",
+            "answer": "<p>Spiceology guarantees quality and freshness for up to 3 years if stored properly. Spices by nature, do not expire as other food products might. Stored well, a bottle of spice, herbs, chili, can last longer than 3 years. Salt products can last even longer. For more questions about freshness or your product directly please contact <a href=\"mailto:info@spiceology.com\"><span style=\"text-decoration:underline\">info@spiceology.com<\/span><\/a> to get in touch with a member of the quality team.<\/p>"
+          }
+        },
+        "faq_Lb4Bq3": {
+          "type": "faq",
+          "settings": {
+            "category": "Wholesale",
+            "title": "I’d like to resell your product. Do you offer private label services?",
+            "answer": "<p>Spiceology partners with companies that are looking to add unique and innovative flavors to their offerings. We’ll work with you to adapt your favorite recipe or create a brand new custom product depending on your needs. Learn more about Spiceology’s <a href=\"\/pages\/private-label\" title=\"Private Label\">private labeling<\/a> and co-packing solutions here.<\/p>"
+          }
+        },
+        "faq_Ckehmf": {
+          "type": "faq",
+          "settings": {
+            "category": "Wholesale",
+            "title": "Can I buy spices for corporate gifts?",
+            "answer": "<p>You sure can. We highly recommend that you give your employees, clients and valued customers the gift of flavor with our unique gifting program. We offer a variety of memorable variety packs and gift sets for orders of 100 or more. Learn more about our <a href=\"https:\/\/spiceology.com\/gifting-program\/\">corporate gifting ideas<\/a> by reaching out at info@spiceology.com.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_pgiFDK",
+        "faq_6zQUtj",
+        "faq_jXcV3G",
+        "faq_6mzKyb",
+        "faq_FN4Arf",
+        "faq_VPxBrT",
+        "faq_Xy3Rmy",
+        "faq_8tVnUV",
+        "faq_4Q39Bq",
+        "faq_VT3DGq",
+        "faq_X3abye",
+        "faq_kPRexV",
+        "faq_FDCXc9",
+        "faq_AUnmH7",
+        "faq_CqqwMe",
+        "faq_Vz8fzA",
+        "faq_Lb4Bq3",
+        "faq_Ckehmf"
+      ],
+      "settings": {
+        "heading": "FAQ"
+      }
+    }
+  },
+  "order": [
+    "component_header_spacer_eYTTM3",
+    "component_headline_GTY7hj",
+    "main"
+  ]
+}

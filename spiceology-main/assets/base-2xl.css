@@ -1,0 +1,29 @@
+@media (min-width: 1440px) {
+
+  .container {
+    max-width: 1440px;
+  }
+}
+@media (min-width: 1440px) {.\32xl\:heading-2xl {
+    font-family: Chromatic Grotesque, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 40px;
+    line-height: 2.38rem;
+    letter-spacing: 0rem;
+  }@media (min-width: 768px){.\32xl\:heading-2xl {
+      font-size: 56px;
+      line-height: 3.33rem;
+      letter-spacing: 0rem;
+    }}
+}
+@media (min-width: 1440px) {
+
+  .\32xl\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .\32xl\:px-19 {
+    padding-left: 4.75rem;
+    padding-right: 4.75rem;
+  }
+}

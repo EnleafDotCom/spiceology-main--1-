@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="mx-auto max-w-2xl md:pt-14 md:pb-28 pt-9 pb-20">
+    <h1 class="text-3xl md:text-4xl mb-10 text-center">
+      Reset password
+    </h1>
+
+    {% form 'reset_customer_password' %}
+      <input
+        placeholder="Password"
+        type="password"
+        name="customer[password]"
+        class="{% if form.errors contains 'password' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="new-password"
+        required
+      >
+
+      <input
+        placeholder="Password confirmation"
+        type="password"
+        name="customer[password_confirmation]"
+        class="{% if form.errors contains 'password_confirmation' %}border-pink{% endif %} mb-3 input__primary"
+        spellcheck="false"
+        autocomplete="new-password"
+        required
+      >
+
+      <div class="text-pink">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="mt-10 text-center">
+        <button
+          class="button-lg"
+          type="submit"
+        >
+          Reset password
+        </button>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Password reset page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

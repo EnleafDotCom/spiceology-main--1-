@@ -1,0 +1,201 @@
+<div
+  x-data="{ mode: 'login' }"
+  x-init="
+    if (window.location.hash === '#recover') mode = 'recover';
+    if (window.location.hash === '#recover_success') mode = 'recover_success';
+  "
+  class="container"
+>
+  <div class="mx-auto max-w-2xl md:pt-14 md:pb-28 pt-9 pb-20">
+    <div
+      x-cloak
+      x-show="mode === 'login'"
+    >
+      <h1 class="text-3xl md:text-4xl mb-5 text-center">
+        Welcome back.<br />Please log in.
+      </h1>
+      <p class="text-center mb-7">
+        {{ section.settings.copy }}
+      </p>
+
+      {% form 'customer_login' %}
+        <input
+          placeholder="Email Address"
+          type="email"
+          name="customer[email]"
+          {% if form.email %}
+            value="{{ form.email }}"
+          {% endif %}
+          id="CustomerEmail"
+          class="{% if form.errors contains 'email' %}border-pink{% endif %} mb-3 input__primary"
+          spellcheck="false"
+          autocomplete="username"
+          autocapitalize="off"
+          required
+          autofocus
+        >
+
+        <input
+          placeholder="Password"
+          type="password"
+          required
+          autocomplete="current-password"
+          name="customer[password]"
+          id="CustomerPassword"
+          class="{% if form.errors contains 'password' %}border-pink{% endif %} mb-3 input__primary"
+        >
+
+        <div class="text-pink">
+          {{ form.errors | default_errors }}
+        </div>
+
+        <div class="mt-8 text-center">
+          <button
+            class="button-lg"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </div>
+        <p class="mt-10 text-sm text-center">
+          New here?
+          <a
+            class="underline text-sm"
+            href="/account/register"
+          >
+            Create an Account
+          </a>
+        </p>
+        <p class="mt-1 text-sm text-center">
+          Forgot your password?
+          <a
+            @click="mode = 'recover'"
+            href="#recover"
+            class="underline text-sm"
+          >
+            Recover it from here
+          </a>
+        </p>
+      {% endform %}
+    </div>
+
+
+
+    <div
+      x-cloak
+      x-show="mode === 'recover'"
+    >
+      <h1 class="text-4xl mb-10 text-center">
+        Password Reset
+      </h1>
+
+      <p class="mb-10 text-center">
+        Enter your email address and we’ll send you a link to reset your password.
+      </p>
+
+      <div
+        class="form-success text-center mb-10 hidden"
+        data-reset-success
+      >
+        Password recovered
+      </div>
+
+      {% form 'recover_customer_password', return_to: '/account/login#recover' %}
+        <input
+          placeholder="Password recovery email"
+          type="email"
+          name="email"
+          {% if form.email %}
+            value="{{ form.email }}"
+          {% endif %}
+          id="RecoverEmail"
+          class="{% if form.errors contains 'email' %}border-pink{% endif %} mb-3 input__primary"
+          spellcheck="false"
+          autocomplete="email"
+          autocapitalize="off"
+          required
+          autofocus
+        >
+
+        <div class="text-pink">
+          {{ form.errors | default_errors }}
+        </div>
+
+        <div class="mt-10 text-center">
+          <button
+            class="button-lg"
+            type="submit"
+          >
+            Send Reset Link
+          </button>
+        </div>
+        <div class="mt-8 text-center text-sm">
+          <a
+            href="#"
+            @click="mode = 'login'"
+            class="underline cursor-pointer"
+          >
+            Cancel
+          </a>
+        </div>
+      {% endform %}
+    </div>
+
+
+    <div
+      x-cloak
+      x-show="mode === 'recover_success'"
+    >
+      <h1 class="text-4xl mb-10 text-center">
+        Password Reset
+      </h1>
+
+      <p class="mb-10 text-center">
+        Enter your email address and we’ll send you a link to reset your password.
+      </p>
+
+      <div
+        class="form-success text-center mb-10 hidden"
+        data-reset-success
+      >
+        Password recovered
+      </div>
+
+      <div class="success-container flex flex-col">
+        <div class="mb-5">
+          <svg width="52" height="49" viewBox="0 0 52 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.78483 21.037C5.01135 17.0809 6.70888 13.3526 9.54398 10.5842C15.7482 4.57035 25.2232 1.9658 33.4695 5.01165C50.6803 11.2332 53.8906 38.2392 34.5857 43.7598C23.0167 47.0566 11.3352 43.8549 6.64523 31.9657C5.22092 28.5063 4.58539 24.7729 4.78483 21.037Z" fill="#FFD87C" stroke="#FFA500" stroke-width="1.5" stroke-miterlimit="10"/>
+            <path d="M14.1104 23.3834L17.502 20.8697L25.434 29.3977L47.3797 3.73242L50.6704 6.17339L26.7304 34.3934L24.5204 34.4134L14.1104 23.3834Z" fill="#FFA500"/>
+          </svg>
+        </div>
+        <h6 class="mb-1">{{ section.settings.resetSuccessHeading }}</h6>
+        <h6>{{ section.settings.resetSuccessText }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.login.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "resetSuccessHeading",
+      "label": "Reset Success Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "resetSuccessText",
+      "label": "Reset Success Text"
+    }
+  ]
+}
+{% endschema %}

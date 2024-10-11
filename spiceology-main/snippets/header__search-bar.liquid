@@ -1,0 +1,35 @@
+<div
+  class="search-dropdown bg-white"
+  id="search-bar"
+  role="menu"
+  aria-label="search-dropdown"
+  x-data
+  x-show="$store.main.isSearchOpen"
+  x-trap="$store.main.isSearchOpen"
+  x-on:keydown.escape="$store.main.isSearchOpen = false"
+  x-collapse
+>
+  <div class="search-dropdown-content">
+    <div class="flex w-full pt-12 pb-14 px-6">
+      <form class="w-full relative" action="/search"
+    method="get">
+        <input type="hidden" name="type" value="product" />
+        <div class="input__primary relative">
+          <label class="absolute top-3 md:top-3.5 left-[104px] text-gray-7 uppercase" for="search">Search Input</label>
+          <input
+            class="search-bar"
+            type="text"
+            placeholder="Search"
+            name="q"
+            id="search"
+            @input.debounce="search()"
+            x-model="query"
+          >
+          <button class="absolute top-[50%] right-3 md:right-7 transform hover:translate-x-1 transition-transform" type="submit">
+            {% render 'svg__chevron-down', classes: 'w-5 transform -rotate-90' %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

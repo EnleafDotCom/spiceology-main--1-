@@ -1,0 +1,211 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-12 py-18 lg:px-5 px-2.5 opacity-0">
+  <div class="grid lg:grid-cols-12 lg:gap-5 gap-7.5">
+    <div class="{% if section.settings.image_size == 'small' %} lg:col-span-5 {% endif %}
+      {% if section.settings.image_size == 'medium' %} lg:col-span-6 {% endif %}
+       {% if section.settings.image_position == "right" %} lg:order-2 {% endif %}
+       relative col-span-full">
+       {% assign ratio_desk = section.settings.image_ratio_desk %}
+       {% assign ratio_mob = section.settings.image_ratio %}
+       {% if ratio_desk == 'auto' %}
+        {% assign ratio_desk = section.settings.image.aspect_ratio | times: 100 | append: '%' %}
+       {% endif %}
+       {% if ratio_mob == 'auto' %}
+        {% assign ratio_mob = section.settings.image.aspect_ratio | times: 100 | append: '%' %}
+       {% endif %}
+      {% render 'image', 
+        image_desktop: section.settings.image,  
+        image_mobile: section.settings.image,  
+        width_desktop: '1000x', 
+        width_mobile: '500x', 
+        ratio_desktop: ratio_desk,
+        ratio_mobile: ratio_mob,
+        lazy: true,
+        image_classes: 'rounded-6 w-full object-cover'
+      %}
+      <div class="flex absolute lg:bottom-5 lg:left-5 lg:right-5 left-2.5 right-2.5 bottom-2.5 gap-1">
+        {% for block in section.blocks %}
+          <div class="flex items-start gap-1">
+            <a href="{{ block.settings.product.url }}" class="flex gap-2 justify-center items-center h-10 px-2 text-14 leading-130 font-sans tracking-3 bg-white font-500">
+              {% render 'periodic__symbol', product: block.settings.product %}
+              {{ block.settings.product.title }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="{% if section.settings.image_size == 'small' %} lg:col-span-7 {% endif %}
+      {% if section.settings.image_size == 'medium' %} lg:col-span-6 {% endif %}
+      {% if section.settings.image_position == "right" %} lg:order-1 {% endif %}
+       lg:pl-11 col-span-full xl:pr-40 flex flex-col justify-{{ section.settings.content_align }}">
+      {% if section.settings.subheading != blank %}
+      <div class="utility-lg lg:capitalize uppercase mb-2.5">{{ section.settings.subheading }}</div>
+      {% endif %}
+      <div class="heading-xl capitalize lg:mb-7.5 mb-5">{{ section.settings.heading }}</div>
+      <div class="body-md lg:mb-9 mb-10">{{ section.settings.description }}</div>
+      {% if section.settings.btn_text != blank %}
+      <a class="button__primary lg:w-fit w-full" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "[Home] Image with Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Aspect: Various, Min Width: 3000px, File Type: JPG/PNG/GIF/MP4"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio_desk",
+        "label": "Image Ratio",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "133.33%",
+            "label": "4:3"
+          },
+          {
+            "value": "75%",
+            "label": "3:4"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Ratio",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "133.33%",
+            "label": "4:3"
+          },
+          {
+            "value": "75%",
+            "label": "3:4"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "info": "Max characters: 75"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "select",
+        "id": "content_align",
+        "label": "Content Alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "end",
+            "label": "Bottom"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Product",
+        "type": "product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Home] Image with Text",
+        "blocks": [
+          {
+            "type": "product",
+            "settings": {
+              "product": "smoky-honey-habanero-seasoning"
+            }
+          }
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/b35d4eef4a2fc37996de6ea3cf884783.png",
+          "subheading": "NEED HEADLINE",
+          "heading": "Reimagining what’s possible in a spoonful of spices",
+          "description": "Our innovative seasoning blends and hard-to-find ingredients inspire pro chefs and home cooks alike to Experiment with Flavor.",
+          "btn_text": "Learn More",
+          "btn_url": ""
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,165 @@
+<script src="{{ 'component-klaviyo-form.js' | asset_url }}" defer></script>
+{{ 'component-footer.css' | asset_url | stylesheet_tag }}
+
+
+<footer 
+  id="footer"
+  x-data="{ 
+      show_newsletter_form: false
+  }" 
+  x-intersect.threshold.10="show_newsletter_form = true" 
+  class="footer flex flex-col justify-center items-center bg-black text-white h-full relative mt-10 pt-[220px] lg:pt-0 scroll-mt-[140px]">
+  <div 
+    x-show="show_newsletter_form"
+    x-transition:enter="transition-all ease-out duration-[1s]"
+    x-transition:enter-start="translate-y-[100px]"
+    x-transition:enter-end="translate-y-0"
+    class="absolute right-5 lg:right-[60px] top-[-45px] lg:top-[-40px] flex flex-col items-start text-black bg-white w-[calc(100vw-40px)] lg:w-[400px] pt-4 px-5 pb-6 z-10">
+    <h6 class="font-kremlin text-[22px] transform rotate-[-2deg] pl-1 pb-3 w-3/4">The Spiciest Emails In Your Inbox</h6>
+    <hr >
+    <p class="flex flex-col pt-5 pb-7">Sign up and receive exclusive offers, product updates, and recipes weekly!</p>
+    <klaviyo-form class="w-full">
+      <form class="w-full">
+        <div x-data="{ focused: false }" class="relative w-full">
+          <input @focus="focused = true" class="input__primary grey w-full" name="email" type="email" placeholder="Enter Email Address"/>
+          <button 
+            type="submit"
+            x-show="focused"
+            x-transition:enter="transition-opacity ease-in-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition-opacity ease-in-out duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="absolute top-1/2 right-2.5 transform -translate-y-1/2 w-7 h-7 flex justify-center items-center -rotate-90">
+            {% render 'svg__caret' %}
+          </button>
+          <div class="email-error absolute left-0 -bottom-5 w-full utility-lg text-red tracking-[0.66px] ">Error messge here.</div>
+        </div>
+      </form>
+    </klaviyo-form>
+  </div>
+  <div class="hidden lg:flex footer-gradient w-full h-2.5"></div>
+  <div 
+    x-data="{ 
+      show_main_menu: false
+    }" 
+    x-intersect.threshold.40="show_main_menu = true" 
+    class="flex flex-col items-start pt-10 pb-[70px] w-full px-5 border-b border-white/[0.1]"
+  >
+    <div class="flex justify-start pb-12 w-full">
+      {% render 'svg__main-logo-light' %}
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 w-full" x-data="{
+      openAccessWidget() {
+        if (typeof acsbWidget === 'function') {
+          acsbWidget('open');
+        }
+      }
+    }">
+      {% for link in section.settings.footer_menu.links %}
+        <div 
+          x-show="show_main_menu"
+          x-transition:enter="transition-all ease-in-out duration-[800ms]"
+          x-transition:enter-start="opacity-0 translate-y-5"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :style="`transition-delay: ${ {{ forloop.index }} * 100}ms`"
+          class="flex flex-col gap-3 lg:gap-5"
+        >
+          <h6 class="utility-sm opacity-50 uppercase">{{ link.title }}</h6>
+          <ul class="flex flex-col items-start">
+            {% for link2 in link.links %}
+              <li>
+                {% if link2.title == "Accessibility" %}
+                  <a href="#" class="heading-xs opacity-80" @click.prevent="openAccessWidget()">Accessibility</a>
+                {% else %}
+                  <a href="{{ link2.url }}" class="heading-xs opacity-80">{{ link2.title }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+      <div class="flex items-end lg:px-5">
+        <div class="flex flex-col lg:gap-5 gap-3 w-max">
+          <h6 class="utility-sm opacity-50 uppercase">Follow Us</h6>
+          <ul class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-7 w-full">
+            {% for block in section.blocks %}
+              <li>
+                <a class="hidden lg:flex" href="{{ block.settings.url }}">
+                  <img class="w-5 h-auto" src="{{ block.settings.image | image_url: width: 100 }}"/>
+                </a>
+                <a class="lg:hidden heading-xs opacity-80">{{ block.settings.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="lg:hidden footer-gradient w-full h-2.5"></div>
+  {% comment %} {% render 'newsletter' %} {% endcomment %}
+
+  <!-- Spice Rack -->
+  {% render 'footer__spice-rack' %}
+  <div class="lg:px-6 w-full">
+    <div class="border-t border-white/[0.1] w-full flex flex-col-reverse lg:flex-row lg:justify-between lg:items-center py-6 gap-y-20 lg:gap-y-0 px-5 lg:px-0">
+      <p class="heading-xs text-[14px]">Copyright {{ 'now' | date: '%Y' }} Spiceology. All Rights Reserved.</p>
+      <ul class="lg:flex columns-2 gap-[24px]">
+        {% for link in section.settings.footer_legal_menu.links %}
+          <li>
+            <a href="{{ link.url }}" class="utility-lg uppercase underline">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+        <li x-data="{ hovered: false }" class="md:w-[93px]">
+          <a @mouseenter="hovered = true" @mouseleave="hovered = false" href="https://www.bf.inc" class="utility-lg uppercase underline group" x-text="hovered ? 'Bondfire Inc.' : 'Site Credit'">
+
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "tag": "footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer Main Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_legal_menu",
+        "label": "Footer Legal Menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "social_icons",
+        "name": "Social Media Icons",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

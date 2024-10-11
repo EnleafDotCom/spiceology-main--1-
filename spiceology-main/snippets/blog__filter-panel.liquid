@@ -1,0 +1,122 @@
+<div
+  class="bg-grey p-5 w-[calc(100%-20px)] md:w-[calc(100%+20px)] md:transform md:-translate-x-5 md:rounded-tr-4 md:rounded-br-4"
+  id="disclosure-1"
+  x-show="filtersOpen"
+  x-ref="filtersPanel"
+  x-trap="filtersOpen"
+  x-transition:enter="transition ease-out duration-100 transform"
+  x-transition:enter-start="opacity-0"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-75 transform"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
+  @click.away="filtersOpen = false"
+  x-cloak
+  @keydown.escape.prevent.stop="filtersOpen = false"
+>
+  <div class="transition-all duration-700 heading-sm flex justify-between w-full">
+    <div>
+      <span>Filters</span>
+      <span x-text="'(' + filterCount + ')'" x-show="filterCount > 0"></span>
+    </div>
+    <a href="{{ blog.url }}" class="body-md underline text-[14px]">Clear All</a>
+  </div>
+  <div class="flex flex-col py-5">
+    <hr class="h-[2px]">
+    <template x-for="(category, index) in tag_categories" :key="index">
+      <fieldset class="transition-all duration-700 filter-column" :class="filtersOpen ? 'opacity-100' : 'opacity-0'">
+        <div>
+          <legend class="pt-3 pb-3 block utility-sm text-[13px] w-full" x-text="category.name"></legend>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <template x-for="(tag, index) in category.tags" :key="index">
+                <template x-if="index < 10">
+                  <div class="flex items-center text-base sm:text-sm">
+                    <a 
+                      :href="isChecked() ? tag.link_to_remove : tag.link_to_add"
+                      x-data="{
+                          processedTag: category.prefix + tag.label.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
+                          isChecked() {
+                              return window.location.href.includes(this.processedTag);
+                          }
+                      }"
+                      class="flex items-center"
+                    >
+                        <span :class="isChecked() && 'checked'" class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"></span>
+                        <span x-text="tag.label" class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"></span>
+                    </a>
+                    {% comment %} <input
+                      id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                      value="{{ filter_value.value }}"
+                      name="{{ filter_value.param_name }}"
+                      type="checkbox"
+                      x-ref="filter"
+                      @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}')"
+                      @change="$dispatch('filter-updated')"
+                      :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                      {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                      class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"
+                    >
+                    <label
+                      for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                      class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"
+                    >
+                      {{ filter_value.label }}
+                    </label> {% endcomment %}
+                  </div>
+                </template>
+            </template>
+            
+            
+              <div x-data="{ show_all: false }" x-show="category.tags.length > 9" class="flex flex-col">
+                <div x-collapse x-show="show_all" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <template x-for="(tag, index) in category.tags" :key="index">
+                    <template x-if="index > 10">
+                        <div
+                          class="flex items-center text-base sm:text-sm"
+                          {% comment %} x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null" {% endcomment %}
+                        >
+                            <a 
+                              :href="isChecked() ? tag.link_to_remove : tag.link_to_add"
+                              x-data="{
+                                  processedTag: category.prefix + tag.label.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''),
+                                  isChecked() {
+                                      return window.location.href.includes(this.processedTag);
+                                  }
+                              }"
+                              class="flex items-center"
+                            >
+                              <span :class="isChecked() && 'checked'" class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"></span>
+                              <span x-text="tag.label" class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"></span>
+                            </a>
+                          {% comment %} <input
+                            id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                            value="{{ filter_value.value }}"
+                            name="{{ filter_value.param_name }}"
+                            type="checkbox"
+                            x-ref="filter"
+                            @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}')"
+                            @change="$dispatch('filter-updated')"
+                            :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                            {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                            class="form-checkbox checkbox h-4 w-4 flex-shrink-0 cursor-pointer"
+                          >
+                          <label
+                            for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                            class="heading-sm ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer pb-0"
+                          >
+                          </label> {% endcomment %}
+                        </div>
+                    </template>
+                  </template>
+                </div>
+                <button @click.prevent="show_all = true" x-show="!show_all" x-text="'View ' + `${category.tags.length - 11}` + ' More'" class="body-md underline text-left">View More</button>
+              </div>
+             
+          </div>
+          <hr class="mt-5">
+        </div>
+      </fieldset>
+    </template>
+  </div>
+</div>

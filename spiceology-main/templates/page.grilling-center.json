@@ -1,0 +1,457 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_wBXk8N": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "component_headline_tM6dXW": {
+      "type": "component__headline",
+      "settings": {
+        "title": "Grilling Center",
+        "description": "Fire up that grill - it’s time to find your new go-to grilling flavors.",
+        "alignment": "between"
+      }
+    },
+    "component_story_header_Wzcr6x": {
+      "type": "component__story-header",
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/V4 16x9 Grilling Center Ad (1).mp4",
+        "title": "",
+        "description": "",
+        "btn_text": "",
+        "btn_url": "",
+        "text_align_mob": "left"
+      }
+    },
+    "component_story_header_hWRHHT": {
+      "type": "component__story-header",
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/V4 16x9 Grilling Center Ad (1).mp4",
+        "video_mobile": "shopify:\/\/files\/videos\/V4 16x9 Grilling Center Ad (1).mp4",
+        "title": "",
+        "description": "",
+        "btn_text": "",
+        "btn_url": "",
+        "text_align_mob": "left"
+      }
+    },
+    "component_rich_image_VkbMfM": {
+      "type": "component__rich-image",
+      "blocks": {
+        "image_HTBCmy": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/TrailFeast-39.png",
+            "heading": "Spiceology x Grill Greats",
+            "description": "Check out our grilling blend collaborations with some of the best.",
+            "button_url": "shopify:\/\/collections\/grilling-center-collaborations",
+            "button_text": "Shop Collabs",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        },
+        "image_wqDbFA": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Livestyle_in_airbnb-044.png",
+            "heading": "Signature Flavors",
+            "description": "Signature blends perfectly formulated for fire and smoke.",
+            "button_url": "shopify:\/\/collections\/signature-blends",
+            "button_text": "Shop Now",
+            "color": "black",
+            "button_type": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_HTBCmy",
+        "image_wqDbFA"
+      ],
+      "settings": {
+        "title": "",
+        "heading": "",
+        "description": "",
+        "button_url": "",
+        "color": "black",
+        "button_text": "",
+        "button_type": "button__secondary",
+        "mobile_link_type": "plain",
+        "mobile_column_count": "1",
+        "content_position": "outside",
+        "content_alignment_desk": "left",
+        "content_alignment_mob": "left"
+      }
+    },
+    "component_home_product_info_jaWieG": {
+      "type": "component__home-product-info",
+      "settings": {
+        "heading": "",
+        "image": "shopify:\/\/shop_images\/SPG-flat-lay_copy.jpg",
+        "inset": true,
+        "product": "salt-pepper-garlic-spg-seasoning",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      }
+    },
+    "component_home_marquee_tg8LeW": {
+      "type": "component__home-marquee",
+      "settings": {
+        "text": "Never-before-tasted flavors  •  Hard-to-find-ingredients  •  Ground fresh, shipped fresh  •  Created by chefs, not food scientists  •  Real food, no funky stuff  •",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_product_slider_eTwHDk": {
+      "type": "component__product-slider",
+      "blocks": {
+        "product_RVwAzM": {
+          "type": "product",
+          "settings": {
+            "product": "salt-pepper-garlic-spg-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_hhFqLy": {
+          "type": "product",
+          "settings": {
+            "product": "maui-wowee-hawaiian-teriyaki-rub",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_4gThTa": {
+          "type": "product",
+          "settings": {
+            "product": "smoky-honey-habanero-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_PJYPDF": {
+          "type": "product",
+          "settings": {
+            "product": "black-magic-cajun-blackening-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_EKdPTT": {
+          "type": "product",
+          "settings": {
+            "product": "korean-bbq-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_AxdXjR": {
+          "type": "product",
+          "settings": {
+            "product": "black-bleu-cajun-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_UHx7c4": {
+          "type": "product",
+          "settings": {
+            "product": "adam-mckenzie-garlic-junkie",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_PzRqw7": {
+          "type": "product",
+          "settings": {
+            "product": "derek-wolf-maple-bourbon-bbq-rub",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_Xy7CXx": {
+          "type": "product",
+          "settings": {
+            "product": "chimichurri-blend",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_PAJf8f": {
+          "type": "product",
+          "settings": {
+            "product": "nashville-hot-chicken-seasoning",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_RVwAzM",
+        "product_hhFqLy",
+        "product_4gThTa",
+        "product_PJYPDF",
+        "product_EKdPTT",
+        "product_AxdXjR",
+        "product_UHx7c4",
+        "product_PzRqw7",
+        "product_Xy7CXx",
+        "product_PAJf8f"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "Top 10 Grilling Blends",
+        "btn_text": "",
+        "btn_url": "",
+        "padding_bottom": "medium"
+      }
+    },
+    "component_home_image_text_6q7f3Y": {
+      "type": "component__home-image-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/DEREK_WOLF_3.jpg",
+        "image_ratio_desk": "133.33%",
+        "image_ratio": "133.33%",
+        "image_size": "medium",
+        "image_position": "left",
+        "subheading": "FEATURED COLLAB",
+        "heading": "Over the Fire Cooking",
+        "description": "Derek Wolf loves to play with fire… and share grilling techniques, recipes, and innovative flavors with his five million followers from around the globe.",
+        "btn_text": "Learn More",
+        "btn_url": "shopify:\/\/pages\/derek-wolf",
+        "content_align": "center"
+      }
+    },
+    "component_image_split_carousel_tgE3wG": {
+      "type": "component__image-split-carousel",
+      "settings": {
+        "title": "Global Flavors",
+        "image": "shopify:\/\/shop_images\/global_flavors_c74b5d83-7ce5-4b13-8746-1e7a89ae6734.jpg",
+        "collection": "grilling-center-global-flavors"
+      }
+    },
+    "component_home_double_image_text_fjy8E9": {
+      "type": "component__home-double-image-text",
+      "custom_css": [
+        ".custom {padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "subheading": "Flavor Focus",
+        "heading": "Cali-Baja Cuisine",
+        "description": "Learn from Chefs Claudia Sandoval and Chad White about that ultra-fresh surf and turf bounty with big, bold flavors that is Cali-Baja cuisine. Grilling on the beach? Yes, please.",
+        "btn_text": "Read More",
+        "btn_url": "",
+        "main_image": "shopify:\/\/shop_images\/Cali-Baja-header.png",
+        "second_image": "shopify:\/\/shop_images\/cali_baja_recipe.jpg",
+        "team_photo": "shopify:\/\/shop_images\/Claudia-Sandoval.png",
+        "team_name": "Claudia Sandoval\n@insta"
+      }
+    },
+    "component_home_recipe_slider_Apn8MK": {
+      "type": "component__home-recipe-slider",
+      "blocks": {
+        "article_HULTHR": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-bbq-hot-dog"
+          }
+        },
+        "article_PA8XMP": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/nashville-hot-chicken-skewers"
+          }
+        },
+        "article_zFdCV3": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/sticky-bourbon-brown-ale-pork-ribs"
+          }
+        },
+        "article_f946JG": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/citrus-herb-grilled-pork-steak"
+          }
+        },
+        "article_EG4FqX": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/garlic-herb-picanha-with-chimichurri-butter"
+          }
+        },
+        "article_fKTCCn": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/zarandeado-style-grilled-shrimp-tacos"
+          }
+        },
+        "article_HbNUWD": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/korean-bbq-smoked-side-of-salmon"
+          }
+        },
+        "article_QgUTAm": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoked-maui-wowee-pineapple-upside-down-cake"
+          }
+        },
+        "article_ePEhJL": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/grilled-smoky-honey-habanero-cedar-plank-salmon"
+          }
+        },
+        "article_chADCm": {
+          "type": "article",
+          "settings": {
+            "article": "recipes\/smoked-maple-bourbon-meatloaf"
+          }
+        }
+      },
+      "block_order": [
+        "article_HULTHR",
+        "article_PA8XMP",
+        "article_zFdCV3",
+        "article_f946JG",
+        "article_EG4FqX",
+        "article_fKTCCn",
+        "article_HbNUWD",
+        "article_QgUTAm",
+        "article_ePEhJL",
+        "article_chADCm"
+      ],
+      "settings": {
+        "title": "Grilling Recipes",
+        "product": "",
+        "eyebrow": "",
+        "description": ""
+      }
+    },
+    "component_product_slider_Rw3QDF": {
+      "type": "component__product-slider",
+      "blocks": {
+        "product_PPcqrP": {
+          "type": "product",
+          "settings": {
+            "product": "paprika-smoked",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_Uj7rGJ": {
+          "type": "product",
+          "settings": {
+            "product": "garlic-powder-domestic",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_bJWy34": {
+          "type": "product",
+          "settings": {
+            "product": "onion-powder",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_gaDKFM": {
+          "type": "product",
+          "settings": {
+            "product": "cumin-ground",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_J6mEnk": {
+          "type": "product",
+          "settings": {
+            "product": "paprika-ground",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_KFPx3N": {
+          "type": "product",
+          "settings": {
+            "product": "red-pepper-chili-flake",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_yCLbAH": {
+          "type": "product",
+          "settings": {
+            "product": "black-pepper-ground",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_eKDYTk": {
+          "type": "product",
+          "settings": {
+            "product": "chili-powder-dark",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_zFf4rP": {
+          "type": "product",
+          "settings": {
+            "product": "cayenne-pepper-ground",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        },
+        "product_BjLBxT": {
+          "type": "product",
+          "settings": {
+            "product": "honey-granules",
+            "tall_image": false,
+            "callout_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_PPcqrP",
+        "product_Uj7rGJ",
+        "product_bJWy34",
+        "product_gaDKFM",
+        "product_J6mEnk",
+        "product_KFPx3N",
+        "product_yCLbAH",
+        "product_eKDYTk",
+        "product_zFf4rP",
+        "product_BjLBxT"
+      ],
+      "settings": {
+        "subheading": "Use the same Grade-A ingredients as our chefs",
+        "heading": "Build Your Own Blend",
+        "btn_text": "",
+        "btn_url": "",
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_wBXk8N",
+    "component_headline_tM6dXW",
+    "component_story_header_Wzcr6x",
+    "component_story_header_hWRHHT",
+    "component_rich_image_VkbMfM",
+    "component_home_product_info_jaWieG",
+    "component_home_marquee_tg8LeW",
+    "component_product_slider_eTwHDk",
+    "component_home_image_text_6q7f3Y",
+    "component_image_split_carousel_tgE3wG",
+    "component_home_double_image_text_fjy8E9",
+    "component_home_recipe_slider_Apn8MK",
+    "component_product_slider_Rw3QDF"
+  ]
+}

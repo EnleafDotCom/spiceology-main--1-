@@ -1,0 +1,137 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="opacity-0 section-p-b {{ section.settings.padding_bottom }}">
+    <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 lg:gap-5 w-full px-5">
+        <div class="w-full lg:col-span-6 flex flex-col items-start justify-center lg:pl-12">
+            <h5 class="heading-lg lg:heading-2xl pb-4 lg:pb-10">{{ section.settings.heading }}</h5>
+            <hr>
+            <div class="flex flex-col w-full">
+                {% for block in section.blocks %}
+                    <div x-data="{ expanded: false }" role="region" class="w-full">
+                        <button @click="expanded = !expanded" :aria-expanded="expanded" class="flex justify-between items-center gap-4 py-[14px] w-full">
+                            <h6 class="heading-xs lg:heading-md font-500 text-left">{{ block.settings.question }}</h6>
+                            <span :class="expanded ? 'bg-white' : 'bg-grey'" class="flex justify-center items-center w-[28px] min-w-[28px] h-[28px] min-h-[28px] md:w-[30px] md:min-w-[30px] md:h-[30px] md:min-h-[30px]">
+                                <span x-show="!expanded">{% render 'svg__plus-small' %}</span>
+                                <span x-show="expanded">{% render 'svg__minus' %}</span>
+                            </span>
+                        </button>
+                        <div x-show="expanded" x-collapse>
+                            <div class="body-md pb-4">{{ block.settings.answer }}</div>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="w-full lg:col-span-5 lg:col-start-8 lg:pr-12">
+            {% render 'image', 
+              image_desktop: section.settings.image,  
+              width_desktop: '1000x', 
+              width_mobile: '500x', 
+              ratio_desktop: '123%',
+              ratio_mobile: '123%',
+              lazy: true,
+              image_classes: 'rounded-4' 
+            %}
+        </div>
+    </div>
+</section>
+
+{% schema %}  
+    {
+        "name": "Accordion Split",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Foodservice FAQ"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image",
+                "info": "Aspect Ratio: 2x3 | Min Width: 2000px | File Type: JPG/PNG"
+            },
+            {
+                "type": "select",
+                "id": "padding_bottom",
+                "label": "Padding Bottom",
+                "default": "medium",
+                "options": [
+                    {
+                        "value": "small",
+                        "label": "Small"
+                    },
+                    {
+                        "value": "medium",
+                        "label": "Medium"
+                    },
+                    {
+                        "value": "large",
+                        "label": "Large"
+                    }
+                ]
+            }
+        ],
+        "blocks": [
+            {
+                "type": "faq",
+                "name": "FAQ",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "question",
+                        "label": "Question"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "answer",
+                        "label": "Answer"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Accordion Split",
+                "category": "Content",
+                "settings": {
+                    "image": "shopify:\/\/shop_images\/Rectangle_1671.png?v=1724687581",
+                    "padding_bottom": "medium"
+                },
+                "blocks": [
+                    {
+                        "type": "faq",
+                        "settings": {
+                            "question": "Lorem ipsum dolor sit, consec eli?",
+                            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.</p>"
+                        }
+                    },
+                    {
+                        "type": "faq",
+                        "settings": {
+                            "question": "Lorem ipsum dolor sit, consec eli?",
+                            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.</p>"
+                        }
+                    },
+                    {
+                        "type": "faq",
+                        "settings": {
+                            "question": "Lorem ipsum dolor sit, consec eli?",
+                            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.</p>"
+                        }
+                    },
+                     {
+                        "type": "faq",
+                        "settings": {
+                            "question": "Lorem ipsum dolor sit, consec eli?",
+                            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed finibus lectus. Aliquam erat volutpat. Integer convallis dictum fermentum. Vestibulum vehicula neque eget purus eleifend mollis. Vestibulum sed eros interdum leo egestas placerat.</p>"
+                        }
+                    }
+                ]
+            }
+        ],
+        "enabled_on": {
+            "templates": ["index", "page"]
+        }
+    }
+{% endschema %}

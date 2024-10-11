@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "component_header_spacer_iRbHyX": {
+      "type": "component__header-spacer",
+      "settings": {
+      }
+    },
+    "image_with_text_HNKfxX": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "Chef Chad White x Spiceology",
+        "content": "From opening a ceviche bar in a landlocked city to having a lobster roll restaurant in a skywalk, Chef Chad White is known for breaking the mold. And he’s putting his signature style into his new BBQ blends by carving out a space for something new… Pacific Northwest Que… that’s right, everyone knows Carolina, Kansas City, etc. when it comes to BBQ, but, ladies and gentlemen, meet PNWQ.",
+        "btn_text": "",
+        "btn_url": "",
+        "image": "shopify:\/\/shop_images\/Chef_Chad_White_cbe3e6f4-9168-43c7-9e91-e62aa3ff1158.jpg",
+        "image_position": "right",
+        "padding_top_desk": 30,
+        "padding_top_mob": 30,
+        "padding_bottom_desk": 30,
+        "padding_bottom_mob": 30
+      }
+    },
+    "component_product_card_grid_KGibhU": {
+      "type": "component__product-card-grid",
+      "settings": {
+        "heading": "",
+        "heading_size": "32",
+        "heading_align": "left",
+        "collection": "chef-chad-white",
+        "product_limit": 12
+      }
+    },
+    "component_story_text_PD4UfQ": {
+      "type": "component__story-text",
+      "settings": {
+        "heading": "About Chef Chad White",
+        "text": "<p>You might recognize Chef Chad White from Bravo’s Top Chef Season 13, but there’s a lot more to this Spokane native. After cooking in the Navy and then under award-winning chefs in San Diego, White triumphantly returned to Spokane where he opened up a handful of restaurants.<\/p><p>At his Zona Blanca Ceviche Bar, he has received the Best New Restaurant and Chef of the Year awards for 3 years running. In 2020, Chad also received a semi-finalist nomination for a James Beard “Best Chef” – Northwest Region Award. Follow him over at <a href=\"https:\/\/www.instagram.com\/chefchadwhite\/?hl=en\" target=\"_blank\">@ChefChadWhite<\/a>.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_header_spacer_iRbHyX",
+    "image_with_text_HNKfxX",
+    "component_product_card_grid_KGibhU",
+    "component_story_text_PD4UfQ"
+  ]
+}

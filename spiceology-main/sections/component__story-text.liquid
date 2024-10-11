@@ -1,0 +1,38 @@
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="lg:py-17 py-7.5 opacity-0">
+  <div class="max-w-[730px] mx-auto px-5">
+    {% if section.settings.heading != blank %}
+    <div class="utility-lg opacity-75 text-center lg:mb-5 mb-4">{{ section.settings.heading }}</div>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="rte-story">{{ section.settings.text }}</div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "[Story] Text",
+    "class": "section-story-text",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Story] Text",
+        "settings": {
+          "heading": "What We Believe",
+          "text": "<p><strong>We believe in flavor, not flavoring. <\/strong>We source only premium, natural ingredients, with no fillers or funky stuff.<\/p><p><strong>We believe that fresh matters. <\/strong>Our spices are ground fresh in small batches and shipped fresh from our Spokane, WA facility<\/p><p><strong>We believe in experimenting with flavor. <\/strong>Our never-before-tasted flavors are the foundation of endless creativity for chefs and home cooks alike<\/p><p><strong>We believe great food is better when it’s shared.<\/strong> We are part of a flavor community, sharing recipes and ideas with hundreds of thousands of chefs and home cooks each day. <\/p><p><strong>We believe in catering to the give-a-shit crowd. <\/strong>We’re not for those who just want a fast meal. We’re for those who want every meal, fast or slow, to be exceptional every time.<\/p><p><strong>We believe that spice is the variety of life. <\/strong>Does the world really need us to make 300+ spices and blends? Maybe not, but the world would sure be blander without them.<\/p>"
+        }
+      }
+    ]
+  }
+{% endschema %}

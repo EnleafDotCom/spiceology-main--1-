@@ -1,0 +1,24 @@
+<ul role="menubar" class="flex flex-col items-start justify-between"> 
+    {% if section.settings.third_dropdown_tab.title %}
+    <li role="menuitem" class="border-b w-full px-2.5 py-5">
+        <a
+            href="{{ section.settings.third_dropdown_tab.url }}"
+            aria-haspopup="true"
+            :aria-expanded="$store.main.currentDropdown === 4"
+            class="heading-md flex items-center"
+        >
+            {{ section.settings.third_dropdown_tab.title }}
+        </a>
+    </li>
+    {% endif %}
+    
+    <li role="menuitem" class="border-b w-full px-2.5 py-5">
+        <a 
+            id="account-link" 
+            {% if customer %}href="/account"{% else %}href="/account/login"{% endif %}
+            class="heading-md flex items-center"
+        >
+            Account
+        </a>
+    </li>
+</ul>

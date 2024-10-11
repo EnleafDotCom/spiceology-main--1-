@@ -1,0 +1,32 @@
+{% if section.settings.btn_text != blank %}
+<section x-data="{ fadeIn: false }" x-intersect.threshold.20="fadeIn = true" :class="fadeIn && 'animate-fade-in-500'" class="custom lg:py-10 py-5 lg:px-5 px-2.5 opacity-0">
+  <a href="{{ section.settings.btn_url }}" class="button__primary lg:w-fit w-full mx-auto">{{ section.settings.btn_text }}</a>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "[Component] CTA Button",
+    "settings": [
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "[Component] CTA Button",
+        "settings": {
+          "btn_text": "Button",
+          "btn_url": "#"
+        }
+      }
+    ],
+  }
+{% endschema %}
